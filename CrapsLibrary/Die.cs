@@ -3,6 +3,8 @@
     public class Die
     {
         private int numSides;
+
+        static Random Generator = new Random();
         
         public Die(int numSides)
         {
@@ -11,8 +13,6 @@
 
         public int NewOutcome()
         {
-            Random Generator = new();
-
             return Generator.Next(1, this.numSides);
         }
     }

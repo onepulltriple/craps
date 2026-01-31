@@ -9,7 +9,7 @@
             this.IsOn = isOn;
         }
 
-        public bool flipPuck()
+        public bool FlipPuck()
         {
             return !this.IsOn;
         }

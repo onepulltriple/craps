@@ -9,7 +9,7 @@
             this.numSides = numSides;
         }
 
-        public int newOutcome()
+        public int NewOutcome()
         {
             Random Generator = new();
 

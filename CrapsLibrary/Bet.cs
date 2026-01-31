@@ -2,7 +2,7 @@
 
 namespace CrapsLibrary
 {
-    internal class Bet
+    public class Bet
     {
         public string betName;
         public int payoutNumerator;

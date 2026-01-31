@@ -11,6 +11,7 @@ namespace ConsoleAppForCraps
             Puck Puck1 = new();
             bool state2 = Puck1.FlipPuck();
 
+            
             Die firstOne = new(6);
             Die secondOne = new(6);
             int result1 = firstOne.NewOutcome();
@@ -21,6 +22,8 @@ namespace ConsoleAppForCraps
             Console.WriteLine(result2);
 
             CrapsTable Table01 = new(5, 5);
+
+            HardWayBet exampleHard8 = new("chasebet01", 8, 6, 1);
             
             Console.WriteLine(Table01.RollDice(6, 6));
             Console.WriteLine(Table01.RollDice(6, 6));
@@ -29,6 +32,7 @@ namespace ConsoleAppForCraps
             Console.WriteLine(Table01.RollDice(6, 6));
             Console.WriteLine(Table01.RollDice(6, 6));
             Console.WriteLine(Table01.RollDice(6, 6));
+
 
 
         }

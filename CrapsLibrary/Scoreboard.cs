@@ -3,17 +3,18 @@
     public class Scoreboard // a publisher
     {
         public List<int> die01Rolls;
+
         public List<int> die02Rolls;
+
+        public delegate void OnDiceRolled(int outcome01, int outcome02);
+
+        public List<OnDiceRolled> ListOfBetsToEvaluate = new List<OnDiceRolled>();
 
         public Scoreboard()
         {
             this.die01Rolls = new List<int>();
             this.die02Rolls = new List<int>();
         }
-
-        public delegate void OnDiceRolled(int outcome01, int outcome02);
-
-        public List<OnDiceRolled> ListOfBetsToEvaluate = new List<OnDiceRolled>();
 
         public void NewSubscriber(OnDiceRolled newBet)
         {
@@ -35,8 +36,3 @@
         }
     }
 }
-
-// delegate = A person authorized to act as representative for another; a deputy or agent. 
-// here delegate is the data type for encoding a method
-// the thing you put inside the delegate in this case is the observer
-// the observer is 

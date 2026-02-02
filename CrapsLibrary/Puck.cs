@@ -4,9 +4,12 @@
     {
         public bool IsOn;
 
-        public Puck(bool isOn = false)
+        public int? passPoint;
+
+        public Puck()
         {
-            this.IsOn = isOn;
+            this.IsOn = false;
+            this.passPoint = null;
         }
 
         public bool FlipPuck()

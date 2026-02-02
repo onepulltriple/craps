@@ -13,7 +13,7 @@
 
         public int NewOutcome()
         {
-            return Generator.Next(1, this.numSides);
+            return Generator.Next(1, this.numSides + 1);
         }
     }
 }

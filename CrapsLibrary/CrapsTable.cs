@@ -13,6 +13,8 @@ namespace CrapsLibrary
 
         public static Scoreboard scoreboard = new Scoreboard();
 
+        public static Puck puck = new Puck();
+
         public CrapsTable(int tableMinimum, int tableMaximum)
         {
             this.tableMinimum = tableMinimum;

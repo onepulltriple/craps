@@ -1,16 +1,18 @@
-﻿namespace CrapsLibrary
+﻿
+namespace CrapsLibrary
 {
-    public class HardWayBet : Bet, IBet
+    public class PassBet : Bet, IBet
     {
-        int winningHalf;
+        List<int> losingTotals;
 
-        public HardWayBet(string betName, List<int> winningTotals, int payoutNumerator, int payoutDenominator)
-            :base(betName, winningTotals, payoutNumerator, payoutDenominator)
+        public PassBet(string betName, List<int> winningTotals, int payoutNumerator, int payoutDenominator)
+            : base(betName, winningTotals, payoutNumerator, payoutDenominator)
         {
-            this.winningHalf = winningTotals.First() / 2;
+            losingTotals = new List<int>{2, 3, 12};
             CrapsTable.scoreboard.NewSubscriber(this.EvaluateBet);
         }
-        public void EvaluateBet(int firstOutcome, int secondOutcome) 
+
+        public void EvaluateBet(int firstOutcome, int secondOutcome)
         {
             if (this.isWorking == false)
                 return;
@@ -19,7 +21,7 @@
             {
                 Console.WriteLine($"Hooray! I won a {this.betName} with {firstOutcome}, {secondOutcome}!");
             }
-            
+
             if (this.MeetsLosingCondition(firstOutcome, secondOutcome))
             {
                 Console.WriteLine($"Ouhr nouhr! I lost a {this.betName} with {firstOutcome}, {secondOutcome}!");
@@ -29,7 +31,7 @@
 
         public bool MeetsFirstWinningCondition(int firstOutcome, int secondOutcome)
         {
-            if (firstOutcome == winningHalf && secondOutcome == winningHalf)
+            if (winningTotals.Contains(firstOutcome + secondOutcome))
             {
                 return true;
             }
@@ -38,13 +40,11 @@
 
         public bool MeetsLosingCondition(int firstOutcome, int secondOutcome)
         {
-            if ((firstOutcome + secondOutcome == this.winningTotals.First()) &&
-                (firstOutcome != winningHalf || secondOutcome != winningHalf))
+            if (losingTotals.Contains(firstOutcome + secondOutcome))
             {
                 return true;
             }
             return false;
         }
-
     }
 }

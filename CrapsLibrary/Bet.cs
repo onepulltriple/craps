@@ -8,12 +8,12 @@ namespace CrapsLibrary
         public int payoutNumerator;
         public int payoutDenominator;
         public bool isWorking;
-        public int winningTotal;
+        public List<int> winningTotals;
 
-        public Bet(string betName, int winningTotal, int payoutNumerator, int payoutDenominator)
+        public Bet(string betName, List<int> winningTotals, int payoutNumerator, int payoutDenominator)
         {
             this.betName = betName;
-            this.winningTotal = winningTotal;
+            this.winningTotals = winningTotals;
             this.payoutNumerator = payoutNumerator;
             this.payoutDenominator = payoutDenominator;
             this.StartWorking(); // activates bet upon creation
@@ -46,6 +46,5 @@ namespace CrapsLibrary
 
             return true;
         }
-
     }
 }

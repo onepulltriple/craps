@@ -1,6 +1,4 @@
-﻿using System.Drawing;
-
-namespace CrapsLibrary
+﻿namespace CrapsLibrary
 {
     public class Puck : IBet
     {
@@ -20,36 +18,17 @@ namespace CrapsLibrary
             CrapsTable.scoreboard.NewSubscriber(this.EvaluateBet);
         }
 
-        public bool FlipPuck()
-        {
-            this.AnnounceStatus();
-            return !this.IsOn;
-        }
-
-        public void AnnounceStatus()
-        {
-            if (this.IsOn)
-            {
-                Console.WriteLine("The point is ON!");
-            }
-            else
-            {
-                Console.WriteLine("The point is OFF!");
-            }
-        }
-
         public void EvaluateBet(int firstOutcome, int secondOutcome)
         {
             if (this.MeetsFirstWinningCondition(firstOutcome, secondOutcome))
             {
-                this.FlipPuck();
-                this.AnnounceStatus();
+                this.IsOn = true;
+                return;
             }
-
+            
             if (this.MeetsLosingCondition(firstOutcome, secondOutcome))
             {
-                this.FlipPuck();
-                this.AnnounceStatus();
+                this.IsOn = false;
             }
         }
 
@@ -58,6 +37,8 @@ namespace CrapsLibrary
             // What would flip the puck ON?
             if (!this.IsOn && points.Contains(firstOutcome + secondOutcome))
             {
+                passPoint = (firstOutcome + secondOutcome);
+                Console.WriteLine($"The puck is ON! The point is {passPoint}");
                 return true;
             }
             return false;
@@ -66,9 +47,18 @@ namespace CrapsLibrary
         public bool MeetsLosingCondition(int firstOutcome, int secondOutcome)
         {
             // What would flip the puck OFF?
-            if ((this.IsOn && points.Contains(firstOutcome + secondOutcome)) ||  // point is made
-                (this.IsOn &&       seven == (firstOutcome + secondOutcome)))    // seven out
+            if (this.IsOn && this.passPoint == (firstOutcome + secondOutcome))
             {
+                Console.WriteLine($"The point {passPoint} was MADE. The puck is OFF! Winner!");
+                return true;
+            }
+
+            if(this.IsOn && seven == (firstOutcome + secondOutcome))
+            {
+                Console.WriteLine("The point is OFF! Seven out!");
+                this.passPoint = null;
+                Console.WriteLine("New roller!");
+                Console.WriteLine();
                 return true;
             }
             return false;

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CrapsLibrary
+﻿namespace CrapsLibrary
 {
     public class CrapsTable
     {
@@ -27,6 +21,11 @@ namespace CrapsLibrary
             Die Die02 = new(numSides02);
             scoreboard.die01Rolls.Add(Die01.NewOutcome());
             scoreboard.die02Rolls.Add(Die02.NewOutcome());
+
+            //to be removed later
+            int sum = scoreboard.die01Rolls.Last() + scoreboard.die02Rolls.Last();
+            Console.WriteLine($"{scoreboard.die01Rolls.Last()}, {scoreboard.die02Rolls.Last()} = {sum}");
+            
             scoreboard.PublishOutcomes();
 
             return (scoreboard.die01Rolls.Last(), scoreboard.die02Rolls.Last());

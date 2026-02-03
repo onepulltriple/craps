@@ -6,29 +6,21 @@ namespace ConsoleAppForCraps
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
-            bool state1 = new Puck().IsOn;
-            Puck Puck1 = new();
-            bool state2 = Puck1.FlipPuck();
-            Console.WriteLine(state1);
-            Console.WriteLine(state2);
-
+            Console.WriteLine("Hello, Players!");
 
             CrapsTable Table01 = new(5, 5);
 
-            HardWayBet exampleHard10 = new("Hard 10", new List<int> { 10 }, 6, 1);
-            HardWayBet exampleHard8 = new("Hard 8", new List<int> { 8 }, 6, 1);
-            HardWayBet exampleHard6 = new("Hard 6", new List<int> { 6 }, 6, 1);
-            HardWayBet exampleHard4 = new("Hard 4", new List<int> { 4 }, 6, 1);
-            PassBet examplePassBet1 = new("PassBet1", new List<int> { 7, 11 }, 2, 1);
-            PassBet examplePassBet2 = new("PassBet2", new List<int> { 7, 11 }, 2, 1);
+            //HardWayBet exampleHard10 = new("Hard 10", new List<int> { 10 }, 6, 1);
+            //HardWayBet exampleHard8 = new("Hard 8", new List<int> { 8 }, 6, 1);
+            //HardWayBet exampleHard6 = new("Hard 6", new List<int> { 6 }, 6, 1);
+            //HardWayBet exampleHard4 = new("Hard 4", new List<int> { 4 }, 6, 1);
+            //PassBet examplePassBet1 = new("PassBet1", new List<int> { 7, 11 }, 2, 1);
+            //PassBet examplePassBet2 = new("PassBet2", new List<int> { 7, 11 }, 2, 1);
             
             for(int i = 0; i < 50; i++)
             {
-                Console.WriteLine(Table01.RollDice(6, 6));
+                Table01.RollDice(6, 6);
             }
-
-
 
 
         }

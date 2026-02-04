@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CrapsLibrary;
 
 namespace CrapsTableWPF
 {
@@ -16,9 +17,24 @@ namespace CrapsTableWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        CrapsTable Table;
+
         public MainWindow()
         {
             InitializeComponent();
+            Table = new(5, 5);
+            DataContext = this;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            CrapsTable.betFactory.CreateBet(betType.Aces);
+            Chase.Text = betType.Aces.ToString();
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

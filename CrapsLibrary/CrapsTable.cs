@@ -2,14 +2,14 @@
 {
     public class CrapsTable
     {
-        public int tableMinimum {  get; set; }
-        public int tableMaximum {  get; set; }
+        public int tableMinimum {  get; set; } //do something with this
+        public int tableMaximum {  get; set; } //do something with this
 
         public static Scoreboard scoreboard = new Scoreboard();
 
         public static Puck puck = new Puck();
 
-        public static BetFactory _betFactory = new BetFactory();
+        public static BetFactory betFactory = new BetFactory();
 
         public CrapsTable(int tableMinimum, int tableMaximum)
         {

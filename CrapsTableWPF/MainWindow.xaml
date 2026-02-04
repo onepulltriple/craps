@@ -6,7 +6,10 @@
         xmlns:local="clr-namespace:CrapsTableWPF"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Grid Margin="0,0,0,0">
+        <Button Content="Button1" HorizontalAlignment="Left" Margin="282,189,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <TextBox Name="Chase" HorizontalAlignment="Left" Margin="245,255,0,0" TextWrapping="Wrap" Text="TextB1ox" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
+        
 
     </Grid>
 </Window>

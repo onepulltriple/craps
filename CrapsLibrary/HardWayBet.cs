@@ -10,6 +10,7 @@
             this.winningHalf = winningTotals.First() / 2;
             CrapsTable.scoreboard.NewSubscriber(this.EvaluateBet);
         }
+
         public void EvaluateBet(int firstOutcome, int secondOutcome) 
         {
             if (this.isWorking == false)

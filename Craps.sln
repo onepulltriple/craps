@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36908.2
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppForCraps", "ConsoleAppForCraps\ConsoleAppForCraps.csproj", "{FD33DBDE-B7B3-B8C7-A182-5941A26A686D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleAppForCraps", "ConsoleAppForCraps\ConsoleAppForCraps.csproj", "{FD33DBDE-B7B3-B8C7-A182-5941A26A686D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrapsLibrary", "CrapsLibrary\CrapsLibrary.csproj", "{A2BB2A55-6A3B-4DAD-4F4C-E872DACA5BDB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrapsLibrary", "CrapsLibrary\CrapsLibrary.csproj", "{A2BB2A55-6A3B-4DAD-4F4C-E872DACA5BDB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrapsTableWPF", "CrapsTableWPF\CrapsTableWPF.csproj", "{3CD4F64A-44C4-4814-BAFE-840CE7BF06AC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{A2BB2A55-6A3B-4DAD-4F4C-E872DACA5BDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2BB2A55-6A3B-4DAD-4F4C-E872DACA5BDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2BB2A55-6A3B-4DAD-4F4C-E872DACA5BDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CD4F64A-44C4-4814-BAFE-840CE7BF06AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CD4F64A-44C4-4814-BAFE-840CE7BF06AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CD4F64A-44C4-4814-BAFE-840CE7BF06AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CD4F64A-44C4-4814-BAFE-840CE7BF06AC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

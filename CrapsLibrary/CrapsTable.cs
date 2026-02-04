@@ -9,6 +9,8 @@
 
         public static Puck puck = new Puck();
 
+        public static BetFactory _betFactory = new BetFactory();
+
         public CrapsTable(int tableMinimum, int tableMaximum)
         {
             this.tableMinimum = tableMinimum;

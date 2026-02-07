@@ -15,7 +15,8 @@
         {
             this.IsOn = false;
             this.passPoint = null;
-            CrapsTable.scoreboard.NewSubscriber(this.EvaluateBet);
+            //CrapsTable.scoreboard.NewSubscriber(this.EvaluateBet);
+            CrapsTable.scoreboard.EvaluatePuckStatus = this.EvaluateBet;
         }
 
         public void EvaluateBet(int firstOutcome, int secondOutcome)
@@ -55,7 +56,7 @@
 
             if(this.IsOn && seven == (firstOutcome + secondOutcome))
             {
-                Console.WriteLine("The point is OFF! Seven out!");
+                Console.WriteLine("The puck is OFF! Seven out!");
                 this.passPoint = null;
                 Console.WriteLine("New roller!");
                 Console.WriteLine();

@@ -1,0 +1,3 @@
+turning any bet off at any time
+should winning totals be part of the class definition and not parameters? currently losing totals are not parameters
+table minimum behavior, e.g. pass bets must be multiples of the table minimum

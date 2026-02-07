@@ -10,6 +10,8 @@
 
         public List<OnDiceRolled> ListOfBetsToEvaluate = new List<OnDiceRolled>();
 
+        public OnDiceRolled? EvaluatePuckStatus;
+
         public Scoreboard()
         {
             this.die01Rolls = new List<int>();
@@ -26,12 +28,18 @@
             this.ListOfBetsToEvaluate.Remove(deadBet);
         }
 
-        public void PublishOutcomes() //report latest outcome (tell everyone what happened)
+        public void PublishOutcomes() // report latest outcome (tell everyone what happened)
         {
             foreach(OnDiceRolled BetToEvaluate in this.ListOfBetsToEvaluate.ToList())
             {
                 // check if the outcome is positive negative according to the evaluation method defined by the bet
-                BetToEvaluate.Invoke(this.die01Rolls.Last(),this.die02Rolls.Last());
+                BetToEvaluate.Invoke(this.die01Rolls.Last(), this.die02Rolls.Last());
+            }
+
+            // update the puck status (after evaluating all bets)
+            if (this.EvaluatePuckStatus != null)
+            {
+                EvaluatePuckStatus.Invoke(this.die01Rolls.Last(), this.die02Rolls.Last());
             }
         }
     }

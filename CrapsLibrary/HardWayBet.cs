@@ -19,12 +19,14 @@
             if (this.MeetsFirstWinningCondition(firstOutcome, secondOutcome))
             {
                 Console.WriteLine($"Hooray! I won a {this.betName} with {firstOutcome}, {secondOutcome}!");
+                return;
             }
             
             if (this.MeetsLosingCondition(firstOutcome, secondOutcome))
             {
                 Console.WriteLine($"Ouhr nouhr! I lost a {this.betName} with {firstOutcome}, {secondOutcome}!");
                 CrapsTable.scoreboard.Unsubscribe(this.EvaluateBet);
+                this.isWorking = false;
             }
         }
 

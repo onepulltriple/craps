@@ -11,7 +11,8 @@ namespace CrapsLibrary
         hard_6,
         hard_8,
         hard_10,
-        hard_12
+        hard_12,
+        PassBet
     }
 
     public class BetFactory
@@ -22,9 +23,13 @@ namespace CrapsLibrary
         /// <param name="playerBetType">Should be <see cref="betType"/></param>
         /// <returns></returns>
 
-        public Bet? CreateBet(betType playerBetType) //, player, mulitplier)
+        public Bet? CreateBet(betType playerBetType, int amount) //, player, multiplier)
         {
             Bet? tempBet;
+
+            // check amount validity (using switch?)
+            // on what level should this be checked? the base Bet?
+
 
             // betType (is this the betName?)
             // player
@@ -32,8 +37,12 @@ namespace CrapsLibrary
 
             switch (playerBetType)
             {
-                case betType.Aces:
-                    tempBet = new HardWayBet(playerBetType.ToString(), new List<int>{2}, 30, 1);
+                case betType.Aces: // wins on snake eyes
+                    tempBet = new HardWayBet(playerBetType.ToString(), amount, new List<int>{ 2 }, 30, 1);
+                    break;
+
+                case betType.PassBet: // wins on natural passes, point handled internally
+                    tempBet = new PassBet(playerBetType.ToString(), amount, new List<int> { 7, 11 }, 2, 1);
                     break;
 
                 default:

@@ -5,8 +5,8 @@ namespace CrapsLibrary
     {
         List<int> losingTotals;
 
-        public PassBet(string betName, List<int> winningTotals, int payoutNumerator, int payoutDenominator)
-            : base(betName, winningTotals, payoutNumerator, payoutDenominator)
+        public PassBet(string betName, int amount, List<int> winningTotals, int payoutNumerator, int payoutDenominator)
+            : base(betName, amount, winningTotals, payoutNumerator, payoutDenominator)
         {
             losingTotals = new List<int> {2, 3, 12}; // crap out/missout
             //winningTotals = new List<int> {7, 11 };  // natural pass

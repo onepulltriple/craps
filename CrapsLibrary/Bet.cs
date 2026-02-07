@@ -8,9 +8,10 @@ namespace CrapsLibrary
         public int payoutNumerator;
         public int payoutDenominator;
         public bool isWorking;
+        public int amount;
         public List<int> winningTotals;
 
-        public Bet(string betName, List<int> winningTotals, int payoutNumerator, int payoutDenominator)
+        public Bet(string betName, int amount, List<int> winningTotals, int payoutNumerator, int payoutDenominator)
         {
             this.betName = betName;
             this.winningTotals = winningTotals;

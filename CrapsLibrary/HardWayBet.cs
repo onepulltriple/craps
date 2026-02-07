@@ -4,8 +4,8 @@
     {
         int winningHalf;
 
-        public HardWayBet(string betName, List<int> winningTotals, int payoutNumerator, int payoutDenominator)
-            :base(betName, winningTotals, payoutNumerator, payoutDenominator)
+        public HardWayBet(string betName, int amount, List<int> winningTotals, int payoutNumerator, int payoutDenominator)
+            :base(betName, amount, winningTotals, payoutNumerator, payoutDenominator)
         {
             this.winningHalf = winningTotals.First() / 2;
             CrapsTable.scoreboard.NewSubscriber(this.EvaluateBet);

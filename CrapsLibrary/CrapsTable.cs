@@ -11,10 +11,17 @@
 
         public static BetFactory betFactory = new BetFactory();
 
+        public List<Player> players = new List<Player>();
+
         public CrapsTable(int tableMinimum, int tableMaximum)
         {
             this.tableMinimum = tableMinimum;
             this.tableMaximum = tableMaximum;
+        }
+
+        public void NewPlayer(Player player)
+        {
+            players.Add(player);
         }
 
         public (int, int) RollDice(int numSides01, int numSides02)

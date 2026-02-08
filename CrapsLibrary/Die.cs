@@ -2,18 +2,18 @@
 {
     public class Die
     {
-        private int numSides;
+        private byte numSides;
 
         static Random Generator = new Random();
         
-        public Die(int numSides)
+        public Die(byte numSides)
         {
             this.numSides = numSides;
         }
 
-        public int NewOutcome()
+        public byte NewOutcome()
         {
-            return Generator.Next(1, this.numSides + 1);
+            return (byte)Generator.Next(1, this.numSides + 1);
         }
     }
 }

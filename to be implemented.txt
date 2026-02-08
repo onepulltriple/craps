@@ -1,3 +1,6 @@
 turning any bet off at any time
 should winning totals be part of the class definition and not parameters? currently losing totals are not parameters
 table minimum behavior, e.g. pass bets must be multiples of the table minimum
+payout factors (numerator/denominator): should they be handed over upon bet creation? the compound denominator gets subtracted (i.e. the bet is paid for), then
+  if the bet wins the players gets that money back amplified by the factor.
+parlaying

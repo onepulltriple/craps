@@ -2,8 +2,8 @@
 {
     public class SingleRollBet : Bet
     {
-        public SingleRollBet(string betName, int amount, List<int> winningTotals, int payoutNumerator, int payoutDenominator)
-            : base(betName, amount, winningTotals, payoutNumerator, payoutDenominator)
+        public SingleRollBet(string betName, uint amount, List<int> winningTotals)
+            : base(betName, amount, winningTotals)
         {
             ;
         }

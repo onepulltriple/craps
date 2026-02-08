@@ -4,14 +4,17 @@
     {
         int winningHalf;
 
-        public HardWayBet(string betName, int amount, List<int> winningTotals, int payoutNumerator, int payoutDenominator)
-            :base(betName, amount, winningTotals, payoutNumerator, payoutDenominator)
+        uint minimumBetAmount;
+
+        public HardWayBet(string betName, uint amount, List<int> winningTotals)
+            :base(betName, amount, winningTotals)
         {
+            minimumBetAmount = CrapsTable.tableMinimum / 5;
             this.winningHalf = winningTotals.First() / 2;
             CrapsTable.scoreboard.NewSubscriber(this.EvaluateBet);
         }
 
-        public void EvaluateBet(int firstOutcome, int secondOutcome) 
+        public void EvaluateBet(byte firstOutcome, byte secondOutcome) 
         {
             if (this.isWorking == false)
                 return;
@@ -30,7 +33,7 @@
             }
         }
 
-        public bool MeetsFirstWinningCondition(int firstOutcome, int secondOutcome)
+        public bool MeetsFirstWinningCondition(byte firstOutcome, byte secondOutcome)
         {
             if (firstOutcome == winningHalf && secondOutcome == winningHalf)
             {
@@ -39,7 +42,7 @@
             return false;
         }
 
-        public bool MeetsLosingCondition(int firstOutcome, int secondOutcome)
+        public bool MeetsLosingCondition(byte firstOutcome, byte secondOutcome)
         {
             if ((firstOutcome + secondOutcome == this.winningTotals.First()) &&
                 (firstOutcome != winningHalf || secondOutcome != winningHalf))
@@ -48,6 +51,5 @@
             }
             return false;
         }
-
     }
 }

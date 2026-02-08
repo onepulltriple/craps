@@ -2,7 +2,7 @@
 {
     public class Player
     {
-        public int purse;
+        public uint purse;
 
         public string playerName;
 
@@ -18,7 +18,7 @@
             nonWorkingBets = new List<Bet>();
         }
 
-        public int BuyChips(int purchase)
+        public uint BuyChips(uint purchase)
         {
             purse += purchase;
             return purse;
@@ -54,6 +54,5 @@
         {
 
         }
-
     }
 }

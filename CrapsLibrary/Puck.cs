@@ -15,11 +15,10 @@
         {
             this.IsOn = false;
             this.passPoint = null;
-            //CrapsTable.scoreboard.NewSubscriber(this.EvaluateBet);
             CrapsTable.scoreboard.EvaluatePuckStatus = this.EvaluateBet;
         }
 
-        public void EvaluateBet(int firstOutcome, int secondOutcome)
+        public void EvaluateBet(byte firstOutcome, byte secondOutcome)
         {
             if (this.MeetsFirstWinningCondition(firstOutcome, secondOutcome))
             {
@@ -33,19 +32,19 @@
             }
         }
 
-        public bool MeetsFirstWinningCondition(int firstOutcome, int secondOutcome)
+        public bool MeetsFirstWinningCondition(byte firstOutcome, byte secondOutcome)
         {
             // What would flip the puck ON?
             if (!this.IsOn && points.Contains(firstOutcome + secondOutcome))
             {
-                passPoint = (firstOutcome + secondOutcome);
+                passPoint = firstOutcome + secondOutcome;
                 Console.WriteLine($"The puck is ON! The point is {passPoint}");
                 return true;
             }
             return false;
         }
 
-        public bool MeetsLosingCondition(int firstOutcome, int secondOutcome)
+        public bool MeetsLosingCondition(byte firstOutcome, byte secondOutcome)
         {
             // What would flip the puck OFF?
             if (this.IsOn && this.passPoint == (firstOutcome + secondOutcome))

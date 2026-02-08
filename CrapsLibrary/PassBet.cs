@@ -5,15 +5,15 @@ namespace CrapsLibrary
     {
         List<int> losingTotals;
 
-        public PassBet(string betName, int amount, List<int> winningTotals, int payoutNumerator, int payoutDenominator)
-            : base(betName, amount, winningTotals, payoutNumerator, payoutDenominator)
+        public PassBet(string betName, uint amount, List<int> winningTotals)
+            : base(betName, amount, winningTotals)
         {
             losingTotals = new List<int> {2, 3, 12}; // crap out/missout
             //winningTotals = new List<int> {7, 11 };  // natural pass
             CrapsTable.scoreboard.NewSubscriber(this.EvaluateBet);
         }
 
-        public void EvaluateBet(int firstOutcome, int secondOutcome)
+        public void EvaluateBet(byte firstOutcome, byte secondOutcome)
         {
             if (this.isWorking == false)
                 return;
@@ -33,7 +33,7 @@ namespace CrapsLibrary
             }
         }
 
-        public bool MeetsFirstWinningCondition(int firstOutcome, int secondOutcome)
+        public bool MeetsFirstWinningCondition(byte firstOutcome, byte secondOutcome)
         {
             // if point is off, 7 and 11 win
             // if point is on, matching the point wins
@@ -52,7 +52,7 @@ namespace CrapsLibrary
             return false;
         }
 
-        public bool MeetsLosingCondition(int firstOutcome, int secondOutcome)
+        public bool MeetsLosingCondition(byte firstOutcome, byte secondOutcome)
         {
             // if point is off, craps loses
             // if point is on, 7 loses

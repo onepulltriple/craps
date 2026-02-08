@@ -5,18 +5,17 @@ namespace CrapsLibrary
     public class Bet
     {
         public string betName;
-        public int payoutNumerator;
-        public int payoutDenominator;
+
         public bool isWorking;
-        public int amount;
+
+        public uint amount;
+
         public List<int> winningTotals;
 
-        public Bet(string betName, int amount, List<int> winningTotals, int payoutNumerator, int payoutDenominator)
+        public Bet(string betName, uint amount, List<int> winningTotals)
         {
             this.betName = betName;
             this.winningTotals = winningTotals;
-            this.payoutNumerator = payoutNumerator;
-            this.payoutDenominator = payoutDenominator;
             this.StartWorking(); // activates bet upon creation
         }
 
@@ -28,24 +27,6 @@ namespace CrapsLibrary
         public void QuitWorking()
         {
             this.isWorking = false;
-        }
-
-        public bool AmountIsAllowed(int amount)
-        {
-            if (amount <= 0)
-            {
-                return false;
-                // error message: amount must be greater than zero!
-            }
-
-            if (amount % payoutDenominator != 0)
-            {
-                return false;
-                // error message: amount must be a multiple of payoutDenominator
-                // e.g. payoutDenominator * 1, payoutDenominator * 2, payoutDenominator * 3 ...
-            }
-
-            return true;
         }
     }
 }

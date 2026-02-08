@@ -2,9 +2,14 @@
 {
     public class CrapsTable
     {
-        public int tableMinimum {  get; set; } //do something with this
-        public int tableMaximum {  get; set; } //do something with this
+        public static uint tableMinimum;
 
+        public const uint absTableMinimum = 5;
+
+        public static uint upscaleRatio => tableMinimum / absTableMinimum;
+
+        public static uint tableMaximum;
+        
         public static Scoreboard scoreboard = new Scoreboard();
 
         public static Puck puck = new Puck();
@@ -13,10 +18,10 @@
 
         public List<Player> players = new List<Player>();
 
-        public CrapsTable(int tableMinimum, int tableMaximum)
+        public CrapsTable(uint tableMinimum, uint tableMaximum)
         {
-            this.tableMinimum = tableMinimum;
-            this.tableMaximum = tableMaximum;
+            CrapsTable.tableMinimum = tableMinimum;
+            CrapsTable.tableMaximum = tableMaximum;
         }
 
         public void NewPlayer(Player player)
@@ -24,7 +29,7 @@
             players.Add(player);
         }
 
-        public (int, int) RollDice(int numSides01, int numSides02)
+        public (byte, byte) RollDice(byte numSides01, byte numSides02)
         {
             Die Die01 = new(numSides01);
             Die Die02 = new(numSides02);

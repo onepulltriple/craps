@@ -2,8 +2,8 @@
 {
     interface IBet
     {
-        void EvaluateBet(int firstOutcome, int secondOutcome);
-        bool MeetsFirstWinningCondition(int firstOutcome, int secondOutcome);
-        bool MeetsLosingCondition(int firstOutcome, int secondOutcome);
+        void EvaluateBet(byte firstOutcome, byte secondOutcome);
+        bool MeetsFirstWinningCondition(byte firstOutcome, byte secondOutcome);
+        bool MeetsLosingCondition(byte firstOutcome, byte secondOutcome);
     }
 }

@@ -41,15 +41,16 @@ namespace ConsoleAppForCraps
             //HardWayBet exampleHard8 = new("Hard 8", new List<int> { 8 });
             //HardWayBet exampleHard6 = new("Hard 6", new List<int> { 6 });
             //HardWayBet exampleHard4 = new("Hard 4", new List<int> { 4 });
-            PassBet examplePassBet1 = new("PassBet1", 10, new List<int> { 7, 11 });
+            //PassBet examplePassBet1 = new("PassBet1", 10, new List<int> { 7, 11 });
             //PassBet examplePassBet2 = new("PassBet2", new List<int> { 7, 11 });
             
             for(int i = 0; i < 100; i++)
             {
-                if (examplePassBet1.isWorking == false)
-                {
-                    examplePassBet1 = new PassBet($"PassBet{i}", 10, new List<int> { 7, 11 });
-                }
+                //if (player1.workingBets.First().isWorking == false)
+                //{
+                //    //examplePassBet1 = new PassBet($"PassBet{i}", 10, new List<int> { 7, 11 });
+                //    CrapsTable.betFactory.CreateBet(betType.PassBet, player1, 14);
+                //}
                 Table01.RollDice(6, 6);
 
             }

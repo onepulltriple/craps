@@ -9,7 +9,7 @@ namespace CrapsLibrary
             : base(betName, amount, winningTotals)
         {
             losingTotals = new List<int> {2, 3, 12}; // crap out/missout
-            //winningTotals = new List<int> {7, 11 };  // natural pass
+            winningTotals = new List<int> {7, 11 };  // natural pass
             CrapsTable.scoreboard.NewSubscriber(this.EvaluateBet);
         }
 

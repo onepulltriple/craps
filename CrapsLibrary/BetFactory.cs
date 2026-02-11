@@ -8,7 +8,13 @@
         Hard_8,
         Hard_10,
         Hard_12,
-        PassBet
+        PassBet,
+        PlaceBet_4,
+        PlaceBet_5,
+        PlaceBet_6,
+        PlaceBet_8,
+        PlaceBet_9,
+        PlaceBet_10
     }
 
     public class BetFactory
@@ -28,7 +34,13 @@
                 {betType.Hard_8,  (9, 1)},
                 {betType.Hard_10, (7, 1)},
                 {betType.Hard_12, (30, 1)},
-                {betType.PassBet, (2, 1)}
+                {betType.PassBet, (2, 1)},
+                {betType.PlaceBet_4, (9, 5)},
+                {betType.PlaceBet_5, (7, 5)},
+                {betType.PlaceBet_6, (7, 6)},
+                {betType.PlaceBet_8, (7, 6)},
+                {betType.PlaceBet_9, (7, 5)},
+                {betType.PlaceBet_10, (9, 5)}
             };
 
         public Bet? CreateBet(betType playerBetType, Player player, uint amountThrownAtBet) 
@@ -76,8 +88,32 @@
                     tempBet = new HardWayBet(playerBetType.ToString(), amountToBet, new List<int> { 12 });
                     break;
 
-                case betType.PassBet: // wins on natural passes, winning based on point behavior handled internally
-                    tempBet = new PassBet(playerBetType.ToString(), amountToBet, new List<int> { 7, 11 });
+                case betType.PassBet: // wins on natural passes, winning based on point behavior, which is handled internally
+                    tempBet = new PassBet(playerBetType.ToString(), amountToBet, new List<int> { 0 });
+                    break;                                                                       
+                                                                                                 
+                case betType.PlaceBet_4: // wins when puck is on, then this number is rolled     
+                    tempBet = new PassBet(playerBetType.ToString(), amountToBet, new List<int> { 4 });
+                    break;                                                                       
+                                                                                                 
+                case betType.PlaceBet_5: // wins when puck is on, then this number is rolled     
+                    tempBet = new PassBet(playerBetType.ToString(), amountToBet, new List<int> { 5 });
+                    break;                                                                       
+                                                                                                 
+                case betType.PlaceBet_6: // wins when puck is on, then this number is rolled     
+                    tempBet = new PassBet(playerBetType.ToString(), amountToBet, new List<int> { 6 });
+                    break;                                                                       
+                                                                                                 
+                case betType.PlaceBet_8: // wins when puck is on, then this number is rolled     
+                    tempBet = new PassBet(playerBetType.ToString(), amountToBet, new List<int> { 8 });
+                    break;                                                                       
+                                                                                                 
+                case betType.PlaceBet_9: // wins when puck is on, then this number is rolled     
+                    tempBet = new PassBet(playerBetType.ToString(), amountToBet, new List<int> { 9 });
+                    break;                                                                       
+                                                                                                 
+                case betType.PlaceBet_10: // wins when puck is on, then this number is rolled    
+                    tempBet = new PassBet(playerBetType.ToString(), amountToBet, new List<int> { 10 });
                     break;
 
                 default:

@@ -6,16 +6,13 @@
 
         public string playerName;
 
-        public List<Bet> workingBets;
-
-        public List<Bet> nonWorkingBets;
+        public List<Bet> playerBetList;
 
         public Player(string playerName)
         {
             this.playerName = playerName;
             purse = 0;
-            workingBets = new List<Bet>();
-            nonWorkingBets = new List<Bet>();
+            playerBetList = new List<Bet>();
         }
 
         public uint BuyChips(uint purchase)
@@ -27,7 +24,7 @@
         public void CreateBet(Bet newBet)
         {
             //if (purse >= newBet.)
-            workingBets.Add(newBet);
+            playerBetList.Add(newBet);
         }
         // become new roller
         // skip my roll

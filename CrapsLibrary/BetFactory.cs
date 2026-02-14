@@ -71,6 +71,9 @@
                 CrapsTable.absTableMinimum * 
                 betPayoutRatios[playerBetType].payoutDenominator;
 
+            if (amountThrownAtBet < unitOfBet) // the player player cannot cover at least one bet of that type (e.g. throwing 5 credits at a Place_6)
+                return null;
+
             uint countOfUnitsToBet = amountThrownAtBet / unitOfBet; // the quotient
             uint amountToBet = countOfUnitsToBet * unitOfBet; // quotient times units
             uint amountChangeToReturn = amountThrownAtBet - amountToBet; // remainder to return to player
@@ -118,27 +121,27 @@
                     break;                                                                       
                                                                                                  
                 case betType.PlaceBet_4: // wins when puck is on, then this number is rolled     
-                    tempBet = new PassBet(player, playerBetType.ToString(), amountToBet, new List<int> { 4 }, payout);
+                    tempBet = new PlaceBet(player, playerBetType.ToString(), amountToBet, new List<int> { 4 }, payout);
                     break;                                                                       
                                                                                                  
                 case betType.PlaceBet_5: // wins when puck is on, then this number is rolled     
-                    tempBet = new PassBet(player, playerBetType.ToString(), amountToBet, new List<int> { 5 }, payout);
+                    tempBet = new PlaceBet(player, playerBetType.ToString(), amountToBet, new List<int> { 5 }, payout);
                     break;                                                                       
                                                                                                  
                 case betType.PlaceBet_6: // wins when puck is on, then this number is rolled     
-                    tempBet = new PassBet(player, playerBetType.ToString(), amountToBet, new List<int> { 6 }, payout);
+                    tempBet = new PlaceBet(player, playerBetType.ToString(), amountToBet, new List<int> { 6 }, payout);
                     break;                                                                       
                                                                                                  
                 case betType.PlaceBet_8: // wins when puck is on, then this number is rolled     
-                    tempBet = new PassBet(player, playerBetType.ToString(), amountToBet, new List<int> { 8 }, payout);
+                    tempBet = new PlaceBet(player, playerBetType.ToString(), amountToBet, new List<int> { 8 }, payout);
                     break;                                                                       
                                                                                                  
                 case betType.PlaceBet_9: // wins when puck is on, then this number is rolled     
-                    tempBet = new PassBet(player, playerBetType.ToString(), amountToBet, new List<int> { 9 }, payout);
+                    tempBet = new PlaceBet(player, playerBetType.ToString(), amountToBet, new List<int> { 9 }, payout);
                     break;                                                                       
                                                                                                  
                 case betType.PlaceBet_10: // wins when puck is on, then this number is rolled    
-                    tempBet = new PassBet(player, playerBetType.ToString(), amountToBet, new List<int> { 10 }, payout);
+                    tempBet = new PlaceBet(player, playerBetType.ToString(), amountToBet, new List<int> { 10 }, payout);
                     break;
 
                 default:

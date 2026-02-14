@@ -1,6 +1,6 @@
 ﻿namespace CrapsLibrary
 {
-    public class Puck : IBet
+    public class Puck
     {
         public bool IsOn;
 
@@ -15,24 +15,24 @@
         {
             this.IsOn = false;
             this.passPoint = null;
-            CrapsTable.scoreboard.EvaluatePuckStatus = this.EvaluateBet;
+            CrapsTable.scoreboard.EvaluatePuckStatus = this.EvaluateStatus;
         }
 
-        public void EvaluateBet(byte firstOutcome, byte secondOutcome)
+        public void EvaluateStatus(byte firstOutcome, byte secondOutcome)
         {
-            if (this.MeetsFirstWinningCondition(firstOutcome, secondOutcome))
+            if (this.MeetsTurnOnCondition(firstOutcome, secondOutcome))
             {
                 this.IsOn = true;
                 return;
             }
             
-            if (this.MeetsLosingCondition(firstOutcome, secondOutcome))
+            if (this.MeetsTurnOffCondition(firstOutcome, secondOutcome))
             {
                 this.IsOn = false;
             }
         }
 
-        public bool MeetsFirstWinningCondition(byte firstOutcome, byte secondOutcome)
+        private bool MeetsTurnOnCondition(byte firstOutcome, byte secondOutcome)
         {
             // What would flip the puck ON?
             if (!this.IsOn && points.Contains(firstOutcome + secondOutcome))
@@ -44,7 +44,7 @@
             return false;
         }
 
-        public bool MeetsLosingCondition(byte firstOutcome, byte secondOutcome)
+        private bool MeetsTurnOffCondition(byte firstOutcome, byte secondOutcome)
         {
             // What would flip the puck OFF?
             if (this.IsOn && this.passPoint == (firstOutcome + secondOutcome))
@@ -63,5 +63,7 @@
             }
             return false;
         }
+
+        // TODO Move bool sevenOut to its own method on the puck
     }
 }

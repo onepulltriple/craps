@@ -21,7 +21,7 @@ namespace ConsoleAppForCraps
 
             // 1 player creates bets
 
-            // betting closed
+            // TODO betting closed
 
             // dice rolled
 
@@ -32,32 +32,20 @@ namespace ConsoleAppForCraps
             Player player1 = new Player("Chase");
             player1.purse += 100;
 
-            Bet? newBet1 = CrapsTable.betFactory.CreateBet(player1, betType.PassBet, 14);
-            Bet? newBet2 = CrapsTable.betFactory.CreateBet(player1, betType.Hard_10, 14);
 
-            if (newBet1 != null)
+            foreach(betType bet in Enum.GetValues<betType>())
             {
-                player1.workingBets.Add(newBet1);
+                Bet? newBet = CrapsTable.betFactory.CreateBet(player1, bet, 6);
+                if (newBet != null)
+                    player1.playerBetList.Add(newBet);
             }
-
-            if (newBet2 != null)
-            {
-                player1.workingBets.Add(newBet2);
-            }
-
-
-
 
             for (int i = 0; i < 100; i++)
             {
-                //if (player1.workingBets.First().isWorking == false)
-                //{
-                //    //examplePassBet1 = new PassBet($"PassBet{i}", 10, new List<int> { 7, 11 });
-                //    CrapsTable.betFactory.CreateBet(betType.PassBet, player1, 14);
-                //}
                 Table01.RollDice(6, 6);
-
+                Console.WriteLine($"{player1.playerName} now has {player1.purse} credits.");
             }
+
         }
     }
 }

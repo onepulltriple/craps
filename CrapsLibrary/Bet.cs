@@ -36,6 +36,12 @@ namespace CrapsLibrary
             this.isWorking = false;
         }
 
+        public void QuitBet()
+        {
+            betOwner.purse += this.commitment;
+            betOwner.playerBetList.Remove(this);
+        }
+
         public void EvaluateBet(byte firstOutcome, byte secondOutcome)
         {
             if (this.isWorking == false)
@@ -43,17 +49,17 @@ namespace CrapsLibrary
 
             if (this.MeetsFirstWinningCondition(firstOutcome, secondOutcome))
             {
-                Console.WriteLine($"Hooray! I won {this.betName} with {firstOutcome}, {secondOutcome}!");
+                Console.WriteLine($"Hooray! {betOwner.playerName} won {this.betName} with {firstOutcome}, {secondOutcome}! The payout was {this.payout} credits and goes to {betOwner.playerName}.");
                 betOwner.purse += this.payout;
                 return;
             }
 
             if (this.MeetsLosingCondition(firstOutcome, secondOutcome))
             {
-                Console.WriteLine($"Ouhr nouhr! I lost {this.betName} with {firstOutcome}, {secondOutcome}!");
+                Console.WriteLine($"Ouhr nouhr! {betOwner.playerName} lost {this.betName} with {firstOutcome}, {secondOutcome}! The commitment of {this.commitment} credits goes to the house.");
                 CrapsTable.scoreboard.Unsubscribe(this.EvaluateBet);
-                betOwner.workingBets.Remove(this);
-                this.isWorking = false;  // it may be okay to delete this later, since I may only need it for the testing putposes in the console app
+                // Don't subtract commitment here, since that has already been given up when placing the bet.
+                betOwner.playerBetList.Remove(this);
             }
         }
 

@@ -1,7 +1,7 @@
 ﻿
 namespace CrapsLibrary
 {
-    public class PassBet : Bet, IBet
+    public class PassBet : Bet
     {
         List<int> losingTotals;
 
@@ -13,28 +13,7 @@ namespace CrapsLibrary
             CrapsTable.scoreboard.NewSubscriber(this.EvaluateBet);
         }
 
-        public void EvaluateBet(byte firstOutcome, byte secondOutcome)
-        {
-            if (this.isWorking == false)
-                return;
-
-            if (this.MeetsFirstWinningCondition(firstOutcome, secondOutcome))
-            {
-                Console.WriteLine($"Hooray! I won {this.betName} with {firstOutcome}, {secondOutcome}!");
-                betOwner.purse += this.payout;
-                return;
-            }
-
-            if (this.MeetsLosingCondition(firstOutcome, secondOutcome))
-            {
-                Console.WriteLine($"Ouhr nouhr! I lost {this.betName} with {firstOutcome}, {secondOutcome}!");
-                CrapsTable.scoreboard.Unsubscribe(this.EvaluateBet);
-                betOwner.workingBets.Remove(this);
-                this.isWorking = false;  // it may be okay to delete this later, since I may only need it for the testing putposes in the console app
-            }
-        }
-
-        public bool MeetsFirstWinningCondition(byte firstOutcome, byte secondOutcome)
+        protected override bool MeetsFirstWinningCondition(byte firstOutcome, byte secondOutcome)
         {
             // if point is off, 7 and 11 win
             // if point is on, matching the point wins
@@ -53,7 +32,7 @@ namespace CrapsLibrary
             return false;
         }
 
-        public bool MeetsLosingCondition(byte firstOutcome, byte secondOutcome)
+        protected override bool MeetsLosingCondition(byte firstOutcome, byte secondOutcome)
         {
             // if point is off, craps loses
             // if point is on, 7 loses

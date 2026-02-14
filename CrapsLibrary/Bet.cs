@@ -2,7 +2,7 @@
 
 namespace CrapsLibrary
 {
-    public class Bet
+    public abstract class Bet
     {
         public Player betOwner;
         
@@ -35,5 +35,30 @@ namespace CrapsLibrary
         {
             this.isWorking = false;
         }
+
+        public void EvaluateBet(byte firstOutcome, byte secondOutcome)
+        {
+            if (this.isWorking == false)
+                return;
+
+            if (this.MeetsFirstWinningCondition(firstOutcome, secondOutcome))
+            {
+                Console.WriteLine($"Hooray! I won {this.betName} with {firstOutcome}, {secondOutcome}!");
+                betOwner.purse += this.payout;
+                return;
+            }
+
+            if (this.MeetsLosingCondition(firstOutcome, secondOutcome))
+            {
+                Console.WriteLine($"Ouhr nouhr! I lost {this.betName} with {firstOutcome}, {secondOutcome}!");
+                CrapsTable.scoreboard.Unsubscribe(this.EvaluateBet);
+                betOwner.workingBets.Remove(this);
+                this.isWorking = false;  // it may be okay to delete this later, since I may only need it for the testing putposes in the console app
+            }
+        }
+
+        protected abstract bool MeetsLosingCondition(byte firstOutcome, byte secondOutcome);
+
+        protected abstract bool MeetsFirstWinningCondition(byte firstOutcome, byte secondOutcome);
     }
 }

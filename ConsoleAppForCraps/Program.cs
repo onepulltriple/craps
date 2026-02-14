@@ -32,24 +32,23 @@ namespace ConsoleAppForCraps
             Player player1 = new Player("Chase");
             player1.purse += 100;
 
-            Bet? newBet = CrapsTable.betFactory.CreateBet(betType.PassBet, player1, 14);
-            //Bet? newBet = CrapsTable.betFactory.CreateBet(betType.Hard_10, player1, 14);
+            Bet? newBet1 = CrapsTable.betFactory.CreateBet(player1, betType.PassBet, 14);
+            Bet? newBet2 = CrapsTable.betFactory.CreateBet(player1, betType.Hard_10, 14);
 
-            if (newBet != null)
+            if (newBet1 != null)
             {
-                player1.workingBets.Add(newBet);
+                player1.workingBets.Add(newBet1);
+            }
+
+            if (newBet2 != null)
+            {
+                player1.workingBets.Add(newBet2);
             }
 
 
 
-            //HardWayBet exampleHard10 = new("Hard 10", new List<int> { 10 });
-            //HardWayBet exampleHard8 = new("Hard 8", new List<int> { 8 });
-            //HardWayBet exampleHard6 = new("Hard 6", new List<int> { 6 });
-            //HardWayBet exampleHard4 = new("Hard 4", new List<int> { 4 });
-            //PassBet examplePassBet1 = new("PassBet1", 10, new List<int> { 7, 11 });
-            //PassBet examplePassBet2 = new("PassBet2", new List<int> { 7, 11 });
-            
-            for(int i = 0; i < 100; i++)
+
+            for (int i = 0; i < 100; i++)
             {
                 //if (player1.workingBets.First().isWorking == false)
                 //{

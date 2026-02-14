@@ -60,7 +60,7 @@
                 {betType.PlaceBet_10,   (9, 5)}
             };
 
-        public Bet? CreateBet(betType playerBetType, Player player, uint amountThrownAtBet) 
+        public Bet? CreateBet(Player player, betType playerBetType, uint amountThrownAtBet)
         {
             if (player.purse < amountThrownAtBet) // the player cannot bet more than they have
                 return null;
@@ -90,55 +90,55 @@
             switch (playerBetType)
             {
                 case betType.Aces: // wins on 1,1 (snake eyes)
-                    tempBet = new HardWayBet(playerBetType.ToString(), amountToBet, new List<int>{ 2 }, payout);
+                    tempBet = new HardWayBet(player, playerBetType.ToString(), amountToBet, new List<int>{ 2 }, payout);
                     break;
 
                 case betType.Hard_4: // wins on 2,2
-                    tempBet = new HardWayBet(playerBetType.ToString(), amountToBet, new List<int> { 4 }, payout);
+                    tempBet = new HardWayBet(player, playerBetType.ToString(), amountToBet, new List<int> { 4 }, payout);
                     break;
 
                 case betType.Hard_6: // wins on 3,3
-                    tempBet = new HardWayBet(playerBetType.ToString(), amountToBet, new List<int> { 6 }, payout);
+                    tempBet = new HardWayBet(player, playerBetType.ToString(), amountToBet, new List<int> { 6 }, payout);
                     break;
 
                 case betType.Hard_8: // wins on 4,4
-                    tempBet = new HardWayBet(playerBetType.ToString(), amountToBet, new List<int> { 8 }, payout);
+                    tempBet = new HardWayBet(player, playerBetType.ToString(), amountToBet, new List<int> { 8 }, payout);
                     break;
 
                 case betType.Hard_10: // wins on 5,5
-                    tempBet = new HardWayBet(playerBetType.ToString(), amountToBet, new List<int> { 10 }, payout);
+                    tempBet = new HardWayBet(player, playerBetType.ToString(), amountToBet, new List<int> { 10 }, payout);
                     break;
 
                 case betType.Hard_12: // wins on 6,6
-                    tempBet = new HardWayBet(playerBetType.ToString(), amountToBet, new List<int> { 12 }, payout);
+                    tempBet = new HardWayBet(player, playerBetType.ToString(), amountToBet, new List<int> { 12 }, payout);
                     break;
 
                 case betType.PassBet: // wins on natural passes, winning based on point behavior, which is handled internally
-                    tempBet = new PassBet(playerBetType.ToString(), amountToBet, new List<int> { 0 }, payout);
+                    tempBet = new PassBet(player, playerBetType.ToString(), amountToBet, new List<int> { 0 }, payout);
                     break;                                                                       
                                                                                                  
                 case betType.PlaceBet_4: // wins when puck is on, then this number is rolled     
-                    tempBet = new PassBet(playerBetType.ToString(), amountToBet, new List<int> { 4 }, payout);
+                    tempBet = new PassBet(player, playerBetType.ToString(), amountToBet, new List<int> { 4 }, payout);
                     break;                                                                       
                                                                                                  
                 case betType.PlaceBet_5: // wins when puck is on, then this number is rolled     
-                    tempBet = new PassBet(playerBetType.ToString(), amountToBet, new List<int> { 5 }, payout);
+                    tempBet = new PassBet(player, playerBetType.ToString(), amountToBet, new List<int> { 5 }, payout);
                     break;                                                                       
                                                                                                  
                 case betType.PlaceBet_6: // wins when puck is on, then this number is rolled     
-                    tempBet = new PassBet(playerBetType.ToString(), amountToBet, new List<int> { 6 }, payout);
+                    tempBet = new PassBet(player, playerBetType.ToString(), amountToBet, new List<int> { 6 }, payout);
                     break;                                                                       
                                                                                                  
                 case betType.PlaceBet_8: // wins when puck is on, then this number is rolled     
-                    tempBet = new PassBet(playerBetType.ToString(), amountToBet, new List<int> { 8 }, payout);
+                    tempBet = new PassBet(player, playerBetType.ToString(), amountToBet, new List<int> { 8 }, payout);
                     break;                                                                       
                                                                                                  
                 case betType.PlaceBet_9: // wins when puck is on, then this number is rolled     
-                    tempBet = new PassBet(playerBetType.ToString(), amountToBet, new List<int> { 9 }, payout);
+                    tempBet = new PassBet(player, playerBetType.ToString(), amountToBet, new List<int> { 9 }, payout);
                     break;                                                                       
                                                                                                  
                 case betType.PlaceBet_10: // wins when puck is on, then this number is rolled    
-                    tempBet = new PassBet(playerBetType.ToString(), amountToBet, new List<int> { 10 }, payout);
+                    tempBet = new PassBet(player, playerBetType.ToString(), amountToBet, new List<int> { 10 }, payout);
                     break;
 
                 default:

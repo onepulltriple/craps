@@ -5,8 +5,8 @@ namespace CrapsLibrary
     {
         List<int> losingTotals;
 
-        public PassBet(string betName, uint commitment, List<int> winningTotals, uint payout)
-            : base(betName, commitment, winningTotals, payout)
+        public PassBet(Player betOwner, string betName, uint commitment, List<int> winningTotals, uint payout)
+            : base(betOwner, betName, commitment, winningTotals, payout)
         {
             losingTotals = new List<int> {2, 3, 12}; // crap out/missout
             winningTotals = new List<int> {7, 11 };  // natural pass
@@ -21,6 +21,7 @@ namespace CrapsLibrary
             if (this.MeetsFirstWinningCondition(firstOutcome, secondOutcome))
             {
                 Console.WriteLine($"Hooray! I won {this.betName} with {firstOutcome}, {secondOutcome}!");
+                betOwner.purse += this.payout;
                 return;
             }
 
@@ -28,7 +29,7 @@ namespace CrapsLibrary
             {
                 Console.WriteLine($"Ouhr nouhr! I lost {this.betName} with {firstOutcome}, {secondOutcome}!");
                 CrapsTable.scoreboard.Unsubscribe(this.EvaluateBet);
-
+                betOwner.workingBets.Remove(this);
                 this.isWorking = false;  // it may be okay to delete this later, since I may only need it for the testing putposes in the console app
             }
         }

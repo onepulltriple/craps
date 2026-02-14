@@ -28,7 +28,7 @@ namespace CrapsTableWPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            CrapsTable.betFactory.CreateBet(betType.Aces);
+            CrapsTable.betFactory.CreateBet(playerBetType: betType.Aces);
             Chase.Text = betType.Aces.ToString();
         }
 

@@ -2,10 +2,9 @@
 {
     public class PlaceBet : Bet, IBet
     {
-        public PlaceBet(string betName, uint commitment, List<int> winningTotals, uint payout) 
-            : base(betName, commitment, winningTotals, payout)
+        public PlaceBet(Player betOwner, string betName, uint commitment, List<int> winningTotals, uint payout) 
+            : base(betOwner, betName, commitment, winningTotals, payout)
         {
-
             CrapsTable.scoreboard.NewSubscriber(this.EvaluateBet);
         }
 
@@ -17,6 +16,7 @@
             if (this.MeetsFirstWinningCondition(firstOutcome, secondOutcome))
             {
                 Console.WriteLine($"Hooray! I won a {this.betName} with {firstOutcome}, {secondOutcome}!");
+                betOwner.purse += this.payout;
                 return;
             }
 
@@ -24,6 +24,7 @@
             {
                 Console.WriteLine($"Ouhr nouhr! I lost a {this.betName} with {firstOutcome}, {secondOutcome}!");
                 CrapsTable.scoreboard.Unsubscribe(this.EvaluateBet);
+                betOwner.workingBets.Remove(this);
                 this.isWorking = false;
             }
         }

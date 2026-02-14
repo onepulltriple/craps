@@ -4,6 +4,8 @@ namespace CrapsLibrary
 {
     public class Bet
     {
+        public Player betOwner;
+        
         public string betName;
 
         public uint commitment;
@@ -14,8 +16,9 @@ namespace CrapsLibrary
 
         public bool isWorking;
 
-        public Bet(string betName, uint commitment, List<int> winningTotals, uint payout)
+        public Bet(Player betOwner, string betName, uint commitment, List<int> winningTotals, uint payout)
         {
+            this.betOwner = betOwner;
             this.betName = betName;
             this.commitment = commitment;
             this.winningTotals = winningTotals;

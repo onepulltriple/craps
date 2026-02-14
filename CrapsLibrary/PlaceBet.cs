@@ -2,8 +2,8 @@
 {
     public class PlaceBet : Bet, IBet
     {
-        public PlaceBet(string betName, uint amount, List<int> winningTotals) 
-            : base(betName, amount, winningTotals)
+        public PlaceBet(string betName, uint commitment, List<int> winningTotals, uint payout) 
+            : base(betName, commitment, winningTotals, payout)
         {
 
             CrapsTable.scoreboard.NewSubscriber(this.EvaluateBet);

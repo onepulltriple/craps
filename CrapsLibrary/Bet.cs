@@ -8,14 +8,17 @@ namespace CrapsLibrary
 
         public bool isWorking;
 
-        public uint amount;
+        public uint commitment;
+
+        public uint payout;
 
         public List<int> winningTotals;
 
-        public Bet(string betName, uint amount, List<int> winningTotals)
+        public Bet(string betName, uint payout, List<int> winningTotals)
         {
             this.betName = betName;
             this.winningTotals = winningTotals;
+            this.payout = payout;
             this.StartWorking(); // activates bet upon creation
         }
 

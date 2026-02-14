@@ -2,8 +2,6 @@
 {
     public class PlaceBet : Bet, IBet
     {
-        int minimumBetAmount;
-
         public PlaceBet(string betName, uint amount, List<int> winningTotals) 
             : base(betName, amount, winningTotals)
         {

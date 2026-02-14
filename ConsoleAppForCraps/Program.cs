@@ -32,8 +32,13 @@ namespace ConsoleAppForCraps
             Player player1 = new Player("Chase");
             player1.purse += 100;
 
-            CrapsTable.betFactory.CreateBet(betType.PassBet, player1, 14);
+            Bet? newBet = CrapsTable.betFactory.CreateBet(betType.PassBet, player1, 14);
+            //Bet? newBet = CrapsTable.betFactory.CreateBet(betType.Hard_10, player1, 14);
 
+            if (newBet != null)
+            {
+                player1.workingBets.Add(newBet);
+            }
 
 
 

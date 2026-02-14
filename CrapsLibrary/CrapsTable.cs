@@ -6,7 +6,7 @@
 
         public const uint absTableMinimum = 5;
 
-        public static uint upscaleRatio => tableMinimum / absTableMinimum;
+        //public static uint upscaleRatio => tableMinimum / absTableMinimum;
 
         public static uint tableMaximum;
         

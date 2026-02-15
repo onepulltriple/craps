@@ -17,8 +17,6 @@ namespace ConsoleAppForCraps
 
             // player buys chips (can buy more at any time) starts with 100 by default
 
-
-
             // 1 player creates bets
 
             // TODO betting closed
@@ -32,14 +30,15 @@ namespace ConsoleAppForCraps
             Player player1 = new Player("Chase");
             player1.purse += 100;
 
+            Table01.RollDice(6, 6);
 
-            foreach(betType bet in Enum.GetValues<betType>())
+            foreach (betType bet in Enum.GetValues<betType>())
             {
                 Bet? newBet = CrapsTable.betFactory.CreateBet(player1, bet, 6);
                 if (newBet != null)
+                //if (newBet != null && newBet.betName != "PassBet")
                     player1.playerBetList.Add(newBet);
             }
-            bool temp = PlaceBet.IsPlaceBetAllowed(player1);
 
             for (int i = 0; i < 100; i++)
             {

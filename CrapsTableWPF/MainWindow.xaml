@@ -5,11 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CrapsTableWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="1000" Width="1600"
+        Background="ForestGreen">
     <Grid Margin="0,0,0,0">
-        <Button Content="Button1" HorizontalAlignment="Left" Margin="282,189,0,0" VerticalAlignment="Top" Click="Button_Click"/>
-        <TextBox Name="Chase" HorizontalAlignment="Left" Margin="245,255,0,0" TextWrapping="Wrap" Text="TextB1ox" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
-        
+        <Image Margin="0,0,280,157" Source="temp_background.png" Stretch="Uniform"/>
+
+        <Path x:Name="DropZone01" 
+              Data="M10,10 L200,10 L200,100 L10,100 Z"
+              Fill="#40FF0000" Stroke="Red"
+              AllowDrop="True"
+              DragEnter="Region_DragEnter"
+              Drop="Region_Drop"
+              MouseLeftButtonDown="Region_Click" Margin="35,712,896,176" Stretch="Fill"
+              />
+        <Button Content="New Player" HorizontalAlignment="Left" Margin="1360,104,0,0" VerticalAlignment="Top" Height="40" Width="200" Click="NewPlayerButtonClick"/>
+        <TextBox x:Name="PlayerNameInputTextBox" HorizontalAlignment="Left" Margin="1360,74,0,0" TextWrapping="Wrap" Text="New Player Name" VerticalAlignment="Top" Width="200"/>
+        <Button Content="Add money" HorizontalAlignment="Left" Margin="1360,184,0,0" VerticalAlignment="Top" Height="40" Width="200" Click="AddMoneyButtonClick"/>
+        <TextBox x:Name="MoneyInputTextBox" HorizontalAlignment="Left" Margin="1360,156,0,0" TextWrapping="Wrap" Text="Amount to Add" VerticalAlignment="Top" Width="200"/>
+
 
     </Grid>
 </Window>

@@ -9,7 +9,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="temp_background.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CrapsLibrary\CrapsLibrary.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="temp_background.png" />
   </ItemGroup>
 
 </Project>

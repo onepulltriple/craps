@@ -22,19 +22,38 @@ namespace CrapsTableWPF
         public MainWindow()
         {
             InitializeComponent();
-            Table = new(5, 5);
+            this.Table = new(5, 5);
             DataContext = this;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Path_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            CrapsTable.betFactory.CreateBet(playerBetType: betType.Aces);
-            Chase.Text = betType.Aces.ToString();
+
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void Region_DragEnter(object sender, DragEventArgs e)
         {
 
+        }
+
+        private void Region_Drop(object sender, DragEventArgs e)
+        {
+
+        }
+
+        private void Region_Click(object sender, MouseButtonEventArgs e)
+        {
+            ;
+        }
+
+        private void NewPlayerButtonClick(object sender, RoutedEventArgs e)
+        {
+            Table.NewPlayer(PlayerNameInputTextBox.Text);
+        }
+
+        private void AddMoneyButtonClick(object sender, RoutedEventArgs e)
+        {
+            Table.players.First().purse += uint.Parse(MoneyInputTextBox.Text);
         }
     }
 }

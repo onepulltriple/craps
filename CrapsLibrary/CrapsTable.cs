@@ -22,9 +22,10 @@
             CrapsTable.tableMaximum = tableMaximum;
         }
 
-        public void NewPlayer(Player player)
+        public void NewPlayer(string playerName)
         {
-            players.Add(player);
+            Player tempPlayer = new Player(playerName);
+            players.Add(tempPlayer);
         }
 
         public (byte, byte) RollDice(byte numSides01, byte numSides02)

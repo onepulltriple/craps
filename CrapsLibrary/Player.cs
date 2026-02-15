@@ -23,7 +23,6 @@
 
         public void CreateBet(Bet newBet)
         {
-            //if (purse >= newBet.)
             playerBetList.Add(newBet);
         }
         // become new roller

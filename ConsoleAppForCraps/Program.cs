@@ -39,6 +39,7 @@ namespace ConsoleAppForCraps
                 if (newBet != null)
                     player1.playerBetList.Add(newBet);
             }
+            bool temp = PlaceBet.IsPlaceBetAllowed(player1);
 
             for (int i = 0; i < 100; i++)
             {

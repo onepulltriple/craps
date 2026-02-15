@@ -1,4 +1,6 @@
-﻿namespace CrapsLibrary
+﻿using System.Linq;
+
+namespace CrapsLibrary
 {
     public class PlaceBet : Bet
     {
@@ -22,6 +24,15 @@
         protected override bool MeetsLosingCondition(byte firstOutcome, byte secondOutcome)
         {
             if (CrapsTable.puck.IsOutcomeSevenOut(firstOutcome, secondOutcome))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public static bool IsPlaceBetAllowed(Player playerToCheck)
+        {
+            if (playerToCheck.playerBetList.Any(bet => bet.betName == "PassBet"))
             {
                 return true;
             }

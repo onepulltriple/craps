@@ -43,7 +43,7 @@ namespace CrapsLibrary
                 return true;
             }
 
-            if (CrapsTable.puck.IsOn == true && CrapsTable.puck.seven == (firstOutcome + secondOutcome))
+            if (CrapsTable.puck.IsOutcomeSevenOut(firstOutcome, secondOutcome))
             {
                 Console.Write("Point missed! Seven out! ");
                 return true;

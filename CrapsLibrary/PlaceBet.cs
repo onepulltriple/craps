@@ -21,8 +21,7 @@
 
         protected override bool MeetsLosingCondition(byte firstOutcome, byte secondOutcome)
         {
-            // the puck is on and then a seven is rolled
-            if (CrapsTable.puck.IsOn == true && CrapsTable.puck.seven == (firstOutcome + secondOutcome))
+            if (CrapsTable.puck.IsOutcomeSevenOut(firstOutcome, secondOutcome))
             {
                 return true;
             }

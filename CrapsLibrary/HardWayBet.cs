@@ -22,6 +22,11 @@
 
         protected override bool MeetsLosingCondition(byte firstOutcome, byte secondOutcome)
         {
+            if (CrapsTable.puck.IsOutcomeSevenOut(firstOutcome, secondOutcome))
+            {
+                return true;
+            }
+
             if ((firstOutcome + secondOutcome == this.winningTotals.First()) &&
                 (firstOutcome != winningHalf || secondOutcome != winningHalf))
             {

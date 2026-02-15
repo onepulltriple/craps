@@ -10,7 +10,7 @@
 
         public List<OnDiceRolled> ListOfBetsToEvaluate = new List<OnDiceRolled>();
 
-        public OnDiceRolled? EvaluatePuckStatus;
+        public OnDiceRolled? PuckEvaluateStatus, PuckAnnounceSevenOut, PuckAnnounceNewRoller;
 
         public Scoreboard()
         {
@@ -30,16 +30,28 @@
 
         public void PublishOutcomes() // report latest outcome (tell everyone what happened)
         {
-            foreach(OnDiceRolled BetToEvaluate in this.ListOfBetsToEvaluate.ToList())
+            // announce seven out
+            if (this.PuckAnnounceSevenOut != null)
             {
-                // check if the outcome is positive negative according to the evaluation method defined by the bet
+                PuckAnnounceSevenOut.Invoke(this.die01Rolls.Last(), this.die02Rolls.Last());
+            }
+
+            // check if the betting outcomes are positive or negative according to the evaluation method defined by each bet
+            foreach (OnDiceRolled BetToEvaluate in this.ListOfBetsToEvaluate.ToList())
+            {
                 BetToEvaluate.Invoke(this.die01Rolls.Last(), this.die02Rolls.Last());
             }
 
-            // update the puck status (after evaluating all bets)
-            if (this.EvaluatePuckStatus != null)
+            // announce new roller
+            if (this.PuckAnnounceNewRoller != null)
             {
-                EvaluatePuckStatus.Invoke(this.die01Rolls.Last(), this.die02Rolls.Last());
+                PuckAnnounceNewRoller.Invoke(this.die01Rolls.Last(), this.die02Rolls.Last());
+            }
+
+            // update the puck status (after evaluating all bets)
+            if (this.PuckEvaluateStatus != null)
+            {
+                PuckEvaluateStatus.Invoke(this.die01Rolls.Last(), this.die02Rolls.Last());
             }
         }
     }

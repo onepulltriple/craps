@@ -6,5 +6,6 @@ payout factors (numerator/denominator): should they be handed over upon bet crea
 parlaying
 what to do with lost bets (if anything)
 House.cs to store the house's money, to which purchased bets are paid and from which won bets are substracted
-if the point becomes the same number as an existing place bet, offer to move that place bet to its "twin" or give it back to the player
+if the point becomes the same number as an existing place bet, offer to move that place bet to its "twin",  give it back to the player, or move to the odds bet
+also, place bets should not be allowed to be created if the puck is off or if the player doesn't have an active PassBet
 

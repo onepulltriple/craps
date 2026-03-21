@@ -6,21 +6,50 @@
         Background="ForestGreen">
 
     <Grid>
-        <!-- UI Elements -->
-        <Button Content="New Player" HorizontalAlignment="Left" Margin="1360,104,0,0" VerticalAlignment="Top" Height="40" Width="200" Click="NewPlayerButtonClick"/>
-        <TextBox x:Name="PlayerNameInputTextBox" HorizontalAlignment="Left" Margin="1360,74,0,0" TextWrapping="Wrap" Text="New Player Name" VerticalAlignment="Top" Width="200"/>
-        <Button Content="Add money" HorizontalAlignment="Left" Margin="1360,184,0,0" VerticalAlignment="Top" Height="40" Width="200" Click="AddMoneyButtonClick"/>
-        <TextBox x:Name="MoneyInputTextBox" HorizontalAlignment="Left" Margin="1360,156,0,0" TextWrapping="Wrap" Text="Amount to Add" VerticalAlignment="Top" Width="200"/>
-
-        <!-- SVG in foreground, scales to window -->
-        <Viewbox Stretch="Uniform"
-         HorizontalAlignment="Center"
-         VerticalAlignment="Center"
-         Panel.ZIndex="100">
+        <!-- SVG in background, scales to window -->
+        <Viewbox Panel.ZIndex="0"
+            Stretch="Uniform"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
             <svg:SvgViewbox Source="background.svg"
                     IsHitTestVisible="False"
                     MaxWidth="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Window}}"
                     MaxHeight="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Window}}" Width="6583"/>
         </Viewbox>
+
+        <!-- Wireframe -->
+        <Grid Panel.ZIndex="1">
+            
+        </Grid>
+
+        <!-- Foreground layout -->
+        <Grid Panel.ZIndex="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Headline -->
+            <!-- Middle Section -->
+            <!-- Lower Section -->
+
+            <!-- UI Elements -->
+            <Button Content="New Player" HorizontalAlignment="Left" Margin="1360,104,0,0" VerticalAlignment="Top" Height="40" Width="200" Click="NewPlayerButtonClick"/>
+            <TextBox x:Name="PlayerNameInputTextBox" HorizontalAlignment="Left" Margin="1360,74,0,0" TextWrapping="Wrap" Text="New Player Name" VerticalAlignment="Top" Width="200"/>
+            <Button Content="Add money" HorizontalAlignment="Left" Margin="1360,184,0,0" VerticalAlignment="Top" Height="40" Width="200" Click="AddMoneyButtonClick"/>
+            <TextBox x:Name="MoneyInputTextBox" HorizontalAlignment="Left" Margin="1360,156,0,0" TextWrapping="Wrap" Text="Amount to Add" VerticalAlignment="Top" Width="200"/>
+
+
+        </Grid>
+        
+        
+        
+        
+
     </Grid>
 </Window>

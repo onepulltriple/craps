@@ -2,7 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:svg="clr-namespace:SharpVectors.Converters;assembly=SharpVectors.Converters.Wpf"
-        Title="Craps Table" Height="1000" Width="1600"
+        Title="Craps Table"  Width="1600" Height="1000" 
         Background="ForestGreen">
 
     <Grid>
@@ -13,13 +13,26 @@
             VerticalAlignment="Center">
             <svg:SvgViewbox Source="background.svg"
                     IsHitTestVisible="False"
-                    MaxWidth="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Window}}"
-                    MaxHeight="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Window}}" Width="6583"/>
+                    MaxWidth ="{Binding ActualWidth,  RelativeSource={RelativeSource AncestorType=Window}}"
+                    MaxHeight="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Window}}"/>
         </Viewbox>
 
         <!-- Wireframe -->
         <Grid Panel.ZIndex="1">
-            
+            <Viewbox Stretch="Uniform">
+                <Canvas Width="3200" Height="2000">
+
+                    <!-- x is plotted from the left edge, y is plotted from the top edge -->
+                    <!-- the points are drawn clockwise -->
+                    <Polygon    Points="896,470 1072,470 1072,685 896,685"
+                                Fill="Blue"/>
+                    <Polygon    Points="1072,470 1248,470 1248,685 1072,685"
+                                Fill="PaleVioletRed"/>
+
+
+                </Canvas>
+            </Viewbox>
+
         </Grid>
 
         <!-- Foreground layout -->
@@ -44,12 +57,7 @@
             <Button Content="Add money" HorizontalAlignment="Left" Margin="1360,184,0,0" VerticalAlignment="Top" Height="40" Width="200" Click="AddMoneyButtonClick"/>
             <TextBox x:Name="MoneyInputTextBox" HorizontalAlignment="Left" Margin="1360,156,0,0" TextWrapping="Wrap" Text="Amount to Add" VerticalAlignment="Top" Width="200"/>
 
-
         </Grid>
         
-        
-        
-        
-
     </Grid>
 </Window>

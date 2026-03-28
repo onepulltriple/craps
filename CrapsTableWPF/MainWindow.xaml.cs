@@ -19,11 +19,14 @@ namespace CrapsTableWPF
     {
         CrapsTable Table;
 
+        Player currentPlayer;
+
         public MainWindow()
         {
             InitializeComponent();
             this.Table = new(5, 5);
             DataContext = this;
+            currentPlayer = new Player("tempPlayer");
         }
 
         private void Path_MouseDown(object sender, MouseButtonEventArgs e)

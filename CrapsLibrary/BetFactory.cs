@@ -3,17 +3,17 @@
     public enum betType
     { 
         Aces,  
-        Hard_4,
-        Hard_6,
-        Hard_8,
+        Hard_04,
+        Hard_06,
+        Hard_08,
         Hard_10,
         Hard_12,
         PassBet,
-        PlaceBet_4,
-        PlaceBet_5,
-        PlaceBet_6,
-        PlaceBet_8,
-        PlaceBet_9,
+        PlaceBet_04,
+        PlaceBet_05,
+        PlaceBet_06,
+        PlaceBet_08,
+        PlaceBet_09,
         PlaceBet_10
     }
 
@@ -46,17 +46,17 @@
                 // For bets whose minimum matches the tables minimum, payoutDenominator must equal 5.
 
                 {betType.Aces,         (30, 1)},
-                {betType.Hard_4,        (7, 1)},
-                {betType.Hard_6,        (9, 1)},
-                {betType.Hard_8,        (9, 1)},
+                {betType.Hard_04,       (7, 1)},
+                {betType.Hard_06,       (9, 1)},
+                {betType.Hard_08,       (9, 1)},
                 {betType.Hard_10,       (7, 1)},
                 {betType.Hard_12,      (30, 1)},
                 {betType.PassBet,       (5, 5)}, // pays 1:1
-                {betType.PlaceBet_4,    (9, 5)},
-                {betType.PlaceBet_5,    (7, 5)},
-                {betType.PlaceBet_6,    (7, 6)},
-                {betType.PlaceBet_8,    (7, 6)},
-                {betType.PlaceBet_9,    (7, 5)},
+                {betType.PlaceBet_04,   (9, 5)},
+                {betType.PlaceBet_05,   (7, 5)},
+                {betType.PlaceBet_06,   (7, 6)},
+                {betType.PlaceBet_08,   (7, 6)},
+                {betType.PlaceBet_09,   (7, 5)},
                 {betType.PlaceBet_10,   (9, 5)}
             };
 
@@ -66,8 +66,8 @@
                 return null;
 
             // determine betting units
-            uint unitOfBet = 
-                CrapsTable.tableMinimum / 
+            uint unitOfBet =
+                CrapsTable.tableMinimum /
                 CrapsTable.absTableMinimum * 
                 betPayoutRatios[playerBetType].payoutDenominator;
 
@@ -97,15 +97,15 @@
                     tempBet = new HardWayBet(player, tempBetName, amountToBet, new List<int>{ 2 }, payout);
                     break;
 
-                case betType.Hard_4: // wins on 2,2
+                case betType.Hard_04: // wins on 2,2
                     tempBet = new HardWayBet(player, tempBetName, amountToBet, new List<int> { 4 }, payout);
                     break;
 
-                case betType.Hard_6: // wins on 3,3
+                case betType.Hard_06: // wins on 3,3
                     tempBet = new HardWayBet(player, tempBetName, amountToBet, new List<int> { 6 }, payout);
                     break;
 
-                case betType.Hard_8: // wins on 4,4
+                case betType.Hard_08: // wins on 4,4
                     tempBet = new HardWayBet(player, tempBetName, amountToBet, new List<int> { 8 }, payout);
                     break;
 
@@ -121,27 +121,27 @@
                     tempBet = new PassBet(player, tempBetName, amountToBet, new List<int> { 0 }, payout);
                     break;                                                                       
                                                                                                  
-                case betType.PlaceBet_4: // wins when puck is on, then this number is rolled     
+                case betType.PlaceBet_04: // wins when puck is on, then this number is rolled     
                     if (PlaceBet.IsPlaceBetAllowed(player, tempBetName))
                         tempBet = new PlaceBet(player, tempBetName, amountToBet, new List<int> { 4 }, payout);
                     break;                                                                       
                                                                                                  
-                case betType.PlaceBet_5: // wins when puck is on, then this number is rolled     
+                case betType.PlaceBet_05: // wins when puck is on, then this number is rolled     
                     if (PlaceBet.IsPlaceBetAllowed(player, tempBetName))
                         tempBet = new PlaceBet(player, tempBetName, amountToBet, new List<int> { 5 }, payout);
                     break;                                                                       
                                                                                                  
-                case betType.PlaceBet_6: // wins when puck is on, then this number is rolled     
+                case betType.PlaceBet_06: // wins when puck is on, then this number is rolled     
                     if (PlaceBet.IsPlaceBetAllowed(player, tempBetName)) 
                         tempBet = new PlaceBet(player, tempBetName, amountToBet, new List<int> { 6 }, payout);
                     break;                                                                       
                                                                                                  
-                case betType.PlaceBet_8: // wins when puck is on, then this number is rolled     
+                case betType.PlaceBet_08: // wins when puck is on, then this number is rolled     
                     if (PlaceBet.IsPlaceBetAllowed(player, tempBetName)) 
                         tempBet = new PlaceBet(player, tempBetName, amountToBet, new List<int> { 8 }, payout);
                     break;                                                                       
                                                                                                  
-                case betType.PlaceBet_9: // wins when puck is on, then this number is rolled     
+                case betType.PlaceBet_09: // wins when puck is on, then this number is rolled     
                     if (PlaceBet.IsPlaceBetAllowed(player, tempBetName)) 
                         tempBet = new PlaceBet(player, tempBetName, amountToBet, new List<int> { 9 }, payout);
                     break;                                                                       

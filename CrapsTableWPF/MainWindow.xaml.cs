@@ -58,5 +58,18 @@ namespace CrapsTableWPF
         {
             Table.players.First().purse += uint.Parse(MoneyInputTextBox.Text);
         }
+
+        private void PlaceBetMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (sender is not FrameworkElement tempSender)
+                return;
+
+            betType tempBetType = Enum.Parse<betType>(tempSender.Tag.ToString());
+
+            // where should the player live?
+            CrapsTable.betFactory.CreateBet(currentPlayer, tempBetType, 100);
+            
+
+        }
     }
 }

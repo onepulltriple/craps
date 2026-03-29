@@ -352,33 +352,33 @@
     </g>
     <g id="_Borders-4mm" serif:id="_Borders 4mm">
         <path id="LINE92" serif:id="LINE" d="M2706.62,838.677L2003.41,838.677" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE93" serif:id="LINE" d="M2686.64,738.677L2023.39,738.677" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="ARC105" serif:id="ARC" d="M2706.62,758.677C2706.62,747.631 2697.67,738.677 2686.64,738.677" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE94" serif:id="LINE" d="M2706.62,938.677L2003.41,938.677" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE95" serif:id="LINE" d="M2706.62,982.677L2003.41,982.677" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE96" serif:id="LINE" d="M2706.62,1066.68L2003.41,1066.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE97" serif:id="LINE" d="M2706.62,1150.68L2474.88,1150.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE98" serif:id="LINE" d="M2235.15,1150.68L2003.41,1150.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE99" serif:id="LINE" d="M2706.62,1234.68L2003.41,1234.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE100" serif:id="LINE" d="M2686.64,1278.68L2023.39,1278.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE101" serif:id="LINE" d="M2355.01,738.677L2355.01,938.677" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE102" serif:id="LINE" d="M2355.01,982.677L2355.01,1092.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE103" serif:id="LINE" d="M2355.01,1208.68L2355.01,1234.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE104" serif:id="LINE" d="M2454.9,1092.68L2355.01,1092.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="ARC106" serif:id="ARC" d="M2474.88,1112.68C2474.88,1101.63 2465.93,1092.68 2454.9,1092.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE105" serif:id="LINE" d="M2474.88,1112.68L2474.88,1150.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE106" serif:id="LINE" d="M2255.12,1092.68L2355.01,1092.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="ARC107" serif:id="ARC" d="M2255.12,1092.68C2244.09,1092.68 2235.15,1101.63 2235.15,1112.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE107" serif:id="LINE" d="M2235.15,1112.68L2235.15,1150.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE108" serif:id="LINE" d="M2454.9,1208.68L2355.01,1208.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE109" serif:id="LINE" d="M2474.88,1188.68L2474.88,1150.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="ARC108" serif:id="ARC" d="M2454.9,1208.68C2465.93,1208.68 2474.88,1199.72 2474.88,1188.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE110" serif:id="LINE" d="M2255.12,1208.68L2355.01,1208.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="ARC109" serif:id="ARC" d="M2235.15,1188.68C2235.15,1199.72 2244.09,1208.68 2255.12,1208.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE111" serif:id="LINE" d="M2235.15,1188.68L2235.15,1150.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE112" serif:id="LINE" d="M2179.21,982.677L2179.21,1066.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE113" serif:id="LINE" d="M2530.81,982.677L2530.81,1066.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE114" serif:id="LINE" d="M2179.21,982.677L2179.21,1066.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
+        <path id="LINE93" serif:id="LINE" d="M2686.64,738.677L2023.39,738.677" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="ARC105" serif:id="ARC" d="M2706.62,758.677C2706.62,747.631 2697.67,738.677 2686.64,738.677" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="LINE94" serif:id="LINE" d="M2706.62,938.677L2003.41,938.677" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="LINE95" serif:id="LINE" d="M2706.62,982.677L2003.41,982.677" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="LINE96" serif:id="LINE" d="M2706.62,1066.68L2003.41,1066.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="LINE97" serif:id="LINE" d="M2706.62,1150.68L2474.88,1150.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="LINE98" serif:id="LINE" d="M2235.15,1150.68L2003.41,1150.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="LINE99" serif:id="LINE" d="M2706.62,1234.68L2003.41,1234.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="LINE100" serif:id="LINE" d="M2686.64,1278.68L2023.39,1278.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="LINE101" serif:id="LINE" d="M2355.01,738.677L2355.01,938.677" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="LINE102" serif:id="LINE" d="M2355.01,982.677L2355.01,1092.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="LINE103" serif:id="LINE" d="M2355.01,1208.68L2355.01,1234.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="LINE104" serif:id="LINE" d="M2454.9,1092.68L2355.01,1092.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="ARC106" serif:id="ARC" d="M2474.88,1112.68C2474.88,1101.63 2465.93,1092.68 2454.9,1092.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="LINE105" serif:id="LINE" d="M2474.88,1112.68L2474.88,1150.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="LINE106" serif:id="LINE" d="M2255.12,1092.68L2355.01,1092.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="ARC107" serif:id="ARC" d="M2255.12,1092.68C2244.09,1092.68 2235.15,1101.63 2235.15,1112.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="LINE107" serif:id="LINE" d="M2235.15,1112.68L2235.15,1150.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="LINE108" serif:id="LINE" d="M2454.9,1208.68L2355.01,1208.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="LINE109" serif:id="LINE" d="M2474.88,1188.68L2474.88,1150.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="ARC108" serif:id="ARC" d="M2454.9,1208.68C2465.93,1208.68 2474.88,1199.72 2474.88,1188.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="LINE110" serif:id="LINE" d="M2255.12,1208.68L2355.01,1208.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="ARC109" serif:id="ARC" d="M2235.15,1188.68C2235.15,1199.72 2244.09,1208.68 2255.12,1208.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="LINE111" serif:id="LINE" d="M2235.15,1188.68L2235.15,1150.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="LINE112" serif:id="LINE" d="M2179.21,982.677L2179.21,1066.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="LINE113" serif:id="LINE" d="M2530.81,982.677L2530.81,1066.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="LINE114" serif:id="LINE" d="M2179.21,982.677L2179.21,1066.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
         <path id="LINE115" serif:id="LINE" d="M2398.96,838.677L2398.96,832.677" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
         <path id="LINE116" serif:id="LINE" d="M2442.91,838.677L2442.91,832.677" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
         <path id="LINE117" serif:id="LINE" d="M2486.86,838.677L2486.86,832.677" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
@@ -431,29 +431,29 @@
         <path id="LINE164" serif:id="LINE" d="M2135.26,738.677L2135.26,744.677" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
         <path id="LINE165" serif:id="LINE" d="M2091.31,738.677L2091.31,744.677" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
         <path id="LINE166" serif:id="LINE" d="M2047.36,738.677L2047.36,744.677" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE167" serif:id="LINE" d="M2311.06,938.677L2311.06,932.677" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE168" serif:id="LINE" d="M2267.11,938.677L2267.11,932.677" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE169" serif:id="LINE" d="M2223.16,938.677L2223.16,932.677" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE170" serif:id="LINE" d="M2179.21,938.677L2179.21,932.677" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE171" serif:id="LINE" d="M2135.26,938.677L2135.26,932.677" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE172" serif:id="LINE" d="M2091.31,938.677L2091.31,932.677" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE173" serif:id="LINE" d="M2047.36,938.677L2047.36,932.677" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
+        <path id="LINE167" serif:id="LINE" d="M2311.06,938.677L2311.06,932.677" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="LINE168" serif:id="LINE" d="M2267.11,938.677L2267.11,932.677" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="LINE169" serif:id="LINE" d="M2223.16,938.677L2223.16,932.677" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="LINE170" serif:id="LINE" d="M2179.21,938.677L2179.21,932.677" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="LINE171" serif:id="LINE" d="M2135.26,938.677L2135.26,932.677" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="LINE172" serif:id="LINE" d="M2091.31,938.677L2091.31,932.677" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="LINE173" serif:id="LINE" d="M2047.36,938.677L2047.36,932.677" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
         <path id="LINE174" serif:id="LINE" d="M2003.41,888.677L2009.4,888.677" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE175" serif:id="LINE" d="M1773.99,1178L844.045,1178" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE176" serif:id="LINE" d="M1773.99,1118L844.045,1118" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE177" serif:id="LINE" d="M1773.99,1106L844.045,1106" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE178" serif:id="LINE" d="M1773.99,1046L844.045,1046" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE179" serif:id="LINE" d="M804.09,921L647.268,921" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="ARC110" serif:id="ARC" d="M844.045,961C844.045,938.909 826.157,921 804.09,921" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE180" serif:id="LINE" d="M1773.99,861L945.352,861" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="ARC111" serif:id="ARC" d="M945.352,861C918.86,861 893.453,871.536 874.721,890.289" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE181" serif:id="LINE" d="M719.186,921L719.186,410" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE182" serif:id="LINE" d="M659.254,921L659.254,462.8" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE183" serif:id="LINE" d="M647.268,921L647.268,473.36" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE184" serif:id="LINE" d="M587.335,921L587.335,544.243" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE185" serif:id="LINE" d="M600.895,514.214L719.186,410" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="ARC112" serif:id="ARC" d="M600.895,514.214C592.275,521.808 587.335,532.748 587.335,544.243" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE186" serif:id="LINE" d="M844.045,1118L844.045,961" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
+        <path id="LINE175" serif:id="LINE" d="M1773.99,1178L844.045,1178" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="LINE176" serif:id="LINE" d="M1773.99,1118L844.045,1118" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="LINE177" serif:id="LINE" d="M1773.99,1106L844.045,1106" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="LINE178" serif:id="LINE" d="M1773.99,1046L844.045,1046" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="LINE179" serif:id="LINE" d="M804.09,921L647.268,921" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="ARC110" serif:id="ARC" d="M844.045,961C844.045,938.909 826.157,921 804.09,921" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="LINE180" serif:id="LINE" d="M1773.99,861L945.352,861" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="ARC111" serif:id="ARC" d="M945.352,861C918.86,861 893.453,871.536 874.721,890.289" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="LINE181" serif:id="LINE" d="M719.186,921L719.186,410" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="LINE182" serif:id="LINE" d="M659.254,921L659.254,462.8" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="LINE183" serif:id="LINE" d="M647.268,921L647.268,473.36" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="LINE184" serif:id="LINE" d="M587.335,921L587.335,544.243" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="LINE185" serif:id="LINE" d="M600.895,514.214L719.186,410" style="fill:none;stroke:white;stroke-width:4px;"/>
+        <path id="ARC112" serif:id="ARC" d="M600.895,514.214C592.275,521.808 587.335,532.748 587.335,544.243" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="LINE186" serif:id="LINE" d="M844.045,1118L844.045,961" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
         <path id="LINE187" serif:id="LINE" d="M938.938,685L938.938,679" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
         <path id="LINE188" serif:id="LINE" d="M982.888,685L982.888,679" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
         <path id="LINE189" serif:id="LINE" d="M1026.84,685L1026.84,679" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
@@ -477,16 +477,16 @@
         <path id="LINE207" serif:id="LINE" d="M1817.94,685L1817.94,679" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
         <path id="LINE208" serif:id="LINE" d="M1861.89,685L1861.89,679" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
         <path id="LINE209" serif:id="LINE" d="M1905.84,685L1905.84,679" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE210" serif:id="LINE" d="M894.987,685L894.987,410" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE211" serif:id="LINE" d="M1070.79,685L1070.79,410" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE212" serif:id="LINE" d="M1246.59,685L1246.59,410" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE213" serif:id="LINE" d="M1422.39,685L1422.39,410" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE214" serif:id="LINE" d="M1598.19,685L1598.19,410" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE215" serif:id="LINE" d="M1773.99,685L1773.99,410" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
+        <path id="LINE210" serif:id="LINE" d="M894.987,685L894.987,410" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="LINE211" serif:id="LINE" d="M1070.79,685L1070.79,410" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="LINE212" serif:id="LINE" d="M1246.59,685L1246.59,410" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="LINE213" serif:id="LINE" d="M1422.39,685L1422.39,410" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="LINE214" serif:id="LINE" d="M1598.19,685L1598.19,410" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="LINE215" serif:id="LINE" d="M1773.99,685L1773.99,410" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
         <path id="LINE216" serif:id="LINE" d="M1949.79,685L1949.79,410" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE217" serif:id="LINE" d="M719.186,685L1949.79,685" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE218" serif:id="LINE" d="M719.186,410L1949.79,410" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE219" serif:id="LINE" d="M894.987,470L1949.79,470" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
+        <path id="LINE217" serif:id="LINE" d="M719.186,685L1949.79,685" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="LINE218" serif:id="LINE" d="M719.186,410L1949.79,410" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="LINE219" serif:id="LINE" d="M894.987,470L1949.79,470" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
         <path id="LINE220" serif:id="LINE" d="M938.938,470L938.938,476" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
         <path id="LINE221" serif:id="LINE" d="M982.888,470L982.888,476" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
         <path id="LINE222" serif:id="LINE" d="M1026.84,470L1026.84,476" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
@@ -510,24 +510,24 @@
         <path id="LINE240" serif:id="LINE" d="M1817.94,470L1817.94,476" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
         <path id="LINE241" serif:id="LINE" d="M1861.89,470L1861.89,476" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
         <path id="LINE242" serif:id="LINE" d="M1905.84,470L1905.84,476" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE243" serif:id="LINE" d="M832.342,932.716L874.721,890.289" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="ARC113" serif:id="ARC" d="M647.268,921C647.268,1029.8 735.368,1118 844.045,1118" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="ARC114" serif:id="ARC" d="M587.335,921C587.335,1062.94 702.268,1178 844.045,1178" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
+        <path id="LINE243" serif:id="LINE" d="M832.342,932.716L874.721,890.289" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="ARC113" serif:id="ARC" d="M647.268,921C647.268,1029.8 735.368,1118 844.045,1118" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="ARC114" serif:id="ARC" d="M587.335,921C587.335,1062.94 702.268,1178 844.045,1178" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
         <path id="LINE244" serif:id="LINE" d="M1773.99,685L1773.99,1178" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
         <path id="LINE245" serif:id="LINE" d="M2355.01,788.677L2361.01,788.677" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
         <path id="LINE246" serif:id="LINE" d="M2355.01,788.677L2349.02,788.677" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
         <path id="LINE247" serif:id="LINE" d="M2706.62,788.677L2700.62,788.677" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
         <path id="LINE248" serif:id="LINE" d="M2003.41,788.677L2009.4,788.677" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE249" serif:id="LINE" d="M2706.62,758.677L2706.62,1258.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="ARC115" serif:id="ARC" d="M2686.64,1278.68C2697.67,1278.68 2706.62,1269.72 2706.62,1258.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE250" serif:id="LINE" d="M2003.41,758.677L2003.41,1258.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="ARC116" serif:id="ARC" d="M2003.41,1258.68C2003.41,1269.72 2012.35,1278.68 2023.39,1278.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="ARC117" serif:id="ARC" d="M2023.39,738.677C2012.35,738.677 2003.41,747.631 2003.41,758.677" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE251" serif:id="LINE" d="M2555.57,670.755L2156.02,670.755" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE252" serif:id="LINE" d="M2136.05,690.755L2135.26,738.677" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="ARC118" serif:id="ARC" d="M2156.02,670.755C2144.99,670.755 2136.05,679.709 2136.05,690.755" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="LINE253" serif:id="LINE" d="M2575.55,690.755L2574.76,738.677" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
-        <path id="ARC119" serif:id="ARC" d="M2575.55,690.755C2575.55,679.709 2566.6,670.755 2555.57,670.755" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:square;"/>
+        <path id="LINE249" serif:id="LINE" d="M2706.62,758.677L2706.62,1258.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="ARC115" serif:id="ARC" d="M2686.64,1278.68C2697.67,1278.68 2706.62,1269.72 2706.62,1258.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="LINE250" serif:id="LINE" d="M2003.41,758.677L2003.41,1258.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="ARC116" serif:id="ARC" d="M2003.41,1258.68C2003.41,1269.72 2012.35,1278.68 2023.39,1278.68" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="ARC117" serif:id="ARC" d="M2023.39,738.677C2012.35,738.677 2003.41,747.631 2003.41,758.677" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="LINE251" serif:id="LINE" d="M2555.57,670.755L2156.02,670.755" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="LINE252" serif:id="LINE" d="M2136.05,690.755L2135.26,738.677" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="ARC118" serif:id="ARC" d="M2156.02,670.755C2144.99,670.755 2136.05,679.709 2136.05,690.755" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="LINE253" serif:id="LINE" d="M2575.55,690.755L2574.76,738.677" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
+        <path id="ARC119" serif:id="ARC" d="M2575.55,690.755C2575.55,679.709 2566.6,670.755 2555.57,670.755" style="fill:none;stroke:white;stroke-width:4px;stroke-linecap:butt;"/>
     </g>
     <g id="_dice-48_" serif:id="_dice 48">
         <rect id="LWPOLYLINE28" serif:id="LWPOLYLINE" x="2480.87" y="851.677" width="47.946" height="48" style="fill:white;stroke:white;stroke-width:2px;"/>
@@ -1824,7 +1824,7 @@
         <path id="_2DPOLYLINE1071" serif:id="2DPOLYLINE" d="M2527.56,809.715L2527.56,824.773" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
         <path id="_2DPOLYLINE1072" serif:id="2DPOLYLINE" d="M2532.55,809.715L2532.55,813.997" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
         <path id="_2DPOLYLINE1073" serif:id="2DPOLYLINE" d="M2521.15,809.715L2532.55,809.715" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
-        <path id="_2DPOLYLINE1074" serif:id="2DPOLYLINE" d="M2524,824.773L2529.7,824.773" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
+        <path id="_2DPOLYLINE1074" serif:id="2DPOLYLINE" d="M2524,824.773L2529.7,824.773" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;stroke-linecap:square;"/>
         <path id="_2DPOLYLINE1075" serif:id="2DPOLYLINE" d="M2521.86,809.715L2521.15,813.997" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
         <path id="_2DPOLYLINE1076" serif:id="2DPOLYLINE" d="M2522.57,809.715L2521.15,811.856" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
         <path id="_2DPOLYLINE1077" serif:id="2DPOLYLINE" d="M2523.28,809.715L2521.15,811.142" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
@@ -1833,10 +1833,10 @@
         <path id="_2DPOLYLINE1080" serif:id="2DPOLYLINE" d="M2530.41,809.715L2532.55,811.142" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
         <path id="_2DPOLYLINE1081" serif:id="2DPOLYLINE" d="M2531.13,809.715L2532.55,811.856" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
         <path id="_2DPOLYLINE1082" serif:id="2DPOLYLINE" d="M2531.84,809.715L2532.55,813.997" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
-        <path id="_2DPOLYLINE1083" serif:id="2DPOLYLINE" d="M2526.14,824.059L2524.71,824.773" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
-        <path id="_2DPOLYLINE1084" serif:id="2DPOLYLINE" d="M2526.14,823.345L2525.42,824.773" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
-        <path id="_2DPOLYLINE1085" serif:id="2DPOLYLINE" d="M2527.56,823.345L2528.28,824.773" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
-        <path id="_2DPOLYLINE1086" serif:id="2DPOLYLINE" d="M2527.56,824.059L2528.99,824.773" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
+        <path id="_2DPOLYLINE1083" serif:id="2DPOLYLINE" d="M2526.14,824.059L2524.71,824.773" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;stroke-linecap:square;"/>
+        <path id="_2DPOLYLINE1084" serif:id="2DPOLYLINE" d="M2526.14,823.345L2525.42,824.773" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;stroke-linecap:square;"/>
+        <path id="_2DPOLYLINE1085" serif:id="2DPOLYLINE" d="M2527.56,823.345L2528.28,824.773" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;stroke-linecap:square;"/>
+        <path id="_2DPOLYLINE1086" serif:id="2DPOLYLINE" d="M2527.56,824.059L2528.99,824.773" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;stroke-linecap:square;"/>
         <path id="_2DPOLYLINE1087" serif:id="2DPOLYLINE" d="M2541.11,809.715L2538.97,810.428L2537.54,811.856L2536.83,813.283L2536.12,816.138L2536.12,818.35L2536.83,821.205L2537.54,822.632L2538.97,824.059L2541.11,824.773L2542.53,824.773L2544.67,824.059L2546.1,822.632L2546.81,821.205L2547.52,818.35L2547.52,816.138L2546.81,813.283L2546.1,811.856L2544.67,810.428L2542.53,809.715L2541.11,809.715Z" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
         <path id="_2DPOLYLINE1088" serif:id="2DPOLYLINE" d="M2538.26,811.856L2537.54,813.283L2536.83,815.424L2536.83,819.064L2537.54,821.205L2538.26,822.632" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
         <path id="_2DPOLYLINE1089" serif:id="2DPOLYLINE" d="M2545.38,822.632L2546.1,821.205L2546.81,819.064L2546.81,815.424L2546.1,813.283L2545.38,811.856" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
@@ -1846,11 +1846,11 @@
         <path id="_2DPOLYLINE1093" serif:id="2DPOLYLINE" d="M2574.11,806.646L2574.11,823.774" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
         <path id="_2DPOLYLINE1094" serif:id="2DPOLYLINE" d="M2575.04,804.719L2575.04,824.773" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
         <path id="_2DPOLYLINE1095" serif:id="2DPOLYLINE" d="M2575.04,804.719L2572.19,807.574L2570.33,808.573" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
-        <path id="_2DPOLYLINE1096" serif:id="2DPOLYLINE" d="M2569.34,824.773L2578.89,824.773" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
-        <path id="_2DPOLYLINE1097" serif:id="2DPOLYLINE" d="M2573.18,823.774L2571.26,824.773" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
-        <path id="_2DPOLYLINE1098" serif:id="2DPOLYLINE" d="M2573.18,822.846L2572.19,824.773" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
-        <path id="_2DPOLYLINE1099" serif:id="2DPOLYLINE" d="M2575.04,822.846L2576.03,824.773" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
-        <path id="_2DPOLYLINE1100" serif:id="2DPOLYLINE" d="M2575.04,823.774L2576.96,824.773" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
+        <path id="_2DPOLYLINE1096" serif:id="2DPOLYLINE" d="M2569.34,824.773L2578.89,824.773" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;stroke-linecap:square;"/>
+        <path id="_2DPOLYLINE1097" serif:id="2DPOLYLINE" d="M2573.18,823.774L2571.26,824.773" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;stroke-linecap:square;"/>
+        <path id="_2DPOLYLINE1098" serif:id="2DPOLYLINE" d="M2573.18,822.846L2572.19,824.773" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;stroke-linecap:square;"/>
+        <path id="_2DPOLYLINE1099" serif:id="2DPOLYLINE" d="M2575.04,822.846L2576.03,824.773" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;stroke-linecap:square;"/>
+        <path id="_2DPOLYLINE1100" serif:id="2DPOLYLINE" d="M2575.04,823.774L2576.96,824.773" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;stroke-linecap:square;"/>
         <rect id="_2DPOLYLINE1101" serif:id="2DPOLYLINE" x="2139.06" y="820.919" width="0.927" height="0.999" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
         <path id="_2DPOLYLINE1102" serif:id="2DPOLYLINE" d="M2148.54,813.283L2147.62,815.21L2146.62,816.138L2144.76,817.137L2142.84,817.137L2139.99,816.138L2138.06,814.282L2137.14,811.428L2137.14,810.428L2138.06,807.574L2139.99,805.718L2142.84,804.719L2144.76,804.719L2147.62,805.718L2149.47,807.574L2150.47,810.428L2150.47,816.138L2149.47,819.991L2148.54,821.918L2146.62,823.774L2143.77,824.773L2140.92,824.773L2139.06,823.774L2138.06,821.918L2138.06,820.919L2139.06,819.991L2139.99,819.991L2140.92,820.919L2140.92,821.918L2139.99,822.846L2139.06,822.846" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
         <path id="_2DPOLYLINE1103" serif:id="2DPOLYLINE" d="M2139.06,814.282L2138.06,812.355L2138.06,809.501L2139.06,807.574" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
@@ -1863,7 +1863,7 @@
         <path id="_2DPOLYLINE1110" serif:id="2DPOLYLINE" d="M2176.13,809.715L2176.13,824.773" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
         <path id="_2DPOLYLINE1111" serif:id="2DPOLYLINE" d="M2181.12,809.715L2181.12,813.997" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
         <path id="_2DPOLYLINE1112" serif:id="2DPOLYLINE" d="M2169.72,809.715L2181.12,809.715" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
-        <path id="_2DPOLYLINE1113" serif:id="2DPOLYLINE" d="M2172.57,824.773L2178.27,824.773" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
+        <path id="_2DPOLYLINE1113" serif:id="2DPOLYLINE" d="M2172.57,824.773L2178.27,824.773" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;stroke-linecap:square;"/>
         <path id="_2DPOLYLINE1114" serif:id="2DPOLYLINE" d="M2170.43,809.715L2169.72,813.997" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
         <path id="_2DPOLYLINE1115" serif:id="2DPOLYLINE" d="M2171.14,809.715L2169.72,811.856" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
         <path id="_2DPOLYLINE1116" serif:id="2DPOLYLINE" d="M2171.85,809.715L2169.72,811.142" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
@@ -1872,10 +1872,10 @@
         <path id="_2DPOLYLINE1119" serif:id="2DPOLYLINE" d="M2178.98,809.715L2181.12,811.142" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
         <path id="_2DPOLYLINE1120" serif:id="2DPOLYLINE" d="M2179.69,809.715L2181.12,811.856" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
         <path id="_2DPOLYLINE1121" serif:id="2DPOLYLINE" d="M2180.41,809.715L2181.12,813.997" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
-        <path id="_2DPOLYLINE1122" serif:id="2DPOLYLINE" d="M2174.7,824.059L2173.28,824.773" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
-        <path id="_2DPOLYLINE1123" serif:id="2DPOLYLINE" d="M2174.7,823.345L2173.99,824.773" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
-        <path id="_2DPOLYLINE1124" serif:id="2DPOLYLINE" d="M2176.13,823.345L2176.84,824.773" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
-        <path id="_2DPOLYLINE1125" serif:id="2DPOLYLINE" d="M2176.13,824.059L2177.56,824.773" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
+        <path id="_2DPOLYLINE1122" serif:id="2DPOLYLINE" d="M2174.7,824.059L2173.28,824.773" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;stroke-linecap:square;"/>
+        <path id="_2DPOLYLINE1123" serif:id="2DPOLYLINE" d="M2174.7,823.345L2173.99,824.773" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;stroke-linecap:square;"/>
+        <path id="_2DPOLYLINE1124" serif:id="2DPOLYLINE" d="M2176.13,823.345L2176.84,824.773" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;stroke-linecap:square;"/>
+        <path id="_2DPOLYLINE1125" serif:id="2DPOLYLINE" d="M2176.13,824.059L2177.56,824.773" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;stroke-linecap:square;"/>
         <path id="_2DPOLYLINE1126" serif:id="2DPOLYLINE" d="M2189.67,809.715L2187.54,810.428L2186.11,811.856L2185.4,813.283L2184.68,816.138L2184.68,818.35L2185.4,821.205L2186.11,822.632L2187.54,824.059L2189.67,824.773L2191.1,824.773L2193.24,824.059L2194.66,822.632L2195.38,821.205L2196.09,818.35L2196.09,816.138L2195.38,813.283L2194.66,811.856L2193.24,810.428L2191.1,809.715L2189.67,809.715Z" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
         <path id="_2DPOLYLINE1127" serif:id="2DPOLYLINE" d="M2186.82,811.856L2186.11,813.283L2185.4,815.424L2185.4,819.064L2186.11,821.205L2186.82,822.632" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
         <path id="_2DPOLYLINE1128" serif:id="2DPOLYLINE" d="M2193.95,822.632L2194.66,821.205L2195.38,819.064L2195.38,815.424L2194.66,813.283L2193.95,811.856" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
@@ -1885,11 +1885,11 @@
         <path id="_2DPOLYLINE1132" serif:id="2DPOLYLINE" d="M2222.68,806.646L2222.68,823.774" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
         <path id="_2DPOLYLINE1133" serif:id="2DPOLYLINE" d="M2223.68,804.719L2223.68,824.773" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
         <path id="_2DPOLYLINE1134" serif:id="2DPOLYLINE" d="M2223.68,804.719L2220.83,807.574L2218.9,808.573" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
-        <path id="_2DPOLYLINE1135" serif:id="2DPOLYLINE" d="M2217.97,824.773L2227.45,824.773" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
-        <path id="_2DPOLYLINE1136" serif:id="2DPOLYLINE" d="M2221.75,823.774L2219.83,824.773" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
-        <path id="_2DPOLYLINE1137" serif:id="2DPOLYLINE" d="M2221.75,822.846L2220.83,824.773" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
-        <path id="_2DPOLYLINE1138" serif:id="2DPOLYLINE" d="M2223.68,822.846L2224.6,824.773" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
-        <path id="_2DPOLYLINE1139" serif:id="2DPOLYLINE" d="M2223.68,823.774L2225.53,824.773" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
+        <path id="_2DPOLYLINE1135" serif:id="2DPOLYLINE" d="M2217.97,824.773L2227.45,824.773" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;stroke-linecap:square;"/>
+        <path id="_2DPOLYLINE1136" serif:id="2DPOLYLINE" d="M2221.75,823.774L2219.83,824.773" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;stroke-linecap:square;"/>
+        <path id="_2DPOLYLINE1137" serif:id="2DPOLYLINE" d="M2221.75,822.846L2220.83,824.773" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;stroke-linecap:square;"/>
+        <path id="_2DPOLYLINE1138" serif:id="2DPOLYLINE" d="M2223.68,822.846L2224.6,824.773" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;stroke-linecap:square;"/>
+        <path id="_2DPOLYLINE1139" serif:id="2DPOLYLINE" d="M2223.68,823.774L2225.53,824.773" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;stroke-linecap:square;"/>
         <path id="_2DPOLYLINE1140" serif:id="2DPOLYLINE" d="M2137.14,904.773L2137.14,910.482" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
         <path id="_2DPOLYLINE1141" serif:id="2DPOLYLINE" d="M2150.47,904.773L2150.47,907.628L2149.47,910.482L2145.69,915.192L2144.76,917.119L2143.77,920.901L2143.77,924.755" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>
         <path id="_2DPOLYLINE1142" serif:id="2DPOLYLINE" d="M2144.76,916.191L2143.77,918.047L2142.84,920.901L2142.84,924.755" style="fill:none;stroke:rgb(255,255,0);stroke-width:1.2px;"/>

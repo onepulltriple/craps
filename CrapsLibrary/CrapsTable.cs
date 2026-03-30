@@ -22,9 +22,6 @@
         public Player CurrentPlayer => players[currentIndex];
 
 
-        
-        //public List<Player> Players = new List<Player>();
-
         public CrapsTable(uint tableMinimum, uint tableMaximum)
         {
             CrapsTable.tableMinimum = tableMinimum;
@@ -62,12 +59,6 @@
         {
             currentIndex = (currentIndex + 1) % players.Count;
         }
-
-        //public void NewPlayer(string playerName)
-        //{
-        //    Player tempPlayer = new Player(playerName);
-        //    //players.Add(tempPlayer);
-        //}
 
         public (byte, byte) RollDice(byte numSides01, byte numSides02)
         {

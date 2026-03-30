@@ -14,7 +14,16 @@
 
         public static BetFactory betFactory = new BetFactory();
 
-        public List<Player> players = new List<Player>();
+        // Player information
+        private readonly List<Player> players = new List<Player>();
+        private int currentIndex = 0;
+
+        public IReadOnlyList<Player> Players => players;
+        public Player CurrentPlayer => players[currentIndex];
+
+
+        
+        //public List<Player> Players = new List<Player>();
 
         public CrapsTable(uint tableMinimum, uint tableMaximum)
         {
@@ -22,11 +31,43 @@
             CrapsTable.tableMaximum = tableMaximum;
         }
 
-        public void NewPlayer(string playerName)
+        public void AddPlayer(Player playerToAdd) // adds the new player to the end
         {
-            Player tempPlayer = new Player(playerName);
-            players.Add(tempPlayer);
+            players.Add(playerToAdd);
         }
+
+        public void InsertPlayer(int index, Player playerToInsert) // inserts a player at an index
+        {
+            players.Insert(index, playerToInsert);
+
+            if (index <= currentIndex)
+                currentIndex++;
+        }
+
+        public void RemovePlayer(Player playerToRemove) // removes a player at an index
+        {
+            int index = players.IndexOf(playerToRemove);
+            if (index == -1) return;
+
+            players.RemoveAt(index);
+
+            if (index < currentIndex)
+                currentIndex--;
+
+            if (currentIndex >= players.Count)
+                currentIndex = 0;
+        }
+
+        public void NextTurn()
+        {
+            currentIndex = (currentIndex + 1) % players.Count;
+        }
+
+        //public void NewPlayer(string playerName)
+        //{
+        //    Player tempPlayer = new Player(playerName);
+        //    //players.Add(tempPlayer);
+        //}
 
         public (byte, byte) RollDice(byte numSides01, byte numSides02)
         {
@@ -43,5 +84,7 @@
 
             return (scoreboard.die01Rolls.Last(), scoreboard.die02Rolls.Last());
         }
+
+
     }
 }

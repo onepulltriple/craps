@@ -1,8 +1,8 @@
 ﻿namespace CrapsLibrary
 {
-    public enum betType
-    { 
-        Aces,  
+    public enum betType // a container for constants with extra properties built in
+    {
+        Aces,
         Hard_04,
         Hard_06,
         Hard_08,

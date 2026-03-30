@@ -2,18 +2,18 @@
 
 namespace ConsoleAppForCraps
 {
-    internal class Program
+    internal class CrapsCLI
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, Players!");
+            DealerCLI dealer = new DealerCLI();
+
+
+
 
             // initialize table (with minimum bet)
             CrapsTable Table01 = new(5, 5);
 
-            // do I need a dealer?
-
-            // add new player (click on open slot?), can join at any time
 
             // player buys chips (can buy more at any time) starts with 100 by default
 

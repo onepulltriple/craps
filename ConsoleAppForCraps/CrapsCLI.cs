@@ -10,6 +10,19 @@ namespace ConsoleAppForCraps
 
 
 
+            /////////////////////////////////////////////////////////////
+            var tableStateMachine = new TableStateMachine();
+            tableStateMachine.ChangeTableState(new TableStateIdling(tableStateMachine));
+
+            while (true)
+            {
+                tableStateMachine.Update();
+                Thread.Sleep(500);
+            }
+
+
+            /////////////////////////////////////////////////////////////
+
 
             // initialize table (with minimum bet)
             CrapsTable Table01 = new(5, 5);

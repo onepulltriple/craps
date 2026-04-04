@@ -8,3 +8,46 @@
 | Cashing out / removing players     |               |               |
 | Removing bets                      |               |               |
 | Pausing bets                       |               |               |
+
+Asking for roller
+
+
+
+# States of the Player
+
+|                                    | Puck OFF      | Puck ON       |
+|------------------------------------|:-------------:|:-------------:|
+| CRUD BETS                          |               |               |
+|  - take down bets                  |               |               |
+|  - add bets                        |               |               |
+|  - parlay bets                     |               |               |
+| Removing bets                      |               |               |
+| Pausing bets                       |               |               |
+
+
+
+What should the bets be able to do?
+States:
+Return winnings (the base state)
+Be paused (not affected by play)
+Be parlayed (until acted upon otherwise)
+
+Property
+IsEnabled (at the table level) (e.g. no place bets allowed when the point is off)
+(if the player must have anotehr bet active, then we check the player's bet list for that bet, e.g. standing pass line bet needed to bet on points)
+
+Methods:
+
+Return some amount (instigated by player)
+Be taken down (a method.i.e. I am done) / lose
+
+
+
+
+To do:
+main game loop (e.g. add two players)
+one is the roller 
+
+rolling/announcing results
+CRUD-ing bets (creating bets for now)
+(switching rollers can come later)

@@ -1,4 +1,4 @@
-﻿namespace CrapsLibrary
+﻿namespace CrapsLibrary.TableState
 {
     public class TableStateAcceptingPlayers : TableState
     {

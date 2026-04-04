@@ -142,7 +142,7 @@ namespace ConsoleAppForCraps
             Console.Write("Enter choice: ");
         }
 
-        public void NameNewPlayer()
+        private void NameNewPlayer()
         {
             string enteredName = "";
             bool validName = false;

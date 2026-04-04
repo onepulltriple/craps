@@ -1,4 +1,5 @@
 ﻿using CrapsLibrary;
+using CrapsLibrary.TableState;
 
 namespace ConsoleAppForCraps
 {
@@ -19,6 +20,13 @@ namespace ConsoleAppForCraps
                 tableStateMachine.Update();
                 Thread.Sleep(500);
             }
+
+            // you need a way to interpret user input
+            // this could be some commandInterpreter object which hosts a switch
+            // the switch then maps an input int to an ICommand (or just switch on the object)
+            // that ICommand is the parameter for the PushCommand(ICommand iCommand) of the current state
+            // e.g. do some stuff, then cahnge to the next state
+
 
 
             /////////////////////////////////////////////////////////////

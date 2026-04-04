@@ -1,21 +1,23 @@
-﻿using CrapsLibrary;
+﻿using ConsoleAppForCraps.DealerCLIState;
+using CrapsLibrary;
 
 namespace ConsoleAppForCraps
 {
-    public class DealerCLI // translation layer
+    public class DealerCLI // translation layer between CrapsLibrary and the CLI
     {
-        const int columnWidth = 20;
+        public const int columnWidth = 20;
 
-        public CrapsTable table00;
+        public static CrapsTable crapsTable = new (5, 5);
+
+        internal DealerCLIStateMachine dealerCLIStateMachine;
 
         public DealerCLI()
         {
             GreetPlayers();
+            this.dealerCLIStateMachine = new();
+            dealerCLIStateMachine.ChangeState(new DealerCLIStateCRUDPlayer(this.dealerCLIStateMachine));
 
-            // Initialize table (with minimum bet)
-            this.table00 = new(5, 5);
-
-            RunTable(table00);
+            //RunTable(crapsTable);
         }
 
         private void GreetPlayers()
@@ -31,38 +33,42 @@ namespace ConsoleAppForCraps
             while (isRunning)
             {
                 UpdateScreen();
-
-                string input = Console.ReadLine();
-
-                switch (input)
-                {
-                    case "1":
-                        // data validate, then call AddPlayer()
-                        NameNewPlayer(); 
-                        break;
-
-                    case "2":
-                        // BetFactory.CreateBet();
-                        break;
-
-                    case "3":
-                        table00.RollDice(6, 6);
-                        break;
-
-                    case "4":
-                        //RemovePlayer();
-                        break;
-
-                    case "5":
-                        isRunning = false;
-                        break;
-
-                    default:
-                        Console.WriteLine("Invalid choice...");
-                        Thread.Sleep(1000);
-                        break;
-                }
+                InterpretCommand();
             }
+        }
+
+        private bool InterpretCommand()
+        {
+            string input = Console.ReadLine();
+
+            switch (input)
+            {
+                case "1":
+                    // data validate, then call AddPlayer()
+                    //NameNewPlayer();
+                    break;
+
+                case "2":
+                    // BetFactory.CreateBet();
+                    break;
+
+                case "3":
+                    crapsTable.RollDice(6, 6);
+                    break;
+
+                case "4":
+                    //RemovePlayer();
+                    break;
+
+                case "5":
+                    return false;
+
+                default:
+                    Console.WriteLine("Invalid choice...");
+                    Thread.Sleep(1000);
+                    break;
+            }
+            return true;
         }
 
         private void UpdateScreen()
@@ -72,7 +78,7 @@ namespace ConsoleAppForCraps
 
             //const int columnWidth = 20;
 
-            var players = table00.Players;
+            var players = crapsTable.Players;
 
             if (players.Count == 0)
             {
@@ -142,43 +148,6 @@ namespace ConsoleAppForCraps
             Console.Write("Enter choice: ");
         }
 
-        private void NameNewPlayer()
-        {
-            string enteredName = "";
-            bool validName = false;
-
-            int maxLength = columnWidth - 2;
-
-            while (validName == false)
-            {
-                Console.Clear();
-                Console.WriteLine($"Enter player name (max {maxLength} characters):");
-
-                enteredName = Console.ReadLine();
-
-                if (string.IsNullOrWhiteSpace(enteredName))
-                {
-                    Console.WriteLine("Name cannot be empty.");
-                }
-                else if (enteredName.Length > maxLength)
-                {
-                    Console.WriteLine($"Name too long! Max {maxLength} characters.");
-                }
-                else
-                {
-                    validName = true;
-                }
-
-                if (validName == false)
-                {
-                    Console.WriteLine("Press any key to try again...");
-                    Console.ReadKey();
-                }
-
-            }
-
-            table00.AddPlayer(new Player(enteredName));
-        }
 
 
     }

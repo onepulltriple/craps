@@ -11,6 +11,7 @@ namespace ConsoleAppForCraps.DealerCLIState
 
         public override void Enter()
         {
+            Console.Clear();
             Console.WriteLine();
             Console.WriteLine("What would you like to do?");
             Console.WriteLine("1. Create a player");
@@ -43,7 +44,8 @@ namespace ConsoleAppForCraps.DealerCLIState
                     break;
 
                 case 5:
-                    ;
+                    // Change state to Overview
+                    dealerCLIStateMachine.ChangeState(new DealerCLIStateOverview(dealerCLIStateMachine));
                     break;
 
                 default:
@@ -54,7 +56,7 @@ namespace ConsoleAppForCraps.DealerCLIState
 
         public override void Exit()
         {
-            throw new NotImplementedException();
+            
         }
 
         private void NameNewPlayer()
@@ -93,6 +95,8 @@ namespace ConsoleAppForCraps.DealerCLIState
             }
 
             DealerCLI.crapsTable.AddPlayer(new Player(enteredName));
+
+            this.Enter();
         }
 
     }

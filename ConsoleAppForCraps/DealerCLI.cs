@@ -15,7 +15,7 @@ namespace ConsoleAppForCraps
         {
             GreetPlayers();
             this.dealerCLIStateMachine = new();
-            dealerCLIStateMachine.ChangeState(new DealerCLIStateCRUDPlayer(this.dealerCLIStateMachine));
+            dealerCLIStateMachine.ChangeState(new DealerCLIStateOverview(this.dealerCLIStateMachine));
 
             //RunTable(crapsTable);
         }
@@ -32,7 +32,7 @@ namespace ConsoleAppForCraps
 
             while (isRunning)
             {
-                UpdateScreen();
+                //UpdateScreen();
                 InterpretCommand();
             }
         }
@@ -71,82 +71,79 @@ namespace ConsoleAppForCraps
             return true;
         }
 
-        private void UpdateScreen()
-        {
-            // show a list of players, their purses, and their bets
-            Console.Clear();
+        //private void UpdateScreen()
+        //{
+        //    // show a list of players, their purses, and their bets
+        //    Console.Clear();
 
-            //const int columnWidth = 20;
+        //    var players = crapsTable.Players;
 
-            var players = crapsTable.Players;
+        //    if (players.Count == 0)
+        //    {
+        //        Console.WriteLine("No players at the table.");
+        //        ShowMenu();
+        //        return;
+        //    }
 
-            if (players.Count == 0)
-            {
-                Console.WriteLine("No players at the table.");
-                ShowMenu();
-                return;
-            }
+        //    // Find max number of bets any player has
+        //    int maxBetCount = players.Max(p => p.playerBetList.Count);
 
-            // Find max number of bets any player has
-            int maxBetCount = players.Max(p => p.playerBetList.Count);
-
-            // Total rows = 1 for name + 1 for purse + maxBets
-            int totalRows = 2 + maxBetCount;
+        //    // Total rows = 1 for name + 1 for purse + maxBets
+        //    int totalRows = 2 + maxBetCount;
 
 
-            // Present information on screen
-            string horizontalBorder = "+" + string.Join("+", players.Select(p => new string('-', columnWidth))) + "+";
-            Console.WriteLine(horizontalBorder);
+        //    // Present information on screen
+        //    string horizontalBorder = "+" + string.Join("+", players.Select(p => new string('-', columnWidth))) + "+";
+        //    Console.WriteLine(horizontalBorder);
 
-            for (int row = 0; row < totalRows; row++)
-            {
-                Console.Write("|");
+        //    for (int row = 0; row < totalRows; row++)
+        //    {
+        //        Console.Write("|");
 
-                foreach (var player in players)
-                {
-                    string cellText = "";
+        //        foreach (var player in players)
+        //        {
+        //            string cellText = "";
 
-                    if (row == 0)
-                    {
-                        cellText = player.playerName;
-                    }
-                    else if (row == 1)
-                    {
-                        cellText = player.purse.ToString();
-                    }
-                    else
-                    {
-                        int betIndex = row - 2;
+        //            if (row == 0)
+        //            {
+        //                cellText = player.playerName;
+        //            }
+        //            else if (row == 1)
+        //            {
+        //                cellText = player.purse.ToString();
+        //            }
+        //            else
+        //            {
+        //                int betIndex = row - 2;
 
-                        if (betIndex < player.playerBetList.Count)
-                        {
-                            cellText = player.playerBetList[betIndex].ToString();
-                        }
-                    }
+        //                if (betIndex < player.playerBetList.Count)
+        //                {
+        //                    cellText = player.playerBetList[betIndex].ToString();
+        //                }
+        //            }
 
-                    Console.Write(" " + cellText.PadRight(columnWidth - 1) + "|");
-                }
+        //            Console.Write(" " + cellText.PadRight(columnWidth - 1) + "|");
+        //        }
 
-                Console.WriteLine("");
-                Console.WriteLine(horizontalBorder);
-            }
+        //        Console.WriteLine("");
+        //        Console.WriteLine(horizontalBorder);
+        //    }
 
-            ShowMenu();
+        //    ShowMenu();
+        //}
 
-        }
+        //private void ShowMenu()
+        //{
+        //    Console.WriteLine();
+        //    Console.WriteLine("What would you like to do?");
+        //    Console.WriteLine("1. Add a player");
+        //    Console.WriteLine("2. Make a bet");
+        //    Console.WriteLine("3. Roll dice");
+        //    Console.WriteLine("4. Remove a player");
+        //    Console.WriteLine("5. Exit");
 
-        private void ShowMenu()
-        {
-            Console.WriteLine();
-            Console.WriteLine("What would you like to do?");
-            Console.WriteLine("1. Add a player");
-            Console.WriteLine("2. Make a bet");
-            Console.WriteLine("3. Roll dice");
-            Console.WriteLine("4. Remove a player");
-            Console.WriteLine("5. Exit");
-
-            Console.Write("Enter choice: ");
-        }
+        //    Console.Write("Enter choice: ");
+        //}
 
 
 

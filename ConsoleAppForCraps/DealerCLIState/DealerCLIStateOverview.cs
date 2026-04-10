@@ -16,13 +16,13 @@ namespace ConsoleAppForCraps.DealerCLIState
 
             Console.WriteLine();
             Console.WriteLine("What would you like to do?");
-            Console.WriteLine("1. Manage players");
+            Console.WriteLine("1. Manage players and/or their purses");
             Console.WriteLine("2. Roll dice");
-            Console.WriteLine("3. Update a player");
-            Console.WriteLine("4. Delete a player");
-            Console.WriteLine("5. Quit game");
+            Console.WriteLine("3. -----");
+            Console.WriteLine("4. -----");
+            Console.WriteLine("\n0. Quit game");
 
-            List<int> listOfAcceptableInts = new List<int>() { 1, 2, 3, 4, 5 };
+            List<int> listOfAcceptableInts = new List<int>() { 0, 1, 2, 3, 4 };
             PerformTask(ValidateUserInputCLIMenu(listOfAcceptableInts));
         }
 

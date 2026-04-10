@@ -20,7 +20,7 @@
         public override void Exit()
         {
             Console.WriteLine("Let's go gambling!");
-            Thread.Sleep(700);
+            SleepCLI();
         }
     }
 }

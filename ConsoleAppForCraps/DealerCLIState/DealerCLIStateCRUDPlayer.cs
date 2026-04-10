@@ -69,7 +69,7 @@ namespace ConsoleAppForCraps.DealerCLIState
             playerToRename.playerName = NamePlayerCLI();
 
             Console.WriteLine($"\n{oldName} was successfully renamed to {playerToRename.playerName}.");
-            Thread.Sleep(700);
+            SleepCLI();
 
             this.Enter();
         }
@@ -96,7 +96,7 @@ namespace ConsoleAppForCraps.DealerCLIState
             DealerCLI.crapsTable.AddPlayer(new Player(enteredName));
 
             Console.WriteLine($"\n{enteredName} was successfully created.");
-            Thread.Sleep(700);
+            SleepCLI();
 
             this.Enter();
         }
@@ -110,7 +110,7 @@ namespace ConsoleAppForCraps.DealerCLIState
             playerToFund.purse += amountToCredit;
 
             Console.WriteLine($"\n{playerToFund.playerName} has been credited {amountToCredit} which brings their total purse to {playerToFund.purse}.");
-            Thread.Sleep(700);
+            SleepCLI();
 
             this.Enter();
         }
@@ -160,7 +160,7 @@ namespace ConsoleAppForCraps.DealerCLIState
 
             string oldName = playerToRemove.playerName;
             Console.WriteLine($"\n{oldName} was successfully deleted.");
-            Thread.Sleep(700);
+            SleepCLI();
 
             this.Enter();
         }

@@ -9,6 +9,8 @@ namespace ConsoleAppForCraps
 
         public static CrapsTable crapsTable = new (5, 5);
 
+        public const int sleepDurationMilliseconds = 700;
+
         internal DealerCLIStateMachine dealerCLIStateMachine;
 
         public DealerCLI()

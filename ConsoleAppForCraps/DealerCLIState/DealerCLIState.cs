@@ -45,5 +45,12 @@ namespace ConsoleAppForCraps.DealerCLIState
 
             return result;
         }
+
+        public void SleepCLI(int milliseconds = DealerCLI.sleepDurationMilliseconds)
+        {
+            Thread.Sleep(milliseconds);
+        }
+
+
     }
 }

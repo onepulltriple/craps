@@ -16,10 +16,11 @@ namespace ConsoleAppForCraps.DealerCLIState
             Console.WriteLine("1. Create a player");
             Console.WriteLine("2. Rename a player");
             Console.WriteLine("3. Delete a player");
-            Console.WriteLine("4. Go back"); //?
+            Console.WriteLine("4. Add money to a player's purse");
+            Console.WriteLine("\n0. Go to overview"); //?
 
-            List<int> listOfAcceptableInts = new List<int>() { 1, 2, 3, 4 };
-            PerformTask(ValidateUserInput(listOfAcceptableInts));
+            List<int> listOfAcceptableInts = new List<int>() { 0, 1, 2, 3, 4 };
+            PerformTask(ValidateUserInputCLIMenu(listOfAcceptableInts));
         }
 
         public override void PerformTask(int input)
@@ -27,18 +28,22 @@ namespace ConsoleAppForCraps.DealerCLIState
             switch (input)
             {
                 case 1:
-                    CreatePlayer();
+                    CreatePlayerCLI();
                     break;
 
                 case 2:
-                    RenamePlayer();
+                    RenamePlayerCLI();
                     break;
 
                 case 3:
-                    DeletePLayer();
+                    DeletePLayerCLI();
                     break;
 
                 case 4:
+                    AddMoneyToPurseCLI();
+                    break;
+
+                case 0:
                     // Change state to Overview
                     dealerCLIStateMachine.ChangeState(new DealerCLIStateOverview(dealerCLIStateMachine));
                     break;
@@ -52,16 +57,16 @@ namespace ConsoleAppForCraps.DealerCLIState
 
         public override void Exit()
         {
-
+            ;
         }
 
-        private void RenamePlayer()
+        private void RenamePlayerCLI()
         {
             Console.WriteLine("Select the player to rename:");
-            Player playerToRename = SelectPlayer();
+            Player playerToRename = SelectPlayerCLI();
 
             string oldName = playerToRename.playerName;
-            playerToRename.playerName = NamePlayer();
+            playerToRename.playerName = NamePlayerCLI();
 
             Console.WriteLine($"\n{oldName} was successfully renamed to {playerToRename.playerName}.");
             Thread.Sleep(700);
@@ -69,7 +74,7 @@ namespace ConsoleAppForCraps.DealerCLIState
             this.Enter();
         }
 
-        private Player SelectPlayer()
+        private Player SelectPlayerCLI()
         {
             List<int> listOfAcceptableInts = new();
 
@@ -81,12 +86,12 @@ namespace ConsoleAppForCraps.DealerCLIState
                 listOfAcceptableInts.Add(i + 1);
             }
 
-            return players[ValidateUserInput(listOfAcceptableInts) - 1]; ;
+            return players[ValidateUserInputCLIMenu(listOfAcceptableInts) - 1]; ;
         }
 
-        private void CreatePlayer()
+        private void CreatePlayerCLI()
         {
-            string enteredName = NamePlayer();
+            string enteredName = NamePlayerCLI();
 
             DealerCLI.crapsTable.AddPlayer(new Player(enteredName));
 
@@ -96,7 +101,21 @@ namespace ConsoleAppForCraps.DealerCLIState
             this.Enter();
         }
 
-        private string NamePlayer()
+        private void AddMoneyToPurseCLI()
+        {
+            Console.WriteLine("Select the player who shall receive money:");
+            Player playerToFund = SelectPlayerCLI();
+
+            uint amountToCredit = ValidateUserInputUInt();
+            playerToFund.purse += amountToCredit;
+
+            Console.WriteLine($"\n{playerToFund.playerName} has been credited {amountToCredit} which brings their total purse to {playerToFund.purse}.");
+            Thread.Sleep(700);
+
+            this.Enter();
+        }
+
+        private string NamePlayerCLI()
         {
             string enteredName = "";
             bool validName = false;
@@ -132,10 +151,10 @@ namespace ConsoleAppForCraps.DealerCLIState
             return enteredName;
         }
 
-        private void DeletePLayer()
+        private void DeletePLayerCLI()
         {
             Console.WriteLine("Select the player to delete:");
-            Player playerToRemove = SelectPlayer();
+            Player playerToRemove = SelectPlayerCLI();
 
             DealerCLI.crapsTable.RemovePlayer(playerToRemove);
 

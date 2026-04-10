@@ -23,7 +23,7 @@ namespace ConsoleAppForCraps.DealerCLIState
             Console.WriteLine("5. Quit game");
 
             List<int> listOfAcceptableInts = new List<int>() { 1, 2, 3, 4, 5 };
-            PerformTask(ValidateUserInput(listOfAcceptableInts));
+            PerformTask(ValidateUserInputCLIMenu(listOfAcceptableInts));
         }
 
         public override void PerformTask(int input)

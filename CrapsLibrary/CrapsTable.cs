@@ -43,6 +43,8 @@
 
         public void RemovePlayer(Player playerToRemove) // removes a player at an index
         {
+            // Close all bets for this player (state if the player owes money)
+
             int index = players.IndexOf(playerToRemove);
             if (index == -1) return;
 

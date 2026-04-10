@@ -35,7 +35,7 @@ namespace ConsoleAppForCraps.DealerCLIState
                     break;
 
                 case 3:
-                    ;
+                    DeletePLayer();
                     break;
 
                 case 4:
@@ -48,6 +48,7 @@ namespace ConsoleAppForCraps.DealerCLIState
                     break;
             }
         }
+
 
         public override void Exit()
         {
@@ -130,5 +131,20 @@ namespace ConsoleAppForCraps.DealerCLIState
 
             return enteredName;
         }
+
+        private void DeletePLayer()
+        {
+            Console.WriteLine("Select the player to delete:");
+            Player playerToRemove = SelectPlayer();
+
+            DealerCLI.crapsTable.RemovePlayer(playerToRemove);
+
+            string oldName = playerToRemove.playerName;
+            Console.WriteLine($"\n{oldName} was successfully deleted.");
+            Thread.Sleep(700);
+
+            this.Enter();
+        }
+
     }
 }

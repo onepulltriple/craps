@@ -6,6 +6,7 @@ namespace ConsoleAppForCraps.DealerCLIState
     {
         public DealerCLIStateOverview(DealerCLIStateMachine dealerCLIStateMachine) : base(dealerCLIStateMachine)
         {
+            // this.dealerCLIStateMachine = dealerCLIStateMachine;
         }
 
         public override void Enter()
@@ -60,17 +61,16 @@ namespace ConsoleAppForCraps.DealerCLIState
             
         }
 
+        /// <summary>
+        /// Show a list of players, their purses, and their bets
+        /// </summary>
         private void UpdateScreen()
         {
-            // Show a list of players, their purses, and their bets
-            //Console.Clear();
-
             var players = DealerCLI.crapsTable.Players;
 
             if (players.Count == 0)
             {
                 Console.WriteLine("No players at the table.");
-                //this.Enter();
                 return;
             }
 
@@ -107,7 +107,7 @@ namespace ConsoleAppForCraps.DealerCLIState
 
                         if (betIndex < player.playerBetList.Count)
                         {
-                            cellText = player.playerBetList[betIndex].ToString();
+                            cellText = player.playerBetList[betIndex]?.ToString() ?? "";
                         }
                     }
 
@@ -117,9 +117,9 @@ namespace ConsoleAppForCraps.DealerCLIState
                 Console.WriteLine("");
                 Console.WriteLine(horizontalBorder);
             }
-
-            //this.Enter();
         }
+
+
 
     }
 }

@@ -2,11 +2,12 @@
 {
     internal class DealerCLIStateMachine
     {
-        private DealerCLIState currentDealerCLIState;
+        internal DealerCLIState? currentDealerCLIState;
 
         public DealerCLIStateMachine()
         {
             // the starting state would go here
+            currentDealerCLIState = new DealerCLIStateInitialState(this);
         }
 
         public void ChangeState(DealerCLIState nextDealerCLIState)

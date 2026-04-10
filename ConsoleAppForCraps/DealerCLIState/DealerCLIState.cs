@@ -8,7 +8,7 @@ namespace ConsoleAppForCraps.DealerCLIState
 
         public DealerCLIState(DealerCLIStateMachine dealerCLIStateMachine)
         {
-            this.dealerCLIStateMachine = dealerCLIStateMachine; // a car
+            this.dealerCLIStateMachine = dealerCLIStateMachine; // one of several cars
         }
 
         public abstract void Enter();
@@ -24,7 +24,7 @@ namespace ConsoleAppForCraps.DealerCLIState
 
             do {
                 Console.Write("Please enter choice: ");
-                string input = Console.ReadLine();
+                string? input = Console.ReadLine();
                 isInt = int.TryParse(input, out result);
 
             } while (!(isInt && listOfAcceptableInts.Contains(result)));

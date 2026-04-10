@@ -25,7 +25,7 @@ namespace ConsoleAppForCraps
             // this could be some commandInterpreter object which hosts a switch
             // the switch then maps an input int to an ICommand (or just switch on the object)
             // that ICommand is the parameter for the PushCommand(ICommand iCommand) of the current state
-            // e.g. do some stuff, then cahnge to the next state
+            // e.g. do some stuff, then change to the next state
 
 
 

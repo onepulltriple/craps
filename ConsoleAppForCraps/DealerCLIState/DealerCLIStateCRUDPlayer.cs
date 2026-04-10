@@ -12,15 +12,14 @@ namespace ConsoleAppForCraps.DealerCLIState
         public override void Enter()
         {
             Console.Clear();
-            Console.WriteLine();
             Console.WriteLine("What would you like to do?");
             Console.WriteLine("1. Create a player");
-            Console.WriteLine("2. Read a player");
-            Console.WriteLine("3. Update a player");
-            Console.WriteLine("4. Delete a player");
-            Console.WriteLine("5. Go back"); //?
-            
-            PerformTask(ValidateUserInput());
+            Console.WriteLine("2. Rename a player");
+            Console.WriteLine("3. Delete a player");
+            Console.WriteLine("4. Go back"); //?
+
+            List<int> listOfAcceptableInts = new List<int>() { 1, 2, 3, 4 };
+            PerformTask(ValidateUserInput(listOfAcceptableInts));
         }
 
         public override void PerformTask(int input)
@@ -28,11 +27,11 @@ namespace ConsoleAppForCraps.DealerCLIState
             switch (input)
             {
                 case 1:
-                    NameNewPlayer();
+                    CreatePlayer();
                     break;
 
                 case 2:
-                    ;
+                    RenamePlayer();
                     break;
 
                 case 3:
@@ -40,10 +39,6 @@ namespace ConsoleAppForCraps.DealerCLIState
                     break;
 
                 case 4:
-                    ;
-                    break;
-
-                case 5:
                     // Change state to Overview
                     dealerCLIStateMachine.ChangeState(new DealerCLIStateOverview(dealerCLIStateMachine));
                     break;
@@ -56,10 +51,51 @@ namespace ConsoleAppForCraps.DealerCLIState
 
         public override void Exit()
         {
-            
+
         }
 
-        private void NameNewPlayer()
+        private void RenamePlayer()
+        {
+            Console.WriteLine("Select the player to rename:");
+            Player playerToRename = SelectPlayer();
+
+            string oldName = playerToRename.playerName;
+            playerToRename.playerName = NamePlayer();
+
+            Console.WriteLine($"\n{oldName} was successfully renamed to {playerToRename.playerName}.");
+            Thread.Sleep(700);
+
+            this.Enter();
+        }
+
+        private Player SelectPlayer()
+        {
+            List<int> listOfAcceptableInts = new();
+
+            var players = DealerCLI.crapsTable.Players;
+
+            for (int i = 0; i < players.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}. {players[i].playerName}");
+                listOfAcceptableInts.Add(i + 1);
+            }
+
+            return players[ValidateUserInput(listOfAcceptableInts) - 1]; ;
+        }
+
+        private void CreatePlayer()
+        {
+            string enteredName = NamePlayer();
+
+            DealerCLI.crapsTable.AddPlayer(new Player(enteredName));
+
+            Console.WriteLine($"\n{enteredName} was successfully created.");
+            Thread.Sleep(700);
+
+            this.Enter();
+        }
+
+        private string NamePlayer()
         {
             string enteredName = "";
             bool validName = false;
@@ -68,10 +104,9 @@ namespace ConsoleAppForCraps.DealerCLIState
 
             while (validName == false)
             {
-                Console.Clear();
                 Console.WriteLine($"Enter player name (max {maxLength} characters):");
 
-                enteredName = Console.ReadLine();
+                enteredName = Console.ReadLine() ?? "";
 
                 if (string.IsNullOrWhiteSpace(enteredName))
                 {
@@ -91,13 +126,9 @@ namespace ConsoleAppForCraps.DealerCLIState
                     Console.WriteLine("Press any key to try again...");
                     Console.ReadKey();
                 }
-
             }
 
-            DealerCLI.crapsTable.AddPlayer(new Player(enteredName));
-
-            this.Enter();
+            return enteredName;
         }
-
     }
 }

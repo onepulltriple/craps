@@ -15,10 +15,8 @@ namespace ConsoleAppForCraps.DealerCLIState
         public abstract void PerformTask(int input);
         public abstract void Exit();
 
-        public int ValidateUserInput()
+        public int ValidateUserInput(List<int> listOfAcceptableInts)
         {
-            List<int> listOfAcceptableInts = new List<int>() {1,2,3,4,5};
-            
             bool isInt;
             int result;
 

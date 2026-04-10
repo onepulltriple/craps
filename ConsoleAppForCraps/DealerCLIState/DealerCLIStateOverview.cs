@@ -22,7 +22,8 @@ namespace ConsoleAppForCraps.DealerCLIState
             Console.WriteLine("4. Delete a player");
             Console.WriteLine("5. Quit game");
 
-            PerformTask(ValidateUserInput());
+            List<int> listOfAcceptableInts = new List<int>() { 1, 2, 3, 4, 5 };
+            PerformTask(ValidateUserInput(listOfAcceptableInts));
         }
 
         public override void PerformTask(int input)

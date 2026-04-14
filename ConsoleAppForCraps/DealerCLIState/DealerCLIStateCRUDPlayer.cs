@@ -11,7 +11,8 @@ namespace ConsoleAppForCraps.DealerCLIState
 
         public override void Enter()
         {
-            Console.Clear();
+            UpdateScreen();
+
             Console.WriteLine("What would you like to do?");
             Console.WriteLine("1. Create a player");
             Console.WriteLine("2. Rename a player");
@@ -36,7 +37,7 @@ namespace ConsoleAppForCraps.DealerCLIState
                     break;
 
                 case 3:
-                    DeletePLayerCLI();
+                    DeletePlayerCLI();
                     break;
 
                 case 4:
@@ -74,26 +75,12 @@ namespace ConsoleAppForCraps.DealerCLIState
             this.Enter();
         }
 
-        private Player SelectPlayerCLI()
-        {
-            List<int> listOfAcceptableInts = new();
-
-            var players = DealerCLI.crapsTable.Players;
-
-            for (int i = 0; i < players.Count; i++)
-            {
-                Console.WriteLine($"{i + 1}. {players[i].playerName}");
-                listOfAcceptableInts.Add(i + 1);
-            }
-
-            return players[ValidateUserInputCLIMenu(listOfAcceptableInts) - 1]; ;
-        }
 
         private void CreatePlayerCLI()
         {
             string enteredName = NamePlayerCLI();
 
-            DealerCLI.crapsTable.AddPlayer(new Player(enteredName));
+            DealerCLI.crapsTable.AddPlayer(new Player(enteredName, 100));
 
             Console.WriteLine($"\n{enteredName} was successfully created.");
             SleepCLI();
@@ -106,6 +93,7 @@ namespace ConsoleAppForCraps.DealerCLIState
             Console.WriteLine("Select the player who shall receive money:");
             Player playerToFund = SelectPlayerCLI();
 
+            Console.Write("Please enter an amount to credit to the player (enter a positive whole number or 0 to abort): ");
             uint amountToCredit = ValidateUserInputUInt();
             playerToFund.purse += amountToCredit;
 
@@ -151,7 +139,7 @@ namespace ConsoleAppForCraps.DealerCLIState
             return enteredName;
         }
 
-        private void DeletePLayerCLI()
+        private void DeletePlayerCLI()
         {
             Console.WriteLine("Select the player to delete:");
             Player playerToRemove = SelectPlayerCLI();

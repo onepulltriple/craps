@@ -11,14 +11,12 @@ namespace ConsoleAppForCraps.DealerCLIState
 
         public override void Enter()
         {
-            Console.Clear();
             UpdateScreen();
 
-            Console.WriteLine();
             Console.WriteLine("What would you like to do?");
             Console.WriteLine("1. Manage players and/or their purses");
-            Console.WriteLine("2. Roll dice");
-            Console.WriteLine("3. -----");
+            Console.WriteLine("2. Manage a player's bets");
+            Console.WriteLine("3. Roll dice");
             Console.WriteLine("4. -----");
             Console.WriteLine("\n0. Quit game");
 
@@ -36,7 +34,8 @@ namespace ConsoleAppForCraps.DealerCLIState
                     break;
 
                 case 2:
-                    ;
+                    // change to CRUDBet state
+                    dealerCLIStateMachine.ChangeState(new DealerCLIStateCRUDBet(dealerCLIStateMachine));
                     break;
 
                 case 3:
@@ -47,7 +46,7 @@ namespace ConsoleAppForCraps.DealerCLIState
                     ;
                     break;
 
-                case 5:
+                case 0:
                     Environment.Exit(0);
                     break;
 
@@ -61,66 +60,6 @@ namespace ConsoleAppForCraps.DealerCLIState
         {
             
         }
-
-        /// <summary>
-        /// Show a list of players, their purses, and their bets
-        /// </summary>
-        private void UpdateScreen()
-        {
-            var players = DealerCLI.crapsTable.Players;
-
-            if (players.Count == 0)
-            {
-                Console.WriteLine("No players at the table.");
-                return;
-            }
-
-            // Find max number of bets any player has
-            int maxBetCount = players.Max(p => p.playerBetList.Count);
-
-            // Total rows = 1 for name + 1 for purse + maxBets
-            int totalRows = 2 + maxBetCount;
-
-
-            // Present information on screen
-            string horizontalBorder = "+" + string.Join("+", players.Select(p => new string('-', DealerCLI.columnWidth))) + "+";
-            Console.WriteLine(horizontalBorder);
-
-            for (int row = 0; row < totalRows; row++)
-            {
-                Console.Write("|");
-
-                foreach (var player in players)
-                {
-                    string cellText = "";
-
-                    if (row == 0)
-                    {
-                        cellText = player.playerName;
-                    }
-                    else if (row == 1)
-                    {
-                        cellText = player.purse.ToString();
-                    }
-                    else
-                    {
-                        int betIndex = row - 2;
-
-                        if (betIndex < player.playerBetList.Count)
-                        {
-                            cellText = player.playerBetList[betIndex]?.ToString() ?? "";
-                        }
-                    }
-
-                    Console.Write(" " + cellText.PadRight(DealerCLI.columnWidth - 1) + "|");
-                }
-
-                Console.WriteLine("");
-                Console.WriteLine(horizontalBorder);
-            }
-        }
-
-
 
     }
 }

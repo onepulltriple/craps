@@ -8,10 +8,10 @@
 
         public List<Bet> playerBetList;
 
-        public Player(string playerName)
+        public Player(string playerName, uint startingPurse = 0)
         {
             this.playerName = playerName;
-            purse = 0;
+            purse = startingPurse;
             playerBetList = new List<Bet>();
         }
 

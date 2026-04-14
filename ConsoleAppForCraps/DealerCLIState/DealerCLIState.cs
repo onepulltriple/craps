@@ -1,4 +1,5 @@
-﻿using System.Transactions;
+﻿using CrapsLibrary;
+using System.Transactions;
 
 namespace ConsoleAppForCraps.DealerCLIState
 {
@@ -21,7 +22,7 @@ namespace ConsoleAppForCraps.DealerCLIState
             int result;
 
             do {
-                Console.Write("\nPlease enter choice: ");
+                Console.Write("\nPlease enter a choice: ");
                 string? input = Console.ReadLine();
                 isInt = int.TryParse(input, out result);
 
@@ -37,7 +38,7 @@ namespace ConsoleAppForCraps.DealerCLIState
 
             do
             {
-                Console.Write("Please enter an amount to credit to the player (enter a positive whole number or 0 to abort): ");
+                //Console.Write("Please enter an amount to credit to the player (enter a positive whole number or 0 to abort): ");
                 string? input = Console.ReadLine();
                 isUInt = uint.TryParse(input, out result);
 
@@ -51,6 +52,97 @@ namespace ConsoleAppForCraps.DealerCLIState
             Thread.Sleep(milliseconds);
         }
 
+        protected Player SelectPlayerCLI()
+        {
+            List<int> listOfAcceptableInts = new();
 
+            var players = DealerCLI.crapsTable.Players;
+
+            for (int i = 0; i < players.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}. {players[i].playerName}");
+                listOfAcceptableInts.Add(i + 1);
+            }
+
+            return players[ValidateUserInputCLIMenu(listOfAcceptableInts) - 1];
+        }
+
+        protected betType SelectBetFromFactoryCLI()
+        {
+            List<int> listOfAcceptableInts = new();
+
+            var bets = BetFactory.betPayoutRatios.ToList();
+
+            for (int i = 0; i < bets.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}. {bets[i].Key} (payout ratio {bets[i].Value.payoutNumerator}:{bets[i].Value.payoutDenominator})");
+                listOfAcceptableInts.Add(i + 1);
+            }
+
+            return bets[ValidateUserInputCLIMenu(listOfAcceptableInts) - 1].Key;
+        }
+
+        /// <summary>
+        /// Show a list of players, their purses, and their bets
+        /// </summary>
+        protected void UpdateScreen()
+        {
+            Console.Clear();
+
+            var players = DealerCLI.crapsTable.Players;
+
+            if (players.Count == 0)
+            {
+                Console.WriteLine("No players at the table.\n\n");
+                return;
+            }
+
+            // Find max number of bets any player has
+            int maxBetCount = players.Max(p => p.playerBetList.Count);
+
+            // Total rows = 1 for name + 1 for purse + maxBets
+            int totalRows = 2 + maxBetCount;
+
+
+            // Present information on screen
+            string horizontalBorder = "+" + string.Join("+", players.Select(p => new string('-', DealerCLI.columnWidth))) + "+";
+            Console.WriteLine(horizontalBorder);
+
+            for (int row = 0; row < totalRows; row++)
+            {
+                Console.Write("|");
+
+                foreach (var player in players)
+                {
+                    string cellText = "";
+
+                    if (row == 0)
+                    {
+                        cellText = player.playerName;
+                    }
+                    else if (row == 1)
+                    {
+                        cellText = player.purse.ToString();
+                    }
+                    else
+                    {
+                        int betIndex = row - 2;
+
+                        if (betIndex < player.playerBetList.Count)
+                        {
+                            cellText = player.playerBetList[betIndex]?.betName.ToString() ?? "";
+                        }
+                    }
+
+                    Console.Write(" " + cellText.PadRight(DealerCLI.columnWidth - 1) + "|");
+                }
+
+                Console.WriteLine("");
+                Console.WriteLine(horizontalBorder);
+            }
+
+            Console.WriteLine();
+            Console.WriteLine();
+        }
     }
 }

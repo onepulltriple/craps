@@ -3,9 +3,9 @@ should winning totals be part of the class definition and not parameters? curren
 table minimum behavior, e.g. pass bets must be multiples of the table minimum
 payout factors (numerator/denominator): should they be handed over upon bet creation? the compound denominator gets subtracted (i.e. the bet is paid for), then
   if the bet wins the players gets that money back amplified by the factor.
-parlaying
 what to do with lost bets (if anything)
 House.cs to store the house's money, to which purchased bets are paid and from which won bets are substracted
 if the point becomes the same number as an existing place bet, offer to move that place bet to its "twin",  give it back to the player, or move to the odds bet
 
+full and partial paylay bet states
 

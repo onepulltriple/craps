@@ -15,10 +15,18 @@ namespace CrapsLibrary
 
         public uint payout;
 
-        //public bool isWorking;
-
         internal BetWorkingStateMachine betWorkingStateMachine;
 
+        /// <summary>
+        /// A bet is 'working' when it is subscribed to the outcomes of the CrapsTable.scoreboard and has an owner, i.e. a player.
+        /// A bet is paused when it is unsubscribed but still has an owner.
+        /// A bet is no longer working when it loses its owner, at which point it will be killed and queued for garbage collection.
+        /// </summary>
+        /// <param name="betOwner"></param>
+        /// <param name="betName"></param>
+        /// <param name="commitment"></param>
+        /// <param name="winningTotals"></param>
+        /// <param name="payout"></param>
         public Bet(Player betOwner, string betName, uint commitment, List<int> winningTotals, uint payout)
         {
             this.betOwner = betOwner;
@@ -34,46 +42,24 @@ namespace CrapsLibrary
             // - a reference to the instance of the bet's state machine, i.e. 'betWorkingStateMachine'
             // - a reference to the instance of the bet whose state is about to change, i.e. be initialised, which is this bet
             betWorkingStateMachine.ChangeState(new BetWorkingStateReturnWinnings(this.betWorkingStateMachine, this));
-
-            //CrapsTable.scoreboard.NewSubscriber(this.EvaluateBet);
         }
 
-        //public void StartWorking()
-        //{
-        //    this.isWorking = true;
-        //}
+        /// <summary>
+        /// Method to manually call off (pause) a bet.
+        /// </summary>
+        public void PauseBet()
+        {
+            betWorkingStateMachine.ChangeState(new BetWorkingStatePaused(this.betWorkingStateMachine, this));
+        }
 
-        //public void QuitWorking()
-        //{
-        //    this.isWorking = false;
-        //}
-
+        /// <summary>
+        /// Method to manually pay out and then remove a bet from a player's bet list.
+        /// </summary>
         public void QuitBet()
         {
             betOwner.purse += this.commitment;
             betOwner.playerBetList.Remove(this);
         }
-
-        //public void EvaluateBet(byte firstOutcome, byte secondOutcome)
-        //{
-        //    if (this.isWorking == false)
-        //        return;
-
-        //    if (this.MeetsFirstWinningCondition(firstOutcome, secondOutcome))
-        //    {
-        //        Console.WriteLine($"Hooray! {betOwner.playerName} won {this.betName} with {firstOutcome}, {secondOutcome}! The payout was {this.payout} credits and goes to {betOwner.playerName}.");
-        //        betOwner.purse += this.payout;
-        //        return;
-        //    }
-
-        //    if (this.MeetsLosingCondition(firstOutcome, secondOutcome))
-        //    {
-        //        Console.WriteLine($"Ouhr nouhr! {betOwner.playerName} lost {this.betName} with {firstOutcome}, {secondOutcome}! The commitment of {this.commitment} credits goes to the house.");
-        //        CrapsTable.scoreboard.Unsubscribe(this.EvaluateBet);
-        //        // Don't subtract commitment here, since that has already been given up when placing the bet.
-        //        betOwner.playerBetList.Remove(this);
-        //    }
-        //}
 
         internal abstract bool MeetsLosingCondition(byte firstOutcome, byte secondOutcome);
 

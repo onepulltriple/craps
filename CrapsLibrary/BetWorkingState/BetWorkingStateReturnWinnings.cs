@@ -11,7 +11,6 @@
         public override void Enter()
         {
             CrapsTable.scoreboard.NewSubscriber(this.EvaluateBet);
-            //betInQuestion.isWorking = true;
         }
 
         /// <summary>
@@ -22,9 +21,6 @@
         /// <param name="secondOutcome"></param>
         public override void EvaluateBet(byte firstOutcome, byte secondOutcome)
         {
-            //if (betInQuestion.isWorking == false)
-            //    return;
-
             if (betInQuestion.MeetsFirstWinningCondition(firstOutcome, secondOutcome))
             {
                 Console.WriteLine($"Hooray! {betInQuestion.betOwner.playerName} won {betInQuestion.betName} with {firstOutcome}, {secondOutcome}! The payout was {betInQuestion.payout} credits and goes to {betInQuestion.betOwner.playerName}.");
@@ -45,7 +41,7 @@
 
         public override void Exit()
         {
-            
+            CrapsTable.scoreboard.Unsubscribe(this.EvaluateBet);
         }
     }
 }

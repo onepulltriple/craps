@@ -8,12 +8,12 @@
             ;
         }
 
-        protected override bool MeetsFirstWinningCondition(byte firstOutcome, byte secondOutcome)
+        internal override bool MeetsFirstWinningCondition(byte firstOutcome, byte secondOutcome)
         {
             throw new NotImplementedException();
         }
 
-        protected override bool MeetsLosingCondition(byte firstOutcome, byte secondOutcome)
+        internal override bool MeetsLosingCondition(byte firstOutcome, byte secondOutcome)
         {
             throw new NotImplementedException();
         }

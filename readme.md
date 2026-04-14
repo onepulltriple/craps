@@ -28,9 +28,9 @@ Asking for roller
 
 What should the bets be able to do?
 States:
-Return winnings (the base state)
-Be paused (not affected by play)
-Be parlayed (until acted upon otherwise)
+Return winnings (the base state) (evaluate bets and payout "like normal")
+Be paused (not affected by play) (don't evaluate bets)
+Be parlayed (until acted upon otherwise) (evaluate bets and add winnings to committed amount)
 
 Property
 IsEnabled (at the table level) (e.g. no place bets allowed when the point is off)

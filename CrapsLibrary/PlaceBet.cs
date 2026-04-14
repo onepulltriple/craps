@@ -10,7 +10,7 @@ namespace CrapsLibrary
             CrapsTable.scoreboard.NewSubscriber(this.EvaluateBet);
         }
 
-        protected override bool MeetsFirstWinningCondition(byte firstOutcome, byte secondOutcome)
+        internal override bool MeetsFirstWinningCondition(byte firstOutcome, byte secondOutcome)
         {
             // the puck is on and the roll results in a board number
             // (betting directly on the point number is prohibited)
@@ -21,7 +21,7 @@ namespace CrapsLibrary
             return false;
         }
 
-        protected override bool MeetsLosingCondition(byte firstOutcome, byte secondOutcome)
+        internal override bool MeetsLosingCondition(byte firstOutcome, byte secondOutcome)
         {
             if (CrapsTable.puck.IsOutcomeSevenOut(firstOutcome, secondOutcome))
             {

@@ -11,7 +11,7 @@
             CrapsTable.scoreboard.NewSubscriber(this.EvaluateBet);
         }
 
-        protected override bool MeetsFirstWinningCondition(byte firstOutcome, byte secondOutcome)
+        internal override bool MeetsFirstWinningCondition(byte firstOutcome, byte secondOutcome)
         {
             if (firstOutcome == winningHalf && secondOutcome == winningHalf)
             {
@@ -20,7 +20,7 @@
             return false;
         }
 
-        protected override bool MeetsLosingCondition(byte firstOutcome, byte secondOutcome)
+        internal override bool MeetsLosingCondition(byte firstOutcome, byte secondOutcome)
         {
             if (CrapsTable.puck.IsOutcomeSevenOut(firstOutcome, secondOutcome))
             {

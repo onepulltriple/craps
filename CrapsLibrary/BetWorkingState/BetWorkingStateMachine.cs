@@ -7,7 +7,7 @@
         public BetWorkingStateMachine()
         {
             // the starting state would go here
-            currentBetWorkingState = new BetWorkingStateReturnWinnings(this);
+            //currentBetWorkingState = new BetWorkingStateReturnWinnings(this, null);
         }
 
         public void ChangeState(BetWorkingState nextBetWorkingState)

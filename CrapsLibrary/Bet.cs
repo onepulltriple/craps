@@ -31,10 +31,10 @@ namespace CrapsLibrary
             this.betWorkingStateMachine = new(); // default state is BetWorkingStateReturnWinnings
         }
 
-        public void StartWorking()
-        {
-            this.isWorking = true;
-        }
+        //public void StartWorking()
+        //{
+        //    this.isWorking = true;
+        //}
 
         public void QuitWorking()
         {
@@ -68,8 +68,8 @@ namespace CrapsLibrary
             }
         }
 
-        protected abstract bool MeetsLosingCondition(byte firstOutcome, byte secondOutcome);
+        internal abstract bool MeetsLosingCondition(byte firstOutcome, byte secondOutcome);
 
-        protected abstract bool MeetsFirstWinningCondition(byte firstOutcome, byte secondOutcome);
+        internal abstract bool MeetsFirstWinningCondition(byte firstOutcome, byte secondOutcome);
     }
 }

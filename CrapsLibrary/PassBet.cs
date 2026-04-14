@@ -13,7 +13,7 @@ namespace CrapsLibrary
             CrapsTable.scoreboard.NewSubscriber(this.EvaluateBet);
         }
 
-        protected override bool MeetsFirstWinningCondition(byte firstOutcome, byte secondOutcome)
+        internal override bool MeetsFirstWinningCondition(byte firstOutcome, byte secondOutcome)
         {
             // if point is off, 7 and 11 win
             // if point is on, matching the point wins
@@ -32,7 +32,7 @@ namespace CrapsLibrary
             return false;
         }
 
-        protected override bool MeetsLosingCondition(byte firstOutcome, byte secondOutcome)
+        internal override bool MeetsLosingCondition(byte firstOutcome, byte secondOutcome)
         {
             // if point is off, craps loses
             // if point is on, 7 loses

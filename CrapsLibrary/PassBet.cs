@@ -10,7 +10,7 @@ namespace CrapsLibrary
         {
             losingTotals = new List<int> {2, 3, 12}; // crap out/missout
             winningTotals = new List<int> {7, 11 };  // natural pass
-            CrapsTable.scoreboard.NewSubscriber(this.EvaluateBet);
+            // CrapsTable.scoreboard.NewSubscriber(this.EvaluateBet);
         }
 
         internal override bool MeetsFirstWinningCondition(byte firstOutcome, byte secondOutcome)

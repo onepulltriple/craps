@@ -8,7 +8,7 @@
             : base(betOwner, betName, commitment, winningTotals, payout)
         {
             this.winningHalf = winningTotals.First() / 2;
-            CrapsTable.scoreboard.NewSubscriber(this.EvaluateBet);
+            //CrapsTable.scoreboard.NewSubscriber(this.EvaluateBet);
         }
 
         internal override bool MeetsFirstWinningCondition(byte firstOutcome, byte secondOutcome)

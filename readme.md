@@ -42,6 +42,9 @@ Return some amount (instigated by player)
 Be taken down (a method.i.e. I am done) / lose
 
 
+Rather than each bet itself being a subscriber, the states of the bet will manage the bet's subscription.
+Thus, by virtue of being subscribed or unsubscribed, a bet will become active or paused, respectively.
+
 
 
 To do:

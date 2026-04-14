@@ -15,7 +15,7 @@ namespace CrapsLibrary
 
         public uint payout;
 
-        public bool isWorking;
+        //public bool isWorking;
 
         internal BetWorkingStateMachine betWorkingStateMachine;
 
@@ -27,8 +27,15 @@ namespace CrapsLibrary
             this.winningTotals = winningTotals;
             this.payout = payout;
 
-            //this.StartWorking(); // activates bet upon creation
-            this.betWorkingStateMachine = new(); // default state is BetWorkingStateReturnWinnings
+            // Create a state machine to manage this bet's states
+            this.betWorkingStateMachine = new();
+
+            // Set the initial bet state by changing state to BetWorkingStateReturnWinnings, whose constructor requires:
+            // - a reference to the instance of the bet's state machine, i.e. 'betWorkingStateMachine'
+            // - a reference to the instance of the bet whose state is about to change, i.e. be initialised, which is this bet
+            betWorkingStateMachine.ChangeState(new BetWorkingStateReturnWinnings(this.betWorkingStateMachine, this));
+
+            //CrapsTable.scoreboard.NewSubscriber(this.EvaluateBet);
         }
 
         //public void StartWorking()
@@ -36,10 +43,10 @@ namespace CrapsLibrary
         //    this.isWorking = true;
         //}
 
-        public void QuitWorking()
-        {
-            this.isWorking = false;
-        }
+        //public void QuitWorking()
+        //{
+        //    this.isWorking = false;
+        //}
 
         public void QuitBet()
         {
@@ -47,26 +54,26 @@ namespace CrapsLibrary
             betOwner.playerBetList.Remove(this);
         }
 
-        public void EvaluateBet(byte firstOutcome, byte secondOutcome)
-        {
-            if (this.isWorking == false)
-                return;
+        //public void EvaluateBet(byte firstOutcome, byte secondOutcome)
+        //{
+        //    if (this.isWorking == false)
+        //        return;
 
-            if (this.MeetsFirstWinningCondition(firstOutcome, secondOutcome))
-            {
-                Console.WriteLine($"Hooray! {betOwner.playerName} won {this.betName} with {firstOutcome}, {secondOutcome}! The payout was {this.payout} credits and goes to {betOwner.playerName}.");
-                betOwner.purse += this.payout;
-                return;
-            }
+        //    if (this.MeetsFirstWinningCondition(firstOutcome, secondOutcome))
+        //    {
+        //        Console.WriteLine($"Hooray! {betOwner.playerName} won {this.betName} with {firstOutcome}, {secondOutcome}! The payout was {this.payout} credits and goes to {betOwner.playerName}.");
+        //        betOwner.purse += this.payout;
+        //        return;
+        //    }
 
-            if (this.MeetsLosingCondition(firstOutcome, secondOutcome))
-            {
-                Console.WriteLine($"Ouhr nouhr! {betOwner.playerName} lost {this.betName} with {firstOutcome}, {secondOutcome}! The commitment of {this.commitment} credits goes to the house.");
-                CrapsTable.scoreboard.Unsubscribe(this.EvaluateBet);
-                // Don't subtract commitment here, since that has already been given up when placing the bet.
-                betOwner.playerBetList.Remove(this);
-            }
-        }
+        //    if (this.MeetsLosingCondition(firstOutcome, secondOutcome))
+        //    {
+        //        Console.WriteLine($"Ouhr nouhr! {betOwner.playerName} lost {this.betName} with {firstOutcome}, {secondOutcome}! The commitment of {this.commitment} credits goes to the house.");
+        //        CrapsTable.scoreboard.Unsubscribe(this.EvaluateBet);
+        //        // Don't subtract commitment here, since that has already been given up when placing the bet.
+        //        betOwner.playerBetList.Remove(this);
+        //    }
+        //}
 
         internal abstract bool MeetsLosingCondition(byte firstOutcome, byte secondOutcome);
 

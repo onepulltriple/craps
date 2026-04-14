@@ -15,11 +15,7 @@ namespace ConsoleAppForCraps
             var tableStateMachine = new TableStateMachine();
             tableStateMachine.ChangeTableState(new TableStateIdling(tableStateMachine));
 
-            while (true)
-            {
-                tableStateMachine.Update();
-                Thread.Sleep(500);
-            }
+
 
             // you need a way to interpret user input
             // this could be some commandInterpreter object which hosts a switch

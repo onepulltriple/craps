@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+﻿using CrapsLibrary.BetWorkingState;
+using System.Numerics;
 
 namespace CrapsLibrary
 {
@@ -16,6 +17,8 @@ namespace CrapsLibrary
 
         public bool isWorking;
 
+        internal BetWorkingStateMachine betWorkingStateMachine;
+
         public Bet(Player betOwner, string betName, uint commitment, List<int> winningTotals, uint payout)
         {
             this.betOwner = betOwner;
@@ -23,7 +26,9 @@ namespace CrapsLibrary
             this.commitment = commitment;
             this.winningTotals = winningTotals;
             this.payout = payout;
-            this.StartWorking(); // activates bet upon creation
+
+            //this.StartWorking(); // activates bet upon creation
+            this.betWorkingStateMachine = new(); // default state is BetWorkingStateReturnWinnings
         }
 
         public void StartWorking()

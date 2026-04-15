@@ -12,8 +12,8 @@ namespace ConsoleAppForCraps
 
 
             /////////////////////////////////////////////////////////////
-            var tableStateMachine = new TableStateMachine();
-            tableStateMachine.ChangeTableState(new TableStateIdling(tableStateMachine));
+            //var tableStateMachine = new TableStateMachine();
+            //tableStateMachine.ChangeTableState(new TableStateIdling(tableStateMachine));
 
 
 

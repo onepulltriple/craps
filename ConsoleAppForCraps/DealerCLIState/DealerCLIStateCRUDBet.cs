@@ -1,5 +1,6 @@
 ﻿
 using CrapsLibrary;
+using System.Numerics;
 
 namespace ConsoleAppForCraps.DealerCLIState
 {
@@ -79,7 +80,18 @@ namespace ConsoleAppForCraps.DealerCLIState
 
         private void PauseBetCLI()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Select the player whose bets will be paused");
+            Player betPauser = SelectPlayerCLI();
+
+            Console.WriteLine("Select the bet to be paused:");
+            Bet betToPause = SelectBetFromPlayerCLI(betPauser);
+
+            betToPause.PauseBet();
+
+            Console.WriteLine($"\n{betPauser.playerName} has paused their {betToPause.betName}.");
+            SleepCLI();
+
+            this.Enter();
         }
 
         private void DeleteBetCLI()

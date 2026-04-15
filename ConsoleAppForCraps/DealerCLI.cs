@@ -6,6 +6,7 @@ namespace ConsoleAppForCraps
     public class DealerCLI // translation layer between the CrapsLibrary and the CLI
     {
         public const int columnWidth = 20;
+        public const int scoreboardHeight = 8;
 
         public static CrapsTable crapsTable = new (5, 5);
 

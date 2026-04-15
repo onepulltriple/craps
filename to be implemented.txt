@@ -9,3 +9,7 @@ if the point becomes the same number as an existing place bet, offer to move tha
 
 full and partial paylay bet states
 
+need to handle error messaging on the BL level, and these messages get pushed to the UI, no matter if the UI is CLI or WPF
+
+the puck should not be static, since this is one puck per table: it should be defined for an instance
+

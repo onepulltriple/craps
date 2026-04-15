@@ -83,6 +83,21 @@ namespace ConsoleAppForCraps.DealerCLIState
             return bets[ValidateUserInputCLIMenu(listOfAcceptableInts) - 1].Key;
         }
 
+        protected Bet SelectBetFromPlayerCLI(Player player)
+        {
+            List<int> listOfAcceptableInts = new();
+
+            var betsOfPlayer = player.playerBetList;
+
+            for (int i = 0; i < betsOfPlayer.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}. {betsOfPlayer[i].betName}");
+                listOfAcceptableInts.Add(i + 1);
+            }
+
+            return betsOfPlayer[ValidateUserInputCLIMenu(listOfAcceptableInts) - 1];
+        }
+
         /// <summary>
         /// Show a list of players, their purses, and their bets
         /// </summary>
@@ -132,6 +147,7 @@ namespace ConsoleAppForCraps.DealerCLIState
                         {
                             cellText = player.playerBetList[betIndex]?.betName.ToString() ?? "";
                         }
+                        // if bet state is paused, add " (OFF)" to the end of the cell text
                     }
 
                     Console.Write(" " + cellText.PadRight(DealerCLI.columnWidth - 1) + "|");
@@ -153,7 +169,7 @@ namespace ConsoleAppForCraps.DealerCLIState
             int count = CrapsTable.scoreboard.die01Rolls.Count;
 
             var lastEight = Enumerable
-                .Range(Math.Max(0, count - 8), Math.Min(8, count))
+                .Range(Math.Max(0, count - DealerCLI.scoreboardHeight), Math.Min(DealerCLI.scoreboardHeight, count))
                 .Select(i => new
                 {
                     Die01 = CrapsTable.scoreboard.die01Rolls[i],
@@ -162,7 +178,7 @@ namespace ConsoleAppForCraps.DealerCLIState
                 .Reverse() // most recent first
                 .ToList(); // materialize so that padding can be added
 
-            int displayCount = 8;
+            int displayCount = DealerCLI.scoreboardHeight;
 
             // border
             string horizontalBorder = "+" + new string('-', DealerCLI.columnWidth) + "+";
@@ -179,14 +195,25 @@ namespace ConsoleAppForCraps.DealerCLIState
                     int sum = roll.Die01 + roll.Die02;
                     string text = $"{roll.Die01}, {roll.Die02} = {sum}";
                     Console.Write(text.PadRight(DealerCLI.columnWidth - 2));
+
                 }
                 else
                 {
                     // empty row padding
                     Console.Write(new string(' ', DealerCLI.columnWidth - 2));
                 }
-                Console.WriteLine(" |");
+                Console.Write(" |");
+
+                if (i == 0)
+                {
+                    string puckStatus = CrapsTable.puck.IsOn ? "ON" : "OFF";
+                    Console.Write($"   Puck: {puckStatus}");
+                }
+
+                Console.WriteLine();
+
             }
+
             Console.WriteLine(horizontalBorder);
             Console.WriteLine();
 

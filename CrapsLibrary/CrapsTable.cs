@@ -70,8 +70,8 @@
             scoreboard.die02Rolls.Add(Die02.NewOutcome());
 
             //to be removed later
-            int sum = scoreboard.die01Rolls.Last() + scoreboard.die02Rolls.Last();
-            Console.WriteLine($"{scoreboard.die01Rolls.Last()}, {scoreboard.die02Rolls.Last()} = {sum}");
+            //int sum = scoreboard.die01Rolls.Last() + scoreboard.die02Rolls.Last();
+            //Console.WriteLine($"{scoreboard.die01Rolls.Last()}, {scoreboard.die02Rolls.Last()} = {sum}");
             
             scoreboard.PublishOutcomes();
 

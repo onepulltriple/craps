@@ -1,5 +1,6 @@
 ﻿using CrapsLibrary;
 using System.Transactions;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ConsoleAppForCraps.DealerCLIState
 {
@@ -103,7 +104,6 @@ namespace ConsoleAppForCraps.DealerCLIState
             // Total rows = 1 for name + 1 for purse + maxBets
             int totalRows = 2 + maxBetCount;
 
-
             // Present information on screen
             string horizontalBorder = "+" + string.Join("+", players.Select(p => new string('-', DealerCLI.columnWidth))) + "+";
             Console.WriteLine(horizontalBorder);
@@ -145,6 +145,51 @@ namespace ConsoleAppForCraps.DealerCLIState
                 Console.WriteLine(horizontalBorder);
             Console.WriteLine();
             Console.WriteLine();
+        }
+
+        protected void ShowScoreboard()
+        {
+            Console.WriteLine();
+            int count = CrapsTable.scoreboard.die01Rolls.Count;
+
+            var lastEight = Enumerable
+                .Range(Math.Max(0, count - 8), Math.Min(8, count))
+                .Select(i => new
+                {
+                    Die01 = CrapsTable.scoreboard.die01Rolls[i],
+                    Die02 = CrapsTable.scoreboard.die02Rolls[i]
+                })
+                .Reverse() // most recent first
+                .ToList(); // materialize so that padding can be added
+
+            int displayCount = 8;
+
+            // border
+            string horizontalBorder = "+" + new string('-', DealerCLI.columnWidth) + "+";
+
+            Console.WriteLine(horizontalBorder);
+
+            for (int i = 0; i < displayCount; i++)
+            {
+                Console.Write("| ");
+
+                if (i < lastEight.Count)
+                {
+                    var roll = lastEight[i];
+                    int sum = roll.Die01 + roll.Die02;
+                    string text = $"{roll.Die01}, {roll.Die02} = {sum}";
+                    Console.Write(text.PadRight(DealerCLI.columnWidth - 2));
+                }
+                else
+                {
+                    // empty row padding
+                    Console.Write(new string(' ', DealerCLI.columnWidth - 2));
+                }
+                Console.WriteLine(" |");
+            }
+            Console.WriteLine(horizontalBorder);
+            Console.WriteLine();
+
         }
     }
 }

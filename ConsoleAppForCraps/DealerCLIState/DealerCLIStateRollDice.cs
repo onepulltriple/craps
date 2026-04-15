@@ -10,6 +10,7 @@
         public override void Enter()
         {
             UpdateScreen();
+            ShowScoreboard();
 
             Console.WriteLine("Ready to roll?");
             Console.WriteLine("1: Roll dice!");

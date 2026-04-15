@@ -55,24 +55,26 @@ namespace ConsoleAppForCraps.DealerCLIState
         {
             Console.WriteLine("Select the player who will be placing the bet:");
             Player betPlacer = SelectPlayerCLI();
+
+            Console.WriteLine("Select the type of bet to be placed:");
             betType selectedBetType = SelectBetFromFactoryCLI();
 
-            // Add info here to specify the min amount to bet based on the table minimum. Is that already shown in the BetFactory?
+            // Add info here to specify the minimum amount to bet based on the table minimum. Is that already shown in the BetFactory?
             Console.Write("Please enter an amount to bet (enter a positive whole number or 0 to abort): ");
             uint amountThrownAtBet = ValidateUserInputUInt();
 
+            // somewhere there needs to be info for the player about the table minimum, and something should happen if they give bogus input
+            // this info should be UI agnostic
+
             Bet? newBet = CrapsTable.betFactory.CreateBet(betPlacer, selectedBetType, amountThrownAtBet);
 
-            betPlacer.playerBetList.Add(newBet);
-
-            // somewhere there needs to be info for the player about the table minimum, and something should happen if they give bogus input
+            if (newBet != null)
+                betPlacer.playerBetList.Add(newBet);
 
             Console.WriteLine($"\n{betPlacer.playerName} has bet...");
             SleepCLI();
 
             this.Enter();
-
-
         }
 
         private void PauseBetCLI()

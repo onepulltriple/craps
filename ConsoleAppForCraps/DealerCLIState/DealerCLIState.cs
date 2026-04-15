@@ -138,9 +138,11 @@ namespace ConsoleAppForCraps.DealerCLIState
                 }
 
                 Console.WriteLine("");
-                Console.WriteLine(horizontalBorder);
+                if (row <= 1)
+                    Console.WriteLine(horizontalBorder);
             }
-
+            if (maxBetCount > 0) 
+                Console.WriteLine(horizontalBorder);
             Console.WriteLine();
             Console.WriteLine();
         }

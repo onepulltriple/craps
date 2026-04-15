@@ -39,7 +39,7 @@ namespace ConsoleAppForCraps.DealerCLIState
                     break;
 
                 case 3:
-                    ;
+                    dealerCLIStateMachine.ChangeState(new DealerCLIStateRollDice(dealerCLIStateMachine));
                     break;
 
                 case 4:

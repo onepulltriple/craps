@@ -2,19 +2,30 @@
 {
     internal class Result<T>
     {
-        public bool success { get; }
+        public bool Success { get; }
 
-        public T? value { get; } // nullable, since a failed result does not have a value
+        public T? Value { get; } // nullable, since a failed result does not have a value
 
-        public IReadOnlyList<string> messages { get; }
+        public IReadOnlyList<string> Messages { get; }
 
         public Result(bool success, T? value, List<string> messages)
         {
-            this.success = success;
-            this.value = value;
-            this.messages = messages ?? new List<string>();
+            // did it work?
+            this.Success = success;
+
+            // the instance of type T created upon success, OR a value of a type T, e.g. Bet newBet or int 53
+            this.Value = value; 
+
+            // what happened?
+            this.Messages = messages ?? new List<string>(); 
         }
 
+        /// <summary>
+        /// "Here is your T if it worked (plus what happened)."
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="messages"></param>
+        /// <returns></returns>
         public static Result<T> Pass(T value, params string[] messages)
         {
             return new Result<T>(
@@ -24,6 +35,11 @@
                 );
         }
 
+        /// <summary>
+        /// "Here's what went wrong if it failed."
+        /// </summary>
+        /// <param name="messages"></param>
+        /// <returns></returns>
         public static Result<T> Fail(params string[] messages)
         {
             return new Result<T>(

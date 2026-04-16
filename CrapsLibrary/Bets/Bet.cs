@@ -1,5 +1,4 @@
 ﻿using CrapsLibrary.BetWorkingState;
-using System.Numerics;
 
 namespace CrapsLibrary.Bets
 {

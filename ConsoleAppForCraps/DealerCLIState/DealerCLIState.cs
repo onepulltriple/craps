@@ -1,4 +1,5 @@
 ﻿using CrapsLibrary;
+using CrapsLibrary.Bets;
 using System.Transactions;
 using static System.Net.Mime.MediaTypeNames;
 

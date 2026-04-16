@@ -2,10 +2,10 @@
 {
     public enum GameEventType
     {
-        DiceRoll,
-        RuleOutcome,
-        Info,
-        Warning
+        DiceRoll,       // starts a block
+        RuleOutcome,    // indented under last DiceRoll
+        Info,           // normal line
+        Warning         // normal line (maybe prefixed later)
     }
 
     public class GameEvent // What happened?
@@ -14,10 +14,13 @@
 
         public string Text { get; }
 
-        public GameEvent(string text, GameEventType type = GameEventType.Info)
+        public bool IsContinuation { get; }
+
+        public GameEvent(string text, GameEventType type = GameEventType.Info, bool isContinuation = false)
         {
             Text = text; 
             Type = type;
+            IsContinuation = isContinuation;
         }
     }
 }

@@ -108,7 +108,7 @@
                 //Console.WriteLine("New roller!");
                 //Console.WriteLine();
                 CrapsTable.gameEventFeed.Add(
-                    "New roller!\n",
+                    "New roller!",
                     GameEventType.RuleOutcome
                     );
             }

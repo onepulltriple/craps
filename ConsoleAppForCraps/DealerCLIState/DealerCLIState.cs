@@ -224,16 +224,38 @@ namespace ConsoleAppForCraps.DealerCLIState
         {
             Console.WriteLine();
 
-            string border = "+" + new string('-', DealerCLI.columnWidth) + "+";
+            string border = "+" + new string('-', DealerCLI.gameFeedWidth) + "+";
             Console.WriteLine(border);
 
-            foreach (var ev in CrapsTable.gameEventFeed.Events.Take(DealerCLI.scoreboardHeight))
+            GameEvent? lastDice = null;
+
+            foreach (var ev in CrapsTable.gameEventFeed.Events.Take(DealerCLI.gameFeedHeight))
             {
-                string prefix = "| ";
+                if (ev.Type == GameEventType.DiceRoll)
+                {
+                    lastDice = ev;
 
-                string text = ev.Text;
+                    Console.WriteLine("| " +
+                        ev.Text.PadRight(DealerCLI.gameFeedWidth - 2) + " |");
+                }
+                else
+                {
+                    string prefix = "    ";
 
-                Console.WriteLine(prefix + text.PadRight(DealerCLI.columnWidth - 2) +  " |");
+                    string text;
+
+                    if (ev.Type == GameEventType.RuleOutcome)
+                    {
+                        text = prefix + ev.Text;
+                    }
+                    else
+                    {
+                        text = ev.Text;
+                    }
+
+                    Console.WriteLine("| " +
+                        text.PadRight(DealerCLI.gameFeedWidth - 2) + " |");
+                }
             }
             Console.WriteLine(border);
             Console.WriteLine();

@@ -164,60 +164,79 @@ namespace ConsoleAppForCraps.DealerCLIState
             Console.WriteLine();
         }
 
-        protected void ShowScoreboard()
+        //protected void ShowScoreboard()
+        //{
+        //    Console.WriteLine();
+        //    int count = CrapsTable.scoreboard.die01Rolls.Count;
+
+        //    var lastEight = Enumerable
+        //        .Range(Math.Max(0, count - DealerCLI.scoreboardHeight), Math.Min(DealerCLI.scoreboardHeight, count))
+        //        .Select(i => new
+        //        {
+        //            Die01 = CrapsTable.scoreboard.die01Rolls[i],
+        //            Die02 = CrapsTable.scoreboard.die02Rolls[i]
+        //        })
+        //        .Reverse() // most recent first
+        //        .ToList(); // materialize so that padding can be added
+
+        //    int displayCount = DealerCLI.scoreboardHeight;
+
+        //    // border
+        //    string horizontalBorder = "+" + new string('-', DealerCLI.columnWidth) + "+";
+
+        //    Console.WriteLine(horizontalBorder);
+
+        //    for (int i = 0; i < displayCount; i++)
+        //    {
+        //        Console.Write("| ");
+
+        //        if (i < lastEight.Count)
+        //        {
+        //            var roll = lastEight[i];
+        //            int sum = roll.Die01 + roll.Die02;
+        //            string text = $"{roll.Die01}, {roll.Die02} = {sum}";
+        //            Console.Write(text.PadRight(DealerCLI.columnWidth - 2));
+
+        //        }
+        //        else
+        //        {
+        //            // empty row padding
+        //            Console.Write(new string(' ', DealerCLI.columnWidth - 2));
+        //        }
+        //        Console.Write(" |");
+
+        //        if (i == 0)
+        //        {
+        //            string puckStatus = CrapsTable.puck.IsOn ? "ON" : "OFF";
+        //            Console.Write($"   Puck: {puckStatus}");
+        //        }
+
+        //        Console.WriteLine();
+
+        //    }
+
+        //    Console.WriteLine(horizontalBorder);
+        //    Console.WriteLine();
+
+        //}
+
+        protected void RenderGameFeedCLI()
         {
             Console.WriteLine();
-            int count = CrapsTable.scoreboard.die01Rolls.Count;
 
-            var lastEight = Enumerable
-                .Range(Math.Max(0, count - DealerCLI.scoreboardHeight), Math.Min(DealerCLI.scoreboardHeight, count))
-                .Select(i => new
-                {
-                    Die01 = CrapsTable.scoreboard.die01Rolls[i],
-                    Die02 = CrapsTable.scoreboard.die02Rolls[i]
-                })
-                .Reverse() // most recent first
-                .ToList(); // materialize so that padding can be added
+            string border = "+" + new string('-', DealerCLI.columnWidth) + "+";
+            Console.WriteLine(border);
 
-            int displayCount = DealerCLI.scoreboardHeight;
-
-            // border
-            string horizontalBorder = "+" + new string('-', DealerCLI.columnWidth) + "+";
-
-            Console.WriteLine(horizontalBorder);
-
-            for (int i = 0; i < displayCount; i++)
+            foreach (var ev in CrapsTable.gameEventFeed.Events.Take(DealerCLI.scoreboardHeight))
             {
-                Console.Write("| ");
+                string prefix = "| ";
 
-                if (i < lastEight.Count)
-                {
-                    var roll = lastEight[i];
-                    int sum = roll.Die01 + roll.Die02;
-                    string text = $"{roll.Die01}, {roll.Die02} = {sum}";
-                    Console.Write(text.PadRight(DealerCLI.columnWidth - 2));
+                string text = ev.Text;
 
-                }
-                else
-                {
-                    // empty row padding
-                    Console.Write(new string(' ', DealerCLI.columnWidth - 2));
-                }
-                Console.Write(" |");
-
-                if (i == 0)
-                {
-                    string puckStatus = CrapsTable.puck.IsOn ? "ON" : "OFF";
-                    Console.Write($"   Puck: {puckStatus}");
-                }
-
-                Console.WriteLine();
-
+                Console.WriteLine(prefix + text.PadRight(DealerCLI.columnWidth - 2) +  " |");
             }
-
-            Console.WriteLine(horizontalBorder);
+            Console.WriteLine(border);
             Console.WriteLine();
-
         }
     }
 }

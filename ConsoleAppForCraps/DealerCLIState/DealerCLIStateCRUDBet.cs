@@ -76,13 +76,15 @@ namespace ConsoleAppForCraps.DealerCLIState
             }
             else
             {
-                foreach (var message in newBetResult.Messages)
-                {
-                    Console.WriteLine(message);
-                }
+                CrapsTable.messageFeed.AddMessages(newBetResult.Messages);
+                //foreach (var message in newBetResult.Messages)
+                //{
+                //    //Console.WriteLine(message);
+                //}
             }
 
-            Console.WriteLine($"\n{betPlacer.playerName} has bet...");
+            //Console.WriteLine($"\n{betPlacer.playerName} has bet...");
+            CrapsTable.messageFeed.Add($"\n{betPlacer.playerName} has bet..."); // remove this later
             SleepCLI();
 
             this.Enter();

@@ -16,6 +16,10 @@ namespace CrapsLibrary
 
         public static BetFactory betFactory = new BetFactory();
 
+        public static MessageFeed messageFeed = new MessageFeed();
+
+        public static GameEventFeed gameEventFeed = new GameEventFeed();
+
         // Player information
         private readonly List<Player> players = new List<Player>();
         private int currentIndex = 0;
@@ -74,6 +78,12 @@ namespace CrapsLibrary
             //to be removed later
             //int sum = scoreboard.die01Rolls.Last() + scoreboard.die02Rolls.Last();
             //Console.WriteLine($"{scoreboard.die01Rolls.Last()}, {scoreboard.die02Rolls.Last()} = {sum}");
+
+            int sum = scoreboard.die01Rolls.Last() + scoreboard.die02Rolls.Last();
+            gameEventFeed.Add(
+                $"{scoreboard.die01Rolls.Last()}, {scoreboard.die02Rolls.Last()} = {sum}", 
+                GameEventType.DiceRoll
+                );
             
             scoreboard.PublishOutcomes();
 

@@ -46,7 +46,12 @@
             if (!this.IsOn && points.Contains(firstOutcome + secondOutcome))
             {
                 passPoint = firstOutcome + secondOutcome;
-                Console.WriteLine($"The puck is ON! The point is {passPoint}");
+                //Console.WriteLine($"The puck is ON! The point is {passPoint}");
+                CrapsTable.gameEventFeed.Add(
+                    $"The puck is ON! The point is {passPoint}",
+                    GameEventType.RuleOutcome
+                    );
+
                 return true;
             }
             return false;
@@ -57,7 +62,12 @@
             // What would flip the puck OFF?
             if (this.IsOn && this.passPoint == (firstOutcome + secondOutcome))
             {
-                Console.WriteLine($"The point {passPoint} was MADE. The puck is OFF! Winner!");
+                //Console.WriteLine($"The point {passPoint} was MADE. The puck is OFF! Winner!");
+                CrapsTable.gameEventFeed.Add(
+                    $"The point {passPoint} was MADE. The puck is OFF! Winner!",
+                    GameEventType.RuleOutcome
+                    );
+
                 return true;
             }
             return false;
@@ -82,7 +92,11 @@
             // The puck is on and then a seven is rolled
             if (this.IsOn && seven == (firstOutcome + secondOutcome))
             {
-                Console.WriteLine("The puck is OFF! Seven out!");
+                //Console.WriteLine("The puck is OFF! Seven out!");
+                CrapsTable.gameEventFeed.Add(
+                    "The puck is OFF! Seven out!",
+                    GameEventType.RuleOutcome
+                    );
             }
         }
 
@@ -91,8 +105,12 @@
             // The puck is on and then a seven is rolled
             if (this.IsOn && seven == (firstOutcome + secondOutcome))
             {
-                Console.WriteLine("New roller!");
-                Console.WriteLine();
+                //Console.WriteLine("New roller!");
+                //Console.WriteLine();
+                CrapsTable.gameEventFeed.Add(
+                    "New roller!\n",
+                    GameEventType.RuleOutcome
+                    );
             }
         }
     }

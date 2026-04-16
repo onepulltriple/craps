@@ -1,4 +1,4 @@
-﻿namespace CrapsLibrary
+﻿namespace CrapsLibrary.Bets
 {
     public class HardWayBet : Bet
     {
@@ -7,7 +7,7 @@
         public HardWayBet(Player betOwner, string betName, uint commitment, List<int> winningTotals, uint payout)
             : base(betOwner, betName, commitment, winningTotals, payout)
         {
-            this.winningHalf = winningTotals.First() / 2;
+            winningHalf = winningTotals.First() / 2;
             //CrapsTable.scoreboard.NewSubscriber(this.EvaluateBet);
         }
 
@@ -27,7 +27,7 @@
                 return true;
             }
 
-            if ((firstOutcome + secondOutcome == this.winningTotals.First()) &&
+            if (firstOutcome + secondOutcome == winningTotals.First() &&
                 (firstOutcome != winningHalf || secondOutcome != winningHalf))
             {
                 return true;

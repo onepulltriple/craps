@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace CrapsLibrary
+namespace CrapsLibrary.Bets
 {
     public class PlaceBet : Bet
     {
@@ -14,7 +14,7 @@ namespace CrapsLibrary
         {
             // the puck is on and the roll results in a board number
             // (betting directly on the point number is prohibited)
-            if (CrapsTable.puck.IsOn == true && this.winningTotals.Contains(firstOutcome + secondOutcome))
+            if (CrapsTable.puck.IsOn == true && winningTotals.Contains(firstOutcome + secondOutcome))
             {
                 return true;
             }

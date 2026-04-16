@@ -1,4 +1,4 @@
-﻿namespace CrapsLibrary
+﻿namespace CrapsLibrary.Bets
 {
     public class SingleRollBet : Bet
     {

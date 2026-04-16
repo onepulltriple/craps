@@ -1,5 +1,4 @@
-﻿
-namespace CrapsLibrary
+﻿namespace CrapsLibrary.Bets
 {
     public class PassBet : Bet
     {
@@ -24,7 +23,7 @@ namespace CrapsLibrary
                 return true;
             }
 
-            if (CrapsTable.puck.IsOn == true && CrapsTable.puck.passPoint == (firstOutcome + secondOutcome))
+            if (CrapsTable.puck.IsOn == true && CrapsTable.puck.passPoint == firstOutcome + secondOutcome)
             {
                 Console.Write("Point made! Pass! ");
                 return true;

@@ -1,4 +1,6 @@
-﻿namespace CrapsLibrary.BetWorkingState
+﻿using CrapsLibrary.Bets;
+
+namespace CrapsLibrary.BetWorkingState
 {
     abstract class BetWorkingState
     {

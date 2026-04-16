@@ -1,5 +1,6 @@
 ﻿
 using CrapsLibrary;
+using CrapsLibrary.Bets;
 using System.Numerics;
 
 namespace ConsoleAppForCraps.DealerCLIState

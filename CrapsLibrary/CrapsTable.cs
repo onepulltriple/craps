@@ -1,4 +1,6 @@
-﻿namespace CrapsLibrary
+﻿using CrapsLibrary.Bets;
+
+namespace CrapsLibrary
 {
     public class CrapsTable
     {

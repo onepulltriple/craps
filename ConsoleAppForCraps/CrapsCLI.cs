@@ -1,4 +1,5 @@
 ﻿using CrapsLibrary;
+using CrapsLibrary.Bets;
 using CrapsLibrary.TableState;
 
 namespace ConsoleAppForCraps

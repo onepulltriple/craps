@@ -1,7 +1,7 @@
 ﻿using CrapsLibrary.BetWorkingState;
 using System.Numerics;
 
-namespace CrapsLibrary
+namespace CrapsLibrary.Bets
 {
     public abstract class Bet
     {
@@ -36,12 +36,12 @@ namespace CrapsLibrary
             this.payout = payout;
 
             // Create a state machine to manage this bet's states
-            this.betWorkingStateMachine = new();
+            betWorkingStateMachine = new();
 
             // Set the initial bet state by changing state to BetWorkingStateReturnWinnings, whose constructor requires:
             // - a reference to the instance of the bet's state machine, i.e. 'betWorkingStateMachine'
             // - a reference to the instance of the bet whose state is about to change, i.e. be initialised, which is this bet
-            betWorkingStateMachine.ChangeState(new BetWorkingStateReturnWinnings(this.betWorkingStateMachine, this));
+            betWorkingStateMachine.ChangeState(new BetWorkingStateReturnWinnings(betWorkingStateMachine, this));
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace CrapsLibrary
         /// </summary>
         public void PauseBet()
         {
-            betWorkingStateMachine.ChangeState(new BetWorkingStatePaused(this.betWorkingStateMachine, this));
+            betWorkingStateMachine.ChangeState(new BetWorkingStatePaused(betWorkingStateMachine, this));
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace CrapsLibrary
         /// </summary>
         public void QuitBet()
         {
-            betOwner.purse += this.commitment;
+            betOwner.purse += commitment;
             betOwner.playerBetList.Remove(this);
         }
 

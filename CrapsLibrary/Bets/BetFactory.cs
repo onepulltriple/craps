@@ -1,4 +1,6 @@
-﻿namespace CrapsLibrary.Bets
+﻿using System.Reflection.Metadata.Ecma335;
+
+namespace CrapsLibrary.Bets
 {
     public enum betType // a container for constants with extra properties built in
     {
@@ -60,10 +62,10 @@
                 {betType.PlaceBet_10,   (9, 5)}
             };
 
-        public Bet? CreateBet(Player player, betType playerBetType, uint amountThrownAtBet)
+        public Result<Bet> CreateBet(Player player, betType playerBetType, uint amountThrownAtBet)
         {
             if (player.purse < amountThrownAtBet) // the player cannot bet more than they have
-                return null;
+                return Result<Bet>.Fail("Test01", "Test02");
 
             // determine betting units
             uint unitOfBet =
@@ -72,7 +74,7 @@
                 betPayoutRatios[playerBetType].payoutDenominator;
 
             if (amountThrownAtBet < unitOfBet) // the player player cannot cover at least one bet of that type (e.g. throwing 5 credits at a Place_6)
-                return null;
+                return Result<Bet>.Fail("Test03", "Test04");
 
             uint countOfUnitsToBet = amountThrownAtBet / unitOfBet; // the quotient
             uint amountToBet = countOfUnitsToBet * unitOfBet; // quotient times units
@@ -152,10 +154,12 @@
                     break;
 
                 default:
-                    //tempBet = null;
-                    break;
+                    return Result<Bet>.Fail("Unspecified bet attempted.");
             }
-            return tempBet;
+            if (tempBet == null)
+                return Result<Bet>.Fail("Somehow tempBet is null when exiting the factory.");
+
+            return Result<Bet>.Pass(tempBet, "Good job");
         }
     }
 }

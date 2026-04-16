@@ -30,7 +30,7 @@ namespace ConsoleAppForCraps
 
 
             // initialize table (with minimum bet)
-            CrapsTable Table01 = new(5, 5);
+            //CrapsTable Table01 = new(5, 5);
 
 
             // player buys chips (can buy more at any time) starts with 100 by default
@@ -45,24 +45,24 @@ namespace ConsoleAppForCraps
 
             // cycle through players, (back to 1)
 
-            Player player1 = new Player("Chase");
-            player1.purse += 100;
+            //Player player1 = new Player("Chase");
+            //player1.purse += 100;
 
-            Table01.RollDice(6, 6);
+            //Table01.RollDice(6, 6);
 
-            foreach (betType bet in Enum.GetValues<betType>())
-            {
-                Bet? newBet = CrapsTable.betFactory.CreateBet(player1, bet, 6);
-                if (newBet != null)
-                //if (newBet != null && newBet.betName != "PassBet")
-                    player1.playerBetList.Add(newBet);
-            }
+            //foreach (betType bet in Enum.GetValues<betType>())
+            //{
+            //    Bet? newBet = CrapsTable.betFactory.CreateBet(player1, bet, 6);
+            //    if (newBet != null)
+            //    //if (newBet != null && newBet.betName != "PassBet")
+            //        player1.playerBetList.Add(newBet);
+            //}
 
-            for (int i = 0; i < 100; i++)
-            {
-                Table01.RollDice(6, 6);
-                Console.WriteLine($"{player1.playerName} now has {player1.purse} credits.");
-            }
+            //for (int i = 0; i < 100; i++)
+            //{
+            //    Table01.RollDice(6, 6);
+            //    Console.WriteLine($"{player1.playerName} now has {player1.purse} credits.");
+            //}
 
         }
     }

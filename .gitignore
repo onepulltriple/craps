@@ -6,4 +6,5 @@ obj/
 Publish/
 Properties/
 Drawings/
+.github/instructions/
 CrapsTableWPF/temp_background.png

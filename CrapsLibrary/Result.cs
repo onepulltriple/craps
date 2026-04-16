@@ -1,7 +1,10 @@
-﻿namespace CrapsLibrary
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace CrapsLibrary
 {
-    internal class Result<T>
+    public class Result<T>
     {
+        [MemberNotNullWhen(true, nameof(Value))]
         public bool Success { get; }
 
         public T? Value { get; } // nullable, since a failed result does not have a value

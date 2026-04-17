@@ -72,24 +72,23 @@ namespace CrapsLibrary
         {
             Die Die01 = new(numSides01);
             Die Die02 = new(numSides02);
-            scoreboard.die01Rolls.Add(Die01.NewOutcome());
-            scoreboard.die02Rolls.Add(Die02.NewOutcome());
+            byte outcome01 = Die01.NewOutcome();
+            byte outcome02 = Die02.NewOutcome();
 
-            //to be removed later
-            //int sum = scoreboard.die01Rolls.Last() + scoreboard.die02Rolls.Last();
-            //Console.WriteLine($"{scoreboard.die01Rolls.Last()}, {scoreboard.die02Rolls.Last()} = {sum}");
-
-            int sum = scoreboard.die01Rolls.Last() + scoreboard.die02Rolls.Last();
-            gameEventFeed.Add(
-                $"{scoreboard.die01Rolls.Last()}, {scoreboard.die02Rolls.Last()} = {sum}", 
-                GameEventType.DiceRoll
-                );
-            
-            scoreboard.PublishOutcomes();
-
-            return (scoreboard.die01Rolls.Last(), scoreboard.die02Rolls.Last());
+            return (outcome01, outcome02);
         }
 
+        public void UpdateScoreboardAndPublishOutcomes(byte outcome01, byte outcome02)
+        {
+            scoreboard.die01Rolls.Add(outcome01);
+            scoreboard.die02Rolls.Add(outcome02);
 
+            gameEventFeed.Add(
+                $"{outcome01}, {outcome02} --> {outcome01 + outcome02}",
+                GameEventType.DiceRoll
+                );
+
+            scoreboard.PublishOutcomes();
+        }
     }
 }

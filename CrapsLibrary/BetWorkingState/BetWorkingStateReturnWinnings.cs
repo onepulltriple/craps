@@ -12,7 +12,7 @@ namespace CrapsLibrary.BetWorkingState
 
         public override void Enter()
         {
-            CrapsTable.scoreboard.NewSubscriber(this.EvaluateBet);
+            betWorkingStateMachine.crapsTable.scoreboard.NewSubscriber(this.EvaluateBet);
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace CrapsLibrary.BetWorkingState
             {
                 Console.WriteLine($"Ouhr nouhr! {betInQuestion.betOwner.playerName} lost {betInQuestion.betName} with {firstOutcome}, {secondOutcome}! The commitment of {betInQuestion.commitment} credits goes to the house.");
 
-                CrapsTable.scoreboard.Unsubscribe(this.EvaluateBet);
+                betWorkingStateMachine.crapsTable.scoreboard.Unsubscribe(this.EvaluateBet);
                 // Don't subtract commitment here, since that has already been given up when placing the bet.
                 betInQuestion.betOwner.playerBetList.Remove(betInQuestion);
             }
@@ -43,7 +43,7 @@ namespace CrapsLibrary.BetWorkingState
 
         public override void Exit()
         {
-            CrapsTable.scoreboard.Unsubscribe(this.EvaluateBet);
+            betWorkingStateMachine.crapsTable.scoreboard.Unsubscribe(this.EvaluateBet);
         }
     }
 }

@@ -4,6 +4,8 @@ namespace CrapsLibrary.Bets
 {
     public abstract class Bet
     {
+        protected CrapsTable crapsTable;
+
         public Player betOwner;
         
         public string betName;
@@ -26,8 +28,9 @@ namespace CrapsLibrary.Bets
         /// <param name="commitment"></param>
         /// <param name="winningTotals"></param>
         /// <param name="payout"></param>
-        public Bet(Player betOwner, string betName, uint commitment, List<int> winningTotals, uint payout)
+        public Bet(CrapsTable crapsTable, Player betOwner, string betName, uint commitment, List<int> winningTotals, uint payout)
         {
+            this.crapsTable = crapsTable;
             this.betOwner = betOwner;
             this.betName = betName;
             this.commitment = commitment;
@@ -35,7 +38,7 @@ namespace CrapsLibrary.Bets
             this.payout = payout;
 
             // Create a state machine to manage this bet's states
-            betWorkingStateMachine = new();
+            betWorkingStateMachine = new(crapsTable);
 
             // Set the initial bet state by changing state to BetWorkingStateReturnWinnings, whose constructor requires:
             // - a reference to the instance of the bet's state machine, i.e. 'betWorkingStateMachine'

@@ -1,13 +1,16 @@
-﻿namespace ConsoleAppForCraps.DealerCLIState
+﻿using CrapsLibrary;
+
+namespace ConsoleAppForCraps.DealerCLIState
 {
     internal class DealerCLIStateMachine
     {
+        public CrapsTable? crapsTable;
+
         internal DealerCLIState? currentDealerCLIState;
 
         public DealerCLIStateMachine()
         {
-            // the starting state would go here
-            currentDealerCLIState = new DealerCLIStateInitialState(this);
+            // the starting state could go here
         }
 
         public void ChangeState(DealerCLIState nextDealerCLIState)

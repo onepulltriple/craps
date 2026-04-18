@@ -80,7 +80,7 @@ namespace ConsoleAppForCraps.DealerCLIState
         {
             string enteredName = NamePlayerCLI();
 
-            DealerCLI.crapsTable.AddPlayer(new Player(enteredName, 100));
+            dealerCLIStateMachine.crapsTable!.AddPlayer(new Player(enteredName, 100));
 
             Console.WriteLine($"\n{enteredName} was successfully created.");
             SleepCLI();
@@ -144,7 +144,7 @@ namespace ConsoleAppForCraps.DealerCLIState
             Console.WriteLine("Select the player to delete:");
             Player playerToRemove = SelectPlayerCLI();
 
-            DealerCLI.crapsTable.RemovePlayer(playerToRemove);
+            dealerCLIStateMachine.crapsTable!.RemovePlayer(playerToRemove);
 
             string oldName = playerToRemove.playerName;
             Console.WriteLine($"\n{oldName} was successfully deleted.");

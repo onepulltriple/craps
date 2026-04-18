@@ -19,7 +19,7 @@ namespace CrapsLibrary.Bets
         PlaceBet_10
     }
 
-    public class BetFactory
+    public static class BetFactory
     {
         /// <summary>
         /// The bet factory stores all lookup information for bet creation including:
@@ -62,15 +62,15 @@ namespace CrapsLibrary.Bets
                 {betType.PlaceBet_10,   (9, 5)}
             };
 
-        public Result<Bet> CreateBet(Player player, betType playerBetType, uint amountThrownAtBet)
+        public static Result<Bet> CreateBet(CrapsTable crapsTable, Player player, betType playerBetType, uint amountThrownAtBet)
         {
             if (player.purse < amountThrownAtBet) // the player cannot bet more than they have
                 return Result<Bet>.Fail("Test01", "Test02");
 
             // determine betting units
             uint unitOfBet =
-                CrapsTable.tableMinimum /
-                CrapsTable.absTableMinimum * 
+                crapsTable.tableMinimum /
+                crapsTable.absTableMinimum * 
                 betPayoutRatios[playerBetType].payoutDenominator;
 
             if (amountThrownAtBet < unitOfBet) // the player player cannot cover at least one bet of that type (e.g. throwing 5 credits at a Place_6)
@@ -96,68 +96,69 @@ namespace CrapsLibrary.Bets
             switch (playerBetType)
             {
                 case betType.Aces: // wins on 1,1 (snake eyes)
-                    tempBet = new HardWayBet(player, tempBetName, amountToBet, new List<int>{ 2 }, payout);
+                    tempBet = new HardWayBet(crapsTable, player, tempBetName, amountToBet, new List<int>{ 2 }, payout);
                     break;
 
                 case betType.Hard_04: // wins on 2,2
-                    tempBet = new HardWayBet(player, tempBetName, amountToBet, new List<int> { 4 }, payout);
+                    tempBet = new HardWayBet(crapsTable, player, tempBetName, amountToBet, new List<int> { 4 }, payout);
                     break;
 
                 case betType.Hard_06: // wins on 3,3
-                    tempBet = new HardWayBet(player, tempBetName, amountToBet, new List<int> { 6 }, payout);
+                    tempBet = new HardWayBet(crapsTable, player, tempBetName, amountToBet, new List<int> { 6 }, payout);
                     break;
 
                 case betType.Hard_08: // wins on 4,4
-                    tempBet = new HardWayBet(player, tempBetName, amountToBet, new List<int> { 8 }, payout);
+                    tempBet = new HardWayBet(crapsTable, player, tempBetName, amountToBet, new List<int> { 8 }, payout);
                     break;
 
                 case betType.Hard_10: // wins on 5,5
-                    tempBet = new HardWayBet(player, tempBetName, amountToBet, new List<int> { 10 }, payout);
+                    tempBet = new HardWayBet(crapsTable, player, tempBetName, amountToBet, new List<int> { 10 }, payout);
                     break;
 
                 case betType.Hard_12: // wins on 6,6
-                    tempBet = new HardWayBet(player, tempBetName, amountToBet, new List<int> { 12 }, payout);
+                    tempBet = new HardWayBet(crapsTable, player, tempBetName, amountToBet, new List<int> { 12 }, payout);
                     break;
 
                 case betType.PassBet: // wins on natural passes, winning based on point behavior, which is handled internally
-                    tempBet = new PassBet(player, tempBetName, amountToBet, new List<int> { 0 }, payout);
+                    tempBet = new PassBet(crapsTable, player, tempBetName, amountToBet, new List<int> { 0 }, payout);
                     break;                                                                       
                                                                                                  
                 case betType.PlaceBet_04: // wins when puck is on, then this number is rolled     
-                    if (PlaceBet.IsPlaceBetAllowed(player, tempBetName))
-                        tempBet = new PlaceBet(player, tempBetName, amountToBet, new List<int> { 4 }, payout);
+                    if (PlaceBet.IsPlaceBetAllowed(crapsTable, player, tempBetName))
+                        tempBet = new PlaceBet(crapsTable, player, tempBetName, amountToBet, new List<int> { 4 }, payout);
                     break;                                                                       
                                                                                                  
                 case betType.PlaceBet_05: // wins when puck is on, then this number is rolled     
-                    if (PlaceBet.IsPlaceBetAllowed(player, tempBetName))
-                        tempBet = new PlaceBet(player, tempBetName, amountToBet, new List<int> { 5 }, payout);
+                    if (PlaceBet.IsPlaceBetAllowed(crapsTable, player, tempBetName))
+                        tempBet = new PlaceBet(crapsTable, player, tempBetName, amountToBet, new List<int> { 5 }, payout);
                     break;                                                                       
                                                                                                  
                 case betType.PlaceBet_06: // wins when puck is on, then this number is rolled     
-                    if (PlaceBet.IsPlaceBetAllowed(player, tempBetName)) 
-                        tempBet = new PlaceBet(player, tempBetName, amountToBet, new List<int> { 6 }, payout);
+                    if (PlaceBet.IsPlaceBetAllowed(crapsTable, player, tempBetName)) 
+                        tempBet = new PlaceBet(crapsTable, player, tempBetName, amountToBet, new List<int> { 6 }, payout);
                     break;                                                                       
                                                                                                  
                 case betType.PlaceBet_08: // wins when puck is on, then this number is rolled     
-                    if (PlaceBet.IsPlaceBetAllowed(player, tempBetName)) 
-                        tempBet = new PlaceBet(player, tempBetName, amountToBet, new List<int> { 8 }, payout);
+                    if (PlaceBet.IsPlaceBetAllowed(crapsTable, player, tempBetName)) 
+                        tempBet = new PlaceBet(crapsTable, player, tempBetName, amountToBet, new List<int> { 8 }, payout);
                     break;                                                                       
                                                                                                  
                 case betType.PlaceBet_09: // wins when puck is on, then this number is rolled     
-                    if (PlaceBet.IsPlaceBetAllowed(player, tempBetName)) 
-                        tempBet = new PlaceBet(player, tempBetName, amountToBet, new List<int> { 9 }, payout);
+                    if (PlaceBet.IsPlaceBetAllowed(crapsTable, player, tempBetName)) 
+                        tempBet = new PlaceBet(crapsTable, player, tempBetName, amountToBet, new List<int> { 9 }, payout);
                     break;                                                                       
                                                                                                  
                 case betType.PlaceBet_10: // wins when puck is on, then this number is rolled    
-                    if (PlaceBet.IsPlaceBetAllowed(player, tempBetName)) 
-                        tempBet = new PlaceBet(player, tempBetName, amountToBet, new List<int> { 10 }, payout);
+                    if (PlaceBet.IsPlaceBetAllowed(crapsTable, player, tempBetName))
+                        // TODO notify player why creating a place bet didn't work
+                        tempBet = new PlaceBet(crapsTable, player, tempBetName, amountToBet, new List<int> { 10 }, payout);
                     break;
 
                 default:
                     return Result<Bet>.Fail("Unspecified bet attempted.");
             }
             if (tempBet == null)
-                return Result<Bet>.Fail("Somehow tempBet is null when exiting the factory.");
+                return Result<Bet>.Fail("Somehow tempBet is null when exiting the factory."); // bc of e.g. place bets
 
             return Result<Bet>.Pass(tempBet, "Good job");
         }

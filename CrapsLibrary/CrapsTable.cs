@@ -4,21 +4,19 @@ namespace CrapsLibrary
 {
     public class CrapsTable
     {
-        public static uint tableMinimum;
+        public uint tableMinimum;
 
-        public const uint absTableMinimum = 5;
+        public uint absTableMinimum = 5; // no table instances my have less than a 5 credit minimum (not yet enforced) //TODO
 
-        public static uint tableMaximum;
+        public uint tableMaximum;
         
-        public static Scoreboard scoreboard = new Scoreboard();
+        public Scoreboard scoreboard = new Scoreboard(); // scoreboard does not needs a crapsTable reference
 
-        public static Puck puck = new Puck();
+        public Puck puck;
 
-        public static BetFactory betFactory = new BetFactory();
+        public MessageFeed messageFeed = new MessageFeed();
 
-        public static MessageFeed messageFeed = new MessageFeed();
-
-        public static GameEventFeed gameEventFeed = new GameEventFeed();
+        public GameEventFeed gameEventFeed = new GameEventFeed();
 
         // Player information
         private readonly List<Player> players = new List<Player>();
@@ -30,8 +28,9 @@ namespace CrapsLibrary
 
         public CrapsTable(uint tableMinimum, uint tableMaximum)
         {
-            CrapsTable.tableMinimum = tableMinimum;
-            CrapsTable.tableMaximum = tableMaximum;
+            this.tableMinimum = tableMinimum;
+            this.tableMaximum = tableMaximum;
+            this.puck = new Puck(this);
         }
 
         public void AddPlayer(Player playerToAdd) // adds the new player to the end

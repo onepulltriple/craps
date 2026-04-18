@@ -2,13 +2,17 @@
 {
     internal class BetWorkingStateMachine
     {
+        public CrapsTable crapsTable;
+
         internal BetWorkingState? currentBetWorkingState;
 
-        public BetWorkingStateMachine()
+        public BetWorkingStateMachine(CrapsTable crapsTable)
         {
             // the starting state would go here
             //currentBetWorkingState = new BetWorkingStateReturnWinnings(this, null);
             //currentBetWorkingState = new BetWorkingStateReturnWinnings()
+
+            this.crapsTable = crapsTable;
         }
 
         /// <summary>

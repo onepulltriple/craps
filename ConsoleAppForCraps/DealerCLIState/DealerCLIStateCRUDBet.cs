@@ -68,7 +68,7 @@ namespace ConsoleAppForCraps.DealerCLIState
             // somewhere there needs to be info for the player about the table minimum, and something should happen if they give bogus input
             // this info should be UI agnostic
 
-            Result<Bet> newBetResult = CrapsTable.betFactory.CreateBet(betPlacer, selectedBetType, amountThrownAtBet);
+            Result<Bet> newBetResult = BetFactory.CreateBet(dealerCLIStateMachine.crapsTable!, betPlacer, selectedBetType, amountThrownAtBet);
 
             if (newBetResult.Success)
             {
@@ -76,7 +76,7 @@ namespace ConsoleAppForCraps.DealerCLIState
             }
             else
             {
-                CrapsTable.messageFeed.AddMessages(newBetResult.Messages);
+                dealerCLIStateMachine.crapsTable!.messageFeed.AddMessages(newBetResult.Messages);
                 //foreach (var message in newBetResult.Messages)
                 //{
                 //    //Console.WriteLine(message);
@@ -84,7 +84,7 @@ namespace ConsoleAppForCraps.DealerCLIState
             }
 
             //Console.WriteLine($"\n{betPlacer.playerName} has bet...");
-            CrapsTable.messageFeed.Add($"\n{betPlacer.playerName} has bet..."); // remove this later
+            dealerCLIStateMachine.crapsTable!.messageFeed.Add($"\n{betPlacer.playerName} has bet..."); // remove this later
             SleepCLI();
 
             this.Enter();

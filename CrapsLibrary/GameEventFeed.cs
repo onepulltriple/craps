@@ -6,6 +6,8 @@
 
         public IReadOnlyCollection<GameEvent> Events => _events;
 
+        public GameEventFeed() { }
+
         /// <summary>
         /// 
         /// </summary>
@@ -20,7 +22,7 @@
         /// </summary>
         /// <param name="text"></param>
         /// <param name="type"></param>
-        public void Add(string text, GameEventType type = GameEventType.Info)
+        public void Add(string text, GameEventType type = GameEventType.Message)
         {
             Add(new GameEvent(text, type));
         }

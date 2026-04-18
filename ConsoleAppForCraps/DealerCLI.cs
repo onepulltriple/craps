@@ -9,7 +9,7 @@ namespace ConsoleAppForCraps
         public const int gameFeedHeight = 8;
         public const int gameFeedWidth = 60;
 
-        public static CrapsTable crapsTable = new (5, 5);
+        public CrapsTable crapsTable = new (5, 5); // TODO create table inside DealerCLI init state
 
         public const int sleepDurationMilliseconds = 700;
 
@@ -18,7 +18,7 @@ namespace ConsoleAppForCraps
         public DealerCLI()
         {
             this.dealerCLIStateMachine = new();
-            dealerCLIStateMachine.ChangeState(new DealerCLIStateOverview(this.dealerCLIStateMachine));
+            dealerCLIStateMachine.ChangeState(new DealerCLIStateInitialState(this.dealerCLIStateMachine));
         }
 
 

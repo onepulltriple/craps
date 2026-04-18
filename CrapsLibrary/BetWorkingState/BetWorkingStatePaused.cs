@@ -12,7 +12,7 @@ namespace CrapsLibrary.BetWorkingState
 
         public override void Enter()
         {
-            CrapsTable.scoreboard.NewSubscriber(this.EvaluateBet);
+            betWorkingStateMachine.crapsTable.scoreboard.NewSubscriber(this.EvaluateBet);
 
             // Called-off/paused bets remain paused until set back to working or removed/quit.
             Console.WriteLine($"{betInQuestion.betOwner.playerName} has called off (paused) the bet {betInQuestion.betName}!");
@@ -28,7 +28,7 @@ namespace CrapsLibrary.BetWorkingState
         {
             // Console.WriteLine($"{betInQuestion.betOwner.playerName}'s {betInQuestion.betName} is back on."); 
             // the bet could also be taken down/quit
-            CrapsTable.scoreboard.Unsubscribe(this.EvaluateBet);
+            betWorkingStateMachine.crapsTable.scoreboard.Unsubscribe(this.EvaluateBet);
         }
     }
 }

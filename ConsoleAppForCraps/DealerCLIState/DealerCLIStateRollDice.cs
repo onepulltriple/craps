@@ -10,7 +10,6 @@
         public override void Enter()
         {
             UpdateScreen();
-            //ShowScoreboard();
             RenderGameFeedCLI();
 
             Console.WriteLine("Ready to roll?");
@@ -42,9 +41,9 @@
 
         private void RollDiceCLI()
         {
-            (byte outcome01, byte outcome02) = DealerCLI.crapsTable.RollDice(6, 6);
+            (byte outcome01, byte outcome02) = dealerCLIStateMachine.crapsTable!.RollDice(6, 6);
 
-            DealerCLI.crapsTable.UpdateScoreboardAndPublishOutcomes(outcome01, outcome02);
+            dealerCLIStateMachine.crapsTable!.UpdateScoreboardAndPublishOutcomes(outcome01, outcome02);
 
             SleepCLI();
 

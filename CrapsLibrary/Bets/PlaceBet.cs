@@ -4,8 +4,8 @@ namespace CrapsLibrary.Bets
 {
     public class PlaceBet : Bet
     {
-        public PlaceBet(Player betOwner, string betName, uint commitment, List<int> winningTotals, uint payout) 
-            : base(betOwner, betName, commitment, winningTotals, payout)
+        public PlaceBet(CrapsTable crapsTable, Player betOwner, string betName, uint commitment, List<int> winningTotals, uint payout) 
+            : base(crapsTable, betOwner, betName, commitment, winningTotals, payout)
         {
         }
 
@@ -13,7 +13,7 @@ namespace CrapsLibrary.Bets
         {
             // the puck is on and the roll results in a board number
             // (betting directly on the point number is prohibited)
-            if (CrapsTable.puck.IsOn == true && winningTotals.Contains(firstOutcome + secondOutcome))
+            if (crapsTable.puck.IsOn == true && winningTotals.Contains(firstOutcome + secondOutcome))
             {
                 return true;
             }
@@ -22,18 +22,18 @@ namespace CrapsLibrary.Bets
 
         internal override bool MeetsLosingCondition(byte firstOutcome, byte secondOutcome)
         {
-            if (CrapsTable.puck.IsOutcomeSevenOut(firstOutcome, secondOutcome))
+            if (crapsTable.puck.IsOutcomeSevenOut(firstOutcome, secondOutcome))
             {
                 return true;
             }
             return false;
         }
 
-        public static bool IsPlaceBetAllowed(Player playerToCheck, string betName)
+        public static bool IsPlaceBetAllowed(CrapsTable crapsTable, Player playerToCheck, string betName)
         {
             return playerToCheck.playerBetList.Any(bet => bet.betName == "PassBet") // player must have placed a pass bet
-                && CrapsTable.puck.IsOn                                             // the puck may not be OFF, i.e. a point must be established
-                && int.Parse(betName.Split('_')[1]) != CrapsTable.puck.passPoint;   // place bets cannot be placed on the point
+                && crapsTable.puck.IsOn                                             // the puck may not be OFF, i.e. a point must be established
+                && int.Parse(betName.Split('_')[1]) != crapsTable.puck.passPoint;   // place bets cannot be placed on the point
         }
     }
 }

@@ -4,8 +4,8 @@
     {
         int winningHalf;
 
-        public HardWayBet(Player betOwner, string betName, uint commitment, List<int> winningTotals, uint payout)
-            : base(betOwner, betName, commitment, winningTotals, payout)
+        public HardWayBet(CrapsTable crapsTable, Player betOwner, string betName, uint commitment, List<int> winningTotals, uint payout)
+            : base(crapsTable, betOwner, betName, commitment, winningTotals, payout)
         {
             winningHalf = winningTotals.First() / 2;
         }
@@ -21,7 +21,7 @@
 
         internal override bool MeetsLosingCondition(byte firstOutcome, byte secondOutcome)
         {
-            if (CrapsTable.puck.IsOutcomeSevenOut(firstOutcome, secondOutcome))
+            if (crapsTable.puck.IsOutcomeSevenOut(firstOutcome, secondOutcome))
             {
                 return true;
             }

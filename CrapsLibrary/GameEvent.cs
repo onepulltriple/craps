@@ -3,8 +3,8 @@
     public enum GameEventType
     {
         DiceRoll,       // starts a block
-        RuleOutcome,    // indented under last DiceRoll
-        Info,           // normal line
+        Outcome,        // indented under last DiceRoll
+        Message,        // normal line
         Warning         // normal line (maybe prefixed later)
     }
 
@@ -16,7 +16,7 @@
 
         public bool IsContinuation { get; }
 
-        public GameEvent(string text, GameEventType type = GameEventType.Info, bool isContinuation = false)
+        public GameEvent(string text, GameEventType type = GameEventType.Message, bool isContinuation = false)
         {
             Text = text; 
             Type = type;

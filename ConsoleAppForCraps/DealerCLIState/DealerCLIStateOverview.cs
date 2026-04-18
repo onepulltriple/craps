@@ -17,7 +17,7 @@ namespace ConsoleAppForCraps.DealerCLIState
             Console.WriteLine("1. Manage players and/or their purses");
             Console.WriteLine("2. Manage a player's bets");
             Console.WriteLine("3. Roll dice");
-            //Console.WriteLine("4. -----");
+            
             Console.WriteLine("\n0. Quit game");
 
             List<int> listOfAcceptableInts = new List<int>() { 0, 1, 2, 3 };

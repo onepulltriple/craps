@@ -28,30 +28,39 @@
             this.ListOfBetsToEvaluate.Remove(deadBet);
         }
 
+        /// <summary>
+        /// The delegate methods should be invoked in the order that one would expect in a real craps game, which is:
+        /// 1 announce seven out, 
+        /// 2 figure out which bets won or lost, 
+        /// 3 change the puck status, 
+        /// 4 ask for a new roller
+        /// The PushlishOutcomes method "forces" the relative order of outcome determiniation relative to the collection of bets, since the collection of bets will be evaluated in an unordered fashion
+        /// </summary>
         public void PublishOutcomes() // report latest outcome (tell everyone what happened)
         {
-            // announce seven out
+            // 1 Announce seven out
             if (this.PuckAnnounceSevenOut != null)
             {
                 PuckAnnounceSevenOut.Invoke(this.die01Rolls.Last(), this.die02Rolls.Last());
             }
 
-            // check if the betting outcomes are positive or negative according to the evaluation method defined by each bet
+            // 2 Check outcomes for ALL bets
+            // Check if the betting outcomes are positive or negative according to the evaluation method defined by each bet
             foreach (OnDiceRolled BetToEvaluate in this.ListOfBetsToEvaluate.ToList())
             {
                 BetToEvaluate.Invoke(this.die01Rolls.Last(), this.die02Rolls.Last());
             }
 
-            // announce new roller
-            if (this.PuckAnnounceNewRoller != null)
-            {
-                PuckAnnounceNewRoller.Invoke(this.die01Rolls.Last(), this.die02Rolls.Last());
-            }
-
-            // update the puck status (after evaluating all bets)
+            // 3 Update the puck status (after evaluating all bets)
             if (this.PuckEvaluateStatus != null)
             {
                 PuckEvaluateStatus.Invoke(this.die01Rolls.Last(), this.die02Rolls.Last());
+            }
+
+            // 4 Announce new roller
+            if (this.PuckAnnounceNewRoller != null)
+            {
+                PuckAnnounceNewRoller.Invoke(this.die01Rolls.Last(), this.die02Rolls.Last());
             }
         }
     }

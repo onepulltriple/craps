@@ -12,7 +12,7 @@
         {
             Console.WriteLine("What would you like to do?");
             Console.WriteLine("1. Set the minimum bet amount for the craps table.");
-            //Console.WriteLine("The table minimum must be a multiple of 5.");
+            
             Console.WriteLine("\n0. Quit");
 
             List<int> listOfAcceptableInts = new List<int>() { 0, 1 };

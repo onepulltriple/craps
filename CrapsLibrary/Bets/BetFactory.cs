@@ -1,4 +1,5 @@
-﻿using System.Reflection.Metadata.Ecma335;
+﻿using System.Numerics;
+using System.Reflection.Metadata.Ecma335;
 
 namespace CrapsLibrary.Bets
 {
@@ -65,7 +66,7 @@ namespace CrapsLibrary.Bets
         public static Result<Bet> CreateBet(CrapsTable crapsTable, Player player, betType playerBetType, uint amountThrownAtBet)
         {
             if (player.purse < amountThrownAtBet) // the player cannot bet more than they have
-                return Result<Bet>.Fail("Test01", "Test02");
+                return Result<Bet>.Fail("The bet amount may not exceed the player's purse amount.", "You can't bet money you don't have!");
 
             // determine betting units
             uint unitOfBet =
@@ -74,7 +75,7 @@ namespace CrapsLibrary.Bets
                 betPayoutRatios[playerBetType].payoutDenominator;
 
             if (amountThrownAtBet < unitOfBet) // the player player cannot cover at least one bet of that type (e.g. throwing 5 credits at a Place_6)
-                return Result<Bet>.Fail("Test03", "Test04");
+                return Result<Bet>.Fail($"The minimum bet amount is {unitOfBet}.");
 
             uint countOfUnitsToBet = amountThrownAtBet / unitOfBet; // the quotient
             uint amountToBet = countOfUnitsToBet * unitOfBet; // quotient times units
@@ -126,39 +127,50 @@ namespace CrapsLibrary.Bets
                 case betType.PlaceBet_04: // wins when puck is on, then this number is rolled     
                     if (PlaceBet.IsPlaceBetAllowed(crapsTable, player, tempBetName))
                         tempBet = new PlaceBet(crapsTable, player, tempBetName, amountToBet, new List<int> { 4 }, payout);
+                    else
+                        return Result<Bet>.Fail("The player must have an active pass line bet to access this bet.");
                     break;                                                                       
                                                                                                  
                 case betType.PlaceBet_05: // wins when puck is on, then this number is rolled     
                     if (PlaceBet.IsPlaceBetAllowed(crapsTable, player, tempBetName))
                         tempBet = new PlaceBet(crapsTable, player, tempBetName, amountToBet, new List<int> { 5 }, payout);
+                    else
+                        return Result<Bet>.Fail("The player must have an active pass line bet to access this bet.");
                     break;                                                                       
                                                                                                  
                 case betType.PlaceBet_06: // wins when puck is on, then this number is rolled     
                     if (PlaceBet.IsPlaceBetAllowed(crapsTable, player, tempBetName)) 
                         tempBet = new PlaceBet(crapsTable, player, tempBetName, amountToBet, new List<int> { 6 }, payout);
+                    else
+                        return Result<Bet>.Fail("The player must have an active pass line bet to access this bet.");
                     break;                                                                       
                                                                                                  
                 case betType.PlaceBet_08: // wins when puck is on, then this number is rolled     
                     if (PlaceBet.IsPlaceBetAllowed(crapsTable, player, tempBetName)) 
                         tempBet = new PlaceBet(crapsTable, player, tempBetName, amountToBet, new List<int> { 8 }, payout);
+                    else
+                        return Result<Bet>.Fail("The player must have an active pass line bet to access this bet.");
                     break;                                                                       
                                                                                                  
                 case betType.PlaceBet_09: // wins when puck is on, then this number is rolled     
                     if (PlaceBet.IsPlaceBetAllowed(crapsTable, player, tempBetName)) 
                         tempBet = new PlaceBet(crapsTable, player, tempBetName, amountToBet, new List<int> { 9 }, payout);
+                    else
+                        return Result<Bet>.Fail("The player must have an active pass line bet to access this bet.");
                     break;                                                                       
                                                                                                  
                 case betType.PlaceBet_10: // wins when puck is on, then this number is rolled    
                     if (PlaceBet.IsPlaceBetAllowed(crapsTable, player, tempBetName))
-                        // TODO notify player why creating a place bet didn't work
                         tempBet = new PlaceBet(crapsTable, player, tempBetName, amountToBet, new List<int> { 10 }, payout);
+                    else
+                        return Result<Bet>.Fail("The player must have an active pass line bet to access this bet.");
                     break;
 
                 default:
                     return Result<Bet>.Fail("Unspecified bet attempted.");
             }
-            if (tempBet == null)
-                return Result<Bet>.Fail("Somehow tempBet is null when exiting the factory."); // bc of e.g. place bets
+            //if (tempBet == null)
+               // return Result<Bet>.Fail("Somehow tempBet is null when exiting the factory."); // bc of e.g. place bets
 
             return Result<Bet>.Pass(tempBet, "Good job");
         }

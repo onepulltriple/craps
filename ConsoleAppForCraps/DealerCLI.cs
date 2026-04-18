@@ -1,5 +1,4 @@
 ﻿using ConsoleAppForCraps.DealerCLIState;
-using CrapsLibrary;
 
 namespace ConsoleAppForCraps
 {
@@ -8,8 +7,6 @@ namespace ConsoleAppForCraps
         public const int columnWidth = 20;
         public const int gameFeedHeight = 8;
         public const int gameFeedWidth = 60;
-
-        public CrapsTable crapsTable = new (5, 5); // TODO create table inside DealerCLI init state
 
         public const int sleepDurationMilliseconds = 700;
 

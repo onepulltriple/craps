@@ -1,6 +1,6 @@
 ﻿namespace CrapsLibrary
 {
-    public class GameEventFeed // Game timeline
+    public class GameEventFeed // Game timeline (events that affect all players)
     {
         private readonly LinkedList<GameEvent> _events = new();
 
@@ -14,7 +14,8 @@
         /// <param name="gameEvent"></param>
         public void Add(GameEvent gameEvent)
         {
-            _events.AddFirst(gameEvent); // newest first
+            //_events.AddFirst(gameEvent); // newest first
+            _events.AddLast(gameEvent); // newest first
         }
 
         /// <summary>

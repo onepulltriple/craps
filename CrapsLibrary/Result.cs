@@ -2,6 +2,11 @@
 
 namespace CrapsLibrary
 {
+    /// <summary>
+    /// For handling individual user feedback when creating bets, players, etc.
+    /// Has to do with the results of creating things. i.e data validation error messages
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class Result<T>
     {
         [MemberNotNullWhen(true, nameof(Value))]

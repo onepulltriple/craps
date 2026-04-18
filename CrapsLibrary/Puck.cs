@@ -56,6 +56,11 @@
                     $"The puck is ON! The point is {passPoint}",
                     GameEventType.Outcome
                     );
+                crapsTable.gameEventFeed.Add(
+                    $"Place bets are now available!",
+                    GameEventType.Outcome,
+                    true
+                    );
 
                 return true;
             }
@@ -71,12 +76,24 @@
                     $"The point {passPoint} was MADE. The puck is OFF! Winner!",
                     GameEventType.Outcome
                     );
+                crapsTable.gameEventFeed.Add(
+                    $"Place bets are now paused/inaccessible!",
+                    GameEventType.Outcome,
+                    true
+                    );
 
                 return true;
             }
             return false;
         }
 
+
+        /// <summary>
+        /// Happens BEFORE the bets get evaluated
+        /// </summary>
+        /// <param name="firstOutcome"></param>
+        /// <param name="secondOutcome"></param>
+        /// <returns></returns>
         public bool IsOutcomeSevenOut(byte firstOutcome, byte secondOutcome)
         {
             // The puck is ON and then a seven is rolled
@@ -88,6 +105,11 @@
             return false;
         }
 
+        /// <summary>
+        /// Happens AFTER the bets get evaluated
+        /// </summary>
+        /// <param name="firstOutcome"></param>
+        /// <param name="secondOutcome"></param>
         public void AnnounceSevenOut(byte firstOutcome, byte secondOutcome)
         {
             // The puck is on and then a seven is rolled
@@ -107,7 +129,8 @@
             {
                 crapsTable.gameEventFeed.Add(
                     "New roller needed!",
-                    GameEventType.Outcome
+                    GameEventType.Outcome,
+                    true
                     );
             }
         }

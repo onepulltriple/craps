@@ -129,6 +129,7 @@ namespace CrapsLibrary.Bets
                         tempBet = new PlaceBet(crapsTable, player, tempBetName, amountToBet, new List<int> { 4 }, payout);
                     else
                         return Result<Bet>.Fail("The player must have an active pass line bet to access this bet.");
+                    // TODO user feedback should state exactly why creation failed (no pass line bet, vs puck off, point = chosen bet OR just don't offer inelgible bets
                     break;                                                                       
                                                                                                  
                 case betType.PlaceBet_05: // wins when puck is on, then this number is rolled     

@@ -190,7 +190,7 @@ namespace ConsoleAppForCraps.DealerCLIState
 
             GameEvent? lastDice = null;
 
-            foreach (var ev in dealerCLIStateMachine.crapsTable!.gameEventFeed.Events.Take(DealerCLI.gameFeedHeight))
+            foreach (var ev in dealerCLIStateMachine.crapsTable!.gameEventFeed.Events.Take(DealerCLI.gameFeedHeight).Reverse())
             {
                 if (ev.Type == GameEventType.DiceRoll)
                 {

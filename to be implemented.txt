@@ -13,3 +13,10 @@ need to handle error messaging on the BL level, and these messages get pushed to
 
 the puck should not be static, since this is one puck per table: it should be defined for an instance
 
+Alt + U : jump to a file
+Alt + G : jump to a member within a file
+
+Lost state for bets
+"reup all my just-lost bets"
+"light up the board"
+"all the hard ways"

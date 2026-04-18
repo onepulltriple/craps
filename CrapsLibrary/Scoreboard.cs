@@ -32,8 +32,8 @@
         /// The delegate methods should be invoked in the order that one would expect in a real craps game, which is:
         /// 1 announce seven out, 
         /// 2 figure out which bets won or lost, 
-        /// 3 change the puck status, 
-        /// 4 ask for a new roller
+        /// 3 ask for a new roller,
+        /// 4 change the puck status (as the last step), 
         /// The PushlishOutcomes method "forces" the relative order of outcome determiniation relative to the collection of bets, since the collection of bets will be evaluated in an unordered fashion
         /// </summary>
         public void PublishOutcomes() // report latest outcome (tell everyone what happened)
@@ -51,16 +51,16 @@
                 BetToEvaluate.Invoke(this.die01Rolls.Last(), this.die02Rolls.Last());
             }
 
-            // 3 Update the puck status (after evaluating all bets)
-            if (this.PuckEvaluateStatus != null)
-            {
-                PuckEvaluateStatus.Invoke(this.die01Rolls.Last(), this.die02Rolls.Last());
-            }
-
-            // 4 Announce new roller
+            // 3 Announce new roller
             if (this.PuckAnnounceNewRoller != null)
             {
                 PuckAnnounceNewRoller.Invoke(this.die01Rolls.Last(), this.die02Rolls.Last());
+            }
+
+            // 4 Update the puck status (after evaluating all bets)
+            if (this.PuckEvaluateStatus != null)
+            {
+                PuckEvaluateStatus.Invoke(this.die01Rolls.Last(), this.die02Rolls.Last());
             }
         }
     }

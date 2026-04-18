@@ -14,8 +14,7 @@
         /// <param name="gameEvent"></param>
         public void Add(GameEvent gameEvent)
         {
-            //_events.AddFirst(gameEvent); // newest first
-            _events.AddLast(gameEvent); // newest first
+            _events.AddFirst(gameEvent); // newest first
         }
 
         /// <summary>
@@ -23,9 +22,9 @@
         /// </summary>
         /// <param name="text"></param>
         /// <param name="type"></param>
-        public void Add(string text, GameEventType type = GameEventType.Message)
+        public void Add(string text, GameEventType type = GameEventType.Message, bool isContinutation = false)
         {
-            Add(new GameEvent(text, type));
+            Add(new GameEvent(text, type, isContinutation));
         }
     }
 }

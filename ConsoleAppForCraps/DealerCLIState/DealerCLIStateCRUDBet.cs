@@ -78,7 +78,7 @@ namespace ConsoleAppForCraps.DealerCLIState
                 Console.WriteLine(message);
             }
 
-            Console.ReadKey();
+            Console.ReadKey(); // TODO figure out how to handle these error messages (add loop so the user doesn't have to start from the beginning each time)
             //SleepCLI();
 
             this.Enter();

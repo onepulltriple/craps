@@ -31,7 +31,7 @@ namespace ConsoleAppForCraps.DealerCLIState
             return result;
         }
 
-        public uint ValidateUserInputUInt()
+        public uint ValidateUserInputUInt() // TODO find and remove all references to this
         {
             bool isUInt;
             uint result;
@@ -47,20 +47,20 @@ namespace ConsoleAppForCraps.DealerCLIState
             return result;
         }
 
-        public uint SetCrapsTableMinimum()
+        public uint SetCrapsTableMinimumCLI()
         {
-            bool IsOkay = false;
-            uint checkedInput;
-
+            Result<uint> tableMin;
             do
             {
-                Console.WriteLine("Enter a whole number that is a multiple of 5 and greater than or equal to 5."); // TODO
-                checkedInput = ValidateUserInputUInt();
-                if (checkedInput >= 5 && checkedInput % 5 == 0)
-                    IsOkay = true;
-            } while (!IsOkay);
+                string? input = Console.ReadLine();
+                tableMin = CrapsTable.SetCrapsTableMinimum(input);
+                
+                foreach (string message in tableMin.Messages)
+                    Console.WriteLine($"{message}");
+                
+            } while (!tableMin.Success);
 
-            return checkedInput;
+            return tableMin.Value;
         }
 
         public void SleepCLI(int milliseconds = DealerCLI.sleepDurationMilliseconds)
@@ -91,7 +91,9 @@ namespace ConsoleAppForCraps.DealerCLIState
 
             for (int i = 0; i < bets.Count; i++)
             {
-                Console.WriteLine($"{i + 1}. {bets[i].Key} (payout ratio {bets[i].Value.payoutNumerator}:{bets[i].Value.payoutDenominator})");
+                Console.WriteLine($"{i + 1}. " +
+                    $"{bets[i].Key} " +
+                    $"(payout ratio {bets[i].Value.payoutNumerator}:{bets[i].Value.payoutDenominator})");
                 listOfAcceptableInts.Add(i + 1);
             }
 

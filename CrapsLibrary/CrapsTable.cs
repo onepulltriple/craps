@@ -1,13 +1,11 @@
-﻿using CrapsLibrary.Bets;
-
-namespace CrapsLibrary
+﻿namespace CrapsLibrary
 {
     public class CrapsTable
     {
         public uint tableMinimum;
 
-        public uint absTableMinimum = 5;
-        // TODO no table instances my have less than a 5 credit minimum (not yet enforced)
+        public const uint absoluteTableMinimum = 5;
+        public const uint absoluteTableMaximum = 5000;
 
         public uint tableMaximum;
         
@@ -35,6 +33,18 @@ namespace CrapsLibrary
             this.tableMinimum = tableMinimum;
             this.tableMaximum = tableMaximum;
             this.puck = new Puck(this);
+        }
+
+        public static Result<uint> SetCrapsTableMinimum(string? inputToCheck)
+        {
+            uint checkedInput;
+            bool isUInt = uint.TryParse(inputToCheck, out checkedInput);
+
+            if (isUInt && checkedInput >= absoluteTableMinimum && checkedInput % 5 == 0)
+            {
+                return Result<uint>.Pass(checkedInput, $"The table minimum has been set to {checkedInput}.");
+            }
+            return Result<uint>.Fail("Please input a whole number that is greater than or equal to 5 and also a multiple of 5.");
         }
 
         public void AddPlayer(Player playerToAdd) // adds the new player to the end

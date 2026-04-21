@@ -73,7 +73,7 @@ namespace CrapsLibrary.Bets
             // determine betting units
             uint unitOfBet =
                 crapsTable.tableMinimum /
-                crapsTable.absTableMinimum * 
+                CrapsTable.absoluteTableMinimum * 
                 betPayoutRatios[playerBetType].payoutDenominator;
 
             if (amountThrownAtBet < unitOfBet) // the player player cannot cover at least one bet of that type (e.g. throwing 5 credits at a Place_6)

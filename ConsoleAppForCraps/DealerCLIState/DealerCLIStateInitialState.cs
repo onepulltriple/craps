@@ -1,4 +1,6 @@
-﻿namespace ConsoleAppForCraps.DealerCLIState
+﻿using CrapsLibrary;
+
+namespace ConsoleAppForCraps.DealerCLIState
 {
     internal class DealerCLIStateInitialState : DealerCLIState
     {
@@ -24,9 +26,10 @@
             switch (input)
             {
                 case 1:
-                    uint tableMinimum = SetCrapsTableMinimum();
-                    dealerCLIStateMachine.crapsTable = new(tableMinimum, tableMinimum * 1000); 
-                    // TODO handle table max properly
+                    Console.WriteLine("Please input a whole number that is greater than or equal to 5 " +
+                        "and also a multiple of 5.");
+                    uint tableMinimum = SetCrapsTableMinimumCLI();
+                    dealerCLIStateMachine.crapsTable = new(tableMinimum, CrapsTable.absoluteTableMaximum); 
 
                     dealerCLIStateMachine.ChangeState(new DealerCLIStateOverview(dealerCLIStateMachine));
                     break;

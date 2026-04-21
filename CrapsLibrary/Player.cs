@@ -23,10 +23,10 @@ namespace CrapsLibrary
             return purse;
         }
 
-        public void CreateBet(Bet newBet)
-        {
-            playerBetList.Add(newBet);
-        }
+        //public void CreateBet(Bet newBet)
+        //{
+        //    playerBetList.Add(newBet);
+        //}
         // become new roller
         // skip my roll
         // throw dice

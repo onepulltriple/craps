@@ -19,9 +19,9 @@ namespace CrapsLibrary.Bets
         internal BetWorkingStateMachine betWorkingStateMachine;
 
         /// <summary>
-        /// A bet is 'working' when it is subscribed to the outcomes of the CrapsTable.scoreboard and has an owner, i.e. a player.
+        /// A bet is 'working' when it is subscribed to the outcomes of the the scoreboard and has an owner (a player).
         /// A bet is paused when it is unsubscribed but still has an owner.
-        /// A bet is no longer working when it loses its owner, at which point it will be killed and queued for garbage collection.
+        /// When a bet is lost its state changes accordingly, which holds the owner's bet history.
         /// </summary>
         /// <param name="betOwner"></param>
         /// <param name="betName"></param>

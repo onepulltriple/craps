@@ -7,16 +7,14 @@ what to do with lost bets (if anything)
 House.cs to store the house's money, to which purchased bets are paid and from which won bets are substracted
 if the point becomes the same number as an existing place bet, offer to move that place bet to its "twin",  give it back to the player, or move to the odds bet
 
-full and partial paylay bet states
+partial parlay bet state
 
 need to handle error messaging on the BL level, and these messages get pushed to the UI, no matter if the UI is CLI or WPF
-
-the puck should not be static, since this is one puck per table: it should be defined for an instance
 
 Alt + U : jump to a file
 Alt + G : jump to a member within a file
 
-Lost state for bets
+Lost state for bets:
 "reup all my just-lost bets"
 "light up the board"
 "all the hard ways"

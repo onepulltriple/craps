@@ -12,27 +12,33 @@ namespace CrapsLibrary.BetWorkingState
 
         public override void Enter()
         {
-            betWorkingStateMachine.crapsTable.scoreboard.NewSubscriber(this.EvaluateBet);
+            //betWorkingStateMachine.crapsTable.scoreboard.NewSubscriber(this.EvaluateBet);
 
             // Called-off/paused bets remain paused until set back to working or removed/quit.
-            betWorkingStateMachine.crapsTable.gameEventFeed.Add(
-                $"{betInQuestion.betOwner.playerName} has called off (paused) the bet {betInQuestion.betName}!",
-                GameEventType.Message
-                );
+            AnnouncePaused();
         }
 
         public override void EvaluateBet(byte firstOutcome, byte secondOutcome)
         {
-            // do nothing
-            betWorkingStateMachine.crapsTable.gameEventFeed.Add(
-                $"{betInQuestion.betOwner.playerName}'s {betInQuestion.betName} is still off.",
-                GameEventType.Message
-                );
+            if (betInQuestion.MeetsFirstWinningCondition(firstOutcome, secondOutcome))
+            {
+                // taunt player (like a good dealer would)
+                // you would have to know if the place bets were paused by the player or the game itself
+                //AnnounceTaunt();
+
+                //return;
+            }
+
+            if (betInQuestion.MeetsLosingCondition(firstOutcome, secondOutcome))
+            {
+                // do nothing
+                // announce bullet dodged
+            }
         }
 
         public override void Exit()
         {
-            betWorkingStateMachine.crapsTable.scoreboard.Unsubscribe(this.EvaluateBet);
+            //betWorkingStateMachine.crapsTable.scoreboard.Unsubscribe(this.EvaluateBet);
         }
     }
 }

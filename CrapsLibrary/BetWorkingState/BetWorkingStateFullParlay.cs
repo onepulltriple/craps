@@ -2,9 +2,9 @@
 
 namespace CrapsLibrary.BetWorkingState
 {
-    internal class BetWorkingStateReturnWinnings : BetWorkingState
+    internal class BetWorkingStateFullParlay : BetWorkingState
     {
-        public BetWorkingStateReturnWinnings(BetWorkingStateMachine betWorkingStateMachine, Bet betInQuestion) : base(betWorkingStateMachine, betInQuestion)
+        public BetWorkingStateFullParlay(BetWorkingStateMachine betWorkingStateMachine, Bet betInQuestion) : base(betWorkingStateMachine, betInQuestion)
         {
             //this.betWorkingStateMachine = betWorkingStateMachine; // this is done by the base constructor
             //this.betInQuestion = betInQuestion; // this is done by the base constructor
@@ -21,8 +21,8 @@ namespace CrapsLibrary.BetWorkingState
             {
                 AnnounceReturnWinnings(firstOutcome, secondOutcome);
 
-                // pay winnings directly
-                betInQuestion.betOwner.purse += betInQuestion.payout;
+                // parlay full amount
+                betInQuestion.commitment += betInQuestion.payout;
                 return;
             }
 
@@ -33,7 +33,7 @@ namespace CrapsLibrary.BetWorkingState
                     new BetWorkingStateLost(betWorkingStateMachine, betInQuestion));
             }
         }
-        
+
         public override void Exit()
         {
             betWorkingStateMachine.crapsTable.scoreboard.Unsubscribe(this.EvaluateBet);

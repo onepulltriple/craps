@@ -7,15 +7,15 @@ namespace CrapsLibrary
         public uint tableMinimum;
 
         public uint absTableMinimum = 5;
-        // no table instances my have less than a 5 credit minimum (not yet enforced) //TODO
+        // TODO no table instances my have less than a 5 credit minimum (not yet enforced)
 
         public uint tableMaximum;
         
         public Puck puck;
 
-        // A scoreboard is bound to a crapsTable by virture of the crapsTable's puck's delegate methods
-        // which are set in the puck's constructor. The scoreboard it does not needs a crapsTable reference
-        // because the scoreboard does not need to refer to any craps table properties.
+        // A scoreboard is bound to a crapsTable by virture of the crapsTable's puck's delegate methods,
+        // which are set in the puck's constructor. The scoreboard itself does not needs a crapsTable reference
+        // because the scoreboard does not need to refer to any craps table members.
         public Scoreboard scoreboard = new Scoreboard(); 
 
         public GameEventFeed gameEventFeed = new GameEventFeed();

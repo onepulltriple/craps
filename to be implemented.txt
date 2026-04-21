@@ -21,3 +21,5 @@ Lost state for bets
 "light up the board"
 "all the hard ways"
 each player only has one bet of each type
+
+player can't create a pass line bet after the point has been established.

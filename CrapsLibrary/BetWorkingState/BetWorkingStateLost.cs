@@ -12,7 +12,7 @@ namespace CrapsLibrary.BetWorkingState
 
         public override void Enter()
         {
-            // do nothing
+            AnnounceLost();
         }
 
         public override void EvaluateBet(byte firstOutcome, byte secondOutcome)

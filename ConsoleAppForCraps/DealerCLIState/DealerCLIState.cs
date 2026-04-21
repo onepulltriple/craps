@@ -1,17 +1,15 @@
 ﻿using CrapsLibrary;
 using CrapsLibrary.Bets;
-using System.Transactions;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace ConsoleAppForCraps.DealerCLIState
 {
     abstract class DealerCLIState
     {
-        protected DealerCLIStateMachine dealerCLIStateMachine; // the garage
+        protected DealerCLIStateMachine dealerCLIStateMachine;
 
         public DealerCLIState(DealerCLIStateMachine dealerCLIStateMachine)
         {
-            this.dealerCLIStateMachine = dealerCLIStateMachine; // one of several cars
+            this.dealerCLIStateMachine = dealerCLIStateMachine;
         }
 
         public abstract void Enter();
@@ -40,7 +38,7 @@ namespace ConsoleAppForCraps.DealerCLIState
 
             do
             {
-                Console.Write("Please enter an amount to credit to the player (enter a positive whole number or 0 to abort): "); // TODO
+                Console.Write("Please enter an amount to credit to the player (enter a positive whole number or 0 to abort): ");
                 string? input = Console.ReadLine();
                 isUInt = uint.TryParse(input, out result);
 
@@ -121,7 +119,6 @@ namespace ConsoleAppForCraps.DealerCLIState
         protected void UpdateScreen()
         {
             Console.Clear();
-
             
             var players = dealerCLIStateMachine.crapsTable!.Players;
 
@@ -165,7 +162,7 @@ namespace ConsoleAppForCraps.DealerCLIState
                         {
                             cellText = player.playerBetList[betIndex]?.betName.ToString() ?? "";
                         }
-                        // if bet state is paused, add " (OFF)" to the end of the cell text
+                        // TODO if bet state is paused, add " (OFF)" to the end of the cell text
                     }
 
                     Console.Write(" " + cellText.PadRight(DealerCLI.columnWidth - 1) + "|");

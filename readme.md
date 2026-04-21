@@ -1,3 +1,13 @@
+# User-facing information
+- Result<T>:
+    - avoids expected data validation issues by providing error messages to the user when creating objects
+- GameEvent:
+    -   DiceRoll:   states the outcomes of the two die rolls (D6) and their sum
+    -   Outcome:    reports changes to the craps table's peripherals (puck, etc.) which were caused by the last DiceRoll
+    -   Message:    reports status information for bets and players
+    -   Warning:    notifies users of various issues
+
+
 # States of the Craps Table
 
 |                                    | Puck OFF      | Puck ON       |
@@ -31,6 +41,7 @@ States:
 Return winnings (the base state) (evaluate bets and payout "like normal")
 Be paused (not affected by play) (don't evaluate bets)
 Be parlayed (until acted upon otherwise) (evaluate bets and add winnings to committed amount)
+Lost (held by the player to aid with quick re-ups)
 
 Property
 IsEnabled (at the table level) (e.g. no place bets allowed when the point is off)

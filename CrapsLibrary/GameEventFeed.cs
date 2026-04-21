@@ -8,10 +8,6 @@
 
         public GameEventFeed() { }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="gameEvent"></param>
         public void Add(GameEvent gameEvent)
         {
             _events.AddFirst(gameEvent); // newest first
@@ -20,8 +16,9 @@
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="text"></param>
+        /// <param name="text">The information to be displayed to the user.</param>
         /// <param name="type"></param>
+        /// <param name="isContinuation">If true, this information will be treated as a continuation of the preceding information.</param>
         public void Add(string text, GameEventType type = GameEventType.Message, bool isContinutation = false)
         {
             Add(new GameEvent(text, type, isContinutation));

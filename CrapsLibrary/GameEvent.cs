@@ -2,19 +2,19 @@
 {
     public enum GameEventType
     {
-        DiceRoll,       // starts a block
+        DiceRoll,       // states the outcomes of the two die rolls (D6) and their sum
         Outcome,        // indented under last DiceRoll
-        Message,        // normal line
-        Warning         // normal line (maybe prefixed later)
+        Message,        
+        Warning         
     }
 
-    public class GameEvent // What happened?
+    public class GameEvent 
     {
         public GameEventType Type { get; }
 
-        public string Text { get; }
+        public string Text { get; } // what happened?
 
-        public bool IsContinuation { get; }
+        public bool IsContinuation { get; } // does this information belong with another?
 
         public GameEvent(string text, GameEventType type = GameEventType.Message, bool isContinuation = false)
         {

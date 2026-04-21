@@ -15,19 +15,23 @@ namespace CrapsLibrary.BetWorkingState
             betWorkingStateMachine.crapsTable.scoreboard.NewSubscriber(this.EvaluateBet);
 
             // Called-off/paused bets remain paused until set back to working or removed/quit.
-            Console.WriteLine($"{betInQuestion.betOwner.playerName} has called off (paused) the bet {betInQuestion.betName}!");
+            betWorkingStateMachine.crapsTable.gameEventFeed.Add(
+                $"{betInQuestion.betOwner.playerName} has called off (paused) the bet {betInQuestion.betName}!",
+                GameEventType.Message
+                );
         }
 
         public override void EvaluateBet(byte firstOutcome, byte secondOutcome)
         {
             // do nothing
-            Console.WriteLine($"{betInQuestion.betOwner.playerName}'s {betInQuestion.betName} is still off.");
+            betWorkingStateMachine.crapsTable.gameEventFeed.Add(
+                $"{betInQuestion.betOwner.playerName}'s {betInQuestion.betName} is still off.",
+                GameEventType.Message
+                );
         }
 
         public override void Exit()
         {
-            // Console.WriteLine($"{betInQuestion.betOwner.playerName}'s {betInQuestion.betName} is back on."); 
-            // the bet could also be taken down/quit
             betWorkingStateMachine.crapsTable.scoreboard.Unsubscribe(this.EvaluateBet);
         }
     }

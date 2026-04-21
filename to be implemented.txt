@@ -20,3 +20,4 @@ Lost state for bets
 "reup all my just-lost bets"
 "light up the board"
 "all the hard ways"
+each player only has one bet of each type

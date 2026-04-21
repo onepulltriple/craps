@@ -45,7 +45,7 @@
             }
 
             // 2 Check outcomes for ALL bets
-            // Check if the betting outcomes are positive or negative according to the evaluation method defined by each bet
+            //   Check if the betting outcomes are positive or negative via the evaluation method defined by each bet
             foreach (OnDiceRolled BetToEvaluate in this.ListOfBetsToEvaluate.ToList())
             {
                 BetToEvaluate.Invoke(this.die01Rolls.Last(), this.die02Rolls.Last());

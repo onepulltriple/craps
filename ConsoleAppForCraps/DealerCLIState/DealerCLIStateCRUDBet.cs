@@ -1,5 +1,4 @@
-﻿
-using CrapsLibrary;
+﻿using CrapsLibrary;
 using CrapsLibrary.Bets;
 using System.Numerics;
 

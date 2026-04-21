@@ -66,7 +66,9 @@ namespace CrapsLibrary.Bets
         public static Result<Bet> CreateBet(CrapsTable crapsTable, Player player, betType playerBetType, uint amountThrownAtBet)
         {
             if (player.purse < amountThrownAtBet) // the player cannot bet more than they have
-                return Result<Bet>.Fail("The bet amount may not exceed the player's purse amount.", "You can't bet money you don't have!");
+                return Result<Bet>.Fail(
+                    "The bet amount may not exceed the player's purse amount.", "You can't bet money you don't have!"
+                    );
 
             // determine betting units
             uint unitOfBet =
@@ -75,7 +77,9 @@ namespace CrapsLibrary.Bets
                 betPayoutRatios[playerBetType].payoutDenominator;
 
             if (amountThrownAtBet < unitOfBet) // the player player cannot cover at least one bet of that type (e.g. throwing 5 credits at a Place_6)
-                return Result<Bet>.Fail($"The minimum bet amount is {unitOfBet}.");
+                return Result<Bet>.Fail(
+                    $"The minimum bet amount is {unitOfBet}."
+                    );
 
             uint countOfUnitsToBet = amountThrownAtBet / unitOfBet; // the quotient
             uint amountToBet = countOfUnitsToBet * unitOfBet; // quotient times units

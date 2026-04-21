@@ -31,9 +31,13 @@ namespace CrapsLibrary.Bets
 
         public static bool IsPlaceBetAllowed(CrapsTable crapsTable, Player playerToCheck, string betName)
         {
-            return playerToCheck.playerBetList.Any(bet => bet.betName == "PassBet") // player must have placed a pass bet
-                && crapsTable.puck.IsOn                                             // the puck may not be OFF, i.e. a point must be established
-                && int.Parse(betName.Split('_')[1]) != crapsTable.puck.passPoint;   // place bets cannot be placed on the point
+            // TODO return a Result<bool>
+                // player must have placed a pass bet
+            return playerToCheck.playerBetList.Any(bet => bet.betName == "PassBet") 
+                // the puck may not be OFF, i.e. a point must be established
+                && crapsTable.puck.IsOn                                             
+                // place bets cannot be placed on the point
+                && int.Parse(betName.Split('_')[1]) != crapsTable.puck.passPoint;   
         }
     }
 }

@@ -76,7 +76,7 @@ namespace CrapsLibrary.Bets
                 CrapsTable.absoluteTableMinimum * 
                 betPayoutRatios[playerBetType].payoutDenominator;
 
-            if (amountThrownAtBet < unitOfBet) // the player player cannot cover at least one bet of that type (e.g. throwing 5 credits at a Place_6)
+            if (amountThrownAtBet < unitOfBet) // the player player cannot cover at least one bet of that type (e.g. throwing 5 credits at a Place_06)
                 return Result<Bet>.Fail(
                     $"The minimum bet amount is {unitOfBet}."
                     );
@@ -177,7 +177,7 @@ namespace CrapsLibrary.Bets
             //if (tempBet == null)
                // return Result<Bet>.Fail("Somehow tempBet is null when exiting the factory."); // bc of e.g. place bets
 
-            return Result<Bet>.Pass(tempBet, "Good job");
+            return Result<Bet>.Pass(tempBet, $"{tempBet.betOwner} has bet {tempBet.commitment} on {tempBet.betName}.");
         }
     }
 }

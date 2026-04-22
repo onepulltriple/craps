@@ -68,6 +68,26 @@ namespace ConsoleAppForCraps.DealerCLIState
             Thread.Sleep(milliseconds);
         }
 
+
+        //protected T SelectObjectByNameCLI<T>(List<T> listOfObjects) where T : IHasName
+        //{
+        //    List<int> listOfAcceptableInts = new();
+
+        //    for (int i = 0; i < listOfObjects.Count; i++)
+        //    {
+        //        Console.WriteLine($"{i + 1}. {listOfObjects[i].Name}");
+        //        listOfAcceptableInts.Add(i + 1);
+        //    }
+
+        //    return listOfObjects[ValidateUserInputCLIMenu(listOfAcceptableInts) - 1];
+        //}
+
+        //protected Player SelectPlayerCLI()
+        //{
+        //    return SelectObjectByNameCLI(dealerCLIStateMachine.crapsTable!.Players);
+        //}
+
+
         protected Player SelectPlayerCLI()
         {
             List<int> listOfAcceptableInts = new();
@@ -76,7 +96,7 @@ namespace ConsoleAppForCraps.DealerCLIState
 
             for (int i = 0; i < players.Count; i++)
             {
-                Console.WriteLine($"{i + 1}. {players[i].playerName}");
+                Console.WriteLine($"{i + 1,2}. {players[i].playerName}");
                 listOfAcceptableInts.Add(i + 1);
             }
 
@@ -89,11 +109,17 @@ namespace ConsoleAppForCraps.DealerCLIState
 
             var bets = BetFactory.betPayoutRatios.ToList();
 
+            int scaleUpFactor = (int)(dealerCLIStateMachine.crapsTable!.tableMinimum / CrapsTable.absoluteTableMinimum);
+
             for (int i = 0; i < bets.Count; i++)
             {
-                Console.WriteLine($"{i + 1}. " +
-                    $"{bets[i].Key} " +
-                    $"(payout ratio {bets[i].Value.payoutNumerator}:{bets[i].Value.payoutDenominator})");
+                Console.WriteLine(
+                    $"{i + 1,4}. " +
+                    $"{bets[i].Key,-15}" +
+                    $"Minimum bet = {scaleUpFactor * bets[i].Value.payoutDenominator,-4} " +
+                    $"(payout ratio {bets[i].Value.payoutNumerator,2}" +
+                    $":{bets[i].Value.payoutDenominator,2})");
+
                 listOfAcceptableInts.Add(i + 1);
             }
 
@@ -108,7 +134,7 @@ namespace ConsoleAppForCraps.DealerCLIState
 
             for (int i = 0; i < betsOfPlayer.Count; i++)
             {
-                Console.WriteLine($"{i + 1}. {betsOfPlayer[i].betName}");
+                Console.WriteLine($"{i + 1,2}. {betsOfPlayer[i].betName}");
                 listOfAcceptableInts.Add(i + 1);
             }
 

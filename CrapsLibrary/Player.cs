@@ -8,6 +8,8 @@ namespace CrapsLibrary
 
         public string playerName;
 
+        public string Name => playerName;
+
         public List<Bet> playerBetList;
 
         public Player(string playerName, uint startingPurse = 0)

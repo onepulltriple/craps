@@ -60,6 +60,7 @@
             // only works for addition (multiplication should use 1 to abort)
         }
 
+
         public void AddPlayer(Player playerToAdd) // adds the new player to the end
         {
             players.Add(playerToAdd);

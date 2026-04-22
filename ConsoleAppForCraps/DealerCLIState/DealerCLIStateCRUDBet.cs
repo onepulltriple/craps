@@ -60,8 +60,8 @@ namespace ConsoleAppForCraps.DealerCLIState
             Console.WriteLine("Select the type of bet to be placed:");
             betType selectedBetType = SelectBetFromFactoryCLI();
 
-            Console.Write("Please enter an amount to bet (enter a positive whole number or 0 to abort): ");
-            uint amountThrownAtBet = ValidateUserInputUInt();
+            Console.Write("Please enter an amount to bet: ");
+            uint amountThrownAtBet = ValidateUserInputUIntCLI();
 
             // somewhere there needs to be info for the player about the table minimum, and something should happen if they give bogus input
 

@@ -90,11 +90,11 @@ namespace ConsoleAppForCraps.DealerCLIState
 
         private void AddMoneyToPurseCLI()
         {
-            Console.WriteLine("Select the player who shall receive money:");
+            Console.WriteLine("Select the player who shall receive money: ");
             Player playerToFund = SelectPlayerCLI();
 
-            Console.Write("Please enter an amount to credit to the player (enter a positive whole number or 0 to abort): ");
-            uint amountToCredit = ValidateUserInputUInt();
+            Console.Write("Please enter an amount to credit to the player: ");
+            uint amountToCredit = ValidateUserInputUIntCLI();
             playerToFund.purse += amountToCredit;
 
             Console.WriteLine($"\n{playerToFund.playerName} has been credited {amountToCredit} which brings their total purse to {playerToFund.purse}.");

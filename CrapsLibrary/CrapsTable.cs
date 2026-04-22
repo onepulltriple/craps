@@ -40,11 +40,24 @@
             uint checkedInput;
             bool isUInt = uint.TryParse(inputToCheck, out checkedInput);
 
-            if (isUInt && checkedInput >= absoluteTableMinimum && checkedInput % 5 == 0)
+            if (isUInt && checkedInput >= absoluteTableMinimum && checkedInput % 5 == 0 && checkedInput <= absoluteTableMaximum)
             {
                 return Result<uint>.Pass(checkedInput, $"The table minimum has been set to {checkedInput}.");
             }
-            return Result<uint>.Fail("Please input a whole number that is greater than or equal to 5 and also a multiple of 5.");
+            return Result<uint>.Fail("Please input a whole number that is greater than or equal to 5 and also a multiple of 5: ");
+        }
+
+        public static Result<uint> ValidateUserInputUInt(string? inputToCheck)
+        {
+            uint checkedInput;
+            bool isUInt = uint.TryParse(inputToCheck, out checkedInput);
+
+            if (isUInt)
+            {
+                return Result<uint>.Pass(checkedInput);
+            }
+            return Result<uint>.Fail("Please enter a positive whole number (or 0 to abort): "); 
+            // only works for addition (multiplication should use 1 to abort)
         }
 
         public void AddPlayer(Player playerToAdd) // adds the new player to the end
@@ -81,27 +94,6 @@
             currentIndex = (currentIndex + 1) % players.Count;
         }
 
-        //public (byte, byte) RollDice(byte numSides01, byte numSides02)
-        //{
-        //    Die Die01 = new(numSides01);
-        //    Die Die02 = new(numSides02);
-        //    byte outcome01 = Die01.NewOutcome();
-        //    byte outcome02 = Die02.NewOutcome();
 
-        //    return (outcome01, outcome02);
-        //}
-
-        //public void UpdateScoreboardAndPublishOutcomes(byte outcome01, byte outcome02)
-        //{
-        //    scoreboard.die01Rolls.Add(outcome01);
-        //    scoreboard.die02Rolls.Add(outcome02);
-
-        //    gameEventFeed.Add(
-        //        $"{outcome01}, {outcome02} --> {outcome01 + outcome02}",
-        //        GameEventType.DiceRoll
-        //        );
-
-        //    scoreboard.PublishOutcomes();
-        //}
     }
 }

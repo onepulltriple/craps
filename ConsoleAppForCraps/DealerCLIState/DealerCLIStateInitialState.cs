@@ -12,7 +12,7 @@ namespace ConsoleAppForCraps.DealerCLIState
 
         public override void Enter()
         {
-            Console.WriteLine("What would you like to do?");
+            Console.WriteLine("What would you like to do?\n");
             Console.WriteLine("1. Set the minimum bet amount for the craps table.");
             
             Console.WriteLine("\n0. Quit");
@@ -26,8 +26,8 @@ namespace ConsoleAppForCraps.DealerCLIState
             switch (input)
             {
                 case 1:
-                    Console.WriteLine("Please input a whole number that is greater than or equal to 5 " +
-                        "and also a multiple of 5.");
+                    Console.Write("Please input a whole number that is greater than or equal to 5 " +
+                        "and also a multiple of 5: ");
                     uint tableMinimum = SetCrapsTableMinimumCLI();
                     dealerCLIStateMachine.crapsTable = new(tableMinimum, CrapsTable.absoluteTableMaximum); 
 

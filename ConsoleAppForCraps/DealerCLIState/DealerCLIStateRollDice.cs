@@ -14,7 +14,7 @@ namespace ConsoleAppForCraps.DealerCLIState
             UpdateScreen();
             RenderGameFeedCLI();
 
-            Console.WriteLine("Ready to roll?");
+            Console.WriteLine("Ready to roll?\n");
             Console.WriteLine("1: Roll dice!");
             Console.WriteLine("\n0. Return to overview");
 
@@ -31,7 +31,7 @@ namespace ConsoleAppForCraps.DealerCLIState
                     break;
 
                 case 0:
-                    // Change state to overview
+                    // change state to overview
                     dealerCLIStateMachine.ChangeState(new DealerCLIStateOverview(dealerCLIStateMachine));
                     break;
 

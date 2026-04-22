@@ -31,20 +31,20 @@ namespace ConsoleAppForCraps.DealerCLIState
             return result;
         }
 
-        public uint ValidateUserInputUInt() // TODO find and remove all references to this
+        public uint ValidateUserInputUIntCLI()
         {
-            bool isUInt;
-            uint result;
-
+            Result<uint> validUInt;
             do
             {
-                Console.Write("Please enter an amount to credit to the player (enter a positive whole number or 0 to abort): ");
                 string? input = Console.ReadLine();
-                isUInt = uint.TryParse(input, out result);
+                validUInt = CrapsTable.ValidateUserInputUInt(input);
 
-            } while (!isUInt);
+                foreach (string message in validUInt.Messages)
+                    Console.Write(message);
 
-            return result;
+            } while (!validUInt.Success);
+
+            return validUInt.Value;
         }
 
         public uint SetCrapsTableMinimumCLI()
@@ -56,7 +56,7 @@ namespace ConsoleAppForCraps.DealerCLIState
                 tableMin = CrapsTable.SetCrapsTableMinimum(input);
                 
                 foreach (string message in tableMin.Messages)
-                    Console.WriteLine($"{message}");
+                    Console.Write(message);
                 
             } while (!tableMin.Success);
 

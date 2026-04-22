@@ -81,27 +81,27 @@
             currentIndex = (currentIndex + 1) % players.Count;
         }
 
-        public (byte, byte) RollDice(byte numSides01, byte numSides02)
-        {
-            Die Die01 = new(numSides01);
-            Die Die02 = new(numSides02);
-            byte outcome01 = Die01.NewOutcome();
-            byte outcome02 = Die02.NewOutcome();
+        //public (byte, byte) RollDice(byte numSides01, byte numSides02)
+        //{
+        //    Die Die01 = new(numSides01);
+        //    Die Die02 = new(numSides02);
+        //    byte outcome01 = Die01.NewOutcome();
+        //    byte outcome02 = Die02.NewOutcome();
 
-            return (outcome01, outcome02);
-        }
+        //    return (outcome01, outcome02);
+        //}
 
-        public void UpdateScoreboardAndPublishOutcomes(byte outcome01, byte outcome02)
-        {
-            scoreboard.die01Rolls.Add(outcome01);
-            scoreboard.die02Rolls.Add(outcome02);
+        //public void UpdateScoreboardAndPublishOutcomes(byte outcome01, byte outcome02)
+        //{
+        //    scoreboard.die01Rolls.Add(outcome01);
+        //    scoreboard.die02Rolls.Add(outcome02);
 
-            gameEventFeed.Add(
-                $"{outcome01}, {outcome02} --> {outcome01 + outcome02}",
-                GameEventType.DiceRoll
-                );
+        //    gameEventFeed.Add(
+        //        $"{outcome01}, {outcome02} --> {outcome01 + outcome02}",
+        //        GameEventType.DiceRoll
+        //        );
 
-            scoreboard.PublishOutcomes();
-        }
+        //    scoreboard.PublishOutcomes();
+        //}
     }
 }

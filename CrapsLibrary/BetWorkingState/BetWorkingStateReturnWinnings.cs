@@ -4,10 +4,13 @@ namespace CrapsLibrary.BetWorkingState
 {
     internal class BetWorkingStateReturnWinnings : BetWorkingState
     {
+        public override string Name { get; }
+
         public BetWorkingStateReturnWinnings(BetWorkingStateMachine betWorkingStateMachine, Bet betInQuestion) : base(betWorkingStateMachine, betInQuestion)
         {
             //this.betWorkingStateMachine = betWorkingStateMachine; // this is done by the base constructor
             //this.betInQuestion = betInQuestion; // this is done by the base constructor
+            this.Name = "Normal";
         }
 
         public override void Enter()

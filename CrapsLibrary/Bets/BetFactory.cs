@@ -177,7 +177,7 @@ namespace CrapsLibrary.Bets
             //if (tempBet == null)
                // return Result<Bet>.Fail("Somehow tempBet is null when exiting the factory."); // bc of e.g. place bets
 
-            return Result<Bet>.Pass(tempBet, $"{tempBet.betOwner} has bet {tempBet.commitment} on {tempBet.betName}.");
+            return Result<Bet>.Pass(tempBet, $"{tempBet.betOwner.Name} has bet {tempBet.commitment} on {tempBet.betName}.");
         }
     }
 }

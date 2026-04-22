@@ -4,10 +4,13 @@ namespace CrapsLibrary.BetWorkingState
 {
     internal class BetWorkingStateFullParlay : BetWorkingState
     {
+        public override string Name { get; }
+        
         public BetWorkingStateFullParlay(BetWorkingStateMachine betWorkingStateMachine, Bet betInQuestion) : base(betWorkingStateMachine, betInQuestion)
         {
             //this.betWorkingStateMachine = betWorkingStateMachine; // this is done by the base constructor
             //this.betInQuestion = betInQuestion; // this is done by the base constructor
+            this.Name = "Full Parlay";
         }
 
         public override void Enter()

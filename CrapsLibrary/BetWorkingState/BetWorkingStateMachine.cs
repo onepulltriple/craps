@@ -6,6 +6,8 @@
 
         internal BetWorkingState? currentBetWorkingState;
 
+        public string CurrentStateName => currentBetWorkingState?.Name ?? "";
+
         public BetWorkingStateMachine(CrapsTable crapsTable)
         {
             // the starting state would go here

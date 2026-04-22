@@ -18,6 +18,8 @@ namespace CrapsLibrary.Bets
 
         internal BetWorkingStateMachine betWorkingStateMachine;
 
+        public string BetWorkingState => betWorkingStateMachine.CurrentStateName;
+
         /// <summary>
         /// A bet is 'working' when it is subscribed to the outcomes of the the scoreboard and has an owner (a player).
         /// A bet is paused when it is unsubscribed but still has an owner.

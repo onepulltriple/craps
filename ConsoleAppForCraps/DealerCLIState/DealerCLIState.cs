@@ -156,13 +156,13 @@ namespace ConsoleAppForCraps.DealerCLIState
                 return;
             }
 
-            // Find max number of bets any player has
+            // find max number of bets any player has
             int maxBetCount = players.Max(p => p.playerBetList.Count);
 
-            // Total rows = 1 for name + 1 for purse + maxBets
+            // total rows = 1 for name + 1 for purse + maxBets
             int totalRows = 2 + maxBetCount;
 
-            // Present information on screen
+            // present information on screen
             string horizontalBorder = "+" + string.Join("+", players.Select(p => new string('-', DealerCLI.columnWidth))) + "+";
             Console.WriteLine(horizontalBorder);
 
@@ -188,7 +188,9 @@ namespace ConsoleAppForCraps.DealerCLIState
 
                         if (betIndex < player.playerBetList.Count)
                         {
-                            cellText = player.playerBetList[betIndex]?.betName.ToString() ?? "";
+                            cellText = 
+                                $"{player.playerBetList[betIndex]?.betName.ToString() ?? ""} " +
+                                $"[{player.playerBetList[betIndex]?.BetWorkingState}]";
                         }
                         // TODO if bet state is paused, add " (OFF)" to the end of the cell text
                     }

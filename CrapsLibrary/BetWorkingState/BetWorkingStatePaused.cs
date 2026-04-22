@@ -4,10 +4,13 @@ namespace CrapsLibrary.BetWorkingState
 {
     internal class BetWorkingStatePaused : BetWorkingState
     {
+        public override string Name { get; }
+
         public BetWorkingStatePaused(BetWorkingStateMachine betWorkingStateMachine, Bet betInQuestion) : base(betWorkingStateMachine, betInQuestion)
         {
             //this.betWorkingStateMachine = betWorkingStateMachine; // this is done by the base constructor
             //this.betInQuestion = betInQuestion; // this is done by the base constructor
+            this.Name = "Paused";
         }
 
         public override void Enter()

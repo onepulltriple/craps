@@ -10,6 +10,8 @@ namespace CrapsLibrary.BetWorkingState
 
         protected Bet betInQuestion;
 
+        public abstract string Name { get; }
+
         /// <summary>
         /// Constructor for one of a bet's working states.
         /// </summary>

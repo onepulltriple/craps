@@ -41,6 +41,7 @@ States:
 Return winnings (the base state) (evaluate bets and payout "like normal")
 Be paused (not affected by play) (don't evaluate bets)
 Be parlayed (until acted upon otherwise) (evaluate bets and add winnings to committed amount)
+Be pressed (aka partial parlay, i.e. player collects some, parlays (presses) the rest)
 Lost (held by the player to aid with quick re-ups)
 
 Property

@@ -10,7 +10,7 @@ namespace CrapsLibrary.BetWorkingState
         {
             //this.betWorkingStateMachine = betWorkingStateMachine; // this is done by the base constructor
             //this.betInQuestion = betInQuestion; // this is done by the base constructor
-            this.Name = "Normal";
+            this.Name = "Collect";
         }
 
         public override void Enter()

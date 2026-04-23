@@ -1,6 +1,4 @@
-﻿using System.Linq;
-
-namespace CrapsLibrary.Bets
+﻿namespace CrapsLibrary.Bets
 {
     public class PlaceBet : Bet
     {
@@ -27,17 +25,6 @@ namespace CrapsLibrary.Bets
                 return true;
             }
             return false;
-        }
-
-        public static bool IsPlaceBetAllowed(CrapsTable crapsTable, Player playerToCheck, string betName)
-        {
-            // TODO return a Result<bool>
-                // player must have placed a pass bet
-            return playerToCheck.playerBetList.Any(bet => bet.betName == "PassBet") 
-                // the puck may not be OFF, i.e. a point must be established
-                && crapsTable.puck.IsOn                                             
-                // place bets cannot be placed on the point
-                && int.Parse(betName.Split('_')[1]) != crapsTable.puck.passPoint;   
         }
     }
 }

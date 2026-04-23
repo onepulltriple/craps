@@ -19,6 +19,7 @@ namespace ConsoleAppForCraps.DealerCLIState
             Console.WriteLine("1. Place a bet");
             Console.WriteLine("2. Call a bet off (pause)");
             Console.WriteLine("3. Take down a bet (remove completely)");
+
             Console.WriteLine("\n0. Go to overview"); //?
 
             List<int> listOfAcceptableInts = new List<int>() { 0, 1, 2, 3 };

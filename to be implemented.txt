@@ -7,7 +7,7 @@ what to do with lost bets (if anything)
 House.cs to store the house's money, to which purchased bets are paid and from which won bets are substracted
 if the point becomes the same number as an existing place bet, offer to move that place bet to its "twin",  give it back to the player, or move to the odds bet
 
-partial parlay bet state
+partial parlay bet state (press X, collect Y) --> should this be two of the same bet? or one bet with two members (press, collect)?
 
 need to handle error messaging on the BL level, and these messages get pushed to the UI, no matter if the UI is CLI or WPF
 
@@ -20,4 +20,15 @@ Lost state for bets:
 "all the hard ways"
 each player only has one bet of each type
 
+allow players to multi-select fromt a list of bets (when pausing)
+allow players to multi-select fromt a list of bets (when placing bets)
+
 player can't create a pass line bet after the point has been established.
+
+COL
+PAR
+PRS
+OFF
+WRK
+
+get Console.WriteLine() statements out of the Bets!

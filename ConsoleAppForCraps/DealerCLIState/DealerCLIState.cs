@@ -190,7 +190,7 @@ namespace ConsoleAppForCraps.DealerCLIState
                         {
                             cellText = 
                                 $"{player.playerBetList[betIndex]?.betName.ToString() ?? ""} " +
-                                $"[{player.playerBetList[betIndex]?.BetWorkingState}]";
+                               $"[{player.playerBetList[betIndex]?.BetWorkingState}]";
                         }
                         // TODO if bet state is paused, add " (OFF)" to the end of the cell text
                     }

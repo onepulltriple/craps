@@ -59,7 +59,7 @@ namespace ConsoleAppForCraps.DealerCLIState
             Player betPlacer = SelectPlayerCLI();
 
             Console.WriteLine("Select the type of bet to be placed:");
-            betType selectedBetType = SelectBetFromFactoryCLI();
+            betType selectedBetType = SelectBetFromFactoryCLI(betPlacer);
 
             Console.Write("Please enter an amount to bet: ");
             uint amountThrownAtBet = ValidateUserInputUIntCLI();
@@ -94,7 +94,7 @@ namespace ConsoleAppForCraps.DealerCLIState
 
             betToPause.PauseBet();
 
-            Console.WriteLine($"\n{betPauser.playerName} has paused their {betToPause.betName}.");
+            Console.WriteLine($"\n{betPauser.playerName} has paused their {betToPause.Name}.");
             SleepCLI();
 
             this.Enter();

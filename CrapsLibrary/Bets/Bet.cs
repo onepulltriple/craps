@@ -8,7 +8,9 @@ namespace CrapsLibrary.Bets
 
         public Player betOwner;
         
-        public string betName;
+        public betType betType { get; }
+
+        public string Name { get; }
 
         public uint commitment;
 
@@ -26,15 +28,16 @@ namespace CrapsLibrary.Bets
         /// When a bet is lost its state changes accordingly, which holds the owner's bet history.
         /// </summary>
         /// <param name="betOwner"></param>
-        /// <param name="betName"></param>
+        /// <param name="betType"></param>
         /// <param name="commitment"></param>
         /// <param name="winningTotals"></param>
         /// <param name="payout"></param>
-        public Bet(CrapsTable crapsTable, Player betOwner, string betName, uint commitment, List<int> winningTotals, uint payout)
+        public Bet(CrapsTable crapsTable, Player betOwner, betType betType, uint commitment, List<int> winningTotals, uint payout)
         {
             this.crapsTable = crapsTable;
             this.betOwner = betOwner;
-            this.betName = betName;
+            this.betType = betType;
+            this.Name = BetFactory.BetDefinitions[betType].Name;
             this.commitment = commitment;
             this.winningTotals = winningTotals;
             this.payout = payout;

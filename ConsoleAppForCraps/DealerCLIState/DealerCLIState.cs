@@ -103,27 +103,35 @@ namespace ConsoleAppForCraps.DealerCLIState
             return players[ValidateUserInputCLIMenu(listOfAcceptableInts) - 1];
         }
 
-        protected betType SelectBetFromFactoryCLI()
+        protected betType SelectBetFromFactoryCLI(Player betPlacer)
         {
             List<int> listOfAcceptableInts = new();
 
-            var bets = BetFactory.betPayoutRatios.ToList();
+            //var bets = BetFactory.BetDefinitions.ToList();
+            var bets = BetFactory.GetAllowedBets(dealerCLIStateMachine.crapsTable!, betPlacer);
 
             int scaleUpFactor = (int)(dealerCLIStateMachine.crapsTable!.tableMinimum / CrapsTable.absoluteTableMinimum);
 
             for (int i = 0; i < bets.Count; i++)
             {
+                //Console.WriteLine(
+                //    $"{i + 1,4}. " +
+                //    $"{bets[i].Key,-15}" +
+                //    $"Minimum bet = {scaleUpFactor * bets[i].Value.payoutDenominator,-4} " +
+                //    $"(payout ratio {bets[i].Value.payoutNumerator,2}" +
+                //    $":{bets[i].Value.payoutDenominator,2})");
+                var currentBetDef = BetFactory.BetDefinitions[bets[i]];
                 Console.WriteLine(
                     $"{i + 1,4}. " +
-                    $"{bets[i].Key,-15}" +
-                    $"Minimum bet = {scaleUpFactor * bets[i].Value.payoutDenominator,-4} " +
-                    $"(payout ratio {bets[i].Value.payoutNumerator,2}" +
-                    $":{bets[i].Value.payoutDenominator,2})");
+                    $"{currentBetDef.Name,-15}" +
+                    $"Minimum bet = {scaleUpFactor * currentBetDef.payoutDenominator,-4} " +
+                    $"(payout ratio {currentBetDef.payoutNumerator,2}" +
+                    $":{currentBetDef.payoutDenominator,2})");
 
                 listOfAcceptableInts.Add(i + 1);
             }
 
-            return bets[ValidateUserInputCLIMenu(listOfAcceptableInts) - 1].Key;
+            return bets[ValidateUserInputCLIMenu(listOfAcceptableInts) - 1];//.Key;
         }
 
         protected Bet SelectBetFromPlayerCLI(Player player)
@@ -134,7 +142,7 @@ namespace ConsoleAppForCraps.DealerCLIState
 
             for (int i = 0; i < betsOfPlayer.Count; i++)
             {
-                Console.WriteLine($"{i + 1,2}. {betsOfPlayer[i].betName}");
+                Console.WriteLine($"{i + 1,2}. {betsOfPlayer[i].Name}");
                 listOfAcceptableInts.Add(i + 1);
             }
 
@@ -189,7 +197,7 @@ namespace ConsoleAppForCraps.DealerCLIState
                         if (betIndex < player.playerBetList.Count)
                         {
                             cellText = 
-                                $"{player.playerBetList[betIndex]?.betName.ToString() ?? ""} " +
+                                $"{player.playerBetList[betIndex]?.Name.ToString() ?? ""} " +
                                $"[{player.playerBetList[betIndex]?.BetWorkingState}]";
                         }
                         // TODO if bet state is paused, add " (OFF)" to the end of the cell text

@@ -31,7 +31,7 @@ namespace CrapsLibrary.BetWorkingState
         {
             betWorkingStateMachine.crapsTable.gameEventFeed.Add(
                 $"Hooray! {betInQuestion.betOwner.playerName} " +
-                $"won {betInQuestion.betName} " +
+                $"won {betInQuestion.Name} " +
                 $"with {firstOutcome}, {secondOutcome}! " +
                 $"The payout was {betInQuestion.payout} " +
                 $"credits and goes to {betInQuestion.betOwner.playerName}.",
@@ -43,7 +43,7 @@ namespace CrapsLibrary.BetWorkingState
         {
             betWorkingStateMachine.crapsTable.gameEventFeed.Add(
                 $"Oh boy... {betInQuestion.betOwner.playerName} " +
-                $"won {betInQuestion.betName} " +
+                $"won {betInQuestion.Name} " +
                 $"with {firstOutcome}, {secondOutcome}! " +
                 $"The payout of {betInQuestion.commitment} credits will be fully parlayed.",
                 GameEventType.Message
@@ -54,7 +54,7 @@ namespace CrapsLibrary.BetWorkingState
         {
             betWorkingStateMachine.crapsTable.gameEventFeed.Add(
                 $"Oh no! {betInQuestion.betOwner.playerName} " +
-                $"lost {betInQuestion.betName}! " +
+                $"lost {betInQuestion.Name}! " +
                 $"The commitment of {betInQuestion.commitment} credits goes to the house.",
                 GameEventType.Message
                 );
@@ -64,7 +64,7 @@ namespace CrapsLibrary.BetWorkingState
         {
             betWorkingStateMachine.crapsTable.gameEventFeed.Add(
                 $"{betInQuestion.betOwner.playerName} has paused " +
-                $"the bet {betInQuestion.betName}!",
+                $"the bet {betInQuestion.Name}!",
                 GameEventType.Message
                 );
         }

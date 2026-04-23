@@ -4,8 +4,8 @@
     {
         int winningHalf;
 
-        public HardWayBet(CrapsTable crapsTable, Player betOwner, string betName, uint commitment, List<int> winningTotals, uint payout)
-            : base(crapsTable, betOwner, betName, commitment, winningTotals, payout)
+        public HardWayBet(CrapsTable crapsTable, Player betOwner, betType betType, uint commitment, List<int> winningTotals, uint payout)
+            : base(crapsTable, betOwner, betType, commitment, winningTotals, payout)
         {
             winningHalf = winningTotals.First() / 2;
         }

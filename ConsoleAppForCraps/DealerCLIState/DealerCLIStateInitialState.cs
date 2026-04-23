@@ -13,9 +13,9 @@ namespace ConsoleAppForCraps.DealerCLIState
         public override void Enter()
         {
             Console.WriteLine("What would you like to do?\n");
-            Console.WriteLine("1. Set the minimum bet amount for the craps table.");
+            Console.WriteLine("1. Set the minimum bet amount for the craps table.\n");
             
-            Console.WriteLine("\n0. Quit");
+            Console.WriteLine("0. Quit\n");
 
             List<int> listOfAcceptableInts = new List<int>() { 0, 1 };
             PerformTask(ValidateUserInputCLIMenu(listOfAcceptableInts));

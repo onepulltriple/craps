@@ -31,4 +31,5 @@ PRS
 OFF
 WRK
 
-get Console.WriteLine() statements out of the Bets!
+get Console.WriteLine() statements out of the Bets! e.g. pass line bet
+write a unit test for the pass line bet

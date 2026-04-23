@@ -22,7 +22,7 @@ namespace ConsoleAppForCraps.DealerCLIState
             int result;
 
             do {
-                Console.Write("\nPlease enter a choice: ");
+                Console.Write("Please enter a choice: ");
                 string? input = Console.ReadLine();
                 isInt = int.TryParse(input, out result);
 

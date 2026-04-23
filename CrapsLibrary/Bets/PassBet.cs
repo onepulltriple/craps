@@ -8,7 +8,7 @@
             : base(crapsTable, betOwner, betType, commitment, winningTotals, payout)
         {
             losingTotals = new List<int> {2, 3, 12}; // crap out/missout
-            winningTotals = new List<int> {7, 11 };  // natural pass
+            //winningTotals = new List<int> {7, 11 };  // natural pass
         }
 
         internal override bool MeetsFirstWinningCondition(byte firstOutcome, byte secondOutcome)

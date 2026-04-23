@@ -48,22 +48,29 @@
                 // for bets whose minimum commitment match the tables minimum, payoutDenominator must equal 5
                 // 0 means winningTotals handled internally
 
-                { betType.Hard_02,       new( 30, 1, "Aces"           , new List<int>{ 2 } ) },
-                { betType.Hard_04,       new(  7, 1, "Hard 4"         , new List<int>{ 4 } ) },
-                { betType.Hard_06,       new(  9, 1, "Hard 6"         , new List<int>{ 6 } ) },
-                { betType.Hard_08,       new(  9, 1, "Hard 8"         , new List<int>{ 8 } ) },
-                { betType.Hard_10,       new(  7, 1, "Hard 10"        , new List<int>{ 10} ) },
-                { betType.Hard_12,       new( 30, 1, "Boxcars"        , new List<int>{ 12} ) },
-                { betType.PassBet,       new(  5, 5, "Pass Line Bet"  , new List<int>{ 0 } ) }, // pays 1:1
-                { betType.PlaceBet_04,   new(  9, 5, "Place Bet 4"    , new List<int>{ 4 } ) },
-                { betType.PlaceBet_05,   new(  7, 5, "Place Bet 5"    , new List<int>{ 5 } ) },
-                { betType.PlaceBet_06,   new(  7, 6, "Place Bet 6"    , new List<int>{ 6 } ) },
-                { betType.PlaceBet_08,   new(  7, 6, "Place Bet 8"    , new List<int>{ 8 } ) },
-                { betType.PlaceBet_09,   new(  7, 5, "Place Bet 9"    , new List<int>{ 9 } ) },
-                { betType.PlaceBet_10,   new(  9, 5, "Place Bet 10"   , new List<int>{ 10} ) }
+                { betType.Hard_02,       new( 30, 1, "Aces"           , new List<int>{ 2  } ) },
+                { betType.Hard_04,       new(  7, 1, "Hard 4"         , new List<int>{ 4  } ) },
+                { betType.Hard_06,       new(  9, 1, "Hard 6"         , new List<int>{ 6  } ) },
+                { betType.Hard_08,       new(  9, 1, "Hard 8"         , new List<int>{ 8  } ) },
+                { betType.Hard_10,       new(  7, 1, "Hard 10"        , new List<int>{ 10 } ) },
+                { betType.Hard_12,       new( 30, 1, "Boxcars"        , new List<int>{ 12 } ) },
+                { betType.PassBet,       new(  5, 5, "Pass Line Bet"  , new List<int>{7,11} ) }, // pays 1:1
+                { betType.PlaceBet_04,   new(  9, 5, "Place Bet 4"    , new List<int>{ 4  } ) },
+                { betType.PlaceBet_05,   new(  7, 5, "Place Bet 5"    , new List<int>{ 5  } ) },
+                { betType.PlaceBet_06,   new(  7, 6, "Place Bet 6"    , new List<int>{ 6  } ) },
+                { betType.PlaceBet_08,   new(  7, 6, "Place Bet 8"    , new List<int>{ 8  } ) },
+                { betType.PlaceBet_09,   new(  7, 5, "Place Bet 9"    , new List<int>{ 9  } ) },
+                { betType.PlaceBet_10,   new(  9, 5, "Place Bet 10"   , new List<int>{ 10 } ) }
             };
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="crapsTable"></param>
+        /// <param name="player"></param>
+        /// <param name="betType"></param>
+        /// <param name="amountThrownAtBet"></param>
+        /// <returns></returns>
         public static Result<Bet> CreateBet(CrapsTable crapsTable, Player player, betType betType, uint amountThrownAtBet)
         {
             if (player.purse < amountThrownAtBet) // the player cannot bet more than they have
@@ -132,110 +139,25 @@
             }
 
             if (tempBet == null)
-                return Result<Bet>.Fail("but why");
+                return Result<Bet>.Fail("but why??"); // TODO figure out if this can happen
 
-            return Result<Bet>.Pass(tempBet, $"great! ---.");
-            //return Result<Bet>.Pass(tempBet, $"{tempBet.betOwner.Name} has bet {tempBet.commitment} on ---.");
+            return Result<Bet>.Pass(tempBet, $"{tempBet.betOwner.Name} has bet {tempBet.commitment} on {tempBet.Name}.");
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //    string tempBetName = betType.ToString();
-
-        //    switch (betType)
-        //    {
-        //        case betType.Hard_02: // wins on 1,1 (snake eyes)
-        //            tempBet = new HardWayBet(crapsTable, player, tempBetName, amountToBet, new List<int>{ 2 }, payout);
-        //            break;
-
-        //        case betType.Hard_04: // wins on 2,2
-        //            tempBet = new HardWayBet(crapsTable, player, tempBetName, amountToBet, new List<int> { 4 }, payout);
-        //            break;
-
-        //        case betType.Hard_06: // wins on 3,3
-        //            tempBet = new HardWayBet(crapsTable, player, tempBetName, amountToBet, new List<int> { 6 }, payout);
-        //            break;
-
-        //        case betType.Hard_08: // wins on 4,4
-        //            tempBet = new HardWayBet(crapsTable, player, tempBetName, amountToBet, new List<int> { 8 }, payout);
-        //            break;
-
-        //        case betType.Hard_10: // wins on 5,5
-        //            tempBet = new HardWayBet(crapsTable, player, tempBetName, amountToBet, new List<int> { 10 }, payout);
-        //            break;
-
-        //        case betType.Hard_12: // wins on 6,6
-        //            tempBet = new HardWayBet(crapsTable, player, tempBetName, amountToBet, new List<int> { 12 }, payout);
-        //            break;
-
-        //        case betType.PassBet: // wins on natural passes, winning based on point behavior, which is handled internally
-        //            tempBet = new PassBet(crapsTable, player, tempBetName, amountToBet, new List<int> { 0 }, payout);
-        //            break;                                                                       
-                                                                                                 
-        //        case betType.PlaceBet_04: // wins when puck is on, then this number is rolled     
-        //            if (IsPlaceBetAllowed(crapsTable, player, tempBetName))
-        //                tempBet = new PlaceBet(crapsTable, player, tempBetName, amountToBet, new List<int> { 4 }, payout);
-        //            else
-        //                return Result<Bet>.Fail("The player must have an active pass line bet to access this bet.");
-        //            // TODO user feedback should state exactly why creation failed (no pass line bet, vs puck off, point = chosen bet OR just don't offer inelgible bets
-        //            break;                                                                       
-                                                                                                 
-        //        case betType.PlaceBet_05: // wins when puck is on, then this number is rolled     
-        //            if (IsPlaceBetAllowed(crapsTable, player, tempBetName))
-        //                tempBet = new PlaceBet(crapsTable, player, tempBetName, amountToBet, new List<int> { 5 }, payout);
-        //            else
-        //                return Result<Bet>.Fail("The player must have an active pass line bet to access this bet.");
-        //            break;                                                                       
-                                                                                                 
-        //        case betType.PlaceBet_06: // wins when puck is on, then this number is rolled     
-        //            if (IsPlaceBetAllowed(crapsTable, player, tempBetName)) 
-        //                tempBet = new PlaceBet(crapsTable, player, tempBetName, amountToBet, new List<int> { 6 }, payout);
-        //            else
-        //                return Result<Bet>.Fail("The player must have an active pass line bet to access this bet.");
-        //            break;                                                                       
-                                                                                                 
-        //        case betType.PlaceBet_08: // wins when puck is on, then this number is rolled     
-        //            if (IsPlaceBetAllowed(crapsTable, player, tempBetName)) 
-        //                tempBet = new PlaceBet(crapsTable, player, tempBetName, amountToBet, new List<int> { 8 }, payout);
-        //            else
-        //                return Result<Bet>.Fail("The player must have an active pass line bet to access this bet.");
-        //            break;                                                                       
-                                                                                                 
-        //        case betType.PlaceBet_09: // wins when puck is on, then this number is rolled     
-        //            if (IsPlaceBetAllowed(crapsTable, player, tempBetName)) 
-        //                tempBet = new PlaceBet(crapsTable, player, tempBetName, amountToBet, new List<int> { 9 }, payout);
-        //            else
-        //                return Result<Bet>.Fail("The player must have an active pass line bet to access this bet.");
-        //            break;                                                                       
-                                                                                                 
-        //        case betType.PlaceBet_10: // wins when puck is on, then this number is rolled    
-        //            if (IsPlaceBetAllowed(crapsTable, player, tempBetName))
-        //                tempBet = new PlaceBet(crapsTable, player, tempBetName, amountToBet, new List<int> { 10 }, payout);
-        //            else
-        //                return Result<Bet>.Fail("The player must have an active pass line bet to access this bet.");
-        //            break;
-
-        //        default:
-        //            return Result<Bet>.Fail("Unspecified bet attempted.");
-        //    }
-
-        //    return Result<Bet>.Pass(tempBet, $"{tempBet.betOwner.Name} has bet {tempBet.commitment} on {tempBet.betName}.");
-        //}
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="crapsTable"></param>
+        /// <param name="playerToCheck"></param>
+        /// <param name="playerBetType"></param>
+        /// <returns></returns>
         public static Result<bool> CheckIfBetAllowed(CrapsTable crapsTable, Player playerToCheck, betType playerBetType)
         {
+            // check that the player doesn't already have this bet in their list
+            if (playerToCheck.playerBetList.Any(bet => bet.betType == playerBetType))
+                return Result<bool>.Fail("Players can only possess one count of each bet type at a time.");
+            // TODO lost bets should be available to be placed again
+
             switch (playerBetType)
             {
                 case betType.PlaceBet_04:
@@ -264,6 +186,14 @@
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="crapsTable"></param>
+        /// <param name="playerToCheck"></param>
+        /// <param name="betType"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
         public static Result<bool> IsPlaceBetAllowed(CrapsTable crapsTable, Player playerToCheck, betType betType)
         {
             int placeBetNumber = betType switch
@@ -274,13 +204,13 @@
                 betType.PlaceBet_08 => 8,
                 betType.PlaceBet_09 => 9,
                 betType.PlaceBet_10 => 10,
-                _ => throw new ArgumentException("Invalid place bet type") // default (should never come this)
+                _ => throw new ArgumentException("Invalid place bet type") // default (it should never come this)
             };
 
             if (!crapsTable.puck.IsOn)
                 return Result<bool>.Fail("Place Bets are inaccessible when the puck is OFF.");
 
-            if (!playerToCheck.playerBetList.Any(bet => bet.betType == betType.PassBet))
+            if (!playerToCheck.playerBetList.Any(bet => bet.betType == betType.PassBet)) 
                 return Result<bool>.Fail("Players must have a Pass Line Bet in order to access Place Bets");
 
             if (placeBetNumber == crapsTable.puck.passPoint)
@@ -289,6 +219,12 @@
             return Result<bool>.Pass(true);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="crapsTable"></param>
+        /// <param name="player"></param>
+        /// <returns></returns>
         public static List<betType> GetAllowedBets(CrapsTable crapsTable, Player player)
         {
             return Enum.GetValues<betType>()

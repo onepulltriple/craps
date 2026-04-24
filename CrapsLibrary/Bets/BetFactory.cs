@@ -84,7 +84,8 @@
                 CrapsTable.absoluteTableMinimum *
                 BetDefinitions[betType].payoutDenominator;
 
-            if (amountThrownAtBet < unitOfBet) // the player player cannot cover at least one bet of that type (e.g. throwing 5 credits at a Place_06)
+            // the player player cannot cover at least one bet of that type (e.g. throwing 5 credits at a Place_06)
+            if (amountThrownAtBet < unitOfBet) 
                 return Result<Bet>.Fail(
                     $"The minimum bet amount is {unitOfBet}."
                     );
@@ -103,12 +104,13 @@
                 BetDefinitions[betType].payoutNumerator /
                 BetDefinitions[betType].payoutDenominator;
 
-            Bet? tempBet = null;
-
+            // check if the bet is allowed
             Result<bool> check = CheckIfBetAllowed(crapsTable, player, betType);
             if (!check.Success)
                 return Result<Bet>.Fail(check.Messages.ToArray());
 
+            // create bet
+            Bet? tempBet = null;
             switch (betType)
             {
                 case betType.Hard_02:

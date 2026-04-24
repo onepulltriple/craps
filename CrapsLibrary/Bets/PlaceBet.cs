@@ -9,7 +9,7 @@
 
         internal override bool MeetsFirstWinningCondition(byte firstOutcome, byte secondOutcome)
         {
-            // the puck is on and the roll results in a board number
+            // the puck is ON and the roll results in a board number
             // (betting directly on the point number is prohibited)
             if (crapsTable.puck.IsOn == true && winningTotals.Contains(firstOutcome + secondOutcome))
             {

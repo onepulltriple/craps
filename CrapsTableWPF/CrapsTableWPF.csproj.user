@@ -7,9 +7,6 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="CRUDWindowBase.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="CRUDWindowCrapsTable.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

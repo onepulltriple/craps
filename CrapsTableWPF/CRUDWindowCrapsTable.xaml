@@ -5,12 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CrapsTableWPF"
         mc:Ignorable="d"
-        Title="CRUDWindowCrapsTable" Height="200" Width="400">
+        Title="Welcome to Craps!" Height="200" Width="400"
+        Background="#264c26">
     <Grid Loaded="GridLoaded">
         <Grid.RowDefinitions>
-            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="1.2*"/>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="1.2*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
@@ -18,18 +19,23 @@
         </Grid.ColumnDefinitions>
         
         <!--headline-->
-        <Label Grid.Row="0" Grid.Column="0" FontSize="20" Margin="6" VerticalAlignment="Center">
+        <Label Grid.Row="0" Grid.Column="0" FontSize="20" Margin="6" VerticalAlignment="Center" Foreground="White">
             <TextBlock>
                 Craps!!
             </TextBlock>
         </Label>
+        
+        
         <!--middle section-->
-        <Label Grid.Row="1" Grid.Column="0" FontSize="12" Margin="6" VerticalAlignment="Center">
+        <Label Grid.Row="1" Grid.Column="0" FontSize="12" Margin="6" VerticalAlignment="Center" Foreground="White">
             <TextBlock>
                 Welcome! Please set the table minimum:
             </TextBlock>
         </Label>
-        <TextBox Grid.Row="1" Grid.Column="1" FontSize="12" Margin="6" VerticalAlignment="Center"/>
+        <TextBox Name="TB01" Grid.Row="1" Grid.Column="1" FontSize="12" Margin="6" VerticalAlignment="Center"
+                 Text="{Binding enteredTableMinimum, UpdateSourceTrigger=PropertyChanged}" KeyDown="TB01KeyDownHandler"/>
+        
+        
         <!--lower section-->
         <Grid Grid.Row="2" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
@@ -38,8 +44,6 @@
             </Grid.ColumnDefinitions>
             <Button Name="QuitButton" Grid.Column="0" Content="Quit"    Click="QuitBottonClicked"/>
             <Button Name="ProcButton" Grid.Column="1" Content="Proceed" Click="ProcBottonClicked"/>
-
-
 
         </Grid>
     </Grid>

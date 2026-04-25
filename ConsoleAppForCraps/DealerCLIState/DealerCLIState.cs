@@ -47,13 +47,13 @@ namespace ConsoleAppForCraps.DealerCLIState
             return validUInt.Value;
         }
 
-        public uint SetCrapsTableMinimumCLI()
+        public uint ValidateCrapsTableMinimumCLI()
         {
             Result<uint> tableMin;
             do
             {
                 string? input = Console.ReadLine();
-                tableMin = CrapsTable.SetCrapsTableMinimum(input);
+                tableMin = CrapsTable.ValidateCrapsTableMinimum(input);
                 
                 foreach (string message in tableMin.Messages)
                     Console.Write(message);

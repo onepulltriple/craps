@@ -35,7 +35,7 @@
             this.puck = new Puck(this);
         }
 
-        public static Result<uint> SetCrapsTableMinimum(string? inputToCheck)
+        public static Result<uint> ValidateCrapsTableMinimum(string? inputToCheck)
         {
             uint checkedInput;
             bool isUInt = uint.TryParse(inputToCheck, out checkedInput);

@@ -34,3 +34,8 @@ WRK
 get Console.WriteLine() statements out of the Bets! e.g. pass line bet
 write unit tests for the pass line bet
 if a player has a lost pass line bet, they can access the place bets. fix: only an active passline bet (i.e. not paused or lost) should permit this
+
+payout ratio  should be reduced when presented to user, e.g. 5:5
+
+auto-pause place bets when the point is made
+

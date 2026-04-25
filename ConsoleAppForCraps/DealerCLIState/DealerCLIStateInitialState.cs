@@ -28,7 +28,7 @@ namespace ConsoleAppForCraps.DealerCLIState
                 case 1:
                     Console.Write("Please input a whole number that is greater than or equal to 5 " +
                         "and also a multiple of 5: ");
-                    uint tableMinimum = SetCrapsTableMinimumCLI();
+                    uint tableMinimum = ValidateCrapsTableMinimumCLI();
                     dealerCLIStateMachine.crapsTable = new(tableMinimum, CrapsTable.absoluteTableMaximum); 
 
                     dealerCLIStateMachine.ChangeState(new DealerCLIStateOverview(dealerCLIStateMachine));

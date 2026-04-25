@@ -18,16 +18,15 @@ namespace CrapsTableWPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        CrapsTable Table;
+        CrapsTable crapsTable;
 
         Player currentPlayer;
 
         public MainWindow()
         {
             InitializeComponent();
-            this.Table = new(5, 5);
+            this.crapsTable = new(5, 5);
             DataContext = this;
-            currentPlayer = new Player("tempPlayer");
         }
 
         private void Path_MouseDown(object sender, MouseButtonEventArgs e)
@@ -52,12 +51,11 @@ namespace CrapsTableWPF
 
         private void NewPlayerButtonClick(object sender, RoutedEventArgs e)
         {
-            Table.NewPlayer(PlayerNameInputTextBox.Text);
+
         }
 
         private void AddMoneyButtonClick(object sender, RoutedEventArgs e)
         {
-            Table.players.First().purse += uint.Parse(MoneyInputTextBox.Text);
         }
 
         private void PlaceBetMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -68,8 +66,6 @@ namespace CrapsTableWPF
             betType tempBetType = Enum.Parse<betType>(tempSender.Tag.ToString());
 
             // where should the player live?
-            CrapsTable.betFactory.CreateBet(currentPlayer, tempBetType, 100);
-            
 
         }
     }

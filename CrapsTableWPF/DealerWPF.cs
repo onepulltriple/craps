@@ -25,7 +25,7 @@ namespace CrapsTableWPF
 
         }
 
-        private readonly Player?[] playerSlots = new Player?[8];
+        private readonly Player?[] playerSlots = new Player?[8]; // TODO do not hard code this number
 
         public void PlacePlayer(int slotIndex, Player player)
         {

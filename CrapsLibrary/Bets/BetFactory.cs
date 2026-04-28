@@ -105,7 +105,7 @@
                 BetDefinitions[betType].payoutDenominator;
 
             // check if the bet is allowed
-            Result<bool> check = CheckIfBetAllowed(crapsTable, player, betType);
+            Result<bool> check = CheckIfCreateBetAllowed(crapsTable, player, betType);
             if (!check.Success)
                 return Result<Bet>.Fail(check.Messages.ToArray());
 
@@ -155,7 +155,7 @@
         /// <param name="playerToCheck"></param>
         /// <param name="playerBetType"></param>
         /// <returns></returns>
-        public static Result<bool> CheckIfBetAllowed(CrapsTable crapsTable, Player playerToCheck, betType playerBetType)
+        public static Result<bool> CheckIfCreateBetAllowed(CrapsTable crapsTable, Player playerToCheck, betType playerBetType)
         {
             // check that the player doesn't already have this bet in their list
             if (playerToCheck.playerBetList.Any(bet => bet.betType == playerBetType))
@@ -229,11 +229,20 @@
         /// <param name="crapsTable"></param>
         /// <param name="player"></param>
         /// <returns></returns>
-        public static List<betType> GetAllowedBets(CrapsTable crapsTable, Player player)
+        public static List<betType> GetCreateableBets(CrapsTable crapsTable, Player player)
         {
             return Enum.GetValues<betType>()
-                .Where(betType => CheckIfBetAllowed(crapsTable, player, betType).Success)
+                .Where(betType => CheckIfCreateBetAllowed(crapsTable, player, betType).Success)
                 .ToList();
         }
+
+        // TODO GetPauseableBets
+        // TODO GetDeleteableBets
+        // TODO GetWorkingBets // any and all bets that are not lost or paused
+        // TODO GetReturnWinningsBets // any and all bets that are not lost or paused
+        // TODO GetParlayableBets
+        // TODO GetPressAndCollectableBets
+        // TODO GetLostBets
+
     }
 }

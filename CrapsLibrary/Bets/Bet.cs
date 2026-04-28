@@ -67,6 +67,21 @@ namespace CrapsLibrary.Bets
             betWorkingStateMachine.ChangeState(new BetWorkingStatePaused(betWorkingStateMachine, this));
         }
 
+        public Result<bool> IsPausingBetAllowed()
+        {
+            Result<bool> isPausingAllowed;
+
+            // insert checks here
+            // when is pausing not allowed?
+            isPausingAllowed = Result<bool>.Pass(true);
+
+            if (!isPausingAllowed.Success)
+                return Result<bool>.Fail("Pausing this bet is not allowed.");
+
+            return Result<bool>.Pass(true, $"\n{this.betOwner} has paused their {this.Name}.");
+        }
+
+
         /// <summary>
         /// Method to manually pay out and then remove a bet from a player's bet list.
         /// </summary>

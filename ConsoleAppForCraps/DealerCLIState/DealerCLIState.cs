@@ -108,7 +108,7 @@ namespace ConsoleAppForCraps.DealerCLIState
             List<int> listOfAcceptableInts = new();
 
             //var bets = BetFactory.BetDefinitions.ToList();
-            var bets = BetFactory.GetAllowedBets(dealerCLIStateMachine.crapsTable!, betPlacer);
+            var bets = BetFactory.GetCreateableBets(dealerCLIStateMachine.crapsTable!, betPlacer);
 
             int scaleUpFactor = (int)(dealerCLIStateMachine.crapsTable!.tableMinimum / CrapsTable.absoluteTableMinimum);
 

@@ -16,6 +16,9 @@ namespace CrapsLibrary.BetWorkingState
         public override void Enter()
         {
             betWorkingStateMachine.crapsTable.scoreboard.NewSubscriber(this.EvaluateBet);
+
+            // prompt user to specify the press-to-collect ratio
+
         }
 
         public override void EvaluateBet(byte firstOutcome, byte secondOutcome)

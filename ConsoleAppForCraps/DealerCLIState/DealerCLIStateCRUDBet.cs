@@ -43,7 +43,7 @@ namespace ConsoleAppForCraps.DealerCLIState
                     break;
 
                 case 0:
-                    // Change state to Overview
+                    // Change state to overview
                     dealerCLIStateMachine.ChangeState(new DealerCLIStateOverview(dealerCLIStateMachine));
                     break;
 
@@ -86,15 +86,20 @@ namespace ConsoleAppForCraps.DealerCLIState
 
         private void PauseBetCLI()
         {
-            Console.WriteLine("Select the player whose bets will be paused");
+            Console.WriteLine("Select the player whose bets will be paused:");
             Player betPauser = SelectPlayerCLI();
 
             Console.WriteLine("Select the bet to be paused:");
             Bet betToPause = SelectBetFromPlayerCLI(betPauser);
 
-            betToPause.PauseBet();
+            Result<bool> isPausingAllowed = betToPause.IsPausingBetAllowed();
 
-            Console.WriteLine($"\n{betPauser.playerName} has paused their {betToPause.Name}.");
+            Console.WriteLine(isPausingAllowed.Messages[0]); // report the result (then carry out the action)
+            if (!isPausingAllowed.Success)
+                return;
+                        
+            betToPause.PauseBet();
+            
             SleepCLI();
 
             this.Enter();

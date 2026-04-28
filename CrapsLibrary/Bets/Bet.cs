@@ -12,9 +12,13 @@ namespace CrapsLibrary.Bets
 
         public string Name { get; }
 
-        public uint commitment;
-
         public List<int> winningTotals;
+
+        public uint countOfUnitsToBet;
+
+        public uint unitOfBet;
+
+        public uint commitment;
 
         public uint payout;
 
@@ -27,19 +31,23 @@ namespace CrapsLibrary.Bets
         /// A bet is paused when it is unsubscribed but still has an owner.
         /// When a bet is lost its state changes accordingly, which holds the owner's bet history.
         /// </summary>
+        /// <param name="crapsTable"></param>
         /// <param name="betOwner"></param>
         /// <param name="betType"></param>
-        /// <param name="commitment"></param>
+        /// <param name="countOfUnitsToBet"></param>
+        /// <param name="unitOfBet"></param>
         /// <param name="winningTotals"></param>
         /// <param name="payout"></param>
-        public Bet(CrapsTable crapsTable, Player betOwner, betType betType, uint commitment, List<int> winningTotals, uint payout)
+        public Bet(CrapsTable crapsTable, Player betOwner, betType betType, uint countOfUnitsToBet, uint unitOfBet, List<int> winningTotals, uint payout)
         {
             this.crapsTable = crapsTable;
             this.betOwner = betOwner;
             this.betType = betType;
             this.Name = BetFactory.BetDefinitions[betType].Name;
-            this.commitment = commitment;
+            this.countOfUnitsToBet = countOfUnitsToBet;
+            this.unitOfBet = unitOfBet;
             this.winningTotals = winningTotals;
+            this.commitment = countOfUnitsToBet * unitOfBet;
             this.payout = payout;
 
             // Create a state machine to manage this bet's states
@@ -64,7 +72,7 @@ namespace CrapsLibrary.Bets
         /// </summary>
         public void QuitBet()
         {
-            betOwner.purse += commitment;
+            betOwner.purse += (countOfUnitsToBet * unitOfBet);
             betOwner.playerBetList.Remove(this);
         }
 

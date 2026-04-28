@@ -40,11 +40,13 @@
             uint checkedInput;
             bool isUInt = uint.TryParse(inputToCheck, out checkedInput);
 
-            if (isUInt && checkedInput >= absoluteTableMinimum && checkedInput % 5 == 0 && checkedInput <= absoluteTableMaximum)
-            {
-                return Result<uint>.Pass(checkedInput, $"The table minimum has been set to {checkedInput}.");
-            }
-            return Result<uint>.Fail("Please input a whole number that is greater than or equal to 5 and also a multiple of 5: ");
+            if (!isUInt || checkedInput < absoluteTableMinimum || checkedInput % 5 != 0)
+                return Result<uint>.Fail("Please input a whole number that is greater than or equal to 5 and also a multiple of 5");
+
+            if (checkedInput > absoluteTableMaximum)
+                return Result<uint>.Fail($"The table minimum must not exceed {absoluteTableMaximum}");
+
+            return Result<uint>.Pass(checkedInput, $"The table minimum has been set to {checkedInput}.");
         }
 
         public static Result<uint> ValidateUserInputUInt(string? inputToCheck)

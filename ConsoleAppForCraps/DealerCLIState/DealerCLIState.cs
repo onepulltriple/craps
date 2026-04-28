@@ -56,7 +56,7 @@ namespace ConsoleAppForCraps.DealerCLIState
                 tableMin = CrapsTable.ValidateCrapsTableMinimum(input);
                 
                 foreach (string message in tableMin.Messages)
-                    Console.Write(message);
+                    Console.Write($"{message}: ");
                 
             } while (!tableMin.Success);
 

@@ -45,12 +45,14 @@ namespace CrapsTableWPF
 
         private void ProcBottonClicked(object sender, RoutedEventArgs e)
         {
-            if (!ValidateCrapsTableMinimumWPF(TB01.Text))
+            Result<uint> resultOfCheck = CrapsTable.ValidateCrapsTableMinimum(TB01.Text);
+            if (!resultOfCheck.Success)
             {
-                //you dun goofed
+                UI02.Text = resultOfCheck.Messages[0];
+                UI02.Visibility = Visibility.Visible;
                 return;
             }
-
+            //UI02.Text = resultOfCheck.Messages[0];
             MainWindow main = new();
             main.Show();
             this.Close();
@@ -62,19 +64,6 @@ namespace CrapsTableWPF
             {
                 ProcBottonClicked(sender, e);
             }
-        }
-
-        private bool ValidateCrapsTableMinimumWPF(string userInput)
-        {
-            Result<uint> tableMin;
-            tableMin = CrapsTable.ValidateCrapsTableMinimum(userInput);
-
-            //foreach (string message in tableMin.Messages)
-            //{
-            //    // TODO
-            //}
-
-            return tableMin.Success;
         }
     }
 }

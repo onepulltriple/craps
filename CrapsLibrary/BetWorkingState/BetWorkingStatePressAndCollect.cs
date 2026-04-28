@@ -2,15 +2,15 @@
 
 namespace CrapsLibrary.BetWorkingState
 {
-    internal class BetWorkingStateFullParlay : BetWorkingState
+    internal class BetWorkingStatePartialParlay : BetWorkingState
     {
         public override string Name { get; }
         
-        public BetWorkingStateFullParlay(BetWorkingStateMachine betWorkingStateMachine, Bet betInQuestion) : base(betWorkingStateMachine, betInQuestion)
+        public BetWorkingStatePartialParlay(BetWorkingStateMachine betWorkingStateMachine, Bet betInQuestion) : base(betWorkingStateMachine, betInQuestion)
         {
             //this.betWorkingStateMachine = betWorkingStateMachine; // this is done by the base constructor
             //this.betInQuestion = betInQuestion; // this is done by the base constructor
-            this.Name = "Full Parlay";
+            this.Name = "Partial Parlay"; // aka "press and collect"
         }
 
         public override void Enter()
@@ -22,10 +22,11 @@ namespace CrapsLibrary.BetWorkingState
         {
             if (betInQuestion.MeetsFirstWinningCondition(firstOutcome, secondOutcome))
             {
-                AnnounceFullParlay(firstOutcome, secondOutcome);
+                AnnounceReturnWinnings(firstOutcome, secondOutcome);
 
-                // parlay full amount
-                betInQuestion.commitment += betInQuestion.payout;
+                // split winnings between parlay and payout
+                betInQuestion.commitment += betInQuestion.payout/2; // TODO need to calculate these two based on betting units
+                betInQuestion.betOwner.purse += betInQuestion.payout/2;
                 return;
             }
 

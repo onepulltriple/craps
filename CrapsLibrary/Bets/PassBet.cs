@@ -4,8 +4,8 @@
     {
         List<int> losingTotals;
 
-        public PassBet(CrapsTable crapsTable, Player betOwner, betType betType, uint commitment, List<int> winningTotals, uint payout)
-            : base(crapsTable, betOwner, betType, commitment, winningTotals, payout)
+        public PassBet(CrapsTable crapsTable, Player betOwner, betType betType, uint countOfUnitsToBet, uint unitOfBet, List<int> winningTotals, uint payout)
+            : base(crapsTable, betOwner, betType, countOfUnitsToBet, unitOfBet, winningTotals, payout)
         {
             losingTotals = new List<int> {2, 3, 12}; // crap out/missout
             //winningTotals = new List<int> {7, 11 };  // natural pass

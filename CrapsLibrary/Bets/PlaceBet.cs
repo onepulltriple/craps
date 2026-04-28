@@ -2,8 +2,8 @@
 {
     public class PlaceBet : Bet
     {
-        public PlaceBet(CrapsTable crapsTable, Player betOwner, betType betType, uint commitment, List<int> winningTotals, uint payout) 
-            : base(crapsTable, betOwner, betType, commitment, winningTotals, payout)
+        public PlaceBet(CrapsTable crapsTable, Player betOwner, betType betType, uint countOfUnitsToBet, uint unitOfBet, List<int> winningTotals, uint payout) 
+            : base(crapsTable, betOwner, betType, countOfUnitsToBet, unitOfBet, winningTotals, payout)
         {
         }
 

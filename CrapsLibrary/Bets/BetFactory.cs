@@ -91,8 +91,8 @@
                     );
 
             uint countOfUnitsToBet = amountThrownAtBet / unitOfBet; // the quotient
-            uint amountToBet = countOfUnitsToBet * unitOfBet; // quotient times units
-            uint amountChangeToReturn = amountThrownAtBet - amountToBet; // remainder to return to player
+            // remainder to return to player = amount thrown at bet minus the quantity quotient times units
+            uint amountChangeToReturn = amountThrownAtBet - (countOfUnitsToBet * unitOfBet); 
 
             // charge player for the bet
             player.purse -= amountThrownAtBet;
@@ -100,7 +100,7 @@
 
             // calculate potential payout
             uint payout =
-                amountToBet *
+                (countOfUnitsToBet * unitOfBet) *
                 BetDefinitions[betType].payoutNumerator /
                 BetDefinitions[betType].payoutDenominator;
 
@@ -119,11 +119,11 @@
                 case betType.Hard_08:
                 case betType.Hard_10:
                 case betType.Hard_12:
-                    tempBet = new HardWayBet(crapsTable, player, betType, amountToBet, BetDefinitions[betType].winningTotals, payout);
+                    tempBet = new HardWayBet(crapsTable, player, betType, countOfUnitsToBet, unitOfBet, BetDefinitions[betType].winningTotals, payout);
                     break;
 
                 case betType.PassBet:
-                    tempBet = new PassBet(crapsTable, player, betType, amountToBet, BetDefinitions[betType].winningTotals, payout);
+                    tempBet = new PassBet(crapsTable, player, betType, countOfUnitsToBet, unitOfBet, BetDefinitions[betType].winningTotals, payout);
                     break;
 
                 case betType.PlaceBet_04:
@@ -132,7 +132,7 @@
                 case betType.PlaceBet_08:
                 case betType.PlaceBet_09:
                 case betType.PlaceBet_10:
-                    tempBet = new PlaceBet(crapsTable, player, betType, amountToBet, BetDefinitions[betType].winningTotals, payout);
+                    tempBet = new PlaceBet(crapsTable, player, betType, countOfUnitsToBet, unitOfBet, BetDefinitions[betType].winningTotals, payout);
                     break;
 
                 default:
@@ -143,7 +143,9 @@
             if (tempBet == null)
                 return Result<Bet>.Fail("but why??"); // TODO figure out if this can happen
 
-            return Result<Bet>.Pass(tempBet, $"{tempBet.betOwner.Name} has bet {tempBet.commitment} on {tempBet.Name}.");
+            return Result<Bet>.Pass(tempBet, $"{tempBet.betOwner.Name} " +
+                $"has bet {tempBet.countOfUnitsToBet * tempBet.unitOfBet} " +
+                $"on {tempBet.Name}.");
         }
 
         /// <summary>

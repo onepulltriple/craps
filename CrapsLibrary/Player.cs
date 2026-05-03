@@ -4,11 +4,11 @@ namespace CrapsLibrary
 {
     public class Player
     {
-        public uint purse;
-
-        public string playerName;
+        public string playerName; // TODO make private
 
         public string Name => playerName;
+
+        public uint purse;
 
         public List<Bet> playerBetList;
 

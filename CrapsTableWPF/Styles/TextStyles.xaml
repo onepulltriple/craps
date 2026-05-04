@@ -1,0 +1,17 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!--Base style (like a self-defined Body Text)-->
+    <Style x:Key="BaseTextStyle" TargetType="TextBlock">
+        <!--<Setter Property="FontFamily" Value="Segoe UI"/>-->
+        <!--<Setter Property="FontSize"   Value="14"      />-->
+        <!--<Setter Property="Foreground" Value="Black" />-->
+    </Style>
+
+    <!--Derived styles-->
+    <Style x:Key="TitleTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BaseTextStyle}">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+
+</ResourceDictionary>

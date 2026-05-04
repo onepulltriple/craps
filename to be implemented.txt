@@ -45,3 +45,4 @@ payout ratio  should be reduced when presented to user, e.g. 5:5
 
 auto-pause place bets when the point is made
 
+determine if the "outer" grids int eh main window are necessary

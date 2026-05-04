@@ -1,0 +1,14 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--Base panel style-->
+    <Style x:Key="RoundedPanelStyle" TargetType="Border">
+        <Setter Property="Background" Value="{DynamicResource PrimaryPanelBackgroundBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBorderBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="10"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="ClipToBounds" Value="True"/>
+    </Style>
+    
+</ResourceDictionary>

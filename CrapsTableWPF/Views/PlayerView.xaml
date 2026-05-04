@@ -5,13 +5,17 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CrapsTableWPF.Views"
              xmlns:viewmodels="clr-namespace:CrapsTableWPF.ViewModels"
-             mc:Ignorable="d" >
+             mc:Ignorable="d" 
+             Width="200" Height="100">
+    
     <UserControl.DataContext>
         <viewmodels:PlayerViewModel />
     </UserControl.DataContext>
 
-    <StackPanel Background="AliceBlue">
-        <Label Content="{Binding Name}"/>
-        <Label Content="{Binding Purse}"/>
-    </StackPanel>
+    <Border Style="{StaticResource RoundedPanelStyle}">
+        <StackPanel>
+            <TextBlock Text="{Binding Name}" Style="{StaticResource TitleTextStyle}"/>
+            <Label Content="{Binding Purse}"/>
+        </StackPanel>
+    </Border>
 </UserControl>

@@ -21,7 +21,7 @@ namespace CrapsTableWPF
     /// </summary>
     public partial class CRUDWindowCrapsTable : Window
     {
-        public string enteredTableMinimum;
+        public string? enteredTableMinimum;
 
 
 

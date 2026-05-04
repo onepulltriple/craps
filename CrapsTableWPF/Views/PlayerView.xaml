@@ -12,7 +12,7 @@
         <viewmodels:PlayerViewModel />
     </UserControl.DataContext>
 
-    <Border Style="{StaticResource RoundedPanelStyle}">
+    <Border Style="{StaticResource RoundedBorderStyle}">
         <StackPanel>
             <TextBlock Text="{Binding Name}" Style="{StaticResource TitleTextStyle}"/>
             <Label Content="{Binding Purse}"/>

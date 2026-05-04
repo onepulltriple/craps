@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CrapsTableWPF"
         mc:Ignorable="d"
-        Title="Welcome to Craps!" Height="220" Width="400"
+        Title="Welcome to Craps!" Height="400" Width="600"
         Background="#264c26">
     <Grid Loaded="GridLoaded">
         <Grid.RowDefinitions>
@@ -20,21 +20,21 @@
         </Grid.ColumnDefinitions>
         
         <!--headline-->
-        <Label Name="UI00" Grid.Row="0" Grid.Column="0" FontSize="20" Margin="6" VerticalAlignment="Center" Foreground="White" 
+        <Label Name="UI00" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Foreground="White" 
                Content="Craps!!"/>
 
 
         <!--middle section-->
-        <Label Name="UI01" Grid.Row="1" Grid.Column="0" FontSize="12" Margin="6" VerticalAlignment="Center" Foreground="White"
+        <Label Name="UI01" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Foreground="White"
                Content="Welcome! Please set the table minimum:"/>
 
-        <TextBox Name="TB01" Grid.Row="1" Grid.Column="1" FontSize="12" Margin="6" VerticalAlignment="Center"
+        <TextBox Name="TB01" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center"
                  Text="{Binding enteredTableMinimum, UpdateSourceTrigger=PropertyChanged}" KeyDown="TB01KeyDownHandler"/>
         
         
         <!--lower section-->
-        <TextBlock Name="UI02" Grid.Row="2" Grid.Column="0" FontSize="12" Margin="6" VerticalAlignment="Center" Foreground="White"
-               Text="" Grid.ColumnSpan="2" TextWrapping="Wrap"/>
+        <TextBlock Name="UI02" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Foreground="White"
+               Text="" Grid.ColumnSpan="2" />
 
 
 

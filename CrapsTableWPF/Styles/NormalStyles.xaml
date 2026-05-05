@@ -35,8 +35,8 @@
     <Style TargetType="Border">
         <Setter Property="Background"           Value="{DynamicResource PrimaryPanelBackgroundBrush}"/>
         <Setter Property="BorderBrush"          Value="{DynamicResource PrimaryBorderBrush}"/>
-        <Setter Property="BorderThickness"      Value="1"/>
-        <Setter Property="CornerRadius"         Value="10"/>
+        <Setter Property="BorderThickness"      Value="0"/>
+        <Setter Property="CornerRadius"         Value="0"/>
         <Setter Property="Padding"              Value="0"/>
     </Style>
     
@@ -44,8 +44,8 @@
     <Style TargetType="Button">
         <Setter Property="FontFamily"           Value="{StaticResource DefaultFont}"/>
         <Setter Property="FontSize"             Value="{StaticResource DefaultFontSize}"/>
-        <Setter Property="Padding"              Value="2,2,2,2"/>
-        <Setter Property="Margin"               Value="4"/>
+        <Setter Property="Padding"              Value="0"/>
+        <Setter Property="Margin"               Value="0"/>
         <Setter Property="Cursor"               Value="Hand"/>
     </Style>
     
@@ -53,8 +53,8 @@
     <Style TargetType="TextBox">
         <Setter Property="FontFamily"           Value="{StaticResource DefaultFont}"/>
         <Setter Property="FontSize"             Value="{StaticResource DefaultFontSize}"/>
-        <Setter Property="Padding"              Value="4"/>
-        <Setter Property="Margin"               Value="2"/>
+        <Setter Property="Padding"              Value="0"/>
+        <Setter Property="Margin"               Value="0"/>
         <Setter Property="IsTabStop"            Value="True"/>
     </Style>
     

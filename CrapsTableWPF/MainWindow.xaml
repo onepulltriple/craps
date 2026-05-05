@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:svg="clr-namespace:SharpVectors.Converters;assembly=SharpVectors.Converters.Wpf"
         xmlns:views="clr-namespace:CrapsTableWPF.Views"
-        Title="Craps Table"  Width="1600" Height="1000" MinWidth="1200" MinHeight="750"
+        Width="1600" Height="1000" MinWidth="1200" MinHeight="750"
+        Title="Craps Table"  
         Background="#264c26">
 
     <Grid>
@@ -175,25 +176,15 @@
         </Grid>
 
         <!-- Foreground layout -->
-        
-        <Viewbox Stretch="Uniform"
-                 Panel.ZIndex="2">
-            
+        <Viewbox Stretch="Uniform" Panel.ZIndex="2">
             <Canvas Width="3200" Height="2000">
-
-                <StackPanel
-                    Canvas.Left="1401"
-                    Canvas.Top="1445">
-                    <views:PlayerView/>
-                </StackPanel>
                 
+                <Border Canvas.Left="1400" Canvas.Top="1445"
+                    Style="{DynamicResource RoundedBorderStyle}">
+                    <views:PlayerView/>
+                </Border>
+            
             </Canvas>
-            <!-- Headline -->
-            <!-- Middle Section -->
-            <!-- Lower Section -->
-
-            <!-- UI Elements -->
-
         </Viewbox>
         
     </Grid>

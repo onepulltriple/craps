@@ -3,11 +3,11 @@
 
     <!--for brushes, colors, and visual constants-->
     
-        <SolidColorBrush x:Key="PrimaryTextBrush" Color="#FF222222"/>
+        <SolidColorBrush x:Key="PrimaryTextBrush"               Color="#FF222222"/>
 
         <!-- semi-transparent (CC = ~80% opacity) alpha channel doesn't fade the text, just the background -->
-        <SolidColorBrush x:Key="PrimaryPanelBackgroundBrush" Color="#CCFFFFFF"/>
+        <SolidColorBrush x:Key="PrimaryPanelBackgroundBrush"    Color="#CCFFFFFF"/>
     
-        <SolidColorBrush x:Key="PrimaryBorderBrush" Color="#FF2D2D30"/>
+        <SolidColorBrush x:Key="PrimaryBorderBrush"             Color="#FF2D2D30"/>
 
 </ResourceDictionary>

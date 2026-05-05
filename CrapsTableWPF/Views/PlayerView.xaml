@@ -6,16 +6,27 @@
              xmlns:local="clr-namespace:CrapsTableWPF.Views"
              xmlns:viewmodels="clr-namespace:CrapsTableWPF.ViewModels"
              mc:Ignorable="d" 
-             Width="200" Height="100">
+             Width="360" Height="100">
     
     <UserControl.DataContext>
         <viewmodels:PlayerViewModel />
     </UserControl.DataContext>
 
-    <Border Style="{StaticResource RoundedBorderStyle}">
-        <StackPanel>
-            <TextBlock Text="{Binding Name}" Style="{StaticResource TitleTextStyle}"/>
-            <Label Content="{Binding Purse}"/>
-        </StackPanel>
-    </Border>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
+        <TextBlock Grid.Row="0"
+            Style="{StaticResource PlayerHeadingStyle}"
+            Text="{Binding Name}" 
+            d:Text="player.Name"
+            />
+        <TextBlock Grid.Row="1"
+            Style="{StaticResource PlayerBodyTextStyle}"
+            Text="{Binding Purse}"
+            d:Text="player.Purse"
+            />
+    </Grid>
 </UserControl>

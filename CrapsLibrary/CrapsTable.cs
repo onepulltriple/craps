@@ -19,7 +19,8 @@
         public GameEventFeed gameEventFeed = new GameEventFeed();
 
         // Player information
-        private readonly List<Player> players = new List<Player>();
+        private readonly List<Player> players = new List<Player>(); //TODO remove later in favor of next line
+        public Player?[] Slots { get; } = new Player?[8];
 
         private int currentIndex = 0;
 

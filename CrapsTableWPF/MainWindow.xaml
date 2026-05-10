@@ -2,10 +2,13 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:svg="clr-namespace:SharpVectors.Converters;assembly=SharpVectors.Converters.Wpf"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:views="clr-namespace:CrapsTableWPF.Views"
         Width="1600" Height="1000" MinWidth="1200" MinHeight="750"
         Title="Craps Table"  
-        Background="#264c26">
+        Background="#264c26"
+        mc:Ignorable="d">
 
     <Grid>
         <!-- SVG in background, scales to window -->
@@ -183,7 +186,13 @@
                     Style="{DynamicResource RoundedBorderStyle}">
                     <views:PlayerView/>
                 </Border>
-            
+
+                <Border Canvas.Left="1400" Canvas.Top="1645"
+                    Style="{DynamicResource RoundedBorderStyle}">
+                    <TextBlock Text="{Binding TableMinimum}" d:Text="Table minimum" FontSize="24"/>
+                </Border>
+
+
             </Canvas>
         </Viewbox>
         

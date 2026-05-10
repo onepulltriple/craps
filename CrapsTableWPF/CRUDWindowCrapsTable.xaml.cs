@@ -1,4 +1,5 @@
 ﻿using CrapsLibrary;
+using CrapsTableWPF.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,7 @@ namespace CrapsTableWPF
 
 
 
-        DealerWPF dealerWPF;
+        //DealerWPF dealerWPF;
 
         public CRUDWindowCrapsTable()
         {
@@ -53,7 +54,11 @@ namespace CrapsTableWPF
                 return;
             }
             //UI02.Text = resultOfCheck.Messages[0];
-            MainWindow main = new();
+
+            var service = new CrapsTableService();
+            service.CreateTable(resultOfCheck.Value);
+
+            MainWindow main = new(service);
             main.Show();
             this.Close();
         }

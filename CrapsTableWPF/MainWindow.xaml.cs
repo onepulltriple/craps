@@ -10,6 +10,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CrapsLibrary;
 using CrapsLibrary.Bets;
+using CrapsTableWPF.Services;
+using CrapsTableWPF.ViewModels;
 
 namespace CrapsTableWPF
 {
@@ -18,16 +20,32 @@ namespace CrapsTableWPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        CrapsTable crapsTable;
-
-        Player currentPlayer;
-
-        public MainWindow()
+        public MainWindow(CrapsTableService service)
         {
             InitializeComponent();
-            this.crapsTable = new(5, 5);
-            DataContext = this;
+            DataContext = new CrapsTableViewModel(service.crapsTable!);
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         private void Path_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -63,7 +81,7 @@ namespace CrapsTableWPF
             if (sender is not FrameworkElement tempSender)
                 return;
 
-            betType tempBetType = Enum.Parse<betType>(tempSender.Tag.ToString());
+            //betType tempBetType = Enum.Parse<betType>(tempSender.Tag.ToString());
 
             // where should the player live?
 

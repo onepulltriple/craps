@@ -44,10 +44,11 @@ namespace CrapsTableWPF.ViewModels
 
         public PlayerViewModel()
         {
-            Player player = new("TestPlayer", 90);
-            _name = player.Name;
-            _purse = player.purse.ToString();
-            _playerBetList = player.playerBetList;
+            //Player player = new("TestPlayer", 90);
+            //_name = player.Name;
+            //_purse = player.purse.ToString();
+            //_playerBetList = player.playerBetList;
+            
         }
     }
 }

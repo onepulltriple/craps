@@ -18,7 +18,8 @@ namespace ConsoleAppForCraps.DealerCLIState
             Console.WriteLine("2. Rename a player");
             Console.WriteLine("3. Delete a player");
             Console.WriteLine("4. Add money to a player's purse");
-            Console.WriteLine("\n0. Go to overview"); //?
+
+            Console.WriteLine("\n0. Go to overview");
 
             List<int> listOfAcceptableInts = new List<int>() { 0, 1, 2, 3, 4 };
             PerformTask(ValidateUserInputCLIMenu(listOfAcceptableInts));
@@ -75,14 +76,17 @@ namespace ConsoleAppForCraps.DealerCLIState
             this.Enter();
         }
 
-
         private void CreatePlayerCLI()
         {
             string enteredName = NamePlayerCLI();
 
-            dealerCLIStateMachine.crapsTable!.AddPlayer(new Player(enteredName, 100));
+            Result<bool> outcome = dealerCLIStateMachine.crapsTable!.AddPlayerToNextFreeSlot(new Player(enteredName, 100));
 
-            Console.WriteLine($"\n{enteredName} was successfully created.");
+            //Console.WriteLine($"\n{enteredName} was successfully created.");
+            //Console.WriteLine($"\n{outcome.Messages.First()}");
+            foreach (string message in outcome.Messages)
+                Console.Write(message);
+
             SleepCLI();
 
             this.Enter();

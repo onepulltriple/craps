@@ -56,7 +56,7 @@ namespace ConsoleAppForCraps.DealerCLIState
                 tableMin = CrapsTable.ValidateCrapsTableMinimum(input);
                 
                 foreach (string message in tableMin.Messages)
-                    Console.Write($"{message}: ");
+                    Console.Write(message);
                 
             } while (!tableMin.Success);
 
@@ -92,7 +92,10 @@ namespace ConsoleAppForCraps.DealerCLIState
         {
             List<int> listOfAcceptableInts = new();
 
-            var players = dealerCLIStateMachine.crapsTable!.Players;
+            var players = dealerCLIStateMachine.crapsTable!
+                .Slots
+                .OfType<Player>()
+                .ToList();
 
             for (int i = 0; i < players.Count; i++)
             {
@@ -103,23 +106,17 @@ namespace ConsoleAppForCraps.DealerCLIState
             return players[ValidateUserInputCLIMenu(listOfAcceptableInts) - 1];
         }
 
+
         protected betType SelectBetFromFactoryCLI(Player betPlacer)
         {
             List<int> listOfAcceptableInts = new();
 
-            //var bets = BetFactory.BetDefinitions.ToList();
             var bets = BetFactory.GetCreateableBets(dealerCLIStateMachine.crapsTable!, betPlacer);
 
             int scaleUpFactor = (int)(dealerCLIStateMachine.crapsTable!.tableMinimum / CrapsTable.absoluteTableMinimum);
 
             for (int i = 0; i < bets.Count; i++)
             {
-                //Console.WriteLine(
-                //    $"{i + 1,4}. " +
-                //    $"{bets[i].Key,-15}" +
-                //    $"Minimum bet = {scaleUpFactor * bets[i].Value.payoutDenominator,-4} " +
-                //    $"(payout ratio {bets[i].Value.payoutNumerator,2}" +
-                //    $":{bets[i].Value.payoutDenominator,2})");
                 var currentBetDef = BetFactory.BetDefinitions[bets[i]];
                 Console.WriteLine(
                     $"{i + 1,4}. " +
@@ -155,8 +152,11 @@ namespace ConsoleAppForCraps.DealerCLIState
         protected void UpdateScreen()
         {
             Console.Clear();
-            
-            var players = dealerCLIStateMachine.crapsTable!.Players;
+
+            var players = dealerCLIStateMachine.crapsTable!
+                .Slots
+                .OfType<Player>()
+                .ToList();
 
             if (players.Count == 0)
             {

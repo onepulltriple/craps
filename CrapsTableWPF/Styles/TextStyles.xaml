@@ -20,7 +20,14 @@
         <Setter Property="FontWeight"               Value="Bold"/>
     </Style>
 
-    
+    <Style x:Key="PopUpWindowBodyTextStyle"
+           TargetType="TextBlock"
+           BasedOn="{StaticResource BodyTextStyle}">
+        <Setter Property="HorizontalAlignment"      Value="Center"/>
+        <Setter Property="VerticalAlignment"        Value="Center"/>
+        <Setter Property="Foreground"               Value="{StaticResource BrightTextBrush}"/>
+    </Style>
+
     <!--player text styles-->
     <Style x:Key="PlayerBodyTextStyle"
            TargetType="TextBlock"

@@ -7,13 +7,19 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="SetCrapsTableWindow.xaml.cs">
+    <Compile Update="CRUDWindowCrapsTable.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\PlayerSlotView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\PlayerView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\SetCrapsTableView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\SetCrapsTableWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

@@ -2,6 +2,7 @@
 using CrapsTableWPF.Services;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,12 +21,12 @@ namespace CrapsTableWPF
     /// <summary>
     /// Interaction logic for SetCrapsTableWindow.xaml
     /// </summary>
-    public partial class SetCrapsTableWindow : Window
+    public partial class CRUDWindowCrapsTable : Window
     {
         public string? enteredTableMinimum;
 
 
-        public SetCrapsTableWindow()
+        public CRUDWindowCrapsTable()
         {
             InitializeComponent();
             DataContext = this;
@@ -33,7 +34,11 @@ namespace CrapsTableWPF
 
         private void GridLoaded(object sender, RoutedEventArgs e)
         {
-            Keyboard.Focus(TB01);
+            if (DesignerProperties.GetIsInDesignMode(this))
+                return;    
+            
+            if (TB01 != null)
+                Keyboard.Focus(TB01);
         }
 
         private void QuitBottonClicked(object sender, RoutedEventArgs e)

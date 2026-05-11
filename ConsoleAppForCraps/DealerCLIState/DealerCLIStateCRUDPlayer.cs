@@ -57,10 +57,7 @@ namespace ConsoleAppForCraps.DealerCLIState
         }
 
 
-        public override void Exit()
-        {
-            ;
-        }
+        public override void Exit() { }
 
         private void RenamePlayerCLI()
         {
@@ -82,8 +79,6 @@ namespace ConsoleAppForCraps.DealerCLIState
 
             Result<bool> outcome = dealerCLIStateMachine.crapsTable!.AddPlayerToNextFreeSlot(new Player(enteredName, 100));
 
-            //Console.WriteLine($"\n{enteredName} was successfully created.");
-            //Console.WriteLine($"\n{outcome.Messages.First()}");
             foreach (string message in outcome.Messages)
                 Console.Write(message);
 

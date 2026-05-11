@@ -3,13 +3,13 @@
     public class CrapsTable
     {
         public uint tableMinimum;
+        public uint tableMaximum;
 
         public const uint absoluteTableMinimum = 5;
         public const uint absoluteTableMaximum = 5000;
         private const int slotCount = 8;
 
-        public uint tableMaximum;
-        
+        // Table Accessories ///////////////////////////////////////////////
         public Puck puck;
 
         // A scoreboard is bound to a crapsTable by virtue of the crapsTable's puck's delegate methods,
@@ -19,17 +19,15 @@
 
         public GameEventFeed gameEventFeed = new GameEventFeed();
 
-        // Player information
+        // Player information ///////////////////////////////////////////////
         public Player?[] Slots { get; } = new Player?[slotCount];
 
         public IEnumerable<Player> Players => Slots.OfType<Player>();
 
         private int currentIndex = -1;
 
-        //public Result<Player> GetCurrentPlayer();
 
-
-        
+        // Implementation ///////////////////////////////////////////////
         public CrapsTable(uint tableMinimum, uint tableMaximum)
         {
             this.tableMinimum = tableMinimum;
@@ -64,7 +62,6 @@
             // only works for addition (multiplication should use 1 to abort)
         }
 
-
         public Result<bool> AddPlayerToNextFreeSlot(Player playerToAdd)
         {
             for (int i = 0; i < Slots.Length; i++)
@@ -82,7 +79,6 @@
 
             return Result<bool>.Fail("Table is full!");
         }
-
 
         public Result<bool> InsertPlayerAtSlot(int slotIndex, Player playerToInsert)
         {

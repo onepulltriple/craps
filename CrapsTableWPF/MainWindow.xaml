@@ -184,9 +184,11 @@
                 
                 <Border Canvas.Left="1400" Canvas.Top="1445"
                     Style="{DynamicResource RoundedBorderStyle}">
-                    <views:PlayerView/>
+                    <views:PlayerView DataContext="{Binding Slots[0]}"/>
                 </Border>
 
+                
+                <!--test-->
                 <Border Canvas.Left="1400" Canvas.Top="1645"
                     Style="{DynamicResource RoundedBorderStyle}">
                     <TextBlock Text="{Binding TableMinimum}" d:Text="Table minimum" FontSize="24"/>

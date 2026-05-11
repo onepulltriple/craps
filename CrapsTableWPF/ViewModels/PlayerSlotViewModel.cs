@@ -7,17 +7,17 @@ namespace CrapsTableWPF.ViewModels
     {
         public int Index { get; }
 
-        public PlayerViewModel? Player {get;}
+        public Player? Player {get;}
 
         public bool IsEmpty => Player == null;
 
-        public ICommand ClickCommand { get; }
+        //public ICommand ClickCommand { get; }
 
-        public PlayerSlotViewModel(int index, PlayerViewModel? player, ICommand clickCommand)
+        public PlayerSlotViewModel(Player? player, int index) //, ICommand clickCommand)
         {
-            this.Index = index;
             this.Player = player;
-            this.ClickCommand = clickCommand;
+            this.Index = index;
+            //this.ClickCommand = clickCommand;
         }
     }
 }

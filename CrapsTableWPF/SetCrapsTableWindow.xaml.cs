@@ -18,17 +18,14 @@ using System.Windows.Shapes;
 namespace CrapsTableWPF
 {
     /// <summary>
-    /// Interaction logic for CRUDWindowCrapsTable.xaml
+    /// Interaction logic for SetCrapsTableWindow.xaml
     /// </summary>
-    public partial class CRUDWindowCrapsTable : Window
+    public partial class SetCrapsTableWindow : Window
     {
         public string? enteredTableMinimum;
 
 
-
-        //DealerWPF dealerWPF;
-
-        public CRUDWindowCrapsTable()
+        public SetCrapsTableWindow()
         {
             InitializeComponent();
             DataContext = this;

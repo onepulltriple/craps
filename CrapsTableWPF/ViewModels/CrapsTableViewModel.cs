@@ -1,11 +1,12 @@
 ﻿using System.Collections.ObjectModel;
 using CrapsLibrary;
 using CrapsLibrary.Bets;
+
 namespace CrapsTableWPF.ViewModels
 {
     public class CrapsTableViewModel : ViewModelBase
     {
-        //public ObservableCollection<PlayerSlotViewModel> Slots { get; }
+        public ObservableCollection<PlayerSlotViewModel> Slots { get; }
 
         private readonly CrapsTable _model;
 
@@ -27,6 +28,12 @@ namespace CrapsTableWPF.ViewModels
         public CrapsTableViewModel(CrapsTable crapsTable)
         {
             _model = crapsTable;
+
+            this.Slots = new ObservableCollection<PlayerSlotViewModel>(
+                _model.Slots.Select((m,i) => new PlayerSlotViewModel(m,i)) // TODO pass a reference to the crapstable here, so that methods on the crapstable are easier for the psvm to access
+                );
+
+
         }
     }
 }

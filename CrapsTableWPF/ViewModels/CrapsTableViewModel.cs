@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.CodeDom;
+using System.Collections.ObjectModel;
 using CrapsLibrary;
 using CrapsLibrary.Bets;
 
@@ -34,7 +35,7 @@ namespace CrapsTableWPF.ViewModels
             this._model = crapsTable;
 
             this.PlayerSlotViewModels = new ObservableCollection<PlayerSlotViewModel>(
-                _model.Slots.Select((m,i) => new PlayerSlotViewModel(crapsTable, m,i)) 
+                _model.Slots.Select((m,i) => new PlayerSlotViewModel(crapsTable,m,i)) 
                 );
 
 

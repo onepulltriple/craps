@@ -1,10 +1,13 @@
 ﻿using CrapsLibrary;
-using CrapsLibrary.Bets;
+using CrapsTableWPF.Infrastructure;
+using System.Windows.Input;
 
 namespace CrapsTableWPF.ViewModels
 {
     public class PlayerViewModel : ViewModelBase
     {
+        public ICommand NotifyPurseChangedCommand { get; }
+
         private Player _model;
 
         // Bindable Properties ///////////////////////////////////////////////
@@ -37,8 +40,13 @@ namespace CrapsTableWPF.ViewModels
         public PlayerViewModel(Player player)
         {
             this._model = player;
+
+            NotifyPurseChangedCommand = new RelayCommand(_ => NotifyPurseChanged());
         }
 
-
+        public void NotifyPurseChanged()
+        {
+            OnPropertyChanged(nameof(Purse));
+        }
     }
 }

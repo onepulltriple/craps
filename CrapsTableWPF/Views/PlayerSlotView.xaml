@@ -22,7 +22,7 @@
 
         <Border Grid.Row="1" Background="Aqua"
             Style="{DynamicResource RoundedBorderStyle}">
-            <views:PlayerView DataContext="{Binding Player}"/>
+            <views:PlayerView DataContext="{Binding PlayerViewModel}"/>
         </Border>
 
         <!--<Button Grid.Row="2"

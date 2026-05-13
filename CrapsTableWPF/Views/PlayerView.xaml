@@ -17,6 +17,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         
         <TextBlock Grid.Row="0"
@@ -29,5 +30,10 @@
             Text="{Binding Purse, TargetNullValue='NULL', FallbackValue='NO DATA'}"
             d:Text="player.Purse"
             />
+
+        <Button
+            Content="Refresh Purse"
+            Command="{Binding NotifyPurseChangedCommand}"
+            Grid.Row="2"/>
     </Grid>
 </UserControl>

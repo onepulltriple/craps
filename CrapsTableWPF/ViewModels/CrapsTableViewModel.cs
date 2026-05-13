@@ -6,31 +6,35 @@ namespace CrapsTableWPF.ViewModels
 {
     public class CrapsTableViewModel : ViewModelBase
     {
-        public ObservableCollection<PlayerSlotViewModel> Slots { get; }
+        private CrapsTable _model;
 
-        private readonly CrapsTable _model;
+        public ObservableCollection<PlayerSlotViewModel> PlayerSlotViewModels { get; }
 
-        public string TableMinimum => _model.tableMinimum.ToString();
+        public string TableMaximum => _model.tableMaximum.ToString();
 
-        // bindable properties
-        //private string _tableMinimum;
+        // TODO decide how to implement puck
 
-        //public string TableMinimum
-        //{
-        //    get => _tableMinimum;
-        //    private set
-        //    {
-        //        _tableMinimum = value;
-        //        OnPropertyChanged(nameof(TableMinimum));
-        //    }
-        //}
+
+        // Bindable Properties ///////////////////////////////////////////////
+        public uint TableMinimum
+        {
+            get => _model.tableMinimum;
+            private set
+            {
+                if (_model.tableMinimum != value)
+                {
+                    _model.tableMinimum = value;
+                    OnPropertyChanged(nameof(TableMinimum));
+                }
+            }
+        }
 
         public CrapsTableViewModel(CrapsTable crapsTable)
         {
-            _model = crapsTable;
+            this._model = crapsTable;
 
-            this.Slots = new ObservableCollection<PlayerSlotViewModel>(
-                _model.Slots.Select((m,i) => new PlayerSlotViewModel(m,i)) // TODO pass a reference to the crapstable here, so that methods on the crapstable are easier for the psvm to access
+            this.PlayerSlotViewModels = new ObservableCollection<PlayerSlotViewModel>(
+                _model.Slots.Select((m,i) => new PlayerSlotViewModel(crapsTable, m,i)) 
                 );
 
 

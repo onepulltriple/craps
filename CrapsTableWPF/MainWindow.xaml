@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:views="clr-namespace:CrapsTableWPF.Views"
+        xmlns:viewmodels="clr-namespace:CrapsTableWPF.ViewModels"
+        d:DataContext="{d:DesignInstance Type=viewmodels:CrapsTableViewModel}"
         Width="1600" Height="1000" MinWidth="1200" MinHeight="750"
         Title="Craps Table"  
         Background="#264c26"
@@ -184,7 +186,7 @@
                 
                 <Border Canvas.Left="1400" Canvas.Top="1445"
                     Style="{DynamicResource RoundedBorderStyle}">
-                    <views:PlayerView DataContext="{Binding Slots[0]}"/>
+                    <views:PlayerSlotView DataContext="{Binding PlayerSlotViewModels[0]}"/>
                 </Border>
 
                 

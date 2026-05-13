@@ -5,18 +5,21 @@ namespace CrapsTableWPF.ViewModels
 {
     public class PlayerSlotViewModel
     {
-        public int Index { get; }
-
         public Player? Player {get;}
+
+        public int Index { get; }
 
         public bool IsEmpty => Player == null;
 
+        private readonly CrapsTable crapsTable;
+
         //public ICommand ClickCommand { get; }
 
-        public PlayerSlotViewModel(Player? player, int index) //, ICommand clickCommand)
+        public PlayerSlotViewModel(CrapsTable crapsTable, Player? player, int index) //, ICommand clickCommand)
         {
             this.Player = player;
             this.Index = index;
+            this.crapsTable = crapsTable;
             //this.ClickCommand = clickCommand;
         }
     }

@@ -24,7 +24,7 @@
 
         public IEnumerable<Player> Players => Slots.OfType<Player>();
 
-        private int currentIndex = -1;
+        private int currentPlayerIndex = -1;
 
 
         // Implementation ///////////////////////////////////////////////
@@ -33,6 +33,8 @@
             this.tableMinimum = tableMinimum;
             this.tableMaximum = tableMaximum;
             this.puck = new Puck(this);
+
+            Slots[0] = new Player("Chase", 100);
         }
 
         public static Result<uint> ValidateCrapsTableMinimum(string? inputToCheck)
@@ -70,8 +72,8 @@
                 {
                     Slots[i] = playerToAdd;
 
-                    if (currentIndex == -1) // initialize the first added player as the current player
-                        currentIndex = i;
+                    if (currentPlayerIndex == -1) // initialize the first added player as the current player
+                        currentPlayerIndex = i;
 
                     return Result<bool>.Pass(true, $"{playerToAdd.Name} was created and added to seat {i + 1}.");
                 }
@@ -90,18 +92,18 @@
 
             Slots[slotIndex] = playerToInsert;
 
-            if (currentIndex == -1) // the first inserted player becomes the current player
-                currentIndex = slotIndex;
+            if (currentPlayerIndex == -1) // the first inserted player becomes the current player
+                currentPlayerIndex = slotIndex;
 
             return Result<bool>.Pass(true, $"{playerToInsert.Name} has been placed at seat {slotIndex + 1}");
         }
 
         public Result<Player> GetCurrentPlayer()
         {
-            if (currentIndex < 0 || currentIndex >= Slots.Length)
+            if (currentPlayerIndex < 0 || currentPlayerIndex >= Slots.Length)
                 return Result<Player>.Fail("There is no current player.");
 
-            Player? player = Slots[currentIndex];
+            Player? player = Slots[currentPlayerIndex];
 
             if (player is null)
                 return Result<Player>.Fail("There is no current player.");
@@ -122,12 +124,12 @@
                     // if table is now empty
                     if (!Players.Any())
                     {
-                        currentIndex = -1;
+                        currentPlayerIndex = -1;
                         return Result<bool>.Pass(true, $"{playerToRemove.Name} has been removed. Table is now empty.");
                     }
 
                     // if current player is removed, advance turn
-                    if (i == currentIndex)
+                    if (i == currentPlayerIndex)
                     {
                         Result<bool> nextTurnResult = NextTurn();
 
@@ -157,15 +159,15 @@
             if (!Players.Any())
                 return Result<bool>.Fail("No players at the table.");
 
-            int startIndex = currentIndex;
+            int startIndex = currentPlayerIndex;
 
             do
             {
-                currentIndex = (currentIndex + 1) % Slots.Length;
+                currentPlayerIndex = (currentPlayerIndex + 1) % Slots.Length;
             } 
-            while (Slots[currentIndex] is null && currentIndex != startIndex);
+            while (Slots[currentPlayerIndex] is null && currentPlayerIndex != startIndex);
 
-            return Result<bool>.Pass(true, $"{Slots[currentIndex]!.Name}'s turn!");
+            return Result<bool>.Pass(true, $"{Slots[currentPlayerIndex]!.Name}'s turn!");
         }
     }
 }

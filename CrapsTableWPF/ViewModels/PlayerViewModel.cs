@@ -5,50 +5,40 @@ namespace CrapsTableWPF.ViewModels
 {
     public class PlayerViewModel : ViewModelBase
     {
-        // bindable properties
-        private string _name;
+        private Player _model;
 
+        // Bindable Properties ///////////////////////////////////////////////
         public string Name
         {
-            get => _name;
+            get => _model.Name;
             private set
             {
-                _name = value;
-                OnPropertyChanged(nameof(Name));
+                if (_model.playerName != value)
+                {
+                    _model.playerName = value;
+                    OnPropertyChanged(nameof(Name));
+                }
             }
         }
 
-        private string _purse;
-
-        public string Purse
+        public uint Purse
         {
-            get => _purse;
+            get => _model.purse;
             private set
             {
-                _purse = value;
-                OnPropertyChanged(nameof(Purse));
+                if (_model.purse != value)
+                {
+                    _model.purse = value;
+                    OnPropertyChanged(nameof(Purse));
+                }
             }
         }
 
-        private List<Bet> _playerBetList;
-
-        public List<Bet> PlayerBetList
+        public PlayerViewModel(Player player)
         {
-            get => _playerBetList;
-            private set
-            {
-                _playerBetList = value;
-                OnPropertyChanged(nameof(PlayerBetList));
-            }
+            this._model = player;
         }
 
-        public PlayerViewModel()
-        {
-            //Player player = new("TestPlayer", 90);
-            //_name = player.Name;
-            //_purse = player.purse.ToString();
-            //_playerBetList = player.playerBetList;
-            
-        }
+
     }
 }

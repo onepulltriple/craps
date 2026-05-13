@@ -25,9 +25,5 @@ namespace CrapsTableWPF.Views
             InitializeComponent();
         }
 
-        private void CreatePlayer(object sender, RoutedEventArgs e)
-        {
-            //should this really go here?
-        }
     }
 }

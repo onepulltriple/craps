@@ -3,14 +3,41 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:CrapsTableWPF.Views"
+             xmlns:views="clr-namespace:CrapsTableWPF.Views"
+             xmlns:viewmodels="clr-namespace:CrapsTableWPF.ViewModels"
+             d:DataContext="{d:DesignInstance Type=viewmodels:PlayerSlotViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <StackPanel>
-        <Button Style="{Binding NewButtonStyle}"
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0"
+            Style="{StaticResource PlayerHeadingStyle}"
+            Text="{Binding Index}" 
+            d:Text="playerSlot.Index"
+            />
+
+        <Border Grid.Row="1" Background="Aqua"
+            Style="{DynamicResource RoundedBorderStyle}">
+            <views:PlayerView DataContext="{Binding Player}"/>
+        </Border>
+
+        <!--<Button Grid.Row="2"
+                Content="update purse"
+                Click="NotifyPurseChanged"/>-->
+    </Grid>
+    
+    
+    
+    
+    <!--<StackPanel>
+        --><!--<Button Style="{Binding NewButtonStyle}"
                 Content="Add new player"
                 Click="CreatePlayer">
-        </Button>
+        </Button>--><!--
         
-    </StackPanel>
+    </StackPanel>-->
 </UserControl>

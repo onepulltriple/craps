@@ -24,5 +24,6 @@ namespace CrapsTableWPF.Views
         {
             InitializeComponent();
         }
+
     }
 }

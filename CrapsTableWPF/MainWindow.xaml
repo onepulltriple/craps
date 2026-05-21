@@ -189,12 +189,14 @@
                 <!--Player slot views-->
                 <Border Canvas.Left="1400" Canvas.Top="1445"
                         Style="{DynamicResource RoundedBorderStyle}"
+                        Height="200" Width="300"
                         >
                     <views:PlayerSlotView DataContext="{Binding PlayerSlotViewModels[0]}"/>
                 </Border>
                 
                 <Border Canvas.Left="1031" Canvas.Top="1445"
                         Style="{DynamicResource RoundedBorderStyle}"
+                        Height="200" Width="300"
                         >
                     <views:PlayerSlotView DataContext="{Binding PlayerSlotViewModels[1]}"/>
                 </Border>

@@ -2,7 +2,9 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:CrapsTableWPF"
-             StartupUri="Windows/SetCrapsTableWindow.xaml">
+             xmlns:infrastructure="clr-namespace:CrapsTableWPF.Infrastructure"
+             StartupUri="Windows/SetCrapsTableWindow.xaml"
+             >
     
     <Application.Resources>
         <ResourceDictionary>
@@ -14,6 +16,13 @@
                 <ResourceDictionary Source="Styles/PanelStyles.xaml"/>
                 <ResourceDictionary Source="Styles/ButtonStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            
+            <!--provided by WPF-->
+            <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+            
+            <!--custom-->
+            <!--<infrastructure:InverseBooleanConverter x:Key="InverseBooleanConverter"/>-->
+            <infrastructure:InverseBooleanToVisibilityConverter x:Key="InverseBooleanToVisibilityConverter"/>
         </ResourceDictionary>
     </Application.Resources>
     

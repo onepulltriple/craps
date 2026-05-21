@@ -1,5 +1,6 @@
 ﻿using CrapsLibrary;
 using CrapsTableWPF.Infrastructure;
+using CrapsTableWPF.Services;
 using System.Windows.Input;
 
 namespace CrapsTableWPF.ViewModels
@@ -27,22 +28,31 @@ namespace CrapsTableWPF.ViewModels
 
         private readonly CrapsTable crapsTable;
 
+        private readonly IDialogService dialogService;
+
         // Commands //////////////////////////////////////////////////////////
         public ICommand AddPlayerCommand { get; }
 
 
-        public PlayerSlotViewModel(CrapsTable crapsTable, Player? player, int slotIndex) 
+        public PlayerSlotViewModel(CrapsTable crapsTable, Player? player, int slotIndex, IDialogService dialogService) 
         {
             this.PlayerViewModel = player is null ? null : new PlayerViewModel(player);
 
             this.SlotIndex = slotIndex;
             this.crapsTable = crapsTable;
+            this.dialogService = dialogService;
             this.AddPlayerCommand = new RelayCommand(_ => AddPlayer());
         }
 
         private void AddPlayer()
         {
-            Player player = new Player("Marty McFly", 600);
+            var data = dialogService.ShowAddPlayerDialog();
+
+            if (data == null)
+                return;
+
+            //Player player = new Player("Marty McFly", 600);
+            Player player = new Player(data.Name, data.Purse);
 
             var result = crapsTable.InsertPlayerAtSlot(SlotIndex, player);
 

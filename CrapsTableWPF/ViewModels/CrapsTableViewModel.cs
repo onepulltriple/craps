@@ -3,6 +3,7 @@ using System.Windows.Input;
 using CrapsLibrary;
 using CrapsLibrary.Bets;
 using CrapsTableWPF.Infrastructure;
+using CrapsTableWPF.Services;
 
 namespace CrapsTableWPF.ViewModels
 {
@@ -51,9 +52,11 @@ namespace CrapsTableWPF.ViewModels
         {
             this._model = crapsTable;
 
+            var dialogService = new DialogService();
+
             this.PlayerSlotViewModels = new ObservableCollection<PlayerSlotViewModel>(
                 _model.Slots.Select((player,slotIndex) => 
-                new PlayerSlotViewModel(crapsTable,player,slotIndex)) 
+                new PlayerSlotViewModel(crapsTable, player, slotIndex, dialogService)) 
                 );
 
             

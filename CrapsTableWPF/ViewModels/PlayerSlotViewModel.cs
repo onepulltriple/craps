@@ -1,27 +1,55 @@
 ﻿using CrapsLibrary;
+using CrapsTableWPF.Infrastructure;
 using System.Windows.Input;
 
 namespace CrapsTableWPF.ViewModels
 {
-    public class PlayerSlotViewModel
+    public class PlayerSlotViewModel : ViewModelBase
     {
-        public PlayerViewModel PlayerViewModel {get;}
 
-        public int Index { get; }
+        // Bindable Properties ///////////////////////////////////////////////
+        private PlayerViewModel? _playerViewModel;
+        public PlayerViewModel? PlayerViewModel
+        {
+            get => _playerViewModel;
+            private set
+            {
+                if (_playerViewModel == value) return;
+                _playerViewModel = value;
+                OnPropertyChanged(nameof(PlayerViewModel));
+                OnPropertyChanged(nameof(IsEmpty));
+            }
+        }
+
+        public int SlotIndex { get; }
 
         public bool IsEmpty => PlayerViewModel == null;
 
         private readonly CrapsTable crapsTable;
 
-        //public ICommand ClickCommand { get; }
+        // Commands //////////////////////////////////////////////////////////
+        public ICommand AddPlayerCommand { get; }
 
-        public PlayerSlotViewModel(CrapsTable crapsTable, Player? player, int slotIndex) //, ICommand clickCommand)
+
+        public PlayerSlotViewModel(CrapsTable crapsTable, Player? player, int slotIndex) 
         {
             this.PlayerViewModel = player is null ? null : new PlayerViewModel(player);
 
-            this.Index = slotIndex;
+            this.SlotIndex = slotIndex;
             this.crapsTable = crapsTable;
-            //this.ClickCommand = clickCommand;
+            this.AddPlayerCommand = new RelayCommand(_ => AddPlayer());
+        }
+
+        private void AddPlayer()
+        {
+            Player player = new Player("Marty McFly", 600);
+
+            var result = crapsTable.InsertPlayerAtSlot(SlotIndex, player);
+
+            if (result.Success)
+            {
+                PlayerViewModel = new PlayerViewModel(player);
+            }
         }
     }
 }

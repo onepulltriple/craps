@@ -12,12 +12,13 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
+            <RowDefinition Height="2*" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="0"
             Style="{StaticResource PlayerHeadingStyle}"
-            Text="{Binding Index}" 
+            Text="{Binding SlotIndex}" 
             d:Text="playerSlot.Index"
             />
 
@@ -26,19 +27,10 @@
             <views:PlayerView DataContext="{Binding PlayerViewModel}"/>
         </Border>
 
-        <!--<Button Grid.Row="2"
-                Content="update purse"
-                Click="NotifyPurseChanged"/>-->
+        <Button Grid.Row="2"
+                Style="{DynamicResource MainWindowButtonStyle}"
+                Content="Add Player"
+                Command="{Binding AddPlayerCommand}"
+                />
     </Grid>
-    
-    
-    
-    
-    <!--<StackPanel>
-        --><!--<Button Style="{Binding NewButtonStyle}"
-                Content="Add new player"
-                Click="CreatePlayer">
-        </Button>--><!--
-        
-    </StackPanel>-->
 </UserControl>

@@ -17,14 +17,16 @@ namespace CrapsTableWPF.Infrastructure
         //private readonly Predicate<object?> _canExecute;
 
         // WPF listens for something changing and will then re-check whether the button should be enabled
+        #pragma warning disable CS0067
         public event EventHandler? CanExecuteChanged;
+        #pragma warning restore CS0067
         //{
         //    add { CommandManager.RequerySuggested += value; }
         //    remove { CommandManager.RequerySuggested -= value; }
         //}
 
         #region Constructors
-        public RelayCommand(Action<object> execute) : this(execute, null) { }
+        public RelayCommand(Action<object?> execute) : this(execute, null) { }
         //public RelayCommand(Action<object?> execute, Predicate<object> canExecute)
 
         // takes in the code from the ViewModel

@@ -6,5 +6,10 @@
            BasedOn="{StaticResource {x:Type Button}}">
         <!--<Setter Property="FontFamily" Value="Ubuntu"/>-->
     </Style>
-    
+
+    <Style x:Key="MainWindowButtonStyle"
+           TargetType="Button"
+           BasedOn="{StaticResource {x:Type Button}}">
+        <Setter Property="FontSize" Value="24"/>
+    </Style>
 </ResourceDictionary>

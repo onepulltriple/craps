@@ -1,6 +1,8 @@
 ﻿using System.Collections.ObjectModel;
+using System.Windows.Input;
 using CrapsLibrary;
 using CrapsLibrary.Bets;
+using CrapsTableWPF.Infrastructure;
 
 namespace CrapsTableWPF.ViewModels
 {
@@ -42,6 +44,8 @@ namespace CrapsTableWPF.ViewModels
             }
         }
 
+        // Commands //////////////////////////////////////////////////////////
+
 
         public CrapsTableViewModel(CrapsTable crapsTable)
         {
@@ -52,7 +56,7 @@ namespace CrapsTableWPF.ViewModels
                 new PlayerSlotViewModel(crapsTable,player,slotIndex)) 
                 );
 
-
+            
         }
     }
 }

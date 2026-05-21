@@ -35,6 +35,8 @@
             this.puck = new Puck(this);
 
             Slots[0] = new Player("Chase", 100);
+            //Slots[1] = new Player("Christian", 200);
+            Slots[1] = null;
         }
 
         public static Result<uint> ValidateCrapsTableMinimum(string? inputToCheck)

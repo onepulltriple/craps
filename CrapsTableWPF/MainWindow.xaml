@@ -6,11 +6,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:views="clr-namespace:CrapsTableWPF.Views"
         xmlns:viewmodels="clr-namespace:CrapsTableWPF.ViewModels"
-        d:DataContext="{d:DesignInstance Type=viewmodels:CrapsTableViewModel}"
-        Width="1600" Height="1000" MinWidth="1200" MinHeight="750"
+        mc:Ignorable="d"
         Title="Craps Table"  
         Background="#264c26"
-        mc:Ignorable="d">
+        d:DataContext="{d:DesignInstance Type=viewmodels:CrapsTableViewModel}"
+        Width="1600" Height="1000" MinWidth="1200" MinHeight="750"
+        >
 
     <Grid>
         <!-- SVG in background, scales to window -->
@@ -184,10 +185,23 @@
         <Viewbox Stretch="Uniform" Panel.ZIndex="2">
             <Canvas Width="3200" Height="2000">
                 
+                
+                <!--Player slot views-->
                 <Border Canvas.Left="1400" Canvas.Top="1445"
-                    Style="{DynamicResource RoundedBorderStyle}">
+                        Style="{DynamicResource RoundedBorderStyle}"
+                        >
                     <views:PlayerSlotView DataContext="{Binding PlayerSlotViewModels[0]}"/>
                 </Border>
+                
+                <Border Canvas.Left="1031" Canvas.Top="1445"
+                        Style="{DynamicResource RoundedBorderStyle}"
+                        >
+                    <views:PlayerSlotView DataContext="{Binding PlayerSlotViewModels[1]}"/>
+                </Border>
+
+                <!--one way to tell the command which slot to populate, i.e. hard-coding command parameter = slotIndex-->
+                <!--<Button Command="{Binding AddPlayerToSlot}"
+                        CommandParameter="0"></Button>-->
 
                 
                 <!--test-->

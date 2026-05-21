@@ -42,6 +42,7 @@ namespace CrapsTableWPF.ViewModels
             this._model = player;
 
             NotifyPurseChangedCommand = new RelayCommand(_ => NotifyPurseChanged());
+            //NotifyPurseChangedCommand = new RelayCommand(player.PauseAllBets());
         }
 
         public void NotifyPurseChanged()

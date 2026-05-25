@@ -5,13 +5,9 @@ using System.Windows.Data;
 
 namespace CrapsTableWPF.Infrastructure
 {
-    public class InverseBooleanToVisibilityConverter : IValueConverter
+    public class InverseBoolToVisibilityConverter : IValueConverter
     {
-        public object Convert(
-            object value,
-            Type targetType,
-            object parameter,
-            CultureInfo culture)
+        public object Convert(object value, Type _, object __, CultureInfo ___)
         {
             if (value is bool b)
             {
@@ -23,11 +19,7 @@ namespace CrapsTableWPF.Infrastructure
             return Visibility.Collapsed;
         }
 
-        public object ConvertBack(
-            object value,
-            Type targetType,
-            object parameter,
-            CultureInfo culture)
+        public object ConvertBack(object value, Type _, object __, CultureInfo ___)
         {
             if (value is Visibility v)
             {

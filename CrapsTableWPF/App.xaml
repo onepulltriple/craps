@@ -21,8 +21,7 @@
             <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
             
             <!--custom-->
-            <!--<infrastructure:InverseBooleanConverter x:Key="InverseBooleanConverter"/>-->
-            <infrastructure:InverseBooleanToVisibilityConverter x:Key="InverseBooleanToVisibilityConverter"/>
+            <infrastructure:InverseBoolToVisibilityConverter x:Key="InverseBoolToVisibilityConverter"/>
         </ResourceDictionary>
     </Application.Resources>
     

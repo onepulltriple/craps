@@ -27,25 +27,26 @@
         <Button Grid.Row="1"
                 Grid.ColumnSpan="2"
                 Command="{Binding AddPlayerCommand}"
+                Content="Click to add player"
                 Background="Transparent"
                 BorderThickness="0"
                 Visibility="{Binding IsEmpty,
                             Converter={StaticResource BoolToVisibilityConverter}}">
             
             <!-- Optional visual -->
-            <Border Background="#20FFFFFF"
+            <!--<Border Background="#20FFFFFF"
                     CornerRadius="10">
                 <TextBlock Text="Click to Add Player"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Center"/>
-            </Border>
+            </Border>-->
         </Button>
 
         <!--OCCUPIED SLOT-->
         <Border Grid.Row="1" Background="Aqua"
             Style="{DynamicResource RoundedBorderStyle}"
                 Visibility ="{Binding IsEmpty,
-                             Converter={StaticResource InverseBooleanToVisibilityConverter},
+                             Converter={StaticResource InverseBoolToVisibilityConverter},
                              FallbackValue=Collapsed}">
             <!--<views:PlayerView DataContext="{Binding PlayerViewModel}"/>-->
             <ContentControl Content="{Binding PlayerViewModel}">

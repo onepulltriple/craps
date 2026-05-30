@@ -11,8 +11,15 @@
         <Setter Property="Padding"              Value="0"/>
         <Setter Property="ClipToBounds"         Value="True"/>
     </Style>
-    
-    
+
+    <Style x:Key="MainWindowPlayerSlotBorderStyle"
+           TargetType="Border"
+           BasedOn="{StaticResource RoundedBorderStyle}">
+        <Setter Property="Height"               Value="200"/>
+        <Setter Property="Width"                Value="300"/>
+    </Style>
+
+
     <!--panel styles-->
     <!--panels are layout containers that lay out their children, i.e. control where things go-->
     <!--e.g. StackPanel, Grid, WrapPanel, DockPanel, Canvas-->

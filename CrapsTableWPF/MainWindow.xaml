@@ -185,23 +185,46 @@
         <Viewbox Stretch="Uniform" Panel.ZIndex="2">
             <Canvas Width="3200" Height="2000">
                 
-                
                 <!--Player slot views-->
                 <Border Canvas.Left="1400" Canvas.Top="1445"
-                        Style="{DynamicResource RoundedBorderStyle}"
-                        Height="200" Width="300"
-                        >
+                        Style="{DynamicResource MainWindowPlayerSlotBorderStyle}">
                     <views:PlayerSlotView DataContext="{Binding PlayerSlotViewModels[0]}"/>
                 </Border>
                 
                 <Border Canvas.Left="1031" Canvas.Top="1445"
-                        Style="{DynamicResource RoundedBorderStyle}"
-                        Height="200" Width="300"
-                        >
+                        Style="{DynamicResource MainWindowPlayerSlotBorderStyle}">
                     <views:PlayerSlotView DataContext="{Binding PlayerSlotViewModels[1]}"/>
                 </Border>
 
+                <Border Canvas.Left="661" Canvas.Top="1445"
+                        Style="{DynamicResource MainWindowPlayerSlotBorderStyle}">
+                    <views:PlayerSlotView DataContext="{Binding PlayerSlotViewModels[2]}"/>
+                </Border>
+                
+                <Border Canvas.Left="309" Canvas.Top="1387"
+                        Style="{DynamicResource MainWindowPlayerSlotBorderStyle}">
+                    <views:PlayerSlotView DataContext="{Binding PlayerSlotViewModels[3]}"/>
+                </Border>
 
+                <Border Canvas.Left="30" Canvas.Top="1039"
+                        Style="{DynamicResource MainWindowPlayerSlotBorderStyle}">
+                    <views:PlayerSlotView DataContext="{Binding PlayerSlotViewModels[4]}"/>
+                </Border>
+
+                <Border Canvas.Left="30" Canvas.Top="649"
+                        Style="{DynamicResource MainWindowPlayerSlotBorderStyle}">
+                    <views:PlayerSlotView DataContext="{Binding PlayerSlotViewModels[5]}"/>
+                </Border>
+
+                <Border Canvas.Left="30" Canvas.Top="339"
+                        Style="{DynamicResource MainWindowPlayerSlotBorderStyle}">
+                    <views:PlayerSlotView DataContext="{Binding PlayerSlotViewModels[6]}"/>
+                </Border>
+
+                <Border Canvas.Left="345" Canvas.Top="15"
+                        Style="{DynamicResource MainWindowPlayerSlotBorderStyle}">
+                    <views:PlayerSlotView DataContext="{Binding PlayerSlotViewModels[7]}"/>
+                </Border>
 
                 <!--<Button Canvas.Left="2000" Canvas.Top="1445"
                         Height="200" Width="300"
@@ -215,7 +238,7 @@
                         
 
                 <!--test-->
-                <Border Canvas.Left="1400" Canvas.Top="1645"
+                <Border Canvas.Left="2006" Canvas.Top="1630"
                     Style="{DynamicResource RoundedBorderStyle}">
                     <TextBlock Text="{Binding TableMinimum}" d:Text="Table minimum" FontSize="24"/>
                 </Border>

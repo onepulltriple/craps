@@ -44,6 +44,14 @@
         <Setter Property="FontWeight"               Value="Bold"/>
     </Style>
 
+    <Style x:Key="PlayerSlotIndexHeadingStyle"
+           TargetType="TextBlock"
+           BasedOn="{StaticResource PlayerHeadingStyle}">
+        <Setter Property="HorizontalAlignment"      Value="Left"/>
+        <Setter Property="VerticalAlignment"        Value="Top"/>
+        <Setter Property="Padding"                  Value="10,10,0,0"/>
+    </Style>
+
     <!--Main window button TextBlock styles-->
     <Style x:Key="MainWindowButtonTextBlockStyle"
            TargetType="TextBlock"

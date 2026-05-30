@@ -13,14 +13,13 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="2*" />
-            <!--<RowDefinition Height="*" />-->
         </Grid.RowDefinitions>
 
         <!--SLOT INDEX LABEL-->
         <TextBlock Grid.Row="0"
-            Style="{StaticResource PlayerHeadingStyle}"
-            Text="{Binding SlotIndex}" 
-            d:Text="playerSlot.Index"
+            Style="{StaticResource PlayerSlotIndexHeadingStyle}"
+            Text="{Binding DisplayedSlotIndex}" 
+            d:Text="DisplayedSlotIndex"
             />
         
         <!--EMPTY SLOT-->
@@ -42,7 +41,8 @@
                 Visibility ="{Binding IsEmpty,
                              Converter={StaticResource InverseBoolToVisibilityConverter},
                              FallbackValue=Collapsed}">
-            <!--<views:PlayerView DataContext="{Binding PlayerViewModel}"/>-->
+            
+            <!--here the data context of the child element (a PlayerView) is set to this slot's PlayerViewModel-->
             <ContentControl Content="{Binding PlayerViewModel}">
                 <ContentControl.ContentTemplate>
                     <DataTemplate>
@@ -50,7 +50,8 @@
                     </DataTemplate>
                 </ContentControl.ContentTemplate>
             </ContentControl>
-            
+            <!--before, it was done like this:-->
+            <!--<views:PlayerView DataContext="{Binding PlayerViewModel}"/>-->
         </Border>
 
     </Grid>

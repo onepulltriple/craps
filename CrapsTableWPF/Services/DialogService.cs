@@ -7,7 +7,7 @@ namespace CrapsTableWPF.Services
     // responsible for showing popup windows
     public class DialogService
     {
-        public NewPlayerData? ShowAddPlayerDialog()
+        public NewPlayerDTO? ShowAddPlayerDialog()
         {
             var viewModel = new AddPlayerDialogViewModel();
 
@@ -23,7 +23,7 @@ namespace CrapsTableWPF.Services
 
             // TODO validate this data!
 
-            return new NewPlayerData
+            return new NewPlayerDTO
             {
                 Name = viewModel.Name,
                 Purse = viewModel.Purse

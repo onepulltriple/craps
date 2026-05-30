@@ -3,8 +3,13 @@ private/
 bin/
 obj/
 .vs/
+dist/
+build/
+venv/
+__pycache__/
+*.log
 Publish/
 Properties/
 Drawings/
-.github/instructions/
+.github/
 CrapsTableWPF/temp_background.png

@@ -28,7 +28,7 @@
         <Setter Property="Foreground"               Value="{StaticResource BrightTextBrush}"/>
     </Style>
 
-    <!--player text styles-->
+    <!--Player text styles-->
     <Style x:Key="PlayerBodyTextStyle"
            TargetType="TextBlock"
            BasedOn="{StaticResource BodyTextStyle}">
@@ -42,6 +42,14 @@
            TargetType="TextBlock"
            BasedOn="{StaticResource PlayerBodyTextStyle}">
         <Setter Property="FontWeight"               Value="Bold"/>
+    </Style>
+
+    <!--Main window button TextBlock styles-->
+    <Style x:Key="MainWindowButtonTextBlockStyle"
+           TargetType="TextBlock"
+           BasedOn="{StaticResource BodyTextStyle}">
+        <Setter Property="Margin"                   Value="4"/>
+        <Setter Property="FontSize"                 Value="24"/>
     </Style>
 
 </ResourceDictionary>

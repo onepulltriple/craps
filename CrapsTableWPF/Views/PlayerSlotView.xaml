@@ -26,20 +26,14 @@
         <!--EMPTY SLOT-->
         <Button Grid.Row="1"
                 Grid.ColumnSpan="2"
+                Style="{StaticResource MainWindowPlayerSlotButtonStyle}"
                 Command="{Binding AddPlayerCommand}"
-                Content="Click to add player"
                 Background="Transparent"
-                BorderThickness="0"
                 Visibility="{Binding IsEmpty,
                             Converter={StaticResource BoolToVisibilityConverter}}">
-            
-            <!-- Optional visual -->
-            <!--<Border Background="#20FFFFFF"
-                    CornerRadius="10">
-                <TextBlock Text="Click to Add Player"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"/>
-            </Border>-->
+            <TextBlock
+                Style="{StaticResource MainWindowButtonTextBlockStyle}"
+                Text="Click to add player"/>
         </Button>
 
         <!--OCCUPIED SLOT-->
@@ -59,11 +53,5 @@
             
         </Border>
 
-        <!--<Button Grid.Row="2"
-                Style="{DynamicResource MainWindowButtonStyle}"
-                Content="Add Player"
-                Command="{Binding AddPlayerCommand}"
-                />-->
-        
     </Grid>
 </UserControl>

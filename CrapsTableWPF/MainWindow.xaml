@@ -201,7 +201,19 @@
                     <views:PlayerSlotView DataContext="{Binding PlayerSlotViewModels[1]}"/>
                 </Border>
 
-                
+
+
+                <!--<Button Canvas.Left="2000" Canvas.Top="1445"
+                        Height="200" Width="300"
+                        Style="{StaticResource MainWindowButtonStyle}"
+                        >
+                    <TextBlock
+                        Style="{StaticResource MainWindowButtonTextBlockStyle}"
+                        Text="Final test"
+                        />
+                </Button>-->
+                        
+
                 <!--test-->
                 <Border Canvas.Left="1400" Canvas.Top="1645"
                     Style="{DynamicResource RoundedBorderStyle}">

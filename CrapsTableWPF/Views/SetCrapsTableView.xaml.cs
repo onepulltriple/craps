@@ -23,6 +23,8 @@ namespace CrapsTableWPF.Views
         public SetCrapsTableView()
         {
             InitializeComponent();
+
+            //var dc = this.DataContext;
         }
     }
 }

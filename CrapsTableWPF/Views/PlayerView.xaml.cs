@@ -23,6 +23,8 @@ namespace CrapsTableWPF.Views
         public PlayerView()
         {
             InitializeComponent();
+
+            //var dc = this.DataContext;
         }
 
     }

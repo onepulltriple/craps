@@ -10,10 +10,6 @@
              d:DesignHeight="400" d:DesignWidth="600"
              Background="Red"
              >
-    
-    <!--<UserControl.DataContext>
-        <viewmodels:PlayerViewModel />
-    </UserControl.DataContext>-->
 
     <Grid>
         <Grid.RowDefinitions>
@@ -31,10 +27,9 @@
             Text="{Binding Purse, TargetNullValue='NULL', FallbackValue='NO DATA'}"
             d:Text="player.Purse"
             />
-
-        <!--<Button
-            Content="Refresh Purse"
-            Command="{Binding NotifyPurseChangedCommand}"
-            Grid.Row="2"/>-->
     </Grid>
+    
+    <!--<UserControl.DataContext>
+        <viewmodels:PlayerViewModel />
+    </UserControl.DataContext>-->
 </UserControl>

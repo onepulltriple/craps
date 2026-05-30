@@ -7,9 +7,20 @@
         <!--<Setter Property="FontFamily" Value="Ubuntu"/>-->
     </Style>
 
+    
+    
     <Style x:Key="MainWindowButtonStyle"
            TargetType="Button"
-           BasedOn="{StaticResource {x:Type Button}}">
-        <Setter Property="FontSize" Value="24"/>
+           BasedOn="{StaticResource {x:Type Button}}"
+           >
+        <Setter Property="Background"           Value="Cyan"/>
     </Style>
+
+    <Style x:Key="MainWindowPlayerSlotButtonStyle"
+           TargetType="Button"
+           BasedOn="{StaticResource MainWindowButtonStyle}"
+           >
+        <Setter Property="BorderThickness"      Value="0"/>
+    </Style>
+
 </ResourceDictionary>

@@ -28,13 +28,13 @@ namespace CrapsTableWPF.ViewModels
 
         private readonly CrapsTable crapsTable;
 
-        private readonly IDialogService dialogService;
+        private readonly DialogService dialogService;
 
         // Commands //////////////////////////////////////////////////////////
         public ICommand AddPlayerCommand { get; }
 
 
-        public PlayerSlotViewModel(CrapsTable crapsTable, Player? player, int slotIndex, IDialogService dialogService) 
+        public PlayerSlotViewModel(CrapsTable crapsTable, Player? player, int slotIndex, DialogService dialogService) 
         {
             this.PlayerViewModel = player is null ? null : new PlayerViewModel(player);
 
@@ -56,9 +56,12 @@ namespace CrapsTableWPF.ViewModels
 
             var result = crapsTable.InsertPlayerAtSlot(SlotIndex, player);
 
+            // TODO tell user why this didn't work (when exactly should this happen?)
+
             if (result.Success)
             {
                 PlayerViewModel = new PlayerViewModel(player);
+                // TODO show messages
             }
         }
     }

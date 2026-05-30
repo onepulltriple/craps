@@ -5,7 +5,7 @@ using CrapsTableWPF.Windows;
 namespace CrapsTableWPF.Services
 {
     // responsible for showing popup windows
-    public class DialogService : IDialogService
+    public class DialogService
     {
         public NewPlayerData? ShowAddPlayerDialog()
         {
@@ -20,6 +20,8 @@ namespace CrapsTableWPF.Services
 
             if (result != true)
                 return null;
+
+            // TODO validate this data!
 
             return new NewPlayerData
             {

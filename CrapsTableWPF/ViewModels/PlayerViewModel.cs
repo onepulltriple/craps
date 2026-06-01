@@ -8,7 +8,7 @@ namespace CrapsTableWPF.ViewModels
     {
         public ICommand NotifyPurseChangedCommand { get; }
 
-        private Player _model;
+        public Player _model;
 
         // Bindable Properties ///////////////////////////////////////////////
         public string Name

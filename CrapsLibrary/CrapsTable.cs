@@ -114,7 +114,8 @@
 
         public Result<bool> RemovePlayer(Player playerToRemove)
         {
-            // Close all bets for this player (state if the player owes money)
+            // TODO close all bets for this player (state if the player owes money)
+            // TODO remove all bets' subscriptions
 
             for (int i = 0; i < Slots.Length; i++)
             {

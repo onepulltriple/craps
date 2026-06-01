@@ -13,7 +13,7 @@
            TargetType="Button"
            BasedOn="{StaticResource {x:Type Button}}"
            >
-        <Setter Property="Background"           Value="Cyan"/>
+        <Setter Property="Background"           Value="Transparent"/>
     </Style>
 
     <Style x:Key="MainWindowPlayerSlotButtonStyle"
@@ -21,6 +21,17 @@
            BasedOn="{StaticResource MainWindowButtonStyle}"
            >
         <Setter Property="BorderThickness"      Value="0"/>
+    </Style>
+
+    <Style x:Key="MainWindowCloseButtonStyle"
+           TargetType="Button"
+           BasedOn="{StaticResource MainWindowButtonStyle}"
+           >
+        <Setter Property="BorderThickness"      Value="0"/>
+        <Setter Property="Width"                Value="40"/>
+        <Setter Property="Height"               Value="40"/>
+        <Setter Property="HorizontalAlignment"  Value="Right"/>
+        <Setter Property="VerticalAlignment"    Value="Top"/>
     </Style>
 
 </ResourceDictionary>

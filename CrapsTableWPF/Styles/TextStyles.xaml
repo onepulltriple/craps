@@ -57,7 +57,14 @@
            TargetType="TextBlock"
            BasedOn="{StaticResource BodyTextStyle}">
         <Setter Property="Margin"                   Value="4"/>
+    </Style>
+
+    <Style x:Key="MainWindowButtonCloseTextBlockStyle"
+           TargetType="TextBlock"
+           BasedOn="{StaticResource BodyTextStyle}">
+        <Setter Property="Margin"                   Value="0"/>
         <Setter Property="FontSize"                 Value="24"/>
+        <Setter Property="FontWeight"               Value="Bold"/>
     </Style>
 
 </ResourceDictionary>

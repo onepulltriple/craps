@@ -145,7 +145,7 @@
 
             return Result<Bet>.Pass(tempBet, $"{tempBet.betOwner.name} " +
                 $"has bet {tempBet.countOfUnitsToBet * tempBet.unitOfBet} " +
-                $"on {tempBet.Name}.");
+                $"on {tempBet.name}.");
         }
 
         /// <summary>

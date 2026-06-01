@@ -10,7 +10,7 @@ namespace CrapsLibrary.Bets
         
         public betType betType { get; }
 
-        public string Name { get; }
+        public string name { get; }
 
         public List<int> winningTotals;
 
@@ -43,7 +43,7 @@ namespace CrapsLibrary.Bets
             this.crapsTable = crapsTable;
             this.betOwner = betOwner;
             this.betType = betType;
-            this.Name = BetFactory.BetDefinitions[betType].Name;
+            this.name = BetFactory.BetDefinitions[betType].Name;
             this.countOfUnitsToBet = countOfUnitsToBet;
             this.unitOfBet = unitOfBet;
             this.winningTotals = winningTotals;
@@ -78,7 +78,7 @@ namespace CrapsLibrary.Bets
             if (!isPausingAllowed.Success)
                 return Result<bool>.Fail("Pausing this bet is not allowed.");
 
-            return Result<bool>.Pass(true, $"\n{this.betOwner} has paused their {this.Name}.");
+            return Result<bool>.Pass(true, $"\n{this.betOwner} has paused their {this.name}.");
         }
 
 

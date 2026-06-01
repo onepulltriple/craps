@@ -15,26 +15,27 @@
             <RowDefinition Height="2*" />
         </Grid.RowDefinitions>
 
-        <!--SLOT INDEX LABEL-->
+        <!--header row-->
+        <!--slot index display-->
         <TextBlock Grid.Row="0"
             Style="{StaticResource PlayerSlotIndexHeadingStyle}"
             Text="{Binding DisplayedSlotIndex}"
             d:Text="DisplayedSlotIndex"
             />
 
+        <!--remove player (close button)-->
         <Button Grid.Row="0"
             Style="{StaticResource MainWindowCloseButtonStyle}"
                 Command="{Binding RemovePlayerCommand}">
             <TextBlock
                 Style="{StaticResource MainWindowButtonCloseTextBlockStyle}"
-                Text="x"/>
+                Text="×"/>
         </Button>
         
-        <!--EMPTY SLOT-->
+        <!--empty slot button-->
         <Button Grid.Row="1"
-                Style="{StaticResource MainWindowPlayerSlotButtonStyle}"
+                Style="{DynamicResource MainWindowRoundedButtonStyle}"
                 Command="{Binding AddPlayerCommand}"
-                Background="Transparent"
                 Visibility="{Binding IsEmpty,
                             Converter={StaticResource BoolToVisibilityConverter}}">
             <TextBlock
@@ -42,7 +43,7 @@
                 Text="Click to add player"/>
         </Button>
 
-        <!--OCCUPIED SLOT-->
+        <!--occupied slot-->
         <Border Grid.Row="1"
             Style="{DynamicResource RoundedBorderStyle}"
                 Visibility ="{Binding IsEmpty,

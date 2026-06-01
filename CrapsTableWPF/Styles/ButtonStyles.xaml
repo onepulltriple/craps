@@ -13,25 +13,83 @@
            TargetType="Button"
            BasedOn="{StaticResource {x:Type Button}}"
            >
-        <Setter Property="Background"           Value="Transparent"/>
+        <!--<Setter Property="Background"           Value="Transparent"/>-->
+        <Setter Property="Background"           Value="Green"/>
     </Style>
 
-    <Style x:Key="MainWindowPlayerSlotButtonStyle"
+    <!--<Style x:Key="MainWindowPlayerSlotButtonStyle"
            TargetType="Button"
            BasedOn="{StaticResource MainWindowButtonStyle}"
            >
         <Setter Property="BorderThickness"      Value="0"/>
+    </Style>-->
+
+    <Style x:Key="MainWindowRoundedButtonStyle"
+           TargetType="Button"
+           BasedOn="{StaticResource MainWindowButtonStyle}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="mainWindowRoundedButtonStyleBorder"
+                        Background="{TemplateBinding Background}"
+                        CornerRadius="10"
+                        BorderThickness="0"
+                        >
+                        <ContentPresenter
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" 
+                                 Value="True">
+                            <Setter TargetName="mainWindowRoundedButtonStyleBorder"
+                                    Property="Background"
+                                    Value="LightGreen"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed"
+                                 Value="True">
+                            <Setter TargetName="mainWindowRoundedButtonStyleBorder"
+                                    Property="Background"
+                                    Value="DarkGreen"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="MainWindowCustomCaptionButtonStyle"
+           TargetType="Button"
+           BasedOn="{StaticResource MainWindowRoundedButtonStyle}"
+           >
+        <Setter Property="Width"                        Value="30"/>
+        <Setter Property="Height"                       Value="30"/>
+        <Setter Property="Margin"                       Value="0"/>
+        <Setter Property="HorizontalAlignment"          Value="Right"/>
+        <Setter Property="VerticalAlignment"            Value="Top"/>
+        <!--<Setter Property="Background"                   Value="LightCoral"/>-->
+        <!--<Setter Property="BorderThickness"              Value="0"/>-->
+        <!--<Setter Property="HorizontalContentAlignment"   Value="Right"/>-->
+        <!--<Setter Property="VerticalContentAlignment"     Value="Top"/>-->
     </Style>
 
     <Style x:Key="MainWindowCloseButtonStyle"
            TargetType="Button"
-           BasedOn="{StaticResource MainWindowButtonStyle}"
-           >
-        <Setter Property="BorderThickness"      Value="0"/>
-        <Setter Property="Width"                Value="40"/>
-        <Setter Property="Height"               Value="40"/>
-        <Setter Property="HorizontalAlignment"  Value="Right"/>
-        <Setter Property="VerticalAlignment"    Value="Top"/>
+           BasedOn="{StaticResource MainWindowCustomCaptionButtonStyle}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border
+                        Background="LightCoral"
+                        CornerRadius="0,9,0,0"
+                        >
+                        <ContentPresenter
+                            />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 
 </ResourceDictionary>

@@ -143,7 +143,7 @@
             if (tempBet == null)
                 return Result<Bet>.Fail("but why??"); // TODO figure out if this can happen
 
-            return Result<Bet>.Pass(tempBet, $"{tempBet.betOwner.Name} " +
+            return Result<Bet>.Pass(tempBet, $"{tempBet.betOwner.name} " +
                 $"has bet {tempBet.countOfUnitsToBet * tempBet.unitOfBet} " +
                 $"on {tempBet.Name}.");
         }

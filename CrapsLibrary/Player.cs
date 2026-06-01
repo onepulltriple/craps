@@ -4,9 +4,7 @@ namespace CrapsLibrary
 {
     public class Player
     {
-        public string playerName; // TODO make private
-
-        public string Name => playerName;
+        public string name { get; set; }
 
         public uint purse;
 
@@ -14,7 +12,7 @@ namespace CrapsLibrary
 
         public Player(string playerName, uint startingPurse = 0)
         {
-            this.playerName = playerName;
+            this.name = playerName;
             purse = startingPurse;
             playerBetList = new List<Bet>();
         }

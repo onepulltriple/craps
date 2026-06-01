@@ -76,7 +76,7 @@
                     if (currentPlayerIndex == -1) // initialize the first added player as the current player
                         currentPlayerIndex = i;
 
-                    return Result<bool>.Pass(true, $"{playerToAdd.Name} was created and added to seat {i + 1}.");
+                    return Result<bool>.Pass(true, $"{playerToAdd.name} was created and added to seat {i + 1}.");
                 }
             }
 
@@ -96,7 +96,7 @@
             if (currentPlayerIndex == -1) // the first inserted player becomes the current player
                 currentPlayerIndex = slotIndex;
 
-            return Result<bool>.Pass(true, $"{playerToInsert.Name} has been placed at seat {slotIndex + 1}");
+            return Result<bool>.Pass(true, $"{playerToInsert.name} has been placed at seat {slotIndex + 1}");
         }
 
         public Result<Player> GetCurrentPlayer()
@@ -127,7 +127,7 @@
                     if (!Players.Any())
                     {
                         currentPlayerIndex = -1;
-                        return Result<bool>.Pass(true, $"{playerToRemove.Name} has been removed. Table is now empty.");
+                        return Result<bool>.Pass(true, $"{playerToRemove.name} has been removed. Table is now empty.");
                     }
 
                     // if current player is removed, advance turn
@@ -142,18 +142,18 @@
                             true,
                             new[]
                             {
-                                $"{playerToRemove.Name} has been removed."
+                                $"{playerToRemove.name} has been removed."
                             }
                             .Concat(nextTurnResult.Messages)
                             .ToArray()
                             );
                     }
 
-                    return Result<bool>.Pass(true, $"{playerToRemove.Name} has been removed.");
+                    return Result<bool>.Pass(true, $"{playerToRemove.name} has been removed.");
                 }
             }
 
-            return Result<bool>.Fail($"{playerToRemove.Name} was not found at the table.");
+            return Result<bool>.Fail($"{playerToRemove.name} was not found at the table.");
         }
 
         public Result<bool> NextTurn()
@@ -169,7 +169,7 @@
             } 
             while (Slots[currentPlayerIndex] is null && currentPlayerIndex != startIndex);
 
-            return Result<bool>.Pass(true, $"{Slots[currentPlayerIndex]!.Name}'s turn!");
+            return Result<bool>.Pass(true, $"{Slots[currentPlayerIndex]!.name}'s turn!");
         }
     }
 }

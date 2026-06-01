@@ -13,12 +13,12 @@ namespace CrapsTableWPF.ViewModels
         // Bindable Properties ///////////////////////////////////////////////
         public string Name
         {
-            get => _model.Name;
+            get => _model.name;
             private set
             {
-                if (_model.playerName != value)
+                if (_model.name != value)
                 {
-                    _model.playerName = value;
+                    _model.name = value;
                     OnPropertyChanged(nameof(Name));
                 }
             }

@@ -99,7 +99,7 @@ namespace ConsoleAppForCraps.DealerCLIState
 
             for (int i = 0; i < players.Count; i++)
             {
-                Console.WriteLine($"{i + 1,2}. {players[i].playerName}");
+                Console.WriteLine($"{i + 1,2}. {players[i].name}");
                 listOfAcceptableInts.Add(i + 1);
             }
 
@@ -164,6 +164,8 @@ namespace ConsoleAppForCraps.DealerCLIState
                 return;
             }
 
+            // TODO show player's seat number as a prefix to their name
+
             // find max number of bets any player has
             int maxBetCount = players.Max(p => p.playerBetList.Count);
 
@@ -184,7 +186,7 @@ namespace ConsoleAppForCraps.DealerCLIState
 
                     if (row == 0)
                     {
-                        cellText = player.playerName;
+                        cellText = player.name;
                     }
                     else if (row == 1)
                     {

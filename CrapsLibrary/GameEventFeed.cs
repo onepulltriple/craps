@@ -6,11 +6,15 @@
 
         public IReadOnlyCollection<GameEvent> Events => _events;
 
+        public event Action<GameEvent>? EventAdded; // an exposed event
+
         public GameEventFeed() { }
 
         public void Add(GameEvent gameEvent)
         {
             _events.AddFirst(gameEvent); // newest first
+
+            EventAdded?.Invoke(gameEvent); // broadcasts "a new game event was added"
         }
 
         /// <summary>

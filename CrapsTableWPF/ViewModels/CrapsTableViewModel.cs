@@ -15,6 +15,8 @@ namespace CrapsTableWPF.ViewModels
 
         public ObservableCollection<PlayerSlotViewModel> PlayerSlotViewModels { get; }
 
+        public GameEventFeedViewModel GameEventFeedViewModel { get; }
+
         // TODO decide how to implement puck
 
 
@@ -59,7 +61,7 @@ namespace CrapsTableWPF.ViewModels
                 new PlayerSlotViewModel(crapsTable, player, slotIndex, dialogService)) 
                 );
 
-            
+            this.GameEventFeedViewModel = new GameEventFeedViewModel(crapsTable.gameEventFeed);
         }
     }
 }

@@ -19,11 +19,6 @@ namespace CrapsTableWPF.Windows
             Keyboard.Focus(TB00);
         }
 
-        private void Ok_Clicked(object sender, RoutedEventArgs e)
-        {
-            DialogResult = true;
-        }
-
         private void TB00KeyDownHandler(object sender, System.Windows.Input.KeyEventArgs e)
         {
             if (e.Key == Key.Enter)

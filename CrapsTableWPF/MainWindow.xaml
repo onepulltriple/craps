@@ -243,6 +243,12 @@
                     <TextBlock Text="{Binding TableMinimum}" d:Text="Table minimum" FontSize="24"/>
                 </Border>
 
+                <Border Canvas.Left="2306" Canvas.Top="1630"
+                    Style="{DynamicResource RoundedBorderStyle}"
+                        Height="220" Width="800"
+                        >
+                    <views:GameEventFeedView DataContext="{Binding GameEventFeedViewModel}"/>
+                </Border>
 
             </Canvas>
         </Viewbox>

@@ -2,6 +2,7 @@
 //using CrapsTableWPF.Data_Transfer_Objects;
 using CrapsTableWPF.Infrastructure;
 using CrapsTableWPF.Services;
+using System.Numerics;
 using System.Windows;
 using System.Windows.Input;
 
@@ -76,15 +77,20 @@ namespace CrapsTableWPF.ViewModels
             // remove player from craps table
             Result<bool> removePlayerResult = crapsTable.RemovePlayer(PlayerViewModel._model);
 
-            // remove playerviewmodel from list (set to null)
             if (removePlayerResult.Success)
             {
+                // announce that the player has been removed
+                crapsTable.gameEventFeed.Add(
+                    $"{this.PlayerViewModel.Name} has vacated the table. Seat {DisplayedSlotIndex} is now open.",
+                    GameEventType.Message,
+                    false
+                    );
+
+                // remove playerviewmodel from list
                 PlayerViewModel = null;
-                // TODO show messages
             }
 
 
-            // notify game event feed (message level)
 
         }
 
@@ -113,6 +119,13 @@ namespace CrapsTableWPF.ViewModels
             if (addPlayerResult.Success)
             {
                 PlayerViewModel = new PlayerViewModel(player);
+
+                // announce that the player has been added
+                crapsTable.gameEventFeed.Add(
+                    $"{player.name} has joined the table at seat {DisplayedSlotIndex}.",
+                    GameEventType.Message,
+                    false
+                    );
                 // TODO show messages
             }
         }

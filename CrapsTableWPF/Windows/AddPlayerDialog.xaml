@@ -5,10 +5,66 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CrapsTableWPF.Windows"
         mc:Ignorable="d"
-        Title="Add Player" Height="250" Width="350"
+        Title="Add player"
+        Width="500" Height="500" 
+        MinWidth="500" MinHeight="300"
         WindowStartupLocation="CenterOwner"
+        Background="{StaticResource CasinoGreenBrush}"
         >
-    <StackPanel>
+    <Grid Loaded="GridLoaded">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.2*"/>
+            <RowDefinition Height="0.8*"/>
+            <RowDefinition Height="0.8*"/>
+            <RowDefinition Height="1.0*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!--upper section-->
+        <TextBlock Grid.Row="0" Grid.Column="0"
+                   Style="{StaticResource PopUpWindowBodyTextStyle}"
+                   Text="Player name:"/>
+        <TextBox Name="TB00"
+                 Grid.Row="0" Grid.Column="1"
+                 Style="{StaticResource PopUpWindowTextBoxTextStyle}"
+                 KeyDown="TB00KeyDownHandler"
+                 Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <TextBlock Grid.Row="1" Grid.Column="0"
+                   Style="{StaticResource PopUpWindowBodyTextStyle}"
+                   Text="Starting purse:"/>
+        <TextBox Name="TB01"
+                 Grid.Row="1" Grid.Column="1"
+                 Style="{StaticResource PopUpWindowTextBoxTextStyle}"
+                 KeyDown="TB01KeyDownHandler"
+                 Text="{Binding Purse, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <!--middle section-->
+        <TextBlock Name="UIErrorMessage"
+                   Grid.Row="2" Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   Style="{StaticResource PopUpWindowBodyTextStyle}"
+                   Text=""
+                   />
+        
+        <!--lower section-->
+        <Button Grid.Row="3" Grid.Column="0"
+                Click="QuitButtonClicked">
+            <TextBlock Style="{StaticResource PopUpWindowButtonTextStyle}"
+                       Text="Quit"/>
+        </Button>
+        <Button Grid.Row="3" Grid.Column="1"
+                Click="OKButtonClicked">
+            <TextBlock Style="{StaticResource PopUpWindowButtonTextStyle}"
+                       Text="OK"/>
+        </Button>
+
+    </Grid>
+    
+    <!--<StackPanel>
         <TextBlock
             Text="Player name"/>
         <TextBox
@@ -31,5 +87,5 @@
 
         </StackPanel>
 
-    </StackPanel>
+    </StackPanel>-->
 </Window>

@@ -8,6 +8,7 @@
         public const uint absoluteTableMinimum = 5;
         public const uint absoluteTableMaximum = 5000;
         private const int slotCount = 8;
+        private const int maxLengthOfPlayerName = 40;
 
         // Table Accessories ///////////////////////////////////////////////
         public Puck puck;
@@ -57,12 +58,21 @@
             uint checkedInput;
             bool isUInt = uint.TryParse(inputToCheck, out checkedInput);
 
-            if (isUInt)
+            if (!isUInt)
             {
-                return Result<uint>.Pass(checkedInput);
+                return Result<uint>.Fail("Please enter a positive whole number."); 
+                // only works for addition (multiplication should use 1 to abort)
             }
-            return Result<uint>.Fail("Please enter a positive whole number (or 0 to abort): "); 
-            // only works for addition (multiplication should use 1 to abort)
+            return Result<uint>.Pass(checkedInput);
+        }
+
+        public static Result<string> ValidateUserInputPlayerName(string? inputToCheck)
+        {
+            if (inputToCheck is null || inputToCheck.Length > maxLengthOfPlayerName)
+            {
+                return Result<string>.Fail($"Please enter a string whose length is less than {maxLengthOfPlayerName + 1} characters.");
+            }
+            return Result<string>.Pass(inputToCheck);
         }
 
         public Result<bool> AddPlayerToNextFreeSlot(Player playerToAdd)

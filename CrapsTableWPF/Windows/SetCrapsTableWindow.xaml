@@ -14,7 +14,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="1.2*"/>
             <RowDefinition Height="0.8*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1.0*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -28,25 +28,28 @@
         
         <TextBox   Name="TB00"
                    Grid.Row="0" Grid.Column="1"
-                   Margin="4,30,4,30"
-                   Padding="6"
+                   Style="{StaticResource PopUpWindowTextBoxTextStyle}"
                    KeyDown="TB00KeyDownHandler"/>
 
         <!--middle section-->
         <TextBlock Name="UIErrorMessage"
                    Grid.Row="1" Grid.Column="0" 
+                   Grid.ColumnSpan="2"
                    Style="{StaticResource PopUpWindowBodyTextStyle}"
                    Text=""
-                   Margin="4"
-                   Grid.ColumnSpan="2"/>
+                   />
 
         <!--lower section-->
         <Button Grid.Row="2" Grid.Column="0"
-                Content="Quit"
-                Click="QuitButtonClicked"/>
+                Click="QuitButtonClicked">
+            <TextBlock Style="{StaticResource PopUpWindowButtonTextStyle}"
+                       Text="Quit"/>
+        </Button>
         <Button Grid.Row="2" Grid.Column="1"
-                Content="Proceed"
-                Click="ProceedButtonClicked"/>
+                Click="ProceedButtonClicked">
+            <TextBlock Style="{StaticResource PopUpWindowButtonTextStyle}"
+                       Text="Proceed"/>
+        </Button>
 
     </Grid>
 </Window>

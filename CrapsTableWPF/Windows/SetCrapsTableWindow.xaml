@@ -8,7 +8,7 @@
         Title="SetCrapsTableWindow" 
         Width="500" Height="300" 
         MinWidth="500" MinHeight="300"
-        Background="{StaticResource CasinoGreenBrush}"
+        Style="{StaticResource PopUpWindowOrDialogStyle}"
         >
     <Grid Loaded="GridLoaded">
         <Grid.RowDefinitions>

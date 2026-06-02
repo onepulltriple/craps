@@ -1,0 +1,16 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!--window styles-->
+    <Style x:Key="MainWindowStyle"
+        TargetType="Window"
+           BasedOn="{StaticResource {x:Type Window}}">
+        <Setter Property="Background"           Value="{StaticResource CasinoGreenBrush}"/>
+    </Style>
+
+    <Style x:Key="PopUpWindowOrDialogStyle"
+        TargetType="Window"
+           BasedOn="{StaticResource MainWindowStyle}">
+    </Style>
+
+</ResourceDictionary>

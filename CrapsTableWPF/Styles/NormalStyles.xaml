@@ -58,5 +58,13 @@
         <Setter Property="Margin"               Value="0"/>
         <Setter Property="IsTabStop"            Value="True"/>
     </Style>
-    
+
+    <!--window defaults-->
+    <Style TargetType="Window"
+           BasedOn="{StaticResource {x:Type Window}}">
+        <Setter Property="FontFamily"           Value="{StaticResource DefaultFont}"/>
+        <Setter Property="FontSize"             Value="{StaticResource DefaultFontSize}"/>
+        
+    </Style>
+
 </ResourceDictionary>

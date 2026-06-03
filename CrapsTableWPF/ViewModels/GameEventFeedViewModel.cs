@@ -5,6 +5,8 @@ namespace CrapsTableWPF.ViewModels
 {
     public class GameEventFeedViewModel : ViewModelBase
     {
+        private const int eventsCount = 12;
+        
         private readonly GameEventFeed _model;
 
         public ObservableCollection<GameEvent> DisplayedEvents { get; } = new();
@@ -13,7 +15,7 @@ namespace CrapsTableWPF.ViewModels
         {
             this._model = model;
 
-            foreach (var ev in _model.Events.Take(10).Reverse())
+            foreach (var ev in _model.Events.Take(eventsCount).Reverse())
             {
                 DisplayedEvents.Add(ev);
             }
@@ -25,7 +27,7 @@ namespace CrapsTableWPF.ViewModels
         {
             DisplayedEvents.Insert(0, gameEvent);
 
-            while (DisplayedEvents.Count > 10)
+            while (DisplayedEvents.Count > eventsCount)
             {
                 DisplayedEvents.RemoveAt(DisplayedEvents.Count - 1);
             }

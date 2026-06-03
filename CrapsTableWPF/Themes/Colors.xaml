@@ -1,16 +1,19 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
+    <!--FOREGROUNDS-->
     <!--for brushes, colors, and visual constants-->
-    
-        <SolidColorBrush x:Key="PrimaryTextBrush"               Color="#FF222222"/>
-        <SolidColorBrush x:Key="BrightTextBrush"                Color="#FFFFFFFF"/>
+    <SolidColorBrush x:Key="PrimaryTextBrush"               Color="#FF222222"/>
+    <SolidColorBrush x:Key="BrightTextBrush"                Color="#FFFFFFFF"/>
 
-        <!-- semi-transparent (CC = ~80% opacity) alpha channel doesn't fade the text, just the background -->
-        <SolidColorBrush x:Key="PrimaryPanelBackgroundBrush"    Color="#CCFFFFFF"/>
-    
-        <SolidColorBrush x:Key="PrimaryBorderBrush"             Color="#FF2D2D30"/>
+    <SolidColorBrush x:Key="DiceRollTextBrush"              Color="#FF57A649"/>
+    <!--<SolidColorBrush x:Key="DiceRollTextBrush"              Color="#FF286331"/>-->
+    <SolidColorBrush x:Key="WarningTextBrush"               Color="#FFF8C537"/>
 
-        <SolidColorBrush x:Key="CasinoGreenBrush"               Color="#FF264C26"/>
+    <!--BACKGROUNDS-->
+    <!-- semi-transparent (CC = ~80% opacity) alpha channel doesn't fade the text, just the background -->
+    <SolidColorBrush x:Key="PrimaryPanelBackgroundBrush"    Color="#CCFFFFFF"/>
+    <SolidColorBrush x:Key="PrimaryBorderBrush"             Color="#FF2D2D30"/>
+    <SolidColorBrush x:Key="CasinoGreenBrush"               Color="#FF264C26"/>
 
 </ResourceDictionary>

@@ -6,6 +6,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:views="clr-namespace:CrapsTableWPF.Views"
         xmlns:viewmodels="clr-namespace:CrapsTableWPF.ViewModels"
+        xmlns:designtime="clr-namespace:CrapsTableWPF.DesignTime_Classes"
         mc:Ignorable="d"
         Title="Craps Table"  
         d:DataContext="{d:DesignInstance Type=viewmodels:CrapsTableViewModel}"
@@ -226,28 +227,22 @@
                     <views:PlayerSlotView DataContext="{Binding PlayerSlotViewModels[7]}"/>
                 </Border>
 
-                <!--<Button Canvas.Left="2000" Canvas.Top="1445"
-                        Height="200" Width="300"
-                        Style="{StaticResource MainWindowButtonStyle}"
-                        >
-                    <TextBlock
-                        Style="{StaticResource MainWindowButtonTextBlockStyle}"
-                        Text="Final test"
-                        />
-                </Button>-->
                         
 
-                <!--test-->
                 <Border Canvas.Left="2006" Canvas.Top="1630"
                     Style="{DynamicResource RoundedBorderStyle}">
                     <TextBlock Text="{Binding TableMinimum}" d:Text="Table minimum" FontSize="24"/>
                 </Border>
+                
+                
 
-                <Border Canvas.Left="2306" Canvas.Top="1630"
-                    Style="{DynamicResource RoundedBorderStyle}"
-                        Height="220" Width="800"
-                        >
-                    <views:GameEventFeedView DataContext="{Binding GameEventFeedViewModel}"/>
+                <Border Canvas.Left="2306" Canvas.Top="1590"
+                    Style="{DynamicResource GameEventFeedRoundedBorderStyle}"
+                    Height="404" Width="800"
+                    >
+                    <views:GameEventFeedView 
+                        DataContext="{Binding GameEventFeedViewModel}"
+                        d:DataContext="{d:DesignInstance Type=designtime:DesignGameEventFeedViewModel, IsDesignTimeCreatable=True}"/>
                 </Border>
 
             </Canvas>

@@ -7,7 +7,7 @@
         public IReadOnlyCollection<GameEvent> Events => _events;
 
         public event Action<GameEvent>? EventAdded; // an exposed event
-
+        // TODO determine if this breaks MVVM principles
         public GameEventFeed() { }
 
         public void Add(GameEvent gameEvent)

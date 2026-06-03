@@ -47,8 +47,8 @@
         <Setter Property="Margin"                   Value="10,30,10,30"/>
         <Setter Property="Padding"                  Value="6"/>
     </Style>
-    
-    
+
+    <!--MAIN WINDOW-->
     <!--Player slot text styles-->
     <Style x:Key="PlayerBodyTextStyle"
            TargetType="TextBlock"
@@ -92,5 +92,28 @@
         <Setter Property="HorizontalAlignment"      Value="Center"/> 
         <Setter Property="VerticalAlignment"        Value="Center"/>
     </Style>
+
+    <!--Game Event Feed Styles-->
+    <Style x:Key="GameEventFeedNormalTextBlockStyle"
+           TargetType="TextBlock"
+           BasedOn="{StaticResource BodyTextStyle}">
+        <Setter Property="FontSize"                 Value="24"/>
+        <Setter Property="Margin"                   Value="0"/>
+        <Setter Property="Padding"                  Value="0"/>
+    </Style>
+
+
+    <!--<Style x:Key="GameEventFeedDiceRollTextBlockStyle"
+           TargetType="TextBlock"
+           BasedOn="{StaticResource GameEventFeedNormalTextBlockStyle}">
+        <Setter Property="Foreground"               Value="{StaticResource PrimaryTextBrush}"/>
+    </Style>-->
+
+    <!--<Style x:Key="GameEventFeedOutcomeTextBlockStyle"
+           TargetType="TextBlock"
+           BasedOn="{StaticResource GameEventFeedNormalTextBlockStyle}">
+        <Setter Property="Foreground"               Value="{StaticResource PrimaryTextBrush}"/>
+        <Setter Property="Margin"                   Value="20,0,0,0"/>
+    </Style>-->
 
 </ResourceDictionary>

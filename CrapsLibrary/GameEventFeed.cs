@@ -21,11 +21,52 @@
         /// 
         /// </summary>
         /// <param name="text">The information to be displayed to the user.</param>
-        /// <param name="type"></param>
+        /// <param name="gameEventType"></param>
         /// <param name="isContinuation">If true, this information will be treated as a continuation of the preceding information.</param>
-        public void Add(string text, GameEventType type = GameEventType.Message, bool isContinutation = false)
+        public void Add(string text, GameEventType gameEventType = GameEventType.Message, bool isContinutation = false)
         {
-            Add(new GameEvent(text, type, isContinutation));
+            Add(new GameEvent(text, gameEventType, isContinutation));
+        }
+
+        /// <summary>
+        /// Adds the first message to the game event feed.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="resultOfAttempt">An instance of the Result<T> class.</param>
+        /// <param name="gameEventType"></param>
+        /// <param name="isContinutation"></param>
+        public void AddSingleLine<T>(Result<T> resultOfAttempt, GameEventType gameEventType = GameEventType.Message, bool isContinutation = false)
+        {
+            if (resultOfAttempt.Messages.Count == 0)
+                return;
+
+            Add(
+                resultOfAttempt.Messages[0],
+                gameEventType,
+                isContinutation
+                );
+        }
+
+        /// <summary>
+        /// Adds all messages to the game event feed.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="resultOfAttempt">An instance of the Result<T> class.</param>
+        /// <param name="gameEventType"></param>
+        /// <param name="isContinutation"></param>
+        public void AddMultiLine<T>(Result<T> resultOfAttempt, GameEventType gameEventType = GameEventType.Message, bool isContinutation = false)
+        {
+            if (resultOfAttempt.Messages.Count == 0)
+                return;
+
+            foreach (string message in resultOfAttempt.Messages)
+            {
+                Add(
+                    message,
+                    gameEventType,
+                    isContinutation
+                    );
+            }
         }
     }
 }

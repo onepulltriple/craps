@@ -42,9 +42,11 @@ namespace CrapsTableWPF.Windows
 
         private void OKButtonClicked(object sender, RoutedEventArgs e)
         {
+            // validate player construction parameters
             Result<string> resultOfCheckingName  = CrapsTable.ValidateUserInputPlayerName(TB00.Text);
             Result<uint> resultOfCheckingPurse   = CrapsTable.ValidateUserInputUInt(TB01.Text);
             
+            // display data validation error messages
             if (!resultOfCheckingName.Success)
             {
                 UIErrorMessage.Text = resultOfCheckingName.Messages[0];
@@ -60,7 +62,6 @@ namespace CrapsTableWPF.Windows
             }
 
             DialogResult = true;
-            // TODO announce new player to the game feed
         }
     }
 }

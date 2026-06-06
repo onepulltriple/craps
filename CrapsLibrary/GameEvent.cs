@@ -16,10 +16,10 @@
 
         public bool IsContinuation { get; } // does this information belong with another?
 
-        public GameEvent(string text, GameEventType type = GameEventType.Message, bool isContinuation = false)
+        public GameEvent(string text, GameEventType gameEventType = GameEventType.Message, bool isContinuation = false)
         {
             Text = text; 
-            Type = type;
+            Type = gameEventType;
             IsContinuation = isContinuation;
         }
     }

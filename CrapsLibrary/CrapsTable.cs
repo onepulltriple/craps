@@ -66,6 +66,8 @@
             return Result<uint>.Pass(checkedInput);
         }
 
+        // TODO validate player starting purse (e.g. no higher starting purse than table maximum)
+
         public static Result<string> ValidateUserInputPlayerName(string? inputToCheck)
         {
             if (inputToCheck is null || inputToCheck.Length > maxLengthOfPlayerName)
@@ -106,7 +108,7 @@
             if (currentPlayerIndex == -1) // the first inserted player becomes the current player
                 currentPlayerIndex = slotIndex;
 
-            return Result<bool>.Pass(true, $"{playerToInsert.name} has been placed at seat {slotIndex + 1}");
+            return Result<bool>.Pass(true, $"{playerToInsert.name} has been placed at seat {slotIndex + 1}.");
         }
 
         public Result<Player> GetCurrentPlayer()
@@ -137,7 +139,7 @@
                     if (!Players.Any())
                     {
                         currentPlayerIndex = -1;
-                        return Result<bool>.Pass(true, $"{playerToRemove.name} has been removed. Table is now empty.");
+                        return Result<bool>.Pass(true, $"{playerToRemove.name} has been removed. The table is now empty.");
                     }
 
                     // if current player is removed, advance turn

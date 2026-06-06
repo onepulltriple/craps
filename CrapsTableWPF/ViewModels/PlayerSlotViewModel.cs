@@ -77,21 +77,18 @@ namespace CrapsTableWPF.ViewModels
             // remove player from craps table
             Result<bool> removePlayerResult = crapsTable.RemovePlayer(PlayerViewModel._model);
 
-            if (removePlayerResult.Success)
+            // error message if there are problems with removing the player
+            if (!removePlayerResult.Success)
             {
-                // announce that the player has been removed
-                crapsTable.gameEventFeed.Add(
-                    $"{this.PlayerViewModel.Name} has vacated the table. Seat {DisplayedSlotIndex} is now open.",
-                    GameEventType.Message,
-                    false
-                    );
-
-                // remove playerviewmodel from list
-                PlayerViewModel = null;
+                crapsTable.gameEventFeed.AddMultiLine(removePlayerResult);
+                return;
             }
 
+            // announce that the player has been removed
+            crapsTable.gameEventFeed.AddMultiLine(removePlayerResult);
 
-
+            // remove playerviewmodel from list
+            PlayerViewModel = null;
         }
 
         private void RenamePlayer()
@@ -108,26 +105,23 @@ namespace CrapsTableWPF.ViewModels
             if (newPlayerDTO == null)
                 return;
 
-            // create new player
+            // create new player using DTO data
             Player player = new Player(newPlayerDTO.Name, newPlayerDTO.Purse);
 
-            // add player to the player slot at this PlayerSlotViewModel's index
+            // attempt to add player to the player slot at this PlayerSlotViewModel's index
             Result<bool> addPlayerResult = crapsTable.InsertPlayerAtSlot(SlotIndex, player);
 
-            // TODO tell user why this didn't work (when exactly should this happen?)
-
-            if (addPlayerResult.Success)
+            // error message if there are problems with inserting player at a slot
+            if (!addPlayerResult.Success)
             {
-                PlayerViewModel = new PlayerViewModel(player);
-
-                // announce that the player has been added
-                crapsTable.gameEventFeed.Add(
-                    $"{player.name} has joined the table at seat {DisplayedSlotIndex}.",
-                    GameEventType.Message,
-                    false
-                    );
-                // TODO show messages
+                crapsTable.gameEventFeed.AddSingleLine(addPlayerResult);
+                return;
             }
+
+            // announce that the player has been added
+            crapsTable.gameEventFeed.AddSingleLine(addPlayerResult);
+
+            PlayerViewModel = new PlayerViewModel(player);
         }
     }
 }

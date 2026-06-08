@@ -3,6 +3,13 @@
 
     <!--border styles-->
     <!--Border is a visual container, which controls how things look-->
+    <Style x:Key="NoBorderStyle" 
+           TargetType="Border"
+           BasedOn="{StaticResource {x:Type Border}}">
+        <Setter Property="BorderThickness"      Value="0"/>
+        <Setter Property="Background"           Value="Transparent"/>
+    </Style>
+    
     <Style x:Key="RoundedBorderStyle" 
            TargetType="Border"
            BasedOn="{StaticResource {x:Type Border}}">

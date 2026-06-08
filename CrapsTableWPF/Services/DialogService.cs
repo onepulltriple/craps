@@ -8,31 +8,10 @@ namespace CrapsTableWPF.Services
     // responsible for showing popup windows
     public class DialogService
     {
-        
-        //public PlayerDTO? AddPlayerDialog()
-        //{
-        //    var addPlayerDialogViewModel = new AddPlayerDialogViewModel();
-
-        //    var addPlayerDialog = new AddPlayerDialog
-        //    {
-        //        DataContext = addPlayerDialogViewModel
-        //    };
-
-        //    bool? result = addPlayerDialog.ShowDialog();
-
-        //    if (result != true)
-        //        return null;
-
-        //    return new PlayerDTO
-        //    {
-        //        Name = addPlayerDialogViewModel.Name,
-        //        Purse = addPlayerDialogViewModel.Purse
-        //    };
-        //}
 
         public PlayerDTO? CreateOrUpdatePlayerDialog(Player? player)
         {
-            var playerDialogViewModel = new AddPlayerDialogViewModel();
+            var playerDialogViewModel = new CreateOrUpdatePlayerDialogViewModel();
 
             if (player != null)
             {
@@ -40,7 +19,7 @@ namespace CrapsTableWPF.Services
                 playerDialogViewModel.Purse = player.purse;
             }
 
-            var editPlayerDialog = new AddPlayerDialog
+            var editPlayerDialog = new CreateOrUpdatePlayerDialog
             {
                 DataContext = playerDialogViewModel
             };

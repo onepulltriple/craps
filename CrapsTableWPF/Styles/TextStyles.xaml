@@ -49,7 +49,17 @@
     </Style>
 
     <!--MAIN WINDOW-->
-    <!--Player slot text styles-->
+    <Style x:Key="MainWindowNormal"
+           TargetType="TextBlock"
+           BasedOn="{StaticResource BodyTextStyle}">
+        <Setter Property="Foreground"               Value="{StaticResource BrightTextBrush}"/>
+        <Setter Property="HorizontalAlignment"      Value="Center"/>
+        <Setter Property="VerticalAlignment"        Value="Center"/>
+        <Setter Property="Margin"                   Value="4"/>
+        <Setter Property="FontSize"                 Value="24"/>
+    </Style>
+    
+    <!--Main window player slot text styles-->
     <Style x:Key="PlayerBodyTextStyle"
            TargetType="TextBlock"
            BasedOn="{StaticResource BodyTextStyle}">

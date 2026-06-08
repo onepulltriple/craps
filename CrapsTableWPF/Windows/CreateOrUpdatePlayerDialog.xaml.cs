@@ -7,9 +7,9 @@ namespace CrapsTableWPF.Windows
     /// <summary>
     /// Interaction logic for AddPlayerDialog.xaml
     /// </summary>
-    public partial class AddPlayerDialog : Window
+    public partial class CreateOrUpdatePlayerDialog : Window
     {
-        public AddPlayerDialog()
+        public CreateOrUpdatePlayerDialog()
         {
             InitializeComponent();
         }

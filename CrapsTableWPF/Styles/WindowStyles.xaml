@@ -6,6 +6,8 @@
         TargetType="Window"
            BasedOn="{StaticResource {x:Type Window}}">
         <Setter Property="Background"           Value="{StaticResource CasinoGreenBrush}"/>
+        <Setter Property="Left"                 Value="100"/>
+        <Setter Property="Top"                  Value="100"/>
     </Style>
 
     <Style x:Key="PopUpWindowOrDialogStyle"

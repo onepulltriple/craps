@@ -34,6 +34,8 @@ namespace CrapsTableWPF.ViewModels
             }
         }
 
+        public string DisplayedTableMinimum => $"Table minimum: {TableMinimum}";
+
         public uint TableMaximum
         {
             get => _model.tableMaximum;
@@ -46,6 +48,9 @@ namespace CrapsTableWPF.ViewModels
                 }
             }
         }
+
+        public string DisplayedTableMaximum => $"Table maximum: {TableMaximum}";
+
 
         // Commands //////////////////////////////////////////////////////////
 

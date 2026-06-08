@@ -1,6 +1,6 @@
 ﻿namespace CrapsTableWPF.ViewModels
 {
-    public class AddPlayerDialogViewModel : ViewModelBase
+    public class CreateOrUpdatePlayerDialogViewModel : ViewModelBase
     {
         private string _name = "";
         public string Name

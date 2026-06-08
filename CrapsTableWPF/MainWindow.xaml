@@ -227,24 +227,35 @@
                     <views:PlayerSlotView DataContext="{Binding PlayerSlotViewModels[7]}"/>
                 </Border>
 
-                        
-
-                <Border Canvas.Left="2006" Canvas.Top="1630"
-                    Style="{DynamicResource RoundedBorderStyle}">
-                    <TextBlock Text="{Binding TableMinimum}" d:Text="Table minimum" FontSize="24"/>
+                
+                <!--OTHERS-->
+                <!--table minimum-->
+                <Border Canvas.Left="15" Canvas.Top="1910"
+                    Style="{DynamicResource NoBorderStyle}">
+                    <TextBlock Text="{Binding DisplayedTableMinimum}" 
+                               Style="{StaticResource MainWindowNormal}"
+                               d:Text="Table minimum: #"/>
                 </Border>
-                
-                
+                <!--table maximum-->
+                <Border Canvas.Left="15" Canvas.Top="1950"
+                    Style="{DynamicResource NoBorderStyle}">
+                    <TextBlock Text="{Binding DisplayedTableMaximum}" 
+                               Style="{StaticResource MainWindowNormal}"
+                               d:Text="Table maximum: #"/>
+                </Border>
 
+
+                <!--game event feed-->
                 <Border Canvas.Left="2306" Canvas.Top="1590"
                     Style="{DynamicResource GameEventFeedRoundedBorderStyle}"
                     Height="404" Width="800"
                     >
-                    <views:GameEventFeedView 
+                    <views:GameEventFeedView
                         DataContext="{Binding GameEventFeedViewModel}"
                         d:DataContext="{d:DesignInstance Type=designtime:DesignGameEventFeedViewModel, IsDesignTimeCreatable=True}"/>
                 </Border>
 
+                
             </Canvas>
         </Viewbox>
         

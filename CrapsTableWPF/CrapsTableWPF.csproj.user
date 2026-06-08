@@ -19,7 +19,7 @@
     <Compile Update="Views\SetCrapsTableView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Windows\AddPlayerDialog.xaml.cs">
+    <Compile Update="Windows\CreateOrUpdatePlayerDialog.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Windows\SetCrapsTableWindow.xaml.cs">

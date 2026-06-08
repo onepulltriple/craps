@@ -38,7 +38,7 @@ namespace CrapsTableWPF.ViewModels
         // Commands //////////////////////////////////////////////////////////
         public ICommand AddPlayerCommand { get; }
 
-        public ICommand EditPlayerCommand { get; }
+        public ICommand UpdatePlayerCommand { get; }
 
         public ICommand RemovePlayerCommand { get; }
 
@@ -53,7 +53,7 @@ namespace CrapsTableWPF.ViewModels
 
             // Commands
             this.AddPlayerCommand = new RelayCommand(_ => AddPlayer());
-            this.EditPlayerCommand = new RelayCommand(_ => EditPlayer());
+            this.UpdatePlayerCommand = new RelayCommand(_ => UpdatePlayer());
             this.RemovePlayerCommand = new RelayCommand(_ => RemovePlayer());
         }
 
@@ -75,7 +75,7 @@ namespace CrapsTableWPF.ViewModels
                 return;
 
             // remove player from craps table
-            Result<bool> removePlayerResult = crapsTable.RemovePlayer(PlayerViewModel._model);
+            Result<bool> removePlayerResult = crapsTable.RemovePlayer(PlayerViewModel.Model);
 
             // error message if there are problems with removing the player
             if (!removePlayerResult.Success)
@@ -91,27 +91,30 @@ namespace CrapsTableWPF.ViewModels
             PlayerViewModel = null;
         }
 
-        private void EditPlayer()
+        private void UpdatePlayer()
         {
             // null check
-            if (this.PlayerViewModel == null || this.PlayerViewModel._model == null)
+            if (this.PlayerViewModel == null || this.PlayerViewModel.Model == null)
                 return;
 
-            var newPlayerDTO = dialogService.LoadPlayerDialog(this.PlayerViewModel._model);
+            // load existing player into DTO data
+            var playerDTO = dialogService.CreateOrUpdatePlayerDialog(this.PlayerViewModel.Model);
 
-            if (newPlayerDTO == null)
+            if (playerDTO == null)
                 return;
 
-            this.PlayerViewModel.Name = newPlayerDTO.Name; 
-            this.PlayerViewModel.Purse = newPlayerDTO.Purse; 
+            // announce that the player has been updated
+            crapsTable.gameEventFeed.Add($"{PlayerViewModel.Name} is now {playerDTO.Name} with a purse of {playerDTO.Purse}.");
 
-            // TODO announce anything here?
+            // perform the updates
+            this.PlayerViewModel.Name = playerDTO.Name;
+            this.PlayerViewModel.Purse = playerDTO.Purse;
         }
 
         private void AddPlayer()
         {
             // call dialog service to collect new player info
-            var newPlayerDTO = dialogService.ShowAddPlayerDialog();
+            var newPlayerDTO = dialogService.CreateOrUpdatePlayerDialog(null);
 
             if (newPlayerDTO == null)
                 return;

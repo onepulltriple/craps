@@ -59,10 +59,8 @@
             bool isUInt = uint.TryParse(inputToCheck, out checkedInput);
 
             if (!isUInt)
-            {
                 return Result<uint>.Fail("Please enter a positive whole number."); 
-                // only works for addition (multiplication should use 1 to abort)
-            }
+
             return Result<uint>.Pass(checkedInput);
         }
 
@@ -108,7 +106,7 @@
             if (currentPlayerIndex == -1) // the first inserted player becomes the current player
                 currentPlayerIndex = slotIndex;
 
-            return Result<bool>.Pass(true, $"{playerToInsert.name} has been placed at seat {slotIndex + 1}.");
+            return Result<bool>.Pass(true, $"{playerToInsert.name} has been placed at seat {slotIndex + 1} with a purse of {playerToInsert.purse}.");
         }
 
         public Result<Player> GetCurrentPlayer()

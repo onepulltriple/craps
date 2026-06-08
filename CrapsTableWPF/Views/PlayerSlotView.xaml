@@ -63,7 +63,7 @@
         </Border>
         
         <Button Grid.Row="1"
-                Command="{Binding EditPlayerCommand}"
+                Command="{Binding UpdatePlayerCommand}"
                 Visibility="{Binding IsEmpty,
                             Converter={StaticResource InverseBoolToVisibilityConverter},
                             FallbackValue=Collapsed}"

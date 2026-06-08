@@ -101,7 +101,7 @@
                 return Result<bool>.Fail($"Slot index must be between 0 and {Slots.Length - 1}.");
 
             if (Slots[slotIndex] is not null)
-                return Result<bool>.Fail($"Slot {slotIndex} is already occupied.");
+                return Result<bool>.Fail($"Slot {slotIndex + 1} is already occupied.");
 
             Slots[slotIndex] = playerToInsert;
 

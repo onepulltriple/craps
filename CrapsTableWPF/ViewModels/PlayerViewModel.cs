@@ -14,7 +14,7 @@ namespace CrapsTableWPF.ViewModels
         public string Name
         {
             get => _model.name;
-            private set
+            set
             {
                 if (_model.name != value)
                 {
@@ -27,7 +27,7 @@ namespace CrapsTableWPF.ViewModels
         public uint Purse
         {
             get => _model.purse;
-            private set
+            set
             {
                 if (_model.purse != value)
                 {

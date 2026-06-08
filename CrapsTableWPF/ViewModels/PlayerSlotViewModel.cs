@@ -38,7 +38,7 @@ namespace CrapsTableWPF.ViewModels
         // Commands //////////////////////////////////////////////////////////
         public ICommand AddPlayerCommand { get; }
 
-        public ICommand RenamePlayerCommand { get; }
+        public ICommand EditPlayerCommand { get; }
 
         public ICommand RemovePlayerCommand { get; }
 
@@ -53,7 +53,7 @@ namespace CrapsTableWPF.ViewModels
 
             // Commands
             this.AddPlayerCommand = new RelayCommand(_ => AddPlayer());
-            this.RenamePlayerCommand = new RelayCommand(_ => RenamePlayer());
+            this.EditPlayerCommand = new RelayCommand(_ => EditPlayer());
             this.RemovePlayerCommand = new RelayCommand(_ => RemovePlayer());
         }
 
@@ -91,10 +91,21 @@ namespace CrapsTableWPF.ViewModels
             PlayerViewModel = null;
         }
 
-        private void RenamePlayer()
+        private void EditPlayer()
         {
-            // right-click?
-            throw new NotImplementedException();
+            // null check
+            if (this.PlayerViewModel == null || this.PlayerViewModel._model == null)
+                return;
+
+            var newPlayerDTO = dialogService.LoadPlayerDialog(this.PlayerViewModel._model);
+
+            if (newPlayerDTO == null)
+                return;
+
+            this.PlayerViewModel.Name = newPlayerDTO.Name; 
+            this.PlayerViewModel.Purse = newPlayerDTO.Purse; 
+
+            // TODO announce anything here?
         }
 
         private void AddPlayer()

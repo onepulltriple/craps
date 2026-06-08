@@ -1,32 +1,56 @@
 ﻿using CrapsTableWPF.Data_Transfer_Objects;
 using CrapsTableWPF.ViewModels;
 using CrapsTableWPF.Windows;
+using CrapsLibrary;
 
 namespace CrapsTableWPF.Services
 {
     // responsible for showing popup windows
     public class DialogService
     {
+        
         public NewPlayerDTO? ShowAddPlayerDialog()
         {
-            var viewModel = new AddPlayerDialogViewModel();
+            var addPlayerDialogViewModel = new AddPlayerDialogViewModel();
 
-            var dialog = new AddPlayerDialog
+            var addPlayerDialog = new AddPlayerDialog
             {
-                DataContext = viewModel
+                DataContext = addPlayerDialogViewModel
             };
 
-            bool? result = dialog.ShowDialog();
+            bool? result = addPlayerDialog.ShowDialog();
 
             if (result != true)
                 return null;
 
-            // TODO validate this data!
+            return new NewPlayerDTO
+            {
+                Name = addPlayerDialogViewModel.Name,
+                Purse = addPlayerDialogViewModel.Purse
+            };
+        }
+
+        public NewPlayerDTO? LoadPlayerDialog(Player player)
+        {
+            var playerDialogViewModel = new AddPlayerDialogViewModel();
+
+            playerDialogViewModel.Name = player.name;
+            playerDialogViewModel.Purse = player.purse;
+
+            var editPlayerDialog = new AddPlayerDialog
+            {
+                DataContext = playerDialogViewModel
+            };
+
+            bool? result = editPlayerDialog.ShowDialog();
+
+            if (result != true)
+                return null;
 
             return new NewPlayerDTO
             {
-                Name = viewModel.Name,
-                Purse = viewModel.Purse
+                Name = playerDialogViewModel.Name,
+                Purse = playerDialogViewModel.Purse
             };
         }
     }

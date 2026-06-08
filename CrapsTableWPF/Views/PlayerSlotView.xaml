@@ -18,14 +18,14 @@
         <!--header row-->
         <!--slot index display-->
         <TextBlock Grid.Row="0"
-            Style="{StaticResource PlayerSlotIndexHeadingStyle}"
-            Text="{Binding DisplayedSlotIndex}"
-            d:Text="DisplayedSlotIndex"
-            />
+                   Style="{StaticResource PlayerSlotIndexHeadingStyle}"
+                   Text="{Binding DisplayedSlotIndex}"
+                   d:Text="DisplayedSlotIndex"
+                   />
 
         <!--remove player (close button)-->
         <Button Grid.Row="0"
-            Style="{StaticResource MainWindowCloseButtonStyle}"
+                Style="{StaticResource MainWindowCloseButtonStyle}"
                 Command="{Binding RemovePlayerCommand}">
             <TextBlock
                 Style="{StaticResource MainWindowButtonCloseTextBlockStyle}"
@@ -45,7 +45,7 @@
 
         <!--occupied slot-->
         <Border Grid.Row="1"
-            Style="{DynamicResource RoundedBorderStyle}"
+                Style="{DynamicResource RoundedBorderStyle}"
                 Visibility ="{Binding IsEmpty,
                              Converter={StaticResource InverseBoolToVisibilityConverter},
                              FallbackValue=Collapsed}">
@@ -61,6 +61,30 @@
             <!--before, it was done like this:-->
             <!--<views:PlayerView DataContext="{Binding PlayerViewModel}"/>-->
         </Border>
+        
+        <Button Grid.Row="1"
+                Command="{Binding EditPlayerCommand}"
+                Visibility="{Binding IsEmpty,
+                            Converter={StaticResource InverseBoolToVisibilityConverter},
+                            FallbackValue=Collapsed}"
+                Background="Transparent">
+
+            <Button.Style>
+                <Style TargetType="Button"
+                       BasedOn="{StaticResource MainWindowRoundedButtonStyle}">
+                    <Setter Property="Opacity" Value="0"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Opacity" Value="1"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            
+            <TextBlock
+                Style="{StaticResource MainWindowButtonTextBlockStyle}"
+                Text="Click to edit player"/>
+        </Button>
 
     </Grid>
 </UserControl>

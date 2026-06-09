@@ -5,10 +5,9 @@ using CrapsLibrary;
 
 namespace CrapsTableWPF.Services
 {
-    // responsible for showing popup windows
+    // responsible for showing pop-up windows
     public class DialogService
     {
-
         public PlayerDTO? CreateOrUpdatePlayerDialog(Player? player)
         {
             var playerDialogViewModel = new CreateOrUpdatePlayerDialogViewModel();

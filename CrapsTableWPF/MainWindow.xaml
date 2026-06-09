@@ -256,6 +256,17 @@
                 </Border>
 
                 
+                <!--roll dice button-->
+                <Button Canvas.Left="2006" Canvas.Top="1590"
+                        Style="{StaticResource MainWindowRoundedButtonStyle}"
+                        Command="{Binding RollDiceCommand}"
+                        >
+                    <TextBlock Text="Roll dice!" 
+                               Style="{StaticResource PlayerSlotIndexHeadingStyle}"
+                               d:Text="Roll dice!"/>
+                </Button>
+
+                
             </Canvas>
         </Viewbox>
         

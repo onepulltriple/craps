@@ -44,11 +44,13 @@ namespace ConsoleAppForCraps.DealerCLIState
         private void RollDiceCLI()
         {
             //(byte outcome01, byte outcome02) = dealerCLIStateMachine.crapsTable!.RollDice(6, 6);
-            (byte outcome01, byte outcome02) = Die.RollDice(6, 6);
+            //(byte outcome01, byte outcome02) = Die.RollDice(6, 6);
 
             //dealerCLIStateMachine.crapsTable!.UpdateScoreboardAndPublishOutcomes(outcome01, outcome02);
-            dealerCLIStateMachine.crapsTable!.scoreboard
-                .UpdateScoreboardAndPublishOutcomes(dealerCLIStateMachine.crapsTable, outcome01, outcome02);
+            //dealerCLIStateMachine.crapsTable!.scoreboard
+            //    .UpdateScoreboardAndPublishOutcomes(outcome01, outcome02);
+
+            dealerCLIStateMachine.crapsTable!.RollDiceAndAnnounceOutcomes();
 
             SleepCLI();
 

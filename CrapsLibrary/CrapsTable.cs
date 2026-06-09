@@ -181,5 +181,17 @@
 
             return Result<bool>.Pass(true, $"{Slots[currentPlayerIndex]!.name}'s turn!");
         }
+
+        public void RollDiceAndAnnounceOutcomes()
+        {
+            (byte outcome01, byte outcome02) = Die.RollDice(6, 6);
+
+            this.gameEventFeed.Add(
+                $"{outcome01}, {outcome02} --> {outcome01 + outcome02}",
+                GameEventType.DiceRoll
+                );
+
+            this.scoreboard.UpdateScoreboardAndPublishOutcomes(outcome01, outcome02);
+        }
     }
 }

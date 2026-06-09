@@ -53,7 +53,7 @@ namespace CrapsTableWPF.ViewModels
 
 
         // Commands //////////////////////////////////////////////////////////
-
+        public ICommand RollDiceCommand { get; }
 
         public CrapsTableViewModel(CrapsTable crapsTable)
         {
@@ -67,6 +67,9 @@ namespace CrapsTableWPF.ViewModels
                 );
 
             this.GameEventFeedViewModel = new GameEventFeedViewModel(crapsTable.gameEventFeed);
+            
+            this.RollDiceCommand = new RelayCommand(_ => _model.RollDiceAndAnnounceOutcomes());
+
         }
     }
 }

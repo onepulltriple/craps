@@ -64,15 +64,10 @@
             }
         }
 
-        public void UpdateScoreboardAndPublishOutcomes(CrapsTable crapsTable, byte outcome01, byte outcome02)
+        public void UpdateScoreboardAndPublishOutcomes(byte outcome01, byte outcome02)
         {
             die01Rolls.Add(outcome01);
             die02Rolls.Add(outcome02);
-
-            crapsTable.gameEventFeed.Add(
-                $"{outcome01}, {outcome02} --> {outcome01 + outcome02}",
-                GameEventType.DiceRoll
-                );
 
             PublishOutcomes();
         }

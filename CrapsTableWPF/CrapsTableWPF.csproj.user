@@ -7,7 +7,13 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Views\BetView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\GameEventFeedView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\HardWayBetView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\PlayerSlotView.xaml.cs">

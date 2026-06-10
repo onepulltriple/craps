@@ -91,7 +91,7 @@ namespace CrapsTableWPF.ViewModels
             PlayerViewModel = null;
         }
 
-        // TODO consolidate UpdatePlayer() and AddPlayer() moethods?
+        // TODO consolidate UpdatePlayer() and AddPlayer() methods?
         private void UpdatePlayer()
         {
             // null check

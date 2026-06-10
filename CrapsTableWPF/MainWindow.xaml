@@ -133,6 +133,7 @@
                     <Path Fill="Purple" Data="M1210.99,1270C1200.22,1270 1191.49,1261.26 1191.49,1250.5C1191.49,1239.74 1200.22,1231 1210.99,1231C1221.75,1231 1230.49,1239.74 1230.49,1250.5C1230.49,1261.26 1221.75,1270 1210.99,1270Z" />
                     <Path Fill="Purple" Data="M1572.09,1270C1561.32,1270 1552.59,1261.26 1552.59,1250.5C1552.59,1239.74 1561.32,1231 1572.09,1231C1582.85,1231 1591.59,1239.74 1591.59,1250.5C1591.59,1261.26 1582.85,1270 1572.09,1270Z" />
                     
+                    <!--Hard Way Bets-->
                     <Path Fill="Chocolate" Data="M2003.64,758.677L2003.64,838.677L2355.64,838.677L2355.64,738.677L2023.64,738.677C2012.59,738.677 2003.64,747.631 2003.64,758.677Z" />
                     <Path Fill="Chocolate" Data="M2707.64,758.677L2707.64,838.677L2355.64,838.677L2355.64,738.677L2687.64,738.677C2698.68,738.677 2707.64,747.631 2707.64,758.677Z" />
                     <Path Fill="Chocolate" Data="M2003.64,838.677L2355.64,838.677L2355.64,938.677L2003.64,938.677Z" />
@@ -266,7 +267,21 @@
                                d:Text="Roll dice!"/>
                 </Button>
 
-                
+                <!--sample bet-->
+                <Border Canvas.Left="1000" Canvas.Top="1200"
+                        Style="{StaticResource BetBorderStyle}"
+                        >
+                    <views:BetView DataContext="{Binding DisplayedTableMaximum}"/>
+                </Border>
+
+                <!--Canvas.Left="2005.68" Canvas.Top="738.68"-->
+                <!--Hard_04-->
+                <Border Canvas.Left="2005.68" Canvas.Top="738.68"
+                        Style="{StaticResource NoClippingBorderStyle}"
+                        >
+                    <views:HardWayBetView/>
+                </Border>
+
             </Canvas>
         </Viewbox>
         

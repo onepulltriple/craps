@@ -274,12 +274,11 @@
                     <views:BetView DataContext="{Binding DisplayedTableMaximum}"/>
                 </Border>
 
-                <!--Canvas.Left="2005.68" Canvas.Top="738.68"-->
-                <!--Hard_04-->
-                <Border Canvas.Left="2005.68" Canvas.Top="738.68"
+                <!--Hard Way Bet ViewModels-->
+                <Border Canvas.Left="2003.68" Canvas.Top="738.68"
                         Style="{StaticResource NoClippingBorderStyle}"
                         >
-                    <views:HardWayBetView/>
+                    <views:HardWayBetView DataContext="{Binding HardWayBetViewModel_Hard_06}"/>
                 </Border>
 
             </Canvas>

@@ -6,6 +6,8 @@ namespace CrapsTableWPF.ViewModels
     {
         private Bet _model;
 
+
+
         public string BetWorkingState => _model.BetWorkingState; // TODO this should be a dictionary or enum
 
         public string Name => _model.name;

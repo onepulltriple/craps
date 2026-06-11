@@ -1,5 +1,4 @@
 ﻿using CrapsLibrary;
-//using CrapsTableWPF.Data_Transfer_Objects;
 using CrapsTableWPF.Infrastructure;
 using CrapsTableWPF.Services;
 using System.Numerics;
@@ -24,14 +23,14 @@ namespace CrapsTableWPF.ViewModels
             }
         }
 
+        private readonly DialogService dialogService;
+
         // Bindable Properties ///////////////////////////////////////////////
         private readonly CrapsTable crapsTable;
 
         public int SlotIndex { get; }
 
         public int DisplayedSlotIndex => SlotIndex + 1;
-
-        private readonly DialogService dialogService;
 
         public bool IsEmpty => PlayerViewModel == null;
 
@@ -41,7 +40,6 @@ namespace CrapsTableWPF.ViewModels
         public ICommand UpdatePlayerCommand { get; }
 
         public ICommand RemovePlayerCommand { get; }
-
 
         public PlayerSlotViewModel(CrapsTable crapsTable, Player? player, int slotIndex, DialogService dialogService) 
         {

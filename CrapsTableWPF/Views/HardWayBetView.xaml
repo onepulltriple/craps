@@ -16,12 +16,12 @@
         <Border Canvas.Left="134" Canvas.Top="58"
             Style="{StaticResource BetBorderStyle}"
             >
-            <views:BetView/>
+            <views:BetSlotView DataContext="{Binding BetSlotViewModels[0]}"/>
         </Border>
         <Border Canvas.Left="90" Canvas.Top="58"
             Style="{StaticResource BetBorderStyle}"
             >
-            <views:BetView/>
+            <views:BetSlotView DataContext="{Binding BetSlotViewModels[1]}"/>
         </Border>
         <Border Canvas.Left="46" Canvas.Top="58"
             Style="{StaticResource BetBorderStyle}"

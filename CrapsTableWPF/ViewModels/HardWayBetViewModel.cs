@@ -10,21 +10,21 @@ namespace CrapsTableWPF.ViewModels
 
         private readonly CrapsTable crapsTable;
 
-        //public readonly betType BetType;
-
         public HardWayBetViewModel(CrapsTable crapsTable, betType betType)
         {
             this.crapsTable = crapsTable;
 
             this.BetSlotViewModels = new ObservableCollection<BetSlotViewModel>(
-                crapsTable.Slots.Select((player, slotIndex) =>
-                {
-                    var bet = player?.playerBetList.FirstOrDefault(b => b.betType == betType);
+                crapsTable.Slots.Select(
+                    (player, slotIndex) =>
+                        {
+                            var bet = player?.playerBetList.FirstOrDefault(b => b.betType == betType);
 
-                    return new BetSlotViewModel(bet, slotIndex);
-                }));
+                            return new BetSlotViewModel(bet, slotIndex);
+                        }
+                )
+            );
 
-            //this.BetType = betType;
 
         }
     }

@@ -1,4 +1,6 @@
-﻿namespace CrapsLibrary
+﻿using CrapsLibrary.Bets;
+
+namespace CrapsLibrary
 {
     public class CrapsTable
     {
@@ -35,8 +37,25 @@
             this.tableMaximum = tableMaximum;
             this.puck = new Puck(this);
 
-            //Slots[0] = new Player("Chase", 100);
+
+            #region temp setup for testing
+
+            Player player1 = new Player("Chase", 100);
+            Slots[0] = player1;
+            foreach (betType bet in Enum.GetValues<betType>())
+            {
+                Result<Bet> newBetResult = BetFactory.CreateBet(this, player1, bet, 10);
+
+                if (!newBetResult.Success)
+                    return;
+
+                player1.playerBetList.Add(newBetResult.Value);
+            }
+
+            //player1.name = "Chaser";
             //Slots[1] = new Player("Christian", 200);
+
+            #endregion
         }
 
         public static Result<uint> ValidateCrapsTableMinimum(string? inputToCheck)

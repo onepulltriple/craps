@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="CrapsTableWPF.Views.BetSlotView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:views="clr-namespace:CrapsTableWPF.Views"
+             xmlns:viewmodels="clr-namespace:CrapsTableWPF.ViewModels"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance Type=viewmodels:BetSlotViewModel}"
+             d:DesignHeight="40" d:DesignWidth="40"
+             >
+    <Grid>
+        <!--slot index display-->
+        <TextBlock Style="{StaticResource BodyTextStyle}"
+                   Text="{Binding DisplayedSlotIndex}"
+                   d:Text="DisplayedSlotIndex"
+                   />
+
+        <!--occupied slot-->
+        <Border Style="{DynamicResource BetBorderStyle}"
+                Visibility ="{Binding IsEmpty,
+                             Converter={StaticResource InverseBoolToVisibilityConverter},
+                             FallbackValue=Collapsed}">
+
+            <!--here the data context of the child element (a BetView) is set to this slot's BetViewModel-->
+            <ContentControl Content="{Binding BetViewModel}">
+                <ContentControl.ContentTemplate>
+                    <DataTemplate>
+                        <views:BetView/>
+                    </DataTemplate>
+                </ContentControl.ContentTemplate>
+            </ContentControl>
+            <!--it could also be done like this:-->
+            <!--<views:BetView DataContext="{Binding BetViewModel}"/>-->
+        </Border>
+        
+    </Grid>
+</UserControl>

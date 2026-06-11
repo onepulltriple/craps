@@ -6,8 +6,6 @@ namespace CrapsTableWPF.ViewModels
 {
     public class PlayerViewModel : ViewModelBase
     {
-        public ICommand NotifyPurseChangedCommand { get; }
-
         private readonly Player _model;
 
         public Player Model => _model;
@@ -39,17 +37,20 @@ namespace CrapsTableWPF.ViewModels
             }
         }
 
+        // Commands //////////////////////////////////////////////////////////
+        //public ICommand NotifyPurseChangedCommand { get; }
+
         public PlayerViewModel(Player player)
         {
             this._model = player;
 
-            NotifyPurseChangedCommand = new RelayCommand(_ => NotifyPurseChanged());
+            //NotifyPurseChangedCommand = new RelayCommand(_ => NotifyPurseChanged());
             //NotifyPurseChangedCommand = new RelayCommand(player.PauseAllBets());
         }
 
-        public void NotifyPurseChanged()
-        {
-            OnPropertyChanged(nameof(Purse));
-        }
+        //public void NotifyPurseChanged()
+        //{
+        //    OnPropertyChanged(nameof(Purse));
+        //}
     }
 }

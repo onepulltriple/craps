@@ -268,11 +268,11 @@
                 </Button>
 
                 <!--sample bet-->
-                <Border Canvas.Left="1000" Canvas.Top="1200"
+                <!--<Border Canvas.Left="1000" Canvas.Top="1200"
                         Style="{StaticResource BetBorderStyle}"
                         >
                     <views:BetView DataContext="{Binding DisplayedTableMaximum}"/>
-                </Border>
+                </Border>-->
 
                 <!--Hard Way Bet ViewModels-->
                 <Border Canvas.Left="2003.68" Canvas.Top="738.68"

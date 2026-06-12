@@ -134,10 +134,10 @@
                     <Path Fill="Purple" Data="M1572.09,1270C1561.32,1270 1552.59,1261.26 1552.59,1250.5C1552.59,1239.74 1561.32,1231 1572.09,1231C1582.85,1231 1591.59,1239.74 1591.59,1250.5C1591.59,1261.26 1582.85,1270 1572.09,1270Z" />
                     
                     <!--Hard Way Bets-->
-                    <Path Fill="Chocolate" Data="M2003.64,758.677L2003.64,838.677L2355.64,838.677L2355.64,738.677L2023.64,738.677C2012.59,738.677 2003.64,747.631 2003.64,758.677Z" />
+                    <!--<Path Fill="Chocolate" Data="M2003.64,758.677L2003.64,838.677L2355.64,838.677L2355.64,738.677L2023.64,738.677C2012.59,738.677 2003.64,747.631 2003.64,758.677Z" />
                     <Path Fill="Chocolate" Data="M2707.64,758.677L2707.64,838.677L2355.64,838.677L2355.64,738.677L2687.64,738.677C2698.68,738.677 2707.64,747.631 2707.64,758.677Z" />
                     <Path Fill="Chocolate" Data="M2003.64,838.677L2355.64,838.677L2355.64,938.677L2003.64,938.677Z" />
-                    <Path Fill="Chocolate" Data="M2355.64,838.677L2707.64,838.677L2707.64,938.677L2355.64,938.677Z" />
+                    <Path Fill="Chocolate" Data="M2355.64,838.677L2707.64,838.677L2707.64,938.677L2355.64,938.677Z" />-->
 
                     <!-- Any Seven (Big Red) Bet -->
                     <Path Fill="Red" Data="M2003.64,938.677L2707.64,938.677L2707.64,982.677L2003.64,982.677L2003.64,938.677" />
@@ -165,9 +165,6 @@
                         Stroke="Black"
                         StrokeThickness="0"/>-->
                     <!-- later use Fill="Tran sparent" or click detection may not work -->
-
-
-
 
 
                     <!-- x is plotted from the left edge, y is plotted from the top edge -->
@@ -267,12 +264,7 @@
                                d:Text="Roll dice!"/>
                 </Button>
 
-                <!--sample bet-->
-                <!--<Border Canvas.Left="1000" Canvas.Top="1200"
-                        Style="{StaticResource BetBorderStyle}"
-                        >
-                    <views:BetView DataContext="{Binding DisplayedTableMaximum}"/>
-                </Border>-->
+
 
 
             <!--<Path Fill="Chocolate" Data="M2003.64,758.677L2003.64,838.677L2355.64,838.677L2355.64,738.677L2023.64,738.677C2012.59,738.677 2003.64,747.631 2003.64,758.677Z" />
@@ -280,11 +272,25 @@
                 <Path Fill="Chocolate" Data="M2003.64,838.677L2355.64,838.677L2355.64,938.677L2003.64,938.677Z" />
                 <Path Fill="Chocolate" Data="M2355.64,838.677L2707.64,838.677L2707.64,938.677L2355.64,938.677Z" />-->
                 <!--Hard Way Bet ViewModels-->
+
                 <Border Canvas.Left="2003.68" Canvas.Top="838.68"
                         Style="{StaticResource NoClippingBorderStyle}"
                         >
                     <views:HardWayBetView DataContext="{Binding HardWayBetViewModel_Hard_04}"/>
                 </Border>
+                <Path Fill="Transparent"
+                      Data="M2003.64,838.677L2355.64,838.677L2355.64,938.677L2003.64,938.677Z"
+                      DataContext="{Binding HardWayBetViewModel_Hard_04}"
+                      >
+                    <Path.InputBindings>
+                        <MouseBinding Gesture="LeftClick"
+                                      Command="{Binding CreateBetCommand}" />
+                    </Path.InputBindings>
+                </Path>
+
+                
+                
+                
                 <Border Canvas.Left="2003.68" Canvas.Top="738.68"
                         Style="{StaticResource NoClippingBorderStyle}"
                         >

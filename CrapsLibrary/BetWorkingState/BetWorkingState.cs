@@ -45,7 +45,7 @@ namespace CrapsLibrary.BetWorkingState
                 $"Oh boy... {betInQuestion.betOwner.name} " +
                 $"won {betInQuestion.name} " +
                 $"with {firstOutcome}, {secondOutcome}! " +
-                $"The payout of {betInQuestion.commitment} credits will be fully parlayed.",
+                $"The payout of {betInQuestion.Commitment} credits will be fully parlayed.",
                 GameEventType.Message
                 );
         }
@@ -55,7 +55,7 @@ namespace CrapsLibrary.BetWorkingState
             betWorkingStateMachine.crapsTable.gameEventFeed.Add(
                 $"Oh no! {betInQuestion.betOwner.name} " +
                 $"lost {betInQuestion.name}! " +
-                $"The commitment of {betInQuestion.commitment} credits goes to the house.",
+                $"The commitment of {betInQuestion.Commitment} credits goes to the house.",
                 GameEventType.Message
                 );
         }

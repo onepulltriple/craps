@@ -18,7 +18,22 @@ namespace CrapsLibrary.Bets
 
         public uint unitOfBet;
 
-        public uint commitment;
+        private uint _commitment;
+
+        public uint Commitment
+        {
+            get => _commitment;
+            set
+            {
+                if (_commitment != value)
+                {
+                    _commitment = value;
+                    CommitmentChanged?.Invoke(this, EventArgs.Empty);
+                }
+            }
+        }
+
+        public event EventHandler? CommitmentChanged;
 
         public uint payout;
 
@@ -47,7 +62,7 @@ namespace CrapsLibrary.Bets
             this.countOfUnitsToBet = countOfUnitsToBet;
             this.unitOfBet = unitOfBet;
             this.winningTotals = winningTotals;
-            this.commitment = countOfUnitsToBet * unitOfBet;
+            this._commitment = countOfUnitsToBet * unitOfBet;
             this.payout = payout;
 
             // Create a state machine to manage this bet's states
@@ -89,6 +104,12 @@ namespace CrapsLibrary.Bets
         {
             betOwner.purse += (countOfUnitsToBet * unitOfBet);
             betOwner.playerBetList.Remove(this);
+        }
+
+        public void LoseCommitment()
+        {
+            // TODO pay commitment to house (whenever the house gets a purse)
+            Commitment = 0;
         }
 
         internal abstract bool MeetsLosingCondition(byte firstOutcome, byte secondOutcome);

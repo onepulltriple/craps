@@ -249,7 +249,7 @@
                 <!--game event feed-->
                 <Border Canvas.Left="2306" Canvas.Top="1590"
                     Style="{DynamicResource GameEventFeedRoundedBorderStyle}"
-                    Height="404" Width="800"
+                    Height="404" Width="880"
                     >
                     <views:GameEventFeedView
                         DataContext="{Binding GameEventFeedViewModel}"
@@ -274,11 +274,31 @@
                     <views:BetView DataContext="{Binding DisplayedTableMaximum}"/>
                 </Border>-->
 
+
+            <!--<Path Fill="Chocolate" Data="M2003.64,758.677L2003.64,838.677L2355.64,838.677L2355.64,738.677L2023.64,738.677C2012.59,738.677 2003.64,747.631 2003.64,758.677Z" />
+                <Path Fill="Chocolate" Data="M2707.64,758.677L2707.64,838.677L2355.64,838.677L2355.64,738.677L2687.64,738.677C2698.68,738.677 2707.64,747.631 2707.64,758.677Z" />
+                <Path Fill="Chocolate" Data="M2003.64,838.677L2355.64,838.677L2355.64,938.677L2003.64,938.677Z" />
+                <Path Fill="Chocolate" Data="M2355.64,838.677L2707.64,838.677L2707.64,938.677L2355.64,938.677Z" />-->
                 <!--Hard Way Bet ViewModels-->
+                <Border Canvas.Left="2003.68" Canvas.Top="838.68"
+                        Style="{StaticResource NoClippingBorderStyle}"
+                        >
+                    <views:HardWayBetView DataContext="{Binding HardWayBetViewModel_Hard_04}"/>
+                </Border>
                 <Border Canvas.Left="2003.68" Canvas.Top="738.68"
                         Style="{StaticResource NoClippingBorderStyle}"
                         >
                     <views:HardWayBetView DataContext="{Binding HardWayBetViewModel_Hard_06}"/>
+                </Border>
+                <Border Canvas.Left="2355.68" Canvas.Top="738.68"
+                        Style="{StaticResource NoClippingBorderStyle}"
+                        >
+                    <views:HardWayBetView DataContext="{Binding HardWayBetViewModel_Hard_08}"/>
+                </Border>
+                <Border Canvas.Left="2355.68" Canvas.Top="838.68"
+                        Style="{StaticResource NoClippingBorderStyle}"
+                        >
+                    <views:HardWayBetView DataContext="{Binding HardWayBetViewModel_Hard_10}"/>
                 </Border>
 
             </Canvas>

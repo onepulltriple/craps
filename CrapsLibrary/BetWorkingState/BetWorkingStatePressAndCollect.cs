@@ -28,7 +28,7 @@ namespace CrapsLibrary.BetWorkingState
                 AnnounceReturnWinnings(firstOutcome, secondOutcome);
 
                 // split winnings between parlay and payout
-                betInQuestion.commitment += betInQuestion.payout/2; // TODO need to calculate these two based on betting units
+                betInQuestion.Commitment += betInQuestion.payout/2; // TODO need to calculate these two based on betting units
                 betInQuestion.betOwner.purse += betInQuestion.payout/2;
                 return;
             }

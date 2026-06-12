@@ -40,7 +40,7 @@ namespace CrapsLibrary
 
             #region temp setup for testing
 
-            Player player1 = new Player("Chase", 100);
+            Player player1 = new Player("Chase", 1000);
             Slots[0] = player1;
             foreach (betType bet in Enum.GetValues<betType>())
             {

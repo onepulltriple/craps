@@ -136,4 +136,10 @@
         <Setter Property="HorizontalAlignment"      Value="Center"/>
         <Setter Property="VerticalAlignment"        Value="Center"/>
     </Style>
+    
+    <Style x:Key="UnoccupiedBetTextBlockStyle"
+           TargetType="TextBlock"
+           BasedOn="{StaticResource BetTextBlockStyle}">
+        <Setter Property="FontStyle"        Value="Italic"/>
+    </Style>
 </ResourceDictionary>

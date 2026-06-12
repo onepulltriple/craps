@@ -16,7 +16,9 @@ namespace CrapsTableWPF.ViewModels
 
         //public uint UnitOfBet => _model.unitOfBet;
 
-        public uint Commitment => _model.commitment;
+        public uint Commitment => _model.Commitment;
+
+        
 
 
 
@@ -24,7 +26,10 @@ namespace CrapsTableWPF.ViewModels
         {
             this._model = bet;
 
-
+            this._model.CommitmentChanged += (_, _) =>
+            {
+                OnPropertyChanged(nameof(Commitment));
+            };
         }
     }
 }

@@ -10,10 +10,10 @@
              d:DesignHeight="40" d:DesignWidth="40"
              >
     <Grid>
-        <!--slot index display-->
-        <TextBlock Style="{StaticResource BodyTextStyle}"
+        <!--empty slot shows displayed slot index-->
+        <TextBlock Style="{StaticResource UnoccupiedBetTextBlockStyle}"
                    Text="{Binding DisplayedSlotIndex}"
-                   d:Text="DisplayedSlotIndex"
+                   d:Text="slot index"
                    />
 
         <!--occupied slot-->

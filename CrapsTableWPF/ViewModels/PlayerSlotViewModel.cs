@@ -55,38 +55,32 @@ namespace CrapsTableWPF.ViewModels
             this.RemovePlayerCommand = new RelayCommand(_ => RemovePlayer());
         }
 
-        private void RemovePlayer()
+        private void AddPlayer()
         {
-            // null check
-            if (this.PlayerViewModel == null)
+            // call dialog service to collect new player info
+            var newPlayerDTO = dialogService.CreateOrUpdatePlayerDialog(null);
+
+            if (newPlayerDTO == null)
                 return;
 
-            // pop-up to ask for confirmation
-            MessageBoxResult answer01 = MessageBoxResult.No;
+            // create new player using DTO data
+            Player player = new Player(newPlayerDTO.Name, newPlayerDTO.Purse);
 
-            answer01 = MessageBox.Show(
-                $"Are you sure you want to remove {this.PlayerViewModel.Name} from the table?",
-                "Remove player?",
-                MessageBoxButton.YesNo);
+            // attempt to add player to the player slot at this PlayerSlotViewModel's index
+            Result<bool> addPlayerResult = crapsTable.InsertPlayerAtSlot(SlotIndex, player);
 
-            if (answer01 == MessageBoxResult.No)
-                return;
-
-            // remove player from craps table
-            Result<bool> removePlayerResult = crapsTable.RemovePlayer(PlayerViewModel.Model);
-
-            // error message if there are problems with removing the player
-            if (!removePlayerResult.Success)
+            // error message if there are problems with inserting player at a slot
+            if (!addPlayerResult.Success)
             {
-                crapsTable.gameEventFeed.AddMultiLine(removePlayerResult);
+                crapsTable.gameEventFeed.AddMultiLine(addPlayerResult);
                 return;
             }
 
-            // announce that the player has been removed
-            crapsTable.gameEventFeed.AddMultiLine(removePlayerResult);
+            // announce that the player has been added
+            crapsTable.gameEventFeed.AddMultiLine(addPlayerResult);
 
-            // remove playerviewmodel from list
-            PlayerViewModel = null;
+            PlayerViewModel = new PlayerViewModel(player);
+
         }
 
         // TODO consolidate UpdatePlayer() and AddPlayer() methods?
@@ -110,31 +104,32 @@ namespace CrapsTableWPF.ViewModels
             this.PlayerViewModel.Purse = playerDTO.Purse;
         }
 
-        private void AddPlayer()
+        private void RemovePlayer()
         {
-            // call dialog service to collect new player info
-            var newPlayerDTO = dialogService.CreateOrUpdatePlayerDialog(null);
-
-            if (newPlayerDTO == null)
+            // null check
+            if (this.PlayerViewModel == null)
                 return;
 
-            // create new player using DTO data
-            Player player = new Player(newPlayerDTO.Name, newPlayerDTO.Purse);
+            // pop-up to ask for confirmation
+            MessageBoxResult answer01 = MessageBoxResult.No;
 
-            // attempt to add player to the player slot at this PlayerSlotViewModel's index
-            Result<bool> addPlayerResult = crapsTable.InsertPlayerAtSlot(SlotIndex, player);
+            answer01 = MessageBox.Show(
+                $"Are you sure you want to remove {this.PlayerViewModel.Name} from the table?",
+                "Remove player?",
+                MessageBoxButton.YesNo);
 
-            // error message if there are problems with inserting player at a slot
-            if (!addPlayerResult.Success)
-            {
-                crapsTable.gameEventFeed.AddSingleLine(addPlayerResult);
+            if (answer01 == MessageBoxResult.No)
                 return;
-            }
 
-            // announce that the player has been added
-            crapsTable.gameEventFeed.AddSingleLine(addPlayerResult);
+            // remove player from craps table
+            Result<bool> removePlayerResult = crapsTable.RemovePlayer(PlayerViewModel.Model);
 
-            PlayerViewModel = new PlayerViewModel(player);
+            // announce the outcome
+            crapsTable.gameEventFeed.AddMultiLine(removePlayerResult);
+
+            // remove playerviewmodel from list
+            PlayerViewModel = null;
         }
+
     }
 }

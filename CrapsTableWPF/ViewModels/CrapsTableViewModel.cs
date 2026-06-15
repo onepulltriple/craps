@@ -56,6 +56,7 @@ namespace CrapsTableWPF.ViewModels
 
         public string DisplayedTableMaximum => $"Table maximum: {TableMaximum}";
 
+        public int CurrentPlayerIndex => _model.CurrentPlayerIndex;
 
         // Commands //////////////////////////////////////////////////////////
         public ICommand RollDiceCommand { get; }
@@ -79,6 +80,12 @@ namespace CrapsTableWPF.ViewModels
             this.HardWayBetViewModel_Hard_06 = new HardWayBetViewModel(crapsTable, betType.Hard_06);
             this.HardWayBetViewModel_Hard_08 = new HardWayBetViewModel(crapsTable, betType.Hard_08);
             this.HardWayBetViewModel_Hard_10 = new HardWayBetViewModel(crapsTable, betType.Hard_10);
+
+            // Bindable Properties
+            this._model.CurrentPlayerIndexChanged += (_, _) =>
+            {
+                OnPropertyChanged(nameof(CurrentPlayerIndex));
+            };
 
             // Commands
             this.RollDiceCommand = new RelayCommand(_ => _model.RollDiceAndAnnounceOutcomes());

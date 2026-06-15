@@ -288,10 +288,20 @@
                     </Path.InputBindings>
                 </Path>
 
-                
-                
-                
-                <Border Canvas.Left="2003.68" Canvas.Top="738.68"
+
+                <Border Canvas.Left="2000" Canvas.Top="1500"
+                        Style="{StaticResource BetBorderStyle}"
+                        >
+                        <TextBlock Canvas.Left="2000" Canvas.Top="1500"
+                                   Text="{Binding CurrentPlayerIndex}"
+                                   Style="{StaticResource MainWindowButtonCloseTextBlockStyle}"
+                                   d:Text="-2"
+                                   />
+                </Border>
+
+
+
+                <!--<Border Canvas.Left="2003.68" Canvas.Top="738.68"
                         Style="{StaticResource NoClippingBorderStyle}"
                         >
                     <views:HardWayBetView DataContext="{Binding HardWayBetViewModel_Hard_06}"/>
@@ -305,7 +315,7 @@
                         Style="{StaticResource NoClippingBorderStyle}"
                         >
                     <views:HardWayBetView DataContext="{Binding HardWayBetViewModel_Hard_10}"/>
-                </Border>
+                </Border>-->
 
             </Canvas>
         </Viewbox>

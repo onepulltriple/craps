@@ -33,11 +33,18 @@ namespace CrapsTableWPF.ViewModels
 
         }
 
-        public void CreateBetWPF()
+        public void CreateBetWPF() // TODO send to a base class and make CreateOrUpdate()
         {
-            var temp = crapsTable.GetCurrentPlayer();
+            Result<Player> currentPlayer = crapsTable.GetCurrentPlayer();
 
-            // pick up here later
+            if (!currentPlayer.Success)
+            {
+                crapsTable.gameEventFeed.AddMultiLine(currentPlayer);
+                return;
+            }
+
+
+
         }
     }
 }

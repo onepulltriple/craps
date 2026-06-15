@@ -27,7 +27,22 @@ namespace CrapsLibrary
 
         public IEnumerable<Player> Players => Slots.OfType<Player>();
 
-        private int currentPlayerIndex = -1;
+        private int _currentPlayerIndex = -1;
+
+        public int CurrentPlayerIndex
+        {
+            get => _currentPlayerIndex;
+            set
+            {
+                if (_currentPlayerIndex != value)
+                {
+                    _currentPlayerIndex = value;
+                    CurrentPlayerIndexChanged?.Invoke(this, EventArgs.Empty);
+                }
+            }
+        }
+
+        public event EventHandler? CurrentPlayerIndexChanged;
 
 
         // Implementation ///////////////////////////////////////////////
@@ -40,17 +55,17 @@ namespace CrapsLibrary
 
             #region temp setup for testing
 
-            Player player1 = new Player("Chase", 1000);
-            Slots[0] = player1;
-            foreach (betType bet in Enum.GetValues<betType>())
-            {
-                Result<Bet> newBetResult = BetFactory.CreateBet(this, player1, bet, 10);
+            //Player player1 = new Player("Chase", 1000);
+            //Slots[0] = player1;
+            //foreach (betType bet in Enum.GetValues<betType>())
+            //{
+            //    Result<Bet> newBetResult = BetFactory.CreateBet(this, player1, bet, 10);
 
-                if (!newBetResult.Success)
-                    return;
+            //    if (!newBetResult.Success)
+            //        return;
 
-                player1.playerBetList.Add(newBetResult.Value);
-            }
+            //    player1.playerBetList.Add(newBetResult.Value);
+            //}
 
             //player1.name = "Chaser";
             //Slots[1] = new Player("Christian", 200);
@@ -102,8 +117,8 @@ namespace CrapsLibrary
                 {
                     Slots[i] = playerToAdd;
 
-                    if (currentPlayerIndex == -1) // initialize the first added player as the current player
-                        currentPlayerIndex = i;
+                    if (CurrentPlayerIndex == -1) // initialize the first added player as the current player
+                        CurrentPlayerIndex = i;
 
                     return Result<bool>.Pass(true, $"{playerToAdd.name} was created and added to seat {i + 1}.");
                 }
@@ -122,18 +137,18 @@ namespace CrapsLibrary
 
             Slots[slotIndex] = playerToInsert;
 
-            if (currentPlayerIndex == -1) // the first inserted player becomes the current player
-                currentPlayerIndex = slotIndex;
+            if (CurrentPlayerIndex == -1) // the first inserted player becomes the current player
+                CurrentPlayerIndex = slotIndex;
 
             return Result<bool>.Pass(true, $"{playerToInsert.name} has been placed at seat {slotIndex + 1} with a purse of {playerToInsert.purse}.");
         }
 
         public Result<Player> GetCurrentPlayer()
         {
-            if (currentPlayerIndex < 0 || currentPlayerIndex >= Slots.Length)
+            if (CurrentPlayerIndex < 0 || CurrentPlayerIndex >= Slots.Length)
                 return Result<Player>.Fail("There is no current player.");
 
-            Player? player = Slots[currentPlayerIndex];
+            Player? player = Slots[CurrentPlayerIndex];
 
             if (player is null)
                 return Result<Player>.Fail("There is no current player.");
@@ -155,12 +170,12 @@ namespace CrapsLibrary
                     // if table is now empty
                     if (!Players.Any())
                     {
-                        currentPlayerIndex = -1;
+                        CurrentPlayerIndex = -1;
                         return Result<bool>.Pass(true, $"{playerToRemove.name} has been removed. The table is now empty.");
                     }
 
                     // if current player is removed, advance turn
-                    if (i == currentPlayerIndex)
+                    if (i == CurrentPlayerIndex)
                     {
                         Result<bool> nextTurnResult = NextTurn();
 
@@ -190,15 +205,15 @@ namespace CrapsLibrary
             if (!Players.Any())
                 return Result<bool>.Fail("No players at the table.");
 
-            int startIndex = currentPlayerIndex;
+            int startIndex = CurrentPlayerIndex;
 
             do
             {
-                currentPlayerIndex = (currentPlayerIndex + 1) % Slots.Length;
+                CurrentPlayerIndex = (CurrentPlayerIndex + 1) % Slots.Length;
             } 
-            while (Slots[currentPlayerIndex] is null && currentPlayerIndex != startIndex);
+            while (Slots[CurrentPlayerIndex] is null && CurrentPlayerIndex != startIndex);
 
-            return Result<bool>.Pass(true, $"{Slots[currentPlayerIndex]!.name}'s turn!");
+            return Result<bool>.Pass(true, $"{Slots[CurrentPlayerIndex]!.name}'s turn!");
         }
 
         public void RollDiceAndAnnounceOutcomes()

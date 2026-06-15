@@ -19,7 +19,9 @@
         </Grid.RowDefinitions>
 
         <!--outer glow effect-->
-        <Border Grid.Row="1">
+        <Border Grid.Row="1"
+                Background="White"
+                Opacity="1">
             <Border.Style>
                 <Style TargetType="Border"
                        BasedOn="{StaticResource GlowingBorderStyle}">

@@ -254,8 +254,18 @@
                 </Border>
 
                 
-                <!--roll dice button-->
+                <!--next turn button-->
                 <Button Canvas.Left="2006" Canvas.Top="1590"
+                        Style="{StaticResource MainWindowRoundedButtonStyle}"
+                        Command="{Binding NextTurnCommand}"
+                        >
+                    <TextBlock Text="Next turn!" 
+                               Style="{StaticResource PlayerSlotIndexHeadingStyle}"
+                               d:Text="Next turn"/>
+                </Button>
+
+                <!--roll dice button-->
+                <Button Canvas.Left="2006" Canvas.Top="1690"
                         Style="{StaticResource MainWindowRoundedButtonStyle}"
                         Command="{Binding RollDiceCommand}"
                         >
@@ -267,7 +277,7 @@
 
 
 
-            <!--<Path Fill="Chocolate" Data="M2003.64,758.677L2003.64,838.677L2355.64,838.677L2355.64,738.677L2023.64,738.677C2012.59,738.677 2003.64,747.631 2003.64,758.677Z" />
+                <!--<Path Fill="Chocolate" Data="M2003.64,758.677L2003.64,838.677L2355.64,838.677L2355.64,738.677L2023.64,738.677C2012.59,738.677 2003.64,747.631 2003.64,758.677Z" />
                 <Path Fill="Chocolate" Data="M2707.64,758.677L2707.64,838.677L2355.64,838.677L2355.64,738.677L2687.64,738.677C2698.68,738.677 2707.64,747.631 2707.64,758.677Z" />
                 <Path Fill="Chocolate" Data="M2003.64,838.677L2355.64,838.677L2355.64,938.677L2003.64,938.677Z" />
                 <Path Fill="Chocolate" Data="M2355.64,838.677L2707.64,838.677L2707.64,938.677L2355.64,938.677Z" />-->

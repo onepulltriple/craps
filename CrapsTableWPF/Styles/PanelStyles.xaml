@@ -1,5 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:styles="clr-namespace:CrapsTableWPF.Styles">
 
     <!--border styles-->
     <!--Border is a visual container, which controls how things look-->
@@ -47,18 +48,44 @@
         <Setter Property="Height"               Value="40"/>
     </Style>
 
-
+    <!--outer glow effect-->
     <Style x:Key="GlowingBorderStyle"
            TargetType="Border"
            BasedOn="{StaticResource RoundedBorderStyle}">
+        <Setter Property="Background"           Value="Transparent"/>
         <Setter Property="ClipToBounds"         Value="False"/>
+        <Setter Property="BorderThickness"      Value="10"/>
+        <Setter Property="BorderBrush"          Value="Red"/>
+        <Setter Property="CornerRadius"         Value="10"/>
+
+        <!-- default (non-glowing state) -->
         <Setter Property="Effect"               Value="{x:Null}"/>
 
+        <!--glowing state-->
+        <Style.Resources>
+            <DropShadowEffect x:Key="GlowEffect"
+                              Color="Lime"
+                              BlurRadius="30"
+                              ShadowDepth="0"
+                              Opacity="0.3"/>
+        </Style.Resources>
+        
         <Style.Triggers>
-            <DataTrigger Binding="{Binding IsCurrentPlayer}"
-                         Value="True">
-                <DataTrigger.EnterActions>
-                    <BeginStoryboard x:Name="GlowStoryBoard">
+            <Trigger Property="styles:GlowBehavior.IsGlowing"
+                     Value="True">
+                
+                <Setter Property="Effect">
+                    <Setter.Value>
+                        <DropShadowEffect Color="Lime"
+                                          BlurRadius="30"
+                                          ShadowDepth="0"
+                                          Opacity="0.3"/>
+                    </Setter.Value>
+                </Setter>
+                     
+                <Trigger.EnterActions>
+                    <!--<BeginStoryboard x:Name="GlowStoryBoard">-->
+                        <BeginStoryboard>
                         <Storyboard RepeatBehavior="Forever"
                                     AutoReverse="True">
                             <DoubleAnimation
@@ -68,22 +95,14 @@
                                 Duration="0:0:1"/>
                         </Storyboard>
                     </BeginStoryboard>
-                </DataTrigger.EnterActions>
+                </Trigger.EnterActions>
 
-                <DataTrigger.ExitActions>
+                <!--<Trigger.ExitActions>
                     <StopStoryboard BeginStoryboardName="GlowStoryBoard"/>
-                </DataTrigger.ExitActions>
+                </Trigger.ExitActions>-->
 
-                <Setter Property="Effect">
-                    <Setter.Value>
-                        <DropShadowEffect Color="Lime"
-                                          BlurRadius="30"
-                                          ShadowDepth="0"
-                                          Opacity="0.3"/>
-                    </Setter.Value>
-                </Setter>
+            </Trigger>
 
-            </DataTrigger>
         </Style.Triggers>
     </Style>
 

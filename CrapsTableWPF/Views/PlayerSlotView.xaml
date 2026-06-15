@@ -6,6 +6,7 @@
              xmlns:views="clr-namespace:CrapsTableWPF.Views"
              xmlns:viewmodels="clr-namespace:CrapsTableWPF.ViewModels"
              xmlns:designtime="clr-namespace:CrapsTableWPF.DesignTime_Classes"
+             xmlns:styles="clr-namespace:CrapsTableWPF.Styles"
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="600"
              d:DataContext="{d:DesignInstance Type=designtime:DesignPlayerSlotViewModel}"
@@ -17,15 +18,21 @@
             <RowDefinition Height="2*" />
         </Grid.RowDefinitions>
 
-        <!--outer glow-->
-        <Border Grid.Row="1"
-                Background="Transparent"
-                BorderThickness="1"
-                CornerRadius="10"
-                Style="{StaticResource GlowingBorderStyle}"
-                >
+        <!--outer glow effect-->
+        <Border Grid.Row="1">
+            <Border.Style>
+                <Style TargetType="Border"
+                       BasedOn="{StaticResource GlowingBorderStyle}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsCurrentPlayer}"
+                                     Value="True">
+                            <Setter Property="styles:GlowBehavior.IsGlowing"
+                                    Value="True"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
         </Border>
-        
         
         
         <!--header row-->

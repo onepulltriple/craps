@@ -61,6 +61,8 @@ namespace CrapsTableWPF.ViewModels
         // Commands //////////////////////////////////////////////////////////
         public ICommand RollDiceCommand { get; }
 
+        public ICommand NextTurnCommand { get; }
+
         public CrapsTableViewModel(CrapsTable crapsTable)
         {
             this._model = crapsTable;
@@ -89,6 +91,7 @@ namespace CrapsTableWPF.ViewModels
 
             // Commands
             this.RollDiceCommand = new RelayCommand(_ => _model.RollDiceAndAnnounceOutcomes());
+            this.NextTurnCommand = new RelayCommand(_ => _model.NextTurn());
 
         }
     }

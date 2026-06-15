@@ -5,16 +5,29 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:views="clr-namespace:CrapsTableWPF.Views"
              xmlns:viewmodels="clr-namespace:CrapsTableWPF.ViewModels"
+             xmlns:designtime="clr-namespace:CrapsTableWPF.DesignTime_Classes"
              mc:Ignorable="d" 
-             d:DataContext="{d:DesignInstance Type=viewmodels:PlayerSlotViewModel}"
              d:DesignHeight="800" d:DesignWidth="600"
+             d:DataContext="{d:DesignInstance Type=designtime:DesignPlayerSlotViewModel}"
              >
-    <Grid>
+             <!--d:DataContext="{d:DesignInstance Type=viewmodels:PlayerSlotViewModel}"-->
+    <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="2*" />
         </Grid.RowDefinitions>
 
+        <!--outer glow-->
+        <Border Grid.Row="1"
+                Background="Transparent"
+                BorderThickness="1"
+                CornerRadius="10"
+                Style="{StaticResource GlowingBorderStyle}"
+                >
+        </Border>
+        
+        
+        
         <!--header row-->
         <!--slot index display-->
         <TextBlock Grid.Row="0"
@@ -32,7 +45,7 @@
                 Text="×"/>
         </Button>
         
-        <!--empty slot button-->
+        <!--empty slot button (add player)-->
         <Button Grid.Row="1"
                 Style="{DynamicResource MainWindowRoundedButtonStyle}"
                 Command="{Binding AddPlayerCommand}"
@@ -45,7 +58,7 @@
 
         <!--occupied slot-->
         <Border Grid.Row="1"
-                Style="{DynamicResource RoundedBorderStyle}"
+                Style="{DynamicResource GlowingBorderStyle}"
                 Visibility ="{Binding IsEmpty,
                              Converter={StaticResource InverseBoolToVisibilityConverter},
                              FallbackValue=Collapsed}">
@@ -85,6 +98,6 @@
                 Style="{StaticResource MainWindowButtonTextBlockStyle}"
                 Text="Click to edit player"/>
         </Button>
-
+        
     </Grid>
 </UserControl>

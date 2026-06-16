@@ -14,12 +14,29 @@ namespace CrapsTableWPF.ViewModels
 
         private readonly betType betType;
 
+        private readonly uint UnitOfBet;
+
+        private int _countOfUnitsToBet = 1;
+
+        public int CountOfUnitsToBet
+        {
+            get => _countOfUnitsToBet;
+            set
+            {
+                _countOfUnitsToBet = value;
+                OnPropertyChanged(nameof(CountOfUnitsToBet));
+            }
+        }
+
         public ICommand CreateBetCommand { get; }
 
         public HardWayBetViewModel(CrapsTable crapsTable, betType betType)
         {
             this.crapsTable = crapsTable;
             this.betType = betType;
+            this.UnitOfBet = crapsTable.tableMinimum /
+                CrapsTable.absoluteTableMinimum *
+                BetFactory.BetDefinitions[betType].payoutDenominator;
 
             this.BetSlotViewModels = new ObservableCollection<BetSlotViewModel>(
                 crapsTable.Slots.Select(
@@ -32,11 +49,11 @@ namespace CrapsTableWPF.ViewModels
                 )
             );
 
-            this.CreateBetCommand = new RelayCommand(_ => CreateBetWPF());
+            this.CreateBetCommand = new RelayCommand(_ => CreateBet());
 
         }
 
-        public void CreateBetWPF() // TODO send to a base class and make CreateOrUpdate()
+        public void CreateBet() // TODO send to a base class and make CreateOrUpdate()
         {
             // determine which player is trying to bet
             Result<Player> currentPlayer = crapsTable.GetCurrentPlayer();
@@ -58,8 +75,11 @@ namespace CrapsTableWPF.ViewModels
                 return;
             }
 
+            // determine commitment
+            uint commitment = (uint)CountOfUnitsToBet * UnitOfBet;
+
             // create bet for this player
-            Result<Bet> createBetResult = BetFactory.CreateBet(this.crapsTable, currentPlayer.Value, this.betType, 0);
+            Result<Bet> createBetResult = BetFactory.CreateBet(this.crapsTable, currentPlayer.Value, this.betType, commitment);
 
             // error message if the bet creation failed
             if (!createBetResult.Success)

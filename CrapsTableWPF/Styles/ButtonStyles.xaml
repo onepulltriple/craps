@@ -76,4 +76,18 @@
         </Setter>
     </Style>
 
+    <!--bet path styles-->
+    <Style x:Key="AllowedBetPathStyle"
+           TargetType="Path">
+        <Setter Property="Fill"         Value="Transparent"/>
+        
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver"
+                     Value="True">
+                <Setter Property="Fill"         Value="LightGreen"/>
+                <Setter Property="Opacity"      Value="0.5"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
 </ResourceDictionary>

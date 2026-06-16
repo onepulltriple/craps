@@ -288,9 +288,9 @@
                         >
                     <views:HardWayBetView DataContext="{Binding HardWayBetViewModel_Hard_04}"/>
                 </Border>
-                <Path Fill="Transparent"
+                <Path DataContext="{Binding HardWayBetViewModel_Hard_04}"
                       Data="M2003.64,838.677L2355.64,838.677L2355.64,938.677L2003.64,938.677Z"
-                      DataContext="{Binding HardWayBetViewModel_Hard_04}"
+                      Style="{StaticResource AllowedBetPathStyle}"
                       >
                     <Path.InputBindings>
                         <MouseBinding Gesture="LeftClick"

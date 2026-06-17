@@ -1,6 +1,7 @@
 ﻿using CrapsLibrary;
 using CrapsLibrary.Bets;
 using CrapsTableWPF.Infrastructure;
+using CrapsTableWPF.Services;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
@@ -11,6 +12,8 @@ namespace CrapsTableWPF.ViewModels
         public ObservableCollection<BetSlotViewModel> BetSlotViewModels { get; }
 
         private readonly CrapsTable crapsTable;
+
+        private readonly DialogService dialogService;
 
         private readonly betType betType;
 
@@ -30,9 +33,10 @@ namespace CrapsTableWPF.ViewModels
 
         public ICommand CreateBetCommand { get; }
 
-        public HardWayBetViewModel(CrapsTable crapsTable, betType betType)
+        public HardWayBetViewModel(CrapsTable crapsTable, DialogService dialogService, betType betType)
         {
             this.crapsTable = crapsTable;
+            this.dialogService = dialogService;
             this.betType = betType;
             this.UnitOfBet = crapsTable.tableMinimum /
                 CrapsTable.absoluteTableMinimum *
@@ -65,33 +69,53 @@ namespace CrapsTableWPF.ViewModels
                 return;
             }
 
-            // check if the player is allowed to place this bet
-            Result<bool> isBetAllowed = BetFactory.CheckIfCreateBetAllowed(this.crapsTable, currentPlayer.Value, this.betType);
+            // determine if the player is editing an existing bet
+            Bet? existingBet = currentPlayer.Value.playerBetList.FirstOrDefault(
+                bet => bet.betType == this.betType
+                );
 
-            // error message if the bet is not allowed
-            if (!isBetAllowed.Success)
+            // check if the player is allowed to place a new bet of this type, should no existing bet be found
+            if (existingBet == null)
             {
-                crapsTable.gameEventFeed.AddMultiLine(isBetAllowed);
-                return;
+                Result<bool> isBetAllowed = BetFactory.CheckIfCreateBetAllowed(this.crapsTable, currentPlayer.Value, this.betType);
+
+                // error message if the bet is not allowed
+                if (!isBetAllowed.Success)
+                {
+                    crapsTable.gameEventFeed.AddMultiLine(isBetAllowed);
+                    return;
+                }
             }
 
-            // determine commitment
-            if (CountOfUnitsToBet == null)
+            // call dialog service to administer bet info
+            var betVO = dialogService.CreateOrUpdateBetDialog(existingBet);
+
+
+
+            //// determine commitment
+            //if (CountOfUnitsToBet == null)
+            //    return;
+
+            //uint commitment = (uint)CountOfUnitsToBet * UnitOfBet;
+
+            if (betVO == null)
                 return;
 
-            uint commitment = (uint)CountOfUnitsToBet * UnitOfBet;
-
-            // create bet for this player
-            Result<Bet> createBetResult = BetFactory.CreateBet(this.crapsTable, currentPlayer.Value, this.betType, commitment);
+            // create a bet (with this player in mind) using the betVO data
+            // the best will not yet be added to the player bet list
+            Result<Bet> createBetResult = BetFactory.CreateBet(this.crapsTable, currentPlayer.Value, this.betType, betVO.Commitment);
 
             // error message if the bet creation failed
+            crapsTable.gameEventFeed.AddMultiLine(createBetResult);
+
+            // abort if the bet creation failed
             if (!createBetResult.Success)
-            {
-                crapsTable.gameEventFeed.AddMultiLine(createBetResult);
                 return;
-            }
 
+            // add the bet to the player's bet list
+            currentPlayer.Value.playerBetList.Add(createBetResult.Value);
 
+            // also fix the ugliness of the popup dialog
         }
     }
 }

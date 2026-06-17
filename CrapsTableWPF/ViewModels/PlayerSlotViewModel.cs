@@ -74,13 +74,13 @@ namespace CrapsTableWPF.ViewModels
         private void AddPlayer()
         {
             // call dialog service to collect new player info
-            var newPlayerDTO = dialogService.CreateOrUpdatePlayerDialog(null);
+            var newPlayerVO = dialogService.CreateOrUpdatePlayerDialog(null);
 
-            if (newPlayerDTO == null)
+            if (newPlayerVO == null)
                 return;
 
-            // create new player using DTO data
-            Player player = new Player(newPlayerDTO.Name, newPlayerDTO.Purse);
+            // create new player using playerVO data
+            Player player = new Player(newPlayerVO.Name, newPlayerVO.Purse);
 
             // attempt to add player to the player slot at this PlayerSlotViewModel's index
             Result<bool> addPlayerResult = crapsTable.InsertPlayerAtSlot(SlotIndex, player);
@@ -106,18 +106,18 @@ namespace CrapsTableWPF.ViewModels
             if (this.PlayerViewModel == null || this.PlayerViewModel.Model == null)
                 return;
 
-            // load existing player into DTO data
-            var playerDTO = dialogService.CreateOrUpdatePlayerDialog(this.PlayerViewModel.Model);
+            // load existing player into playerVO data
+            var playerVO = dialogService.CreateOrUpdatePlayerDialog(this.PlayerViewModel.Model);
 
-            if (playerDTO == null)
+            if (playerVO == null)
                 return;
 
             // announce that the player has been updated
-            crapsTable.gameEventFeed.Add($"{PlayerViewModel.Name} is now {playerDTO.Name} with a purse of {playerDTO.Purse}.");
+            crapsTable.gameEventFeed.Add($"{PlayerViewModel.Name} is now {playerVO.Name} with a purse of {playerVO.Purse}.");
 
             // perform the updates
-            this.PlayerViewModel.Name = playerDTO.Name;
-            this.PlayerViewModel.Purse = playerDTO.Purse;
+            this.PlayerViewModel.Name = playerVO.Name;
+            this.PlayerViewModel.Purse = playerVO.Purse;
         }
 
         private void RemovePlayer()

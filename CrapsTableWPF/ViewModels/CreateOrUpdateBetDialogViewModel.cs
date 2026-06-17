@@ -1,4 +1,6 @@
-﻿namespace CrapsTableWPF.ViewModels
+﻿using CrapsLibrary.Bets;
+
+namespace CrapsTableWPF.ViewModels
 {
     public class CreateOrUpdateBetDialogViewModel : ViewModelBase
     {
@@ -24,6 +26,6 @@
             }
         }
 
-
+        public CreateOrUpdateBetDialogViewModel() { }
     }
 }

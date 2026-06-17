@@ -78,10 +78,10 @@ namespace CrapsTableWPF.ViewModels
 
             this.GameEventFeedViewModel = new GameEventFeedViewModel(crapsTable.gameEventFeed);
 
-            this.HardWayBetViewModel_Hard_04 = new HardWayBetViewModel(crapsTable, betType.Hard_04);
-            this.HardWayBetViewModel_Hard_06 = new HardWayBetViewModel(crapsTable, betType.Hard_06);
-            this.HardWayBetViewModel_Hard_08 = new HardWayBetViewModel(crapsTable, betType.Hard_08);
-            this.HardWayBetViewModel_Hard_10 = new HardWayBetViewModel(crapsTable, betType.Hard_10);
+            this.HardWayBetViewModel_Hard_04 = new HardWayBetViewModel(crapsTable, dialogService, betType.Hard_04);
+            this.HardWayBetViewModel_Hard_06 = new HardWayBetViewModel(crapsTable, dialogService, betType.Hard_06);
+            this.HardWayBetViewModel_Hard_08 = new HardWayBetViewModel(crapsTable, dialogService, betType.Hard_08);
+            this.HardWayBetViewModel_Hard_10 = new HardWayBetViewModel(crapsTable, dialogService, betType.Hard_10);
 
             // Bindable Properties
             this._model.CurrentPlayerIndexChanged += (_, _) =>

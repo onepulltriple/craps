@@ -16,9 +16,9 @@ namespace CrapsTableWPF.ViewModels
 
         private readonly uint UnitOfBet;
 
-        private int _countOfUnitsToBet = 1;
+        private int? _countOfUnitsToBet = 1;
 
-        public int CountOfUnitsToBet
+        public int? CountOfUnitsToBet
         {
             get => _countOfUnitsToBet;
             set
@@ -76,6 +76,9 @@ namespace CrapsTableWPF.ViewModels
             }
 
             // determine commitment
+            if (CountOfUnitsToBet == null)
+                return;
+
             uint commitment = (uint)CountOfUnitsToBet * UnitOfBet;
 
             // create bet for this player

@@ -1,6 +1,6 @@
-﻿namespace CrapsTableWPF.Data_Transfer_Objects
+﻿namespace CrapsTableWPF.ValueObjects
 {
-    public class PlayerDTO
+    public class PlayerVO
     {
         public string Name { get; set; } = "";
         public uint Purse { get; set; }

@@ -299,13 +299,6 @@
                     </Path.InputBindings>
                 </Path>
 
-                <xctk:IntegerUpDown
-    Value="{Binding Quantity}"
-    Minimum="0"
-    Maximum="999"
-    Margin="10"/>
-
-
 
 
 

@@ -1,14 +1,15 @@
-﻿using CrapsTableWPF.Data_Transfer_Objects;
+﻿using CrapsTableWPF.ValueObjects;
 using CrapsTableWPF.ViewModels;
 using CrapsTableWPF.Windows;
 using CrapsLibrary;
+using CrapsLibrary.Bets;
 
 namespace CrapsTableWPF.Services
 {
     // responsible for showing pop-up windows
     public class DialogService
     {
-        public PlayerDTO? CreateOrUpdatePlayerDialog(Player? player)
+        public PlayerVO? CreateOrUpdatePlayerDialog(Player? player)
         {
             var playerDialogViewModel = new CreateOrUpdatePlayerDialogViewModel();
 
@@ -18,6 +19,7 @@ namespace CrapsTableWPF.Services
                 playerDialogViewModel.Purse = player.purse;
             }
 
+            // set the data context for the dialog
             var editPlayerDialog = new CreateOrUpdatePlayerDialog
             {
                 DataContext = playerDialogViewModel
@@ -28,10 +30,38 @@ namespace CrapsTableWPF.Services
             if (result != true)
                 return null;
 
-            return new PlayerDTO
+            return new PlayerVO
             {
                 Name = playerDialogViewModel.Name,
                 Purse = playerDialogViewModel.Purse
+            };
+        }
+
+        public BetVO? CreateOrUpdateBetDialog(Bet? bet)
+        {
+            var betDialogViewModel = new CreateOrUpdateBetDialogViewModel();
+
+            if (bet != null)
+            {
+                betDialogViewModel.Name = bet.name;
+                betDialogViewModel.Commitment = bet.Commitment;
+            }
+
+            // set the data context for the dialog
+            var editBetDialog = new CreateOrUpdateBetDialog
+            {
+                DataContext = betDialogViewModel
+            };
+
+            bool? result = editBetDialog.ShowDialog();
+
+            if (result != true) 
+                return null;
+
+            return new BetVO
+            {
+                Name = betDialogViewModel.Name,
+                Commitment = betDialogViewModel.Commitment
             };
         }
     }

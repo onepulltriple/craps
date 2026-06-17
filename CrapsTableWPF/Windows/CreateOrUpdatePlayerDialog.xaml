@@ -5,9 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CrapsTableWPF.Windows"
         mc:Ignorable="d"
-        Title="Add player"
-        Width="500" Height="400" 
-        MinWidth="500" MinHeight="300"
+        Title="Administer player"
+        Width="500" Height="400" MinWidth="500" MinHeight="300"
         WindowStartupLocation="CenterOwner"
         Style="{StaticResource PopUpWindowOrDialogStyle}"
         >
@@ -63,29 +62,4 @@
         </Button>
 
     </Grid>
-    
-    <!--<StackPanel>
-        <TextBlock
-            Text="Player name"/>
-        <TextBox
-            Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
-
-        <TextBlock
-            Text="Starting purse"/>
-        <TextBox
-            Text="{Binding Purse, UpdateSourceTrigger=PropertyChanged}"/>
-
-        <StackPanel Orientation="Horizontal"
-                    HorizontalAlignment="Right">
-            <Button Content="OK"
-                    Width="80"
-                    IsDefault="True"
-                    Click="Ok_Clicked"/>
-            <Button Content="Cancel"
-                    Width="80"
-                    IsCancel="True"/>
-
-        </StackPanel>
-
-    </StackPanel>-->
 </Window>

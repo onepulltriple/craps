@@ -102,7 +102,7 @@ namespace CrapsLibrary.Bets
         /// </summary>
         public void QuitBet()
         {
-            betOwner.purse += (countOfUnitsToBet * unitOfBet);
+            betOwner.Purse += (countOfUnitsToBet * unitOfBet);
             betOwner.playerBetList.Remove(this);
         }
 

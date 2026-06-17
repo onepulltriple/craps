@@ -140,7 +140,7 @@ namespace CrapsLibrary
             if (CurrentPlayerIndex == -1) // the first inserted player becomes the current player
                 CurrentPlayerIndex = slotIndex;
 
-            return Result<bool>.Pass(true, $"{playerToInsert.name} has been placed at seat {slotIndex + 1} with a purse of {playerToInsert.purse}.");
+            return Result<bool>.Pass(true, $"{playerToInsert.name} has been placed at seat {slotIndex + 1} with a purse of {playerToInsert.Purse}.");
         }
 
         public Result<Player> GetCurrentPlayer()

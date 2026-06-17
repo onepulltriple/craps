@@ -16,7 +16,7 @@ namespace CrapsTableWPF.Services
             if (player != null)
             {
                 playerDialogViewModel.Name = player.name;
-                playerDialogViewModel.Purse = player.purse;
+                playerDialogViewModel.Purse = player.Purse;
             }
 
             // set the data context for the dialog

@@ -6,32 +6,34 @@ namespace CrapsLibrary
     {
         public string name { get; set; }
 
-        public uint purse;
+        private uint _purse;
+        public uint Purse
+        {
+            get => _purse;
+            set
+            {
+                if (_purse != value)
+                {
+                    _purse = value;
+                    PurseChanged?.Invoke(this, EventArgs.Empty);
+                }
+            }
+        }
+
+        public event EventHandler? PurseChanged;
 
         public List<Bet> playerBetList;
 
         public Player(string playerName, uint startingPurse = 0)
         {
             this.name = playerName;
-            purse = startingPurse;
-            playerBetList = new List<Bet>();
+            this.Purse = startingPurse;
+            this.playerBetList = new List<Bet>();
         }
 
-        public uint BuyChips(uint purchase)
-        {
-            purse += purchase;
-            return purse;
-        }
-
-        //public void CreateBet(Bet newBet)
-        //{
-        //    playerBetList.Add(newBet);
-        //}
         // become new roller
         // skip my roll
-        // throw dice
         // cash out/quit
-
 
         public void PauseOneBet()
         {

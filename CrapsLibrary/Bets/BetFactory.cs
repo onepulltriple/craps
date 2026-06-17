@@ -73,7 +73,7 @@
         /// <returns></returns>
         public static Result<Bet> CreateBet(CrapsTable crapsTable, Player player, betType betType, uint amountThrownAtBet)
         {
-            if (player.purse < amountThrownAtBet) // the player cannot bet more than they have
+            if (player.Purse < amountThrownAtBet) // the player cannot bet more than they have
                 return Result<Bet>.Fail(
                     "The bet amount may not exceed the player's purse amount.", "You can't bet money you don't have!"
                     );
@@ -95,8 +95,8 @@
             uint amountChangeToReturn = amountThrownAtBet - (countOfUnitsToBet * unitOfBet); 
 
             // charge player for the bet
-            player.purse -= amountThrownAtBet;
-            player.purse += amountChangeToReturn;
+            player.Purse -= amountThrownAtBet;
+            player.Purse += amountChangeToReturn;
 
             // calculate potential payout
             uint payout =

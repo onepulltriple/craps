@@ -26,31 +26,25 @@ namespace CrapsTableWPF.ViewModels
 
         public uint Purse
         {
-            get => _model.purse;
+            get => _model.Purse;
             set
             {
-                if (_model.purse != value)
-                {
-                    _model.purse = value;
-                    OnPropertyChanged(nameof(Purse));
-                }
+                if (_model.Purse != value)
+                    _model.Purse = value;
             }
         }
 
         // Commands //////////////////////////////////////////////////////////
-        //public ICommand NotifyPurseChangedCommand { get; }
 
         public PlayerViewModel(Player player)
         {
             this._model = player;
 
-            //NotifyPurseChangedCommand = new RelayCommand(_ => NotifyPurseChanged());
-            //NotifyPurseChangedCommand = new RelayCommand(player.PauseAllBets());
+            this._model.PurseChanged += (_, _) =>
+            {
+                OnPropertyChanged(nameof(Purse));
+            };
         }
 
-        //public void NotifyPurseChanged()
-        //{
-        //    OnPropertyChanged(nameof(Purse));
-        //}
     }
 }

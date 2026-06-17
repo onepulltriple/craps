@@ -94,9 +94,9 @@ namespace ConsoleAppForCraps.DealerCLIState
 
             Console.Write("Please enter an amount to credit to the player: ");
             uint amountToCredit = ValidateUserInputUIntCLI();
-            playerToFund.purse += amountToCredit;
+            playerToFund.Purse += amountToCredit;
 
-            Console.WriteLine($"\n{playerToFund.name} has been credited {amountToCredit} which brings their total purse to {playerToFund.purse}.");
+            Console.WriteLine($"\n{playerToFund.name} has been credited {amountToCredit} which brings their total purse to {playerToFund.Purse}.");
             SleepCLI();
 
             this.Enter();

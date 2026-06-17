@@ -190,7 +190,7 @@ namespace ConsoleAppForCraps.DealerCLIState
                     }
                     else if (row == 1)
                     {
-                        cellText = player.purse.ToString();
+                        cellText = player.Purse.ToString();
                     }
                     else
                     {

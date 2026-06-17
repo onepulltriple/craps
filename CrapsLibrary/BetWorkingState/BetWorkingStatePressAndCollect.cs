@@ -29,7 +29,7 @@ namespace CrapsLibrary.BetWorkingState
 
                 // split winnings between parlay and payout
                 betInQuestion.Commitment += betInQuestion.payout/2; // TODO need to calculate these two based on betting units
-                betInQuestion.betOwner.purse += betInQuestion.payout/2;
+                betInQuestion.betOwner.Purse += betInQuestion.payout/2;
                 return;
             }
 

@@ -26,7 +26,7 @@
                 return true;
             }
 
-            if (crapsTable.puck.IsOn == true && crapsTable.puck.passPoint == firstOutcome + secondOutcome)
+            if (crapsTable.puck.IsOn == true && crapsTable.puck.PassPoint == firstOutcome + secondOutcome)
             {
                 crapsTable.gameEventFeed.Add(
                     $"Point made! Pass!",

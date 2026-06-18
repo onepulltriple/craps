@@ -217,7 +217,7 @@
             if (!playerToCheck.PlayerBetList.Any(bet => bet.betType == betType.PassBet)) 
                 return Result<bool>.Fail("Players must have a Pass Line Bet in order to access Place Bets");
 
-            if (placeBetNumber == crapsTable.puck.passPoint)
+            if (placeBetNumber == crapsTable.puck.PassPoint)
                 return Result<bool>.Fail("Players may not bet on the point. Instead, place an Odds bet (behind the pass line).");
 
             return Result<bool>.Pass(true);

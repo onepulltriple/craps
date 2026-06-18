@@ -5,6 +5,7 @@ namespace CrapsLibrary
 {
     public class Player : ObservableObject
     {
+        // Observeable properties
         private string _name = string.Empty;
         public string Name
         {

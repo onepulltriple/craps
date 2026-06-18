@@ -1,4 +1,6 @@
-﻿namespace CrapsLibrary
+﻿using CrapsLibrary.Bets;
+
+namespace CrapsLibrary
 {
     public class CrapsTable : ObservableObject
     {
@@ -53,17 +55,18 @@
 
             #region temp setup for testing
 
-            //Player player1 = new Player("Chase", 1000);
-            //Slots[0] = player1;
-            //foreach (betType bet in Enum.GetValues<betType>())
-            //{
-            //    Result<Bet> newBetResult = BetFactory.CreateBet(this, player1, bet, 10);
+            Player player1 = new Player("Chase", 1000);
+            Slots[0] = player1;
+            _currentPlayerIndex = 0;
+            foreach (betType bet in Enum.GetValues<betType>())
+            {
+                Result<Bet> newBetResult = BetFactory.CreateBet(this, player1, bet, 10);
 
-            //    if (!newBetResult.Success)
-            //        return;
+                if (!newBetResult.Success)
+                    return;
 
-            //    player1.playerBetList.Add(newBetResult.Value);
-            //}
+                player1.PlayerBetList.Add(newBetResult.Value);
+            }
 
             //player1.name = "Chaser";
             //Slots[1] = new Player("Christian", 200);

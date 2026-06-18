@@ -1,4 +1,6 @@
-﻿using CrapsLibrary.Bets;
+﻿using CrapsLibrary;
+using CrapsLibrary.Bets;
+using System.Collections.Specialized;
 
 namespace CrapsTableWPF.ViewModels
 {
@@ -31,6 +33,19 @@ namespace CrapsTableWPF.ViewModels
             // Bindable Properties
             this.BetViewModel = bet is null ? null : new BetViewModel(bet);
             this.SlotIndex = slotIndex;
+
+            //bet.betOwner.PlayerBetList.CollectionChanged += OnPlayerBetListChanged;
+            // null exception thrown here
         }
+
+        //private void OnPlayerBetListChanged(object? sender, NotifyCollectionChangedEventArgs e)
+        //{
+        //    if (e.NewItems?.Count > 0)
+        //    {
+        //        var bet = (Bet)e.NewItems[0];
+
+        //        BetViewModel = new BetViewModel(bet);
+        //    }
+        //}
     }
 }

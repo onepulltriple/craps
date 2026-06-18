@@ -30,11 +30,11 @@ namespace CrapsLibrary.BetWorkingState
         protected void AnnounceReturnWinnings(byte firstOutcome, byte secondOutcome)
         {
             betWorkingStateMachine.crapsTable.gameEventFeed.Add(
-                $"Hooray! {betInQuestion.betOwner.name} " +
+                $"Hooray! {betInQuestion.betOwner.Name} " +
                 $"won {betInQuestion.name} " +
                 $"with {firstOutcome}, {secondOutcome}! " +
                 $"The payout was {betInQuestion.payout} " +
-                $"credits and goes to {betInQuestion.betOwner.name}.",
+                $"credits and goes to {betInQuestion.betOwner.Name}.",
                 GameEventType.Message
                 );
         }
@@ -42,7 +42,7 @@ namespace CrapsLibrary.BetWorkingState
         protected void AnnounceFullParlay(byte firstOutcome, byte secondOutcome)
         {
             betWorkingStateMachine.crapsTable.gameEventFeed.Add(
-                $"Oh boy... {betInQuestion.betOwner.name} " +
+                $"Oh boy... {betInQuestion.betOwner.Name} " +
                 $"won {betInQuestion.name} " +
                 $"with {firstOutcome}, {secondOutcome}! " +
                 $"The payout of {betInQuestion.Commitment} credits will be fully parlayed.",
@@ -53,7 +53,7 @@ namespace CrapsLibrary.BetWorkingState
         protected void AnnounceLost()
         {
             betWorkingStateMachine.crapsTable.gameEventFeed.Add(
-                $"Oh no! {betInQuestion.betOwner.name} " +
+                $"Oh no! {betInQuestion.betOwner.Name} " +
                 $"lost {betInQuestion.name}! " +
                 $"The commitment of {betInQuestion.Commitment} credits goes to the house.",
                 GameEventType.Message
@@ -63,7 +63,7 @@ namespace CrapsLibrary.BetWorkingState
         protected void AnnouncePaused()
         {
             betWorkingStateMachine.crapsTable.gameEventFeed.Add(
-                $"{betInQuestion.betOwner.name} has paused " +
+                $"{betInQuestion.betOwner.Name} has paused " +
                 $"the bet {betInQuestion.name}!",
                 GameEventType.Message
                 );

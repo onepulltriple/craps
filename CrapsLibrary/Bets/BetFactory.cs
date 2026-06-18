@@ -143,7 +143,7 @@
             if (tempBet == null)
                 return Result<Bet>.Fail("but why??"); // TODO figure out if this can happen
 
-            return Result<Bet>.Pass(tempBet, $"{tempBet.betOwner.name} " +
+            return Result<Bet>.Pass(tempBet, $"{tempBet.betOwner.Name} " +
                 $"has bet {tempBet.countOfUnitsToBet * tempBet.unitOfBet} " +
                 $"on {tempBet.name}.");
         }
@@ -158,7 +158,7 @@
         public static Result<bool> CheckIfCreateBetAllowed(CrapsTable crapsTable, Player playerToCheck, betType playerBetType)
         {
             // check that the player doesn't already have this bet in their list
-            if (playerToCheck.playerBetList.Any(bet => bet.betType == playerBetType))
+            if (playerToCheck.PlayerBetList.Any(bet => bet.betType == playerBetType))
                 return Result<bool>.Fail("Players can only possess one count of each bet type at a time.");
             // TODO lost bets should be available to be placed again
 
@@ -214,7 +214,7 @@
             if (!crapsTable.puck.IsOn)
                 return Result<bool>.Fail("Place Bets are inaccessible when the puck is OFF.");
 
-            if (!playerToCheck.playerBetList.Any(bet => bet.betType == betType.PassBet)) 
+            if (!playerToCheck.PlayerBetList.Any(bet => bet.betType == betType.PassBet)) 
                 return Result<bool>.Fail("Players must have a Pass Line Bet in order to access Place Bets");
 
             if (placeBetNumber == crapsTable.puck.passPoint)

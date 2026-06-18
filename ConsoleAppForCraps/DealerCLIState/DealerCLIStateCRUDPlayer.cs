@@ -64,10 +64,10 @@ namespace ConsoleAppForCraps.DealerCLIState
             Console.WriteLine("Select the player to rename:");
             Player playerToRename = SelectPlayerCLI();
 
-            string oldName = playerToRename.name;
-            playerToRename.name = NamePlayerCLI();
+            string oldName = playerToRename.Name;
+            playerToRename.Name = NamePlayerCLI();
 
-            Console.WriteLine($"\n{oldName} was successfully renamed to {playerToRename.name}.");
+            Console.WriteLine($"\n{oldName} was successfully renamed to {playerToRename.Name}.");
             SleepCLI();
 
             this.Enter();
@@ -96,7 +96,7 @@ namespace ConsoleAppForCraps.DealerCLIState
             uint amountToCredit = ValidateUserInputUIntCLI();
             playerToFund.Purse += amountToCredit;
 
-            Console.WriteLine($"\n{playerToFund.name} has been credited {amountToCredit} which brings their total purse to {playerToFund.Purse}.");
+            Console.WriteLine($"\n{playerToFund.Name} has been credited {amountToCredit} which brings their total purse to {playerToFund.Purse}.");
             SleepCLI();
 
             this.Enter();
@@ -145,7 +145,7 @@ namespace ConsoleAppForCraps.DealerCLIState
 
             dealerCLIStateMachine.crapsTable!.RemovePlayer(playerToRemove);
 
-            string oldName = playerToRemove.name;
+            string oldName = playerToRemove.Name;
             Console.WriteLine($"\n{oldName} was successfully deleted.");
             SleepCLI();
 

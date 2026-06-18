@@ -99,7 +99,7 @@ namespace ConsoleAppForCraps.DealerCLIState
 
             for (int i = 0; i < players.Count; i++)
             {
-                Console.WriteLine($"{i + 1,2}. {players[i].name}");
+                Console.WriteLine($"{i + 1,2}. {players[i].Name}");
                 listOfAcceptableInts.Add(i + 1);
             }
 
@@ -135,7 +135,7 @@ namespace ConsoleAppForCraps.DealerCLIState
         {
             List<int> listOfAcceptableInts = new();
 
-            var betsOfPlayer = player.playerBetList;
+            var betsOfPlayer = player.PlayerBetList;
 
             for (int i = 0; i < betsOfPlayer.Count; i++)
             {
@@ -167,7 +167,7 @@ namespace ConsoleAppForCraps.DealerCLIState
             // TODO show player's seat number as a prefix to their name
 
             // find max number of bets any player has
-            int maxBetCount = players.Max(p => p.playerBetList.Count);
+            int maxBetCount = players.Max(p => p.PlayerBetList.Count);
 
             // total rows = 1 for name + 1 for purse + maxBets
             int totalRows = 2 + maxBetCount;
@@ -186,7 +186,7 @@ namespace ConsoleAppForCraps.DealerCLIState
 
                     if (row == 0)
                     {
-                        cellText = player.name;
+                        cellText = player.Name;
                     }
                     else if (row == 1)
                     {
@@ -196,11 +196,11 @@ namespace ConsoleAppForCraps.DealerCLIState
                     {
                         int betIndex = row - 2;
 
-                        if (betIndex < player.playerBetList.Count)
+                        if (betIndex < player.PlayerBetList.Count)
                         {
                             cellText = 
-                                $"{player.playerBetList[betIndex]?.name.ToString() ?? ""} " +
-                               $"[{player.playerBetList[betIndex]?.BetWorkingState}]";
+                                $"{player.PlayerBetList[betIndex]?.name.ToString() ?? ""} " +
+                               $"[{player.PlayerBetList[betIndex]?.BetWorkingState}]";
                         }
                         // TODO if bet state is paused, add " (OFF)" to the end of the cell text
                     }

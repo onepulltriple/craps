@@ -1,5 +1,4 @@
-﻿using CrapsLibrary;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 
 namespace CrapsTableWPF.ViewModels
 {

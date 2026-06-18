@@ -120,7 +120,7 @@ namespace CrapsLibrary
                     if (CurrentPlayerIndex == -1) // initialize the first added player as the current player
                         CurrentPlayerIndex = i;
 
-                    return Result<bool>.Pass(true, $"{playerToAdd.name} was created and added to seat {i + 1}.");
+                    return Result<bool>.Pass(true, $"{playerToAdd.Name} was created and added to seat {i + 1}.");
                 }
             }
 
@@ -140,7 +140,7 @@ namespace CrapsLibrary
             if (CurrentPlayerIndex == -1) // the first inserted player becomes the current player
                 CurrentPlayerIndex = slotIndex;
 
-            return Result<bool>.Pass(true, $"{playerToInsert.name} has been placed at seat {slotIndex + 1} with a purse of {playerToInsert.Purse}.");
+            return Result<bool>.Pass(true, $"{playerToInsert.Name} has been placed at seat {slotIndex + 1} with a purse of {playerToInsert.Purse}.");
         }
 
         public Result<Player> GetCurrentPlayer()
@@ -171,7 +171,7 @@ namespace CrapsLibrary
                     if (!Players.Any())
                     {
                         CurrentPlayerIndex = -1;
-                        return Result<bool>.Pass(true, $"{playerToRemove.name} has been removed. The table is now empty.");
+                        return Result<bool>.Pass(true, $"{playerToRemove.Name} has been removed. The table is now empty.");
                     }
 
                     // if current player is removed, advance turn
@@ -186,18 +186,18 @@ namespace CrapsLibrary
                             true,
                             new[]
                             {
-                                $"{playerToRemove.name} has been removed."
+                                $"{playerToRemove.Name} has been removed."
                             }
                             .Concat(nextTurnResult.Messages)
                             .ToArray()
                             );
                     }
 
-                    return Result<bool>.Pass(true, $"{playerToRemove.name} has been removed.");
+                    return Result<bool>.Pass(true, $"{playerToRemove.Name} has been removed.");
                 }
             }
 
-            return Result<bool>.Fail($"{playerToRemove.name} was not found at the table.");
+            return Result<bool>.Fail($"{playerToRemove.Name} was not found at the table.");
         }
 
         public Result<bool> NextTurn()
@@ -213,7 +213,7 @@ namespace CrapsLibrary
             } 
             while (Slots[CurrentPlayerIndex] is null && CurrentPlayerIndex != startIndex);
 
-            return Result<bool>.Pass(true, $"{Slots[CurrentPlayerIndex]!.name}'s turn!");
+            return Result<bool>.Pass(true, $"{Slots[CurrentPlayerIndex]!.Name}'s turn!");
         }
 
         public void RollDiceAndAnnounceOutcomes()

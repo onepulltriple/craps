@@ -15,7 +15,7 @@ namespace CrapsTableWPF.Services
 
             if (player != null)
             {
-                playerDialogViewModel.Name = player.name;
+                playerDialogViewModel.Name = player.Name;
                 playerDialogViewModel.Purse = player.Purse;
             }
 
@@ -43,7 +43,7 @@ namespace CrapsTableWPF.Services
 
             if (bet != null)
             {
-                betDialogViewModel.Name = $"Edit {bet.betOwner.name}'s {bet.name}";
+                betDialogViewModel.Name = $"Edit {bet.betOwner.Name}'s {bet.name}";
                 betDialogViewModel.Commitment = bet.Commitment;
             }
 

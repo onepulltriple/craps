@@ -103,7 +103,7 @@ namespace CrapsLibrary.Bets
         public void QuitBet()
         {
             betOwner.Purse += (countOfUnitsToBet * unitOfBet);
-            betOwner.playerBetList.Remove(this);
+            betOwner.PlayerBetList.Remove(this);
         }
 
         public void LoseCommitment()

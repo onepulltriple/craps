@@ -45,8 +45,6 @@ namespace CrapsTableWPF.Windows
             // validate player construction parameters
             Result<uint> resultOfCheckingCommitment = CrapsTable.ValidateUserInputUInt(TB01.Text);
 
-
-
             // display data validation error messages
             if (!resultOfCheckingCommitment.Success)
             {

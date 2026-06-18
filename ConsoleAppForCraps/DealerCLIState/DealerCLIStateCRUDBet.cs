@@ -70,7 +70,7 @@ namespace ConsoleAppForCraps.DealerCLIState
 
             if (newBetResult.Success)
             {
-                betPlacer.playerBetList.Add(newBetResult.Value);
+                betPlacer.PlayerBetList.Add(newBetResult.Value);
             }
 
             foreach (string message in newBetResult.Messages)

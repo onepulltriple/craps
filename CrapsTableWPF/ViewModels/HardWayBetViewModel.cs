@@ -43,13 +43,13 @@ namespace CrapsTableWPF.ViewModels
                 BetFactory.BetDefinitions[betType].payoutDenominator;
 
             this.BetSlotViewModels = new ObservableCollection<BetSlotViewModel>(
-                crapsTable.Slots.Select(
-                    (player, slotIndex) =>
+                crapsTable.Slots.Select<Player, BetSlotViewModel>(
+                    (Func<Player?, int, BetSlotViewModel>)((player, slotIndex) =>
                         {
-                            var bet = player?.playerBetList.FirstOrDefault(b => b.betType == betType);
+                            var bet = player?.PlayerBetList.FirstOrDefault<Bet>((Func<Bet, bool>)(b => b.betType == betType));
 
-                            return new BetSlotViewModel(bet, slotIndex);
-                        }
+                            return new BetSlotViewModel((Bet?)bet, slotIndex);
+                        })
                 )
             );
 
@@ -70,7 +70,7 @@ namespace CrapsTableWPF.ViewModels
             }
 
             // determine if the player is editing an existing bet
-            Bet? existingBet = currentPlayer.Value.playerBetList.FirstOrDefault(
+            Bet? existingBet = currentPlayer.Value.PlayerBetList.FirstOrDefault(
                 bet => bet.betType == this.betType
                 );
 
@@ -113,7 +113,7 @@ namespace CrapsTableWPF.ViewModels
                 return;
 
             // add the bet to the player's bet list
-            currentPlayer.Value.playerBetList.Add(createBetResult.Value);
+            currentPlayer.Value.PlayerBetList.Add(createBetResult.Value);
 
             // also fix the ugliness of the popup dialog
         }

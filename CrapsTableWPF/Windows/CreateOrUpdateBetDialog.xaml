@@ -4,11 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CrapsTableWPF.Windows"
+        xmlns:viewmodels="clr-namespace:CrapsTableWPF.ViewModels"
         mc:Ignorable="d"
-        Title="Edit bet"
+        Title="Manage bet"
         Width="500" Height="500" MinWidth="500" MinHeight="300"
         WindowStartupLocation="CenterOwner"
         Style="{StaticResource PopUpWindowOrDialogStyle}"
+        d:DataContext="{d:DesignInstance Type=viewmodels:CreateOrUpdateBetDialogViewModel}"
         >
     <Grid Loaded="GridLoaded">
         <Grid.RowDefinitions>
@@ -27,7 +29,7 @@
         <TextBlock Grid.Row="1" Grid.Column="0"
                    Grid.ColumnSpan="2"
                    Style="{StaticResource PopUpWindowBodyTextStyle}"
-                   Text="{Binding Name}"
+                   Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"
                    d:Text="Bet name and owner"/>
         
         <!--<TextBlock Grid.Row="1" Grid.Column="0"
@@ -36,7 +38,6 @@
         <TextBox Name="TB00"
                 Grid.Row="1" Grid.Column="1"
                 Style="{StaticResource PopUpWindowTextBoxTextStyle}"
-                KeyDown="TB00KeyDownHandler"
                 Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>-->
 
         <TextBlock Grid.Row="2" Grid.Column="0"
@@ -45,7 +46,6 @@
         <TextBox Name="TB01"
                 Grid.Row="2" Grid.Column="1"
                 Style="{StaticResource PopUpWindowTextBoxTextStyle}"
-                KeyDown="TB01KeyDownHandler"
                 Text="{Binding Commitment, UpdateSourceTrigger=PropertyChanged}"/>
 
         <!--middle section-->
@@ -53,19 +53,27 @@
                 Grid.Row="3" Grid.Column="0"
                 Grid.ColumnSpan="2"
                 Style="{StaticResource PopUpWindowBodyTextStyle}"
-                Text=""
+                Text="{Binding ErrorMessage}"
+                Visibility="{Binding HasErrors,
+                Converter={StaticResource BoolToVisibilityConverter}}"
                 />
 
         <!--lower section-->
         <Button Grid.Row="4" Grid.Column="0"
-            Click="QuitButtonClicked">
+                Click="QuitButtonClicked">
             <TextBlock Style="{StaticResource PopUpWindowButtonTextStyle}"
-                    Text="Quit"/>
+                       Text="Quit"/>
         </Button>
         <Button Grid.Row="4" Grid.Column="1"
-            Click="OKButtonClicked">
+                Command="{Binding OKButtonCommand}"
+                >
             <TextBlock Style="{StaticResource PopUpWindowButtonTextStyle}"
-                    Text="OK"/>
+                       Text="OK"/>
         </Button>
     </Grid>
+
+    <Window.InputBindings>
+        <KeyBinding Key="Enter"
+                    Command="{Binding OKButtonCommand}"/>
+    </Window.InputBindings>
 </Window>

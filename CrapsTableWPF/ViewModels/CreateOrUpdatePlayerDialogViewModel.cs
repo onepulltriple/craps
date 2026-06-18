@@ -5,7 +5,7 @@ using System.Windows.Input;
 
 namespace CrapsTableWPF.ViewModels
 {
-    public class CreateOrUpdatePlayerDialogViewModel : ViewModelBase
+    public class CreateOrUpdatePlayerDialogViewModel : DialogViewModelBase
     {
         private string? _name;
         public string? Name
@@ -36,56 +36,23 @@ namespace CrapsTableWPF.ViewModels
         }
 
 
-        private string? _errorMessage;
-        public string? ErrorMessage
-        {
-            get => _errorMessage;
-            set
-            {
-                if (_errorMessage != value)
-                {
-                    _errorMessage = value;
-                    OnPropertyChanged(nameof(ErrorMessage));
-                }
-            }
-        }
-
-
-        private bool _hasErrors = false;
-        public bool HasErrors
-        {
-            get => _hasErrors;
-            set
-            {
-                if (_hasErrors != value)
-                {
-                    _hasErrors = value;
-                    OnPropertyChanged(nameof(HasErrors));
-                }
-            }
-
-        }
-        
-        public ICommand OKButtonCommand { get; }
-
         public event Action? RequestClose;
 
         public CreateOrUpdatePlayerDialogViewModel()
         {
-            this.OKButtonCommand = new RelayCommand(_ => OKButtonClicked());
+            //
         }
 
-        private void OKButtonClicked()
+        internal override void OKButtonClicked()
         {
             // validate player name
             Result<string> resultOfCheckingName = CrapsTable.ValidateUserInputPlayerName(this.Name);
 
-            
             // display data validation error messages
             if (!resultOfCheckingName.Success)
             {
-                ErrorMessage = resultOfCheckingName.Messages[0];
-                HasErrors = true;
+                this.ErrorMessage = resultOfCheckingName.Messages[0];
+                this.HasErrors = true;
                 return;
             }
 
@@ -94,12 +61,13 @@ namespace CrapsTableWPF.ViewModels
 
             if (!resultOfCheckingPurse.Success)
             {
-                ErrorMessage = resultOfCheckingPurse.Messages[0];
-                HasErrors = true;
+                this.ErrorMessage = resultOfCheckingPurse.Messages[0];
+                this.HasErrors = true;
                 return;
             }
 
-            HasErrors = false;
+            // ask dialog to close
+            this.HasErrors = false;
             this.RequestClose?.Invoke();
         }
     }

@@ -7,7 +7,7 @@ namespace CrapsTableWPF.DesignTime_Classes
     {
         public string Name { get; set; } = "High Roller";
 
-        public int Purse { get; set; } = 1080;
+        public uint Purse { get; set; } = 1080;
 
         public DesignPlayerViewModel() { }
     }

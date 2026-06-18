@@ -1,5 +1,4 @@
-﻿using CrapsLibrary;
-using CrapsTableWPF.ViewModels;
+﻿using CrapsTableWPF.ViewModels;
 using System.Windows;
 using System.Windows.Input;
 
@@ -20,7 +19,7 @@ namespace CrapsTableWPF.Windows
         {
             if (e.NewValue is CreateOrUpdatePlayerDialogViewModel viewModel)
             {
-                // subscribe to viewmodel's RequestClose event
+                // subscribe to the viewmodel's RequestClose event
                 viewModel.RequestClose += () => DialogResult = true;
             }
         }

@@ -44,7 +44,7 @@ namespace CrapsTableWPF.Services
             if (bet != null)
             {
                 betDialogViewModel.Name = $"Edit {bet.betOwner.Name}'s {bet.Name}";
-                betDialogViewModel.Commitment = bet.Commitment;
+                betDialogViewModel.Commitment = bet.Commitment.ToString();
             }
 
             // set the data context for the dialog
@@ -60,8 +60,8 @@ namespace CrapsTableWPF.Services
 
             return new BetVO
             {
-                Name = betDialogViewModel.Name,
-                Commitment = betDialogViewModel.Commitment
+                //Name = betDialogViewModel.Name!,
+                Commitment = uint.Parse(betDialogViewModel.Commitment!)
             };
         }
     }

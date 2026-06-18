@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:CrapsTableWPF.Windows"
         xmlns:viewmodels="clr-namespace:CrapsTableWPF.ViewModels"
         mc:Ignorable="d"
-        Title="Edit player"
+        Title="Manage player"
         Width="500" Height="400" MinWidth="500" MinHeight="300"
         WindowStartupLocation="CenterOwner"
         Style="{StaticResource PopUpWindowOrDialogStyle}"

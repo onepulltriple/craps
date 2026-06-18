@@ -144,8 +144,8 @@
                 return Result<Bet>.Fail("but why??"); // TODO figure out if this can happen
 
             return Result<Bet>.Pass(tempBet, $"{tempBet.betOwner.Name} " +
-                $"has bet {tempBet.countOfUnitsToBet * tempBet.unitOfBet} " +
-                $"on {tempBet.name}.");
+                $"has bet {tempBet.CountOfUnitsToBet * tempBet.UnitOfBet} " +
+                $"on {tempBet.Name}.");
         }
 
         /// <summary>

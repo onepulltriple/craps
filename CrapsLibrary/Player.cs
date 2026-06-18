@@ -5,7 +5,7 @@ namespace CrapsLibrary
 {
     public class Player : ObservableObject
     {
-        private string _name;
+        private string _name = string.Empty;
         public string Name
         {
             get => _name;
@@ -37,8 +37,8 @@ namespace CrapsLibrary
 
         public Player(string playerName, uint startingPurse = 0)
         {
-            this._name = playerName;
-            this._purse = startingPurse;
+            this.Name = playerName;
+            this.Purse = startingPurse;
             this.PlayerBetList = new ObservableCollection<Bet>();
         }
 

@@ -2,7 +2,7 @@
 
 namespace CrapsLibrary.Bets
 {
-    public abstract class Bet
+    public abstract class Bet : ObservableObject
     {
         protected CrapsTable crapsTable;
 
@@ -10,16 +10,57 @@ namespace CrapsLibrary.Bets
         
         public betType betType { get; }
 
-        public string name { get; }
-
         public List<int> winningTotals;
 
-        public uint countOfUnitsToBet;
+        internal BetWorkingStateMachine betWorkingStateMachine;
 
-        public uint unitOfBet;
+        public string BetWorkingState => betWorkingStateMachine.CurrentStateName;
+
+
+        // Observeable properties
+        private string _name = string.Empty;
+        public string Name
+        {
+            get => _name;
+            set
+            {
+                if (_name != value)
+                {
+                    _name = value;
+                    OnPropertyChanged(nameof(Name));
+                }
+            }
+        }
+
+        private uint _countOfUnitsToBet;
+        public uint CountOfUnitsToBet
+        {
+            get => _countOfUnitsToBet;
+            set
+            {
+                if (_countOfUnitsToBet != value)
+                {
+                    _countOfUnitsToBet = value;
+                    OnPropertyChanged(nameof(CountOfUnitsToBet));
+                }
+            }
+        }
+
+        private uint _unitOfBet;
+        public uint UnitOfBet
+        {
+            get => _unitOfBet;
+            set
+            {
+                if (_unitOfBet != value)
+                {
+                    _unitOfBet = value;
+                    OnPropertyChanged(nameof(UnitOfBet));
+                }
+            }
+        }
 
         private uint _commitment;
-
         public uint Commitment
         {
             get => _commitment;
@@ -28,18 +69,24 @@ namespace CrapsLibrary.Bets
                 if (_commitment != value)
                 {
                     _commitment = value;
-                    CommitmentChanged?.Invoke(this, EventArgs.Empty);
+                    OnPropertyChanged(nameof(Commitment));
                 }
             }
         }
 
-        public event EventHandler? CommitmentChanged;
-
-        public uint payout;
-
-        internal BetWorkingStateMachine betWorkingStateMachine;
-
-        public string BetWorkingState => betWorkingStateMachine.CurrentStateName;
+        private uint _payout;
+        public uint Payout
+        {
+            get => _payout;
+            set
+            {
+                if (_payout != value)
+                {
+                    _payout = value;
+                    OnPropertyChanged(nameof(Payout));
+                }
+            }
+        }
 
         /// <summary>
         /// A bet is 'working' when it is subscribed to the outcomes of the the scoreboard and has an owner (a player).
@@ -58,12 +105,14 @@ namespace CrapsLibrary.Bets
             this.crapsTable = crapsTable;
             this.betOwner = betOwner;
             this.betType = betType;
-            this.name = BetFactory.BetDefinitions[betType].Name;
-            this.countOfUnitsToBet = countOfUnitsToBet;
-            this.unitOfBet = unitOfBet;
             this.winningTotals = winningTotals;
-            this._commitment = countOfUnitsToBet * unitOfBet;
-            this.payout = payout;
+
+            // Observeable properties
+            this.Name = BetFactory.BetDefinitions[betType].Name;
+            this.CountOfUnitsToBet = countOfUnitsToBet;
+            this.UnitOfBet = unitOfBet;
+            this.Commitment = countOfUnitsToBet * unitOfBet;
+            this.Payout = payout;
 
             // Create a state machine to manage this bet's states
             betWorkingStateMachine = new(crapsTable);
@@ -93,7 +142,7 @@ namespace CrapsLibrary.Bets
             if (!isPausingAllowed.Success)
                 return Result<bool>.Fail("Pausing this bet is not allowed.");
 
-            return Result<bool>.Pass(true, $"\n{this.betOwner} has paused their {this.name}.");
+            return Result<bool>.Pass(true, $"\n{this.betOwner} has paused their {this.Name}.");
         }
 
 
@@ -102,7 +151,7 @@ namespace CrapsLibrary.Bets
         /// </summary>
         public void QuitBet()
         {
-            betOwner.Purse += (countOfUnitsToBet * unitOfBet);
+            betOwner.Purse += (CountOfUnitsToBet * UnitOfBet);
             betOwner.PlayerBetList.Remove(this);
         }
 

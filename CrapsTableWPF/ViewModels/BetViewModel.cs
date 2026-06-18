@@ -7,7 +7,7 @@ namespace CrapsTableWPF.ViewModels
     {
         private Bet _model;
 
-        public string Name => _model.name;
+        public string Name => _model.Name;
 
 
 
@@ -26,10 +26,6 @@ namespace CrapsTableWPF.ViewModels
         {
             this._model = bet;
 
-            this._model.CommitmentChanged += (_, _) =>
-            {
-                OnPropertyChanged(nameof(Commitment));
-            };
         }
     }
 }

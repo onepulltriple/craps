@@ -28,8 +28,8 @@ namespace CrapsLibrary.BetWorkingState
                 AnnounceReturnWinnings(firstOutcome, secondOutcome);
 
                 // split winnings between parlay and payout
-                betInQuestion.Commitment += betInQuestion.payout/2; // TODO need to calculate these two based on betting units
-                betInQuestion.betOwner.Purse += betInQuestion.payout/2;
+                betInQuestion.Commitment += betInQuestion.Payout/2; // TODO need to calculate these two based on betting units
+                betInQuestion.betOwner.Purse += betInQuestion.Payout/2;
                 return;
             }
 

@@ -25,7 +25,7 @@ namespace CrapsLibrary.BetWorkingState
                 AnnounceFullParlay(firstOutcome, secondOutcome);
 
                 // parlay full amount
-                betInQuestion.Commitment += betInQuestion.payout;
+                betInQuestion.Commitment += betInQuestion.Payout;
                 return;
             }
 

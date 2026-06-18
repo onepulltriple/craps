@@ -25,7 +25,7 @@ namespace CrapsLibrary.BetWorkingState
                 AnnounceReturnWinnings(firstOutcome, secondOutcome);
 
                 // pay winnings directly
-                betInQuestion.betOwner.Purse += betInQuestion.payout;
+                betInQuestion.betOwner.Purse += betInQuestion.Payout;
                 return;
             }
 

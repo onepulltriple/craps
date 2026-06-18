@@ -139,7 +139,7 @@ namespace ConsoleAppForCraps.DealerCLIState
 
             for (int i = 0; i < betsOfPlayer.Count; i++)
             {
-                Console.WriteLine($"{i + 1,2}. {betsOfPlayer[i].name}");
+                Console.WriteLine($"{i + 1,2}. {betsOfPlayer[i].Name}");
                 listOfAcceptableInts.Add(i + 1);
             }
 
@@ -199,7 +199,7 @@ namespace ConsoleAppForCraps.DealerCLIState
                         if (betIndex < player.PlayerBetList.Count)
                         {
                             cellText = 
-                                $"{player.PlayerBetList[betIndex]?.name.ToString() ?? ""} " +
+                                $"{player.PlayerBetList[betIndex]?.Name.ToString() ?? ""} " +
                                $"[{player.PlayerBetList[betIndex]?.BetWorkingState}]";
                         }
                         // TODO if bet state is paused, add " (OFF)" to the end of the cell text

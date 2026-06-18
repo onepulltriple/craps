@@ -84,7 +84,7 @@ namespace CrapsTableWPF.ViewModels
             this.HardWayBetViewModel_Hard_10 = new HardWayBetViewModel(crapsTable, dialogService, betType.Hard_10);
 
             // Bindable Properties
-            this._model.CurrentPlayerIndexChanged += (_, _) =>
+            this._model.PropertyChanged += (_, _) =>
             {
                 OnPropertyChanged(nameof(CurrentPlayerIndex));
             };

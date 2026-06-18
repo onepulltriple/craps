@@ -1,12 +1,7 @@
-﻿using CrapsLibrary.Bets;
-
-namespace CrapsLibrary
+﻿namespace CrapsLibrary
 {
-    public class CrapsTable
+    public class CrapsTable : ObservableObject
     {
-        public uint tableMinimum;
-        public uint tableMaximum;
-
         public const uint absoluteTableMinimum = 5;
         public const uint absoluteTableMaximum = 5000;
         private const int slotCount = 8;
@@ -27,8 +22,13 @@ namespace CrapsLibrary
 
         public IEnumerable<Player> Players => Slots.OfType<Player>();
 
-        private int _currentPlayerIndex = -1;
+        // Properties
+        public uint tableMinimum;
 
+        public uint tableMaximum;
+
+        // Observeable properties
+        private int _currentPlayerIndex = -1;
         public int CurrentPlayerIndex
         {
             get => _currentPlayerIndex;
@@ -37,12 +37,10 @@ namespace CrapsLibrary
                 if (_currentPlayerIndex != value)
                 {
                     _currentPlayerIndex = value;
-                    CurrentPlayerIndexChanged?.Invoke(this, EventArgs.Empty);
+                    OnPropertyChanged(nameof(CurrentPlayerIndex));
                 }
             }
         }
-
-        public event EventHandler? CurrentPlayerIndexChanged;
 
 
         // Implementation ///////////////////////////////////////////////

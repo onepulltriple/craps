@@ -50,7 +50,7 @@ namespace CrapsTableWPF.ViewModels
             this.PlayerViewModel = player is null ? null : new PlayerViewModel(player);
             this.SlotIndex = slotIndex;
             this.dialogService = dialogService;
-            this.crapsTable.CurrentPlayerIndexChanged += OnCurrentPlayerIndexChanged;
+            this.crapsTable.PropertyChanged += OnCurrentPlayerIndexChanged;
 
             // Commands
             this.AddPlayerCommand = new RelayCommand(_ => AddPlayer());
@@ -66,7 +66,7 @@ namespace CrapsTableWPF.ViewModels
         protected override void Dispose(bool disposing)
         {
             if (disposing)
-                crapsTable.CurrentPlayerIndexChanged -= OnCurrentPlayerIndexChanged;
+                crapsTable.PropertyChanged -= OnCurrentPlayerIndexChanged;
 
             base.Dispose(disposing);
         }

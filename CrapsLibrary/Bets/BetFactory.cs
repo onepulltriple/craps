@@ -1,4 +1,6 @@
-﻿namespace CrapsLibrary.Bets
+﻿using System.Runtime.CompilerServices;
+
+namespace CrapsLibrary.Bets
 {
     public enum betType // a container for constants with extra properties built in
     {

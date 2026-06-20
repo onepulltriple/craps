@@ -4,12 +4,13 @@ using CrapsTableWPF.Infrastructure;
 using CrapsTableWPF.Services;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using System;
 
 namespace CrapsTableWPF.ViewModels
 {
     public class HardWayBetViewModel : ViewModelBase
     {
-        public ObservableCollection<BetSlotViewModel> BetSlotViewModels { get; }
+        public ObservableCollection<BetSlotViewModel?> BetSlotViewModels { get; }
 
         private readonly CrapsTable crapsTable;
 
@@ -41,20 +42,20 @@ namespace CrapsTableWPF.ViewModels
             this.UnitOfBet = crapsTable.tableMinimum /
                 CrapsTable.absoluteTableMinimum *
                 BetFactory.BetDefinitions[betType].payoutDenominator;
-
-            this.BetSlotViewModels = new ObservableCollection<BetSlotViewModel>(
-                crapsTable.Slots.Select<Player, BetSlotViewModel>(
-                    (Func<Player?, int, BetSlotViewModel>)((player, slotIndex) =>
-                        {
-                            var bet = player?.PlayerBetList.FirstOrDefault<Bet>((Func<Bet, bool>)(b => b.betType == betType));
-
-                            return new BetSlotViewModel((Bet?)bet, slotIndex);
-                        })
-                )
-            );
+            this.BetSlotViewModels = new(crapsTable.Slots.Select(x => (BetSlotViewModel?)null));
 
             this.CreateBetCommand = new RelayCommand(_ => CreateBet());
 
+
+        }
+
+        public void PopulateBetSlot(Player slotOwner, Bet bet)
+        {
+            // determine slot index of the betting player
+            int slotIndex = Array.IndexOf(crapsTable.Slots, slotOwner);
+
+            // populate bet slot view
+            BetSlotViewModels[slotIndex] = new BetSlotViewModel(slotOwner, slotIndex, this.betType, bet);
         }
 
         public void CreateBet() // TODO send to a base class and make CreateOrUpdate()
@@ -113,7 +114,10 @@ namespace CrapsTableWPF.ViewModels
                 return;
 
             // add the bet to the player's bet list
-            currentPlayer.Value.PlayerBetList.Add(createBetResult.Value);
+            currentPlayer.Value.AddOneBet(createBetResult.Value);
+
+            // populate the view
+            this.PopulateBetSlot(currentPlayer.Value, createBetResult.Value);
 
             // also fix the ugliness of the popup dialog
         }

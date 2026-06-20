@@ -5,6 +5,8 @@ namespace CrapsLibrary
 {
     public class Player : ObservableObject
     {
+        CrapsTable crapsTable;
+
         // Observeable properties
         private string _name = string.Empty;
         public string Name
@@ -34,14 +36,27 @@ namespace CrapsLibrary
             }
         }
 
+
         public ObservableCollection<Bet> PlayerBetList { get; }
 
-        public Player(string playerName, uint startingPurse = 0)
+        public Player(CrapsTable crapsTable, string playerName, uint startingPurse = 0)
         {
+            this.crapsTable = crapsTable;
             this.Name = playerName;
             this.Purse = startingPurse;
             this.PlayerBetList = new ObservableCollection<Bet>();
         }
+
+
+        public void AddOneBet(Bet bet)
+        {
+            this.PlayerBetList.Add(bet);
+
+            // announce that a bet has been placed
+            //this.crapsTable.OnBetPlaced();
+        }
+
+
 
         // become new roller
         // skip my roll

@@ -80,7 +80,7 @@ namespace CrapsTableWPF.ViewModels
                 return;
 
             // create new player using playerVO data
-            Player player = new Player(newPlayerVO.Name, newPlayerVO.Purse);
+            Player player = new Player(crapsTable, newPlayerVO.Name, newPlayerVO.Purse);
 
             // attempt to add player to the player slot at this PlayerSlotViewModel's index
             Result<bool> addPlayerResult = crapsTable.InsertPlayerAtSlot(SlotIndex, player);

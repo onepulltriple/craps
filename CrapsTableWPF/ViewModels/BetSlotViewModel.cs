@@ -1,11 +1,14 @@
 ﻿using CrapsLibrary;
 using CrapsLibrary.Bets;
 using System.Collections.Specialized;
+using System.Linq;
 
 namespace CrapsTableWPF.ViewModels
 {
     public class BetSlotViewModel : ViewModelBase
     {
+        public betType betType;
+
         private BetViewModel? _betViewModel;
 
         public BetViewModel? BetViewModel
@@ -21,6 +24,8 @@ namespace CrapsTableWPF.ViewModels
             }
         }
 
+        private Player? slotOwner;
+
         // Bindable Properties ///////////////////////////////////////////////
         public int SlotIndex { get; }
 
@@ -28,24 +33,33 @@ namespace CrapsTableWPF.ViewModels
 
         public bool IsEmpty => BetViewModel == null;
 
-        public BetSlotViewModel(Bet? bet, int slotIndex)
+        public BetSlotViewModel(Player slotOwner, int slotIndex, betType betType, Bet bet)
         {
             // Bindable Properties
-            this.BetViewModel = bet is null ? null : new BetViewModel(bet);
+            this.slotOwner = slotOwner;
             this.SlotIndex = slotIndex;
+            this.betType = betType;
 
-            //bet.betOwner.PlayerBetList.CollectionChanged += OnPlayerBetListChanged;
-            // null exception thrown here
+            this.BetViewModel = new BetViewModel(bet);
+
+            slotOwner.PlayerBetList.CollectionChanged += OnPlayerBetListChanged;
         }
 
-        //private void OnPlayerBetListChanged(object? sender, NotifyCollectionChangedEventArgs e)
-        //{
-        //    if (e.NewItems?.Count > 0)
-        //    {
-        //        var bet = (Bet)e.NewItems[0];
+        private void OnPlayerBetListChanged(object? sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.NewItems?.Count > 0)
+            {
+                var bet = (Bet)e.NewItems.OfType<Bet>().Select(b => b.betType == this.betType);
 
-        //        BetViewModel = new BetViewModel(bet);
-        //    }
-        //}
+                this.BetViewModel = new BetViewModel(bet);
+            }
+
+            if (e.OldItems?.Count > 0)
+            {
+                var bet = (Bet)e.OldItems.OfType<Bet>().Select(b => b.betType == this.betType);
+
+                // do what?
+            }
+        }
     }
 }

@@ -27,7 +27,7 @@ namespace CrapsTableWPF.Windows
 
         private void GridLoaded(object sender, RoutedEventArgs e)
         {
-            Keyboard.Focus(TB00);
+            Keyboard.Focus(SPINNER00);
         }
 
 

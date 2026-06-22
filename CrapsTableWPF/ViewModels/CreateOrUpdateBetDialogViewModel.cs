@@ -75,8 +75,6 @@ namespace CrapsTableWPF.ViewModels
             }
         }
 
-        //public ICommand ValueChangedCommand { get; }
-
         public CreateOrUpdateBetDialogViewModel(CrapsTable crapsTable, Player currentPlayer, betType betType)
         {
             this.PlayerName = currentPlayer.Name;
@@ -87,7 +85,6 @@ namespace CrapsTableWPF.ViewModels
 
             this.Heading = $"Manage {PlayerName}'s {betInfo.Name} bet";
 
-            //this.ValueChangedCommand = new RelayCommand(_ => OnSpinnerValueChanged());
         }
 
         public void OnSpinnerValueChanged()

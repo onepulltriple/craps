@@ -16,6 +16,7 @@
                 <ResourceDictionary Source="Styles/PanelStyles.xaml"/>
                 <ResourceDictionary Source="Styles/ButtonStyles.xaml"/>
                 <ResourceDictionary Source="Styles/WindowStyles.xaml"/>
+                <ResourceDictionary Source="Styles/OtherControlStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             
             <!--provided by WPF-->

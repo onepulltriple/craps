@@ -39,9 +39,7 @@ namespace CrapsTableWPF.ViewModels
             this.crapsTable = crapsTable;
             this.dialogService = dialogService;
             this.betType = betType;
-            this.UnitOfBet = crapsTable.tableMinimum /
-                CrapsTable.absoluteTableMinimum *
-                BetFactory.BetDefinitions[betType].payoutDenominator;
+            this.UnitOfBet = BetFactory.DetermineUnitOfBet(crapsTable, betType);
             this.BetSlotViewModels = new(crapsTable.Slots.Select(x => (BetSlotViewModel?)null));
 
             this.CreateBetCommand = new RelayCommand(_ => CreateBet());

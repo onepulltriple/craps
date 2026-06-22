@@ -7,17 +7,18 @@
         xmlns:viewmodels="clr-namespace:CrapsTableWPF.ViewModels"
         mc:Ignorable="d"
         Title="Manage player"
-        Width="500" Height="400" MinWidth="500" MinHeight="300"
+        Width="500" Height="460" 
+        MinWidth="500" MinHeight="460"
         WindowStartupLocation="CenterOwner"
         Style="{StaticResource PopUpWindowOrDialogStyle}"
         d:DataContext="{d:DesignInstance Type=viewmodels:CreateOrUpdatePlayerDialogViewModel}"
         >
     <Grid Loaded="GridLoaded">
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.8*"/>
-            <RowDefinition Height="0.8*"/>
-            <RowDefinition Height="0.8*"/>
-            <RowDefinition Height="0.6*"/>
+            <RowDefinition Height="120*"/>
+            <RowDefinition Height="120*"/>
+            <RowDefinition Height="120*"/>
+            <RowDefinition Height="100*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>

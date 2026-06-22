@@ -55,6 +55,7 @@
            BasedOn="{StaticResource {x:Type TextBox}}">
         <Setter Property="Margin"                   Value="10,30,10,30"/>
         <Setter Property="Padding"                  Value="6"/>
+        <Setter Property="MinHeight"                Value="6"/>
     </Style>
 
     <!--MAIN WINDOW-->

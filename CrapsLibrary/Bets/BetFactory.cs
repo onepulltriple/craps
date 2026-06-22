@@ -81,20 +81,17 @@ namespace CrapsLibrary.Bets
                     );
 
             // determine betting units
-            uint unitOfBet =
-                crapsTable.tableMinimum /
-                CrapsTable.absoluteTableMinimum *
-                BetDefinitions[betType].payoutDenominator;
+            uint unitOfBet = DetermineUnitOfBet(crapsTable, betType);
 
             // the player player cannot cover at least one bet of that type (e.g. throwing 5 credits at a Place_06)
-            if (amountThrownAtBet < unitOfBet) 
+            if (amountThrownAtBet < unitOfBet)
                 return Result<Bet>.Fail(
                     $"The minimum bet amount is {unitOfBet}."
                     );
 
             uint countOfUnitsToBet = amountThrownAtBet / unitOfBet; // the quotient
             // remainder to return to player = amount thrown at bet minus the quantity quotient times units
-            uint amountChangeToReturn = amountThrownAtBet - (countOfUnitsToBet * unitOfBet); 
+            uint amountChangeToReturn = amountThrownAtBet - (countOfUnitsToBet * unitOfBet);
 
             // charge player for the bet
             player.Purse -= amountThrownAtBet;
@@ -148,6 +145,13 @@ namespace CrapsLibrary.Bets
             return Result<Bet>.Pass(tempBet, $"{tempBet.betOwner.Name} " +
                 $"has bet {tempBet.CountOfUnitsToBet * tempBet.UnitOfBet} " +
                 $"on {tempBet.Name}.");
+        }
+
+        public static uint DetermineUnitOfBet(CrapsTable crapsTable, betType betType)
+        {
+            return crapsTable.tableMinimum /
+                            CrapsTable.absoluteTableMinimum *
+                            BetDefinitions[betType].payoutDenominator;
         }
 
         /// <summary>

@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CrapsTableWPF.Windows"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:viewmodels="clr-namespace:CrapsTableWPF.ViewModels"
         mc:Ignorable="d"
         Title="Manage bet"
@@ -26,24 +27,25 @@
         </Grid.ColumnDefinitions>
 
         <!--upper section-->
-        <TextBlock Grid.Row="1" Grid.Column="0"
+        <!--<TextBlock Grid.Row="1" Grid.Column="0"
                    Grid.ColumnSpan="2"
                    Style="{StaticResource PopUpWindowBodyTextStyle}"
                    Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"
-                   d:Text="Bet name and owner"/>
+                   d:Text="Bet name and owner"/>-->
         
-        <!--<TextBlock Grid.Row="1" Grid.Column="0"
+        <TextBlock Grid.Row="1" Grid.Column="0"
                 Style="{StaticResource PopUpWindowBodyTextStyle}"
-                Text="some other property:"/>
-        <TextBox Name="TB00"
+                Text="Cost per unit:"/>
+        <TextBlock
                 Grid.Row="1" Grid.Column="1"
-                Style="{StaticResource PopUpWindowTextBoxTextStyle}"
-                Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>-->
+                Style="{StaticResource PopUpWindowBodyTextStyle}"
+                d:Text="bet.UnitOfBet"
+                Text="{Binding UnitOfBet, UpdateSourceTrigger=PropertyChanged}"/>
 
         <TextBlock Grid.Row="2" Grid.Column="0"
                 Style="{StaticResource PopUpWindowBodyTextStyle}"
                 Text="Commitment:"/>
-        <TextBox Name="TB01"
+        <TextBox Name="TB00"
                 Grid.Row="2" Grid.Column="1"
                 Style="{StaticResource PopUpWindowTextBoxTextStyle}"
                 Text="{Binding Commitment, UpdateSourceTrigger=PropertyChanged}"/>

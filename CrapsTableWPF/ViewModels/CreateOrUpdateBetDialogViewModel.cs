@@ -29,11 +29,31 @@ namespace CrapsTableWPF.ViewModels
             }
         }
 
+        private string? _unitOfBet;
+
+        public string? UnitOfBet
+        {
+            get => _unitOfBet;
+            set
+            {
+                _unitOfBet = value;
+                OnPropertyChanged(nameof(UnitOfBet));
+            }
+        }
+
+
         public event Action? RequestClose;
 
-        public CreateOrUpdateBetDialogViewModel()
+        public CreateOrUpdateBetDialogViewModel(CrapsTable crapsTable, betType betType)
         {
-            //
+            var betInfo = BetFactory.BetDefinitions[betType];
+            this.UnitOfBet = BetFactory.DetermineUnitOfBet(crapsTable, betType).ToString();
+
+
+            //this.payo = betInfo.payoutNumerator;
+            //this.Name = betInfo.payoutDenominator;
+            //this.Name = betInfo.Name;
+            
         }
 
         internal override void OKButtonClicked()

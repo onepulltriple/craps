@@ -38,10 +38,7 @@ namespace CrapsTableWPF.ViewModels
 
         public event Action? RequestClose;
 
-        public CreateOrUpdatePlayerDialogViewModel()
-        {
-            //
-        }
+        public CreateOrUpdatePlayerDialogViewModel() { }
 
         internal override void OKButtonClicked()
         {

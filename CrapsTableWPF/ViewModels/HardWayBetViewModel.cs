@@ -89,7 +89,7 @@ namespace CrapsTableWPF.ViewModels
             }
 
             // call dialog service to administer bet info
-            var betVO = dialogService.CreateOrUpdateBetDialog(existingBet);
+            var betVO = dialogService.CreateOrUpdateBetDialog(this.crapsTable, this.betType, existingBet);
 
 
 

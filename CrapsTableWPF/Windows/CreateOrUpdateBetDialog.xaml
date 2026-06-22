@@ -15,7 +15,7 @@
         >
     <Grid Loaded="GridLoaded">
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.4*"/>
+            <RowDefinition Height="0.6*"/>
             <RowDefinition Height="0.8*"/>
             <RowDefinition Height="0.8*"/>
             <RowDefinition Height="0.8*"/>
@@ -26,29 +26,59 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <!--upper section-->
-        <!--<TextBlock Grid.Row="1" Grid.Column="0"
+        <!--top section-->
+        <TextBlock Grid.Row="0" Grid.Column="0" 
                    Grid.ColumnSpan="2"
-                   Style="{StaticResource PopUpWindowBodyTextStyle}"
-                   Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"
-                   d:Text="Bet name and owner"/>-->
-        
-        <TextBlock Grid.Row="1" Grid.Column="0"
+                   Style="{StaticResource PopUpWindowBodyHeadingTextStyle}"
+                   d:Text="Manage PlayerName's betInfo.Name bet"
+                   Text="{Binding Heading}"/>
+
+        <Grid Grid.Row="1" Grid.Column="0" 
+              Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock 
+                Grid.Row="0" Grid.Column="0"
+                Style="{StaticResource PopUpWindowBodyTextStyle}"
+                Text="Count of units:"/>
+            <xctk:IntegerUpDown 
+                Grid.Row="1" Grid.Column="0"
+                Value="{Binding CountOfUnitsToBet, Mode=TwoWay}"
+                FontSize="24"
+                Minimum="0"
+                Maximum="10"
+                />
+                <!--ValueChanged="{Binding ValueChangedCommand}"-->
+
+            <TextBlock 
+                Grid.Row="0" Grid.Column="1"
                 Style="{StaticResource PopUpWindowBodyTextStyle}"
                 Text="Cost per unit:"/>
-        <TextBlock
+            <TextBlock
                 Grid.Row="1" Grid.Column="1"
                 Style="{StaticResource PopUpWindowBodyTextStyle}"
                 d:Text="bet.UnitOfBet"
                 Text="{Binding UnitOfBet, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <TextBlock Grid.Row="2" Grid.Column="0"
+
+
+            <TextBlock 
+                Grid.Row="0" Grid.Column="3"
                 Style="{StaticResource PopUpWindowBodyTextStyle}"
-                Text="Commitment:"/>
-        <TextBox Name="TB00"
-                Grid.Row="2" Grid.Column="1"
-                Style="{StaticResource PopUpWindowTextBoxTextStyle}"
+                Text="Amount thrown:"/>
+            <TextBox Name="TB00"
+                Grid.Row="1" Grid.Column="3"
                 Text="{Binding Commitment, UpdateSourceTrigger=PropertyChanged}"/>
+        </Grid>
+        
 
         <!--middle section-->
         <TextBlock Name="UIErrorMessage"
@@ -60,7 +90,15 @@
                 Converter={StaticResource BoolToVisibilityConverter}}"
                 />
 
-        <!--lower section-->
+
+        <!--<TextBlock Grid.Row="3" Grid.Column="0"
+                   Style="{StaticResource PopUpWindowBodyTextStyle}"
+                   Text="{Binding CountOfUnitsToBet, UpdateSourceTrigger=PropertyChanged}"
+                   />-->
+
+
+        
+        <!--bottom section-->
         <Button Grid.Row="4" Grid.Column="0"
                 Click="QuitButtonClicked">
             <TextBlock Style="{StaticResource PopUpWindowButtonTextStyle}"

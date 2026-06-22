@@ -18,7 +18,7 @@ namespace CrapsTableWPF.ViewModels
 
         private readonly betType betType;
 
-        private readonly uint UnitOfBet;
+        private readonly uint UnitOfBet; // TODO show UnitOfBet in hoverover pop up
 
         private int? _countOfUnitsToBet = 1;
 
@@ -88,8 +88,8 @@ namespace CrapsTableWPF.ViewModels
                 }
             }
 
-            // call dialog service to administer bet info
-            var betVO = dialogService.CreateOrUpdateBetDialog(this.crapsTable, this.betType, existingBet);
+            // call dialog service
+            var betVO = dialogService.CreateOrUpdateBetDialog(this.crapsTable, currentPlayer.Value, this.betType, existingBet);
 
 
 

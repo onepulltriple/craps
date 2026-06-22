@@ -1,5 +1,6 @@
 ﻿using CrapsLibrary;
 using CrapsLibrary.Bets;
+using CrapsTableWPF.Infrastructure;
 using System.Windows;
 using System.Windows.Input;
 
@@ -7,14 +8,36 @@ namespace CrapsTableWPF.ViewModels
 {
     public class CreateOrUpdateBetDialogViewModel : DialogViewModelBase
     {
-        private string _name = "";
-        public string Name
+        private string _playerName = "";
+        public string PlayerName
         {
-            get => _name;
+            get => _playerName;
             set
             {
-                _name = value;
-                OnPropertyChanged(nameof(Name));
+                _playerName = value;
+                OnPropertyChanged(nameof(PlayerName));
+            }
+        }
+
+        private string _playerPurse = "";
+        public string PlayerPurse
+        {
+            get => _playerPurse;
+            set
+            {
+                _playerPurse = value;
+                OnPropertyChanged(nameof(PlayerPurse));
+            }
+        }
+
+        private string _betName = "";
+        public string BetName
+        {
+            get => _betName;
+            set
+            {
+                _betName = value;
+                OnPropertyChanged(nameof(BetName));
             }
         }
 
@@ -30,7 +53,6 @@ namespace CrapsTableWPF.ViewModels
         }
 
         private string? _unitOfBet;
-
         public string? UnitOfBet
         {
             get => _unitOfBet;
@@ -41,17 +63,37 @@ namespace CrapsTableWPF.ViewModels
             }
         }
 
-
-        public CreateOrUpdateBetDialogViewModel(CrapsTable crapsTable, betType betType)
+        private string? _countOfUnitsToBet;
+        public string? CountOfUnitsToBet
         {
+            get => _countOfUnitsToBet;
+            set
+            {
+                _countOfUnitsToBet = value;
+                OnPropertyChanged(nameof(CountOfUnitsToBet));
+                OnSpinnerValueChanged();
+            }
+        }
+
+        //public ICommand ValueChangedCommand { get; }
+
+        public CreateOrUpdateBetDialogViewModel(CrapsTable crapsTable, Player currentPlayer, betType betType)
+        {
+            this.PlayerName = currentPlayer.Name;
+            this.PlayerPurse = currentPlayer.Purse.ToString();
             var betInfo = BetFactory.BetDefinitions[betType];
             this.UnitOfBet = BetFactory.DetermineUnitOfBet(crapsTable, betType).ToString();
 
 
-            //this.payo = betInfo.payoutNumerator;
-            //this.Name = betInfo.payoutDenominator;
-            //this.Name = betInfo.Name;
-            
+            this.Heading = $"Manage {PlayerName}'s {betInfo.Name} bet";
+
+            //this.ValueChangedCommand = new RelayCommand(_ => OnSpinnerValueChanged());
+        }
+
+        public void OnSpinnerValueChanged()
+        {
+            if (UnitOfBet != null && CountOfUnitsToBet != null) 
+                Commitment = (uint.Parse(UnitOfBet) * uint.Parse(CountOfUnitsToBet)).ToString();
         }
 
         internal override void OKButtonClicked()

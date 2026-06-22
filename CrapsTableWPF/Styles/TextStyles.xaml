@@ -21,17 +21,26 @@
     </Style>
 
     <!--POP-UP WINDOWS / DIALOGS-->
-    <!--Pop-up window/dialog TEXT styles-->
+    <!--Pop-up window/dialog TEXT style-->
     <Style x:Key="PopUpWindowBodyTextStyle"
            TargetType="TextBlock"
            BasedOn="{StaticResource BodyTextStyle}">
         <Setter Property="HorizontalAlignment"      Value="Center"/>
         <Setter Property="VerticalAlignment"        Value="Center"/>
-        <Setter Property="Margin"                   Value="4"/>
+        <Setter Property="Margin"                   Value="6"/>
         <Setter Property="Foreground"               Value="{StaticResource BrightTextBrush}"/>
     </Style>
 
-    <!--Pop-up window/dialog BUTTON text styles-->
+    <!--Pop-up window/dialog HEADING style-->
+    <Style x:Key="PopUpWindowBodyHeadingTextStyle"
+           TargetType="TextBlock"
+           BasedOn="{StaticResource PopUpWindowBodyTextStyle}">
+        <Setter Property="HorizontalAlignment"      Value="Left"/>
+        <Setter Property="Margin"                   Value="20"/>
+        <Setter Property="FontSize"                 Value="20"/>
+    </Style>
+
+    <!--Pop-up window/dialog BUTTON text style-->
     <Style x:Key="PopUpWindowButtonTextStyle"
            TargetType="TextBlock"
            BasedOn="{StaticResource BodyTextStyle}">
@@ -40,7 +49,7 @@
         <Setter Property="Foreground"               Value="{StaticResource PrimaryTextBrush}"/>
     </Style>
 
-    <!--Pop-up window/dialog TEXTBOX styles-->
+    <!--Pop-up window/dialog TEXTBOX style-->
     <Style x:Key="PopUpWindowTextBoxTextStyle"
            TargetType="TextBox"
            BasedOn="{StaticResource {x:Type TextBox}}">

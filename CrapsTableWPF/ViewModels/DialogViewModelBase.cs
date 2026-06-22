@@ -5,6 +5,20 @@ namespace CrapsTableWPF.ViewModels
 {
     public abstract class DialogViewModelBase : ViewModelBase
     {
+        private string? _heading;
+        public string? Heading
+        {
+            get => _heading;
+            set
+            {
+                if (_heading != value)
+                {
+                    _heading = value;
+                    OnPropertyChanged(nameof(Heading));
+                }
+            }
+        }
+
         private string? _errorMessage;
         public string? ErrorMessage
         {

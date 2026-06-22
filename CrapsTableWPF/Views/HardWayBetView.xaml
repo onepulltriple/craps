@@ -4,7 +4,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:views="clr-namespace:CrapsTableWPF.Views"
-             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:viewmodels="clr-namespace:CrapsTableWPF.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="352"
@@ -56,21 +55,5 @@
             <views:BetSlotView DataContext="{Binding BetSlotViewModels[7]}"/>
         </Border>
 
-
-        <!--<xctk:IntegerUpDown
-            Value="{Binding CountOfUnitsToBet, Mode=TwoWay}"
-            d:Text="1" 
-            FontSize="24"
-            Width="80"
-            Minimum="0"
-            Maximum="10"
-            Margin="180,40"
-            />
-        
-        <TextBlock Text="{Binding CountOfUnitsToBet}"
-            Margin="260,40"
-            FontSize="24"
-            Width="80"   
-                   />-->
     </Canvas>
 </UserControl>

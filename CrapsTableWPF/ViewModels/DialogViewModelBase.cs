@@ -33,11 +33,18 @@ namespace CrapsTableWPF.ViewModels
             }
         }
 
+        public event Action? RequestClose;
+
         public ICommand OKButtonCommand { get; }
 
         public DialogViewModelBase()
         {
             this.OKButtonCommand = new RelayCommand(_ => OKButtonClicked());
+        }
+
+        protected void RaiseRequestClose()
+        {
+            this.RequestClose?.Invoke();
         }
 
         internal abstract void OKButtonClicked();

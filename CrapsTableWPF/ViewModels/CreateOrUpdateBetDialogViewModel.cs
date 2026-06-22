@@ -42,8 +42,6 @@ namespace CrapsTableWPF.ViewModels
         }
 
 
-        public event Action? RequestClose;
-
         public CreateOrUpdateBetDialogViewModel(CrapsTable crapsTable, betType betType)
         {
             var betInfo = BetFactory.BetDefinitions[betType];
@@ -71,7 +69,7 @@ namespace CrapsTableWPF.ViewModels
 
             // ask dialog to close
             this.HasErrors = false;
-            this.RequestClose?.Invoke();
+            this.RaiseRequestClose();
         }
     }
 }

@@ -65,14 +65,7 @@ namespace CrapsLibrary.Bets
                 { betType.PlaceBet_10,   new(  9, 5, "Place Bet 10"   , new List<int>{ 10 } ) }
             };
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="crapsTable"></param>
-        /// <param name="player"></param>
-        /// <param name="betType"></param>
-        /// <param name="amountThrownAtBet"></param>
-        /// <returns></returns>
+
         public static Result<Bet> CreateBet(CrapsTable crapsTable, Player player, betType betType, uint amountThrownAtBet)
         {
             if (player.Purse < amountThrownAtBet) // the player cannot bet more than they have
@@ -154,13 +147,7 @@ namespace CrapsLibrary.Bets
                             BetDefinitions[betType].payoutDenominator;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="crapsTable"></param>
-        /// <param name="playerToCheck"></param>
-        /// <param name="playerBetType"></param>
-        /// <returns></returns>
+
         public static Result<bool> CheckIfCreateBetAllowed(CrapsTable crapsTable, Player playerToCheck, betType playerBetType)
         {
             // check that the player doesn't already have this bet in their list
@@ -196,14 +183,7 @@ namespace CrapsLibrary.Bets
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="crapsTable"></param>
-        /// <param name="playerToCheck"></param>
-        /// <param name="betType"></param>
-        /// <returns></returns>
-        /// <exception cref="ArgumentException"></exception>
+
         public static Result<bool> IsPlaceBetAllowed(CrapsTable crapsTable, Player playerToCheck, betType betType)
         {
             int placeBetNumber = betType switch
@@ -229,12 +209,7 @@ namespace CrapsLibrary.Bets
             return Result<bool>.Pass(true);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="crapsTable"></param>
-        /// <param name="player"></param>
-        /// <returns></returns>
+
         public static List<betType> GetCreateableBets(CrapsTable crapsTable, Player player)
         {
             return Enum.GetValues<betType>()

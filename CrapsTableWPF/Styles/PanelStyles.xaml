@@ -4,6 +4,20 @@
 
     <!--border styles-->
     <!--Border is a visual container, which controls how things look-->
+
+    <!--<Style x:Key="HideWhenDataContextIsNull"
+           TargetType="Border"
+           BasedOn="{StaticResource {x:Type Border}}">
+        <Setter Property="Visibility"           Value="Visible"/>
+
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding DataContext, RelativeSource={RelativeSource Self}}"
+                         Value="{x:Null}">
+                <Setter Property="Visibility"   Value="Collapsed"/>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>-->
+    
     <Style x:Key="NoBorderStyle" 
            TargetType="Border"
            BasedOn="{StaticResource {x:Type Border}}">
@@ -39,7 +53,8 @@
            BasedOn="{StaticResource RoundedBorderStyle}">
         <Setter Property="Padding"              Value="10,6,10,6"/>
     </Style>
-
+    
+    <!--bet slot views-->
     <Style x:Key="BetBorderStyle" 
            TargetType="Border"
            BasedOn="{StaticResource {x:Type Border}}">
@@ -49,6 +64,7 @@
         <Setter Property="Height"               Value="40"/>
     </Style>
 
+    
     <!--outer glow effect-->
     <Style x:Key="GlowingBorderStyle"
            TargetType="Border"

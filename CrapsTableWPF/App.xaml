@@ -24,6 +24,7 @@
             
             <!--custom-->
             <infrastructure:InverseBoolToVisibilityConverter x:Key="InverseBoolToVisibilityConverter"/>
+            <infrastructure:NullToVisibilityConverter x:Key="NullToVisibilityConverter"/>
         </ResourceDictionary>
     </Application.Resources>
     

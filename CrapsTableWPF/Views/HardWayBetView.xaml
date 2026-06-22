@@ -13,44 +13,60 @@
     <!--<Border Width="352" Height="100" Background="AliceBlue"/>-->
     <Canvas Width="352" Height="100"
             Background="Transparent">
+        
         <Border Canvas.Left="134" Canvas.Top="58"
             Style="{StaticResource BetBorderStyle}"
+            Visibility="{Binding BetSlotViewModels[0], Converter={StaticResource NullToVisibilityConverter}}"
             >
             <views:BetSlotView DataContext="{Binding BetSlotViewModels[0]}"/>
         </Border>
+        
         <Border Canvas.Left="90" Canvas.Top="58"
             Style="{StaticResource BetBorderStyle}"
+            Visibility="{Binding BetSlotViewModels[1], Converter={StaticResource NullToVisibilityConverter}}"
             >
             <views:BetSlotView DataContext="{Binding BetSlotViewModels[1]}"/>
         </Border>
+        
         <Border Canvas.Left="46" Canvas.Top="58"
             Style="{StaticResource BetBorderStyle}"
+            Visibility="{Binding BetSlotViewModels[2], Converter={StaticResource NullToVisibilityConverter}}"
             >
             <views:BetSlotView DataContext="{Binding BetSlotViewModels[2]}"/>
         </Border>
+        
         <Border Canvas.Left="2" Canvas.Top="58"
             Style="{StaticResource BetBorderStyle}"
+            Visibility="{Binding BetSlotViewModels[3], Converter={StaticResource NullToVisibilityConverter}}"
             >
             <views:BetSlotView DataContext="{Binding BetSlotViewModels[3]}"/>
         </Border>
 
+        
         <Border Canvas.Left="2" Canvas.Top="2"
             Style="{StaticResource BetBorderStyle}"
+            Visibility="{Binding BetSlotViewModels[4], Converter={StaticResource NullToVisibilityConverter}}"
             >
             <views:BetSlotView DataContext="{Binding BetSlotViewModels[4]}"/>
         </Border>
+        
         <Border Canvas.Left="46" Canvas.Top="2"
             Style="{StaticResource BetBorderStyle}"
+            Visibility="{Binding BetSlotViewModels[5], Converter={StaticResource NullToVisibilityConverter}}"
             >
             <views:BetSlotView DataContext="{Binding BetSlotViewModels[5]}"/>
         </Border>
+        
         <Border Canvas.Left="90" Canvas.Top="2"
             Style="{StaticResource BetBorderStyle}"
+            Visibility="{Binding BetSlotViewModels[6], Converter={StaticResource NullToVisibilityConverter}}"
             >
             <views:BetSlotView DataContext="{Binding BetSlotViewModels[6]}"/>
         </Border>
+        
         <Border Canvas.Left="134" Canvas.Top="2"
             Style="{StaticResource BetBorderStyle}"
+            Visibility="{Binding BetSlotViewModels[7], Converter={StaticResource NullToVisibilityConverter}}"
             >
             <views:BetSlotView DataContext="{Binding BetSlotViewModels[7]}"/>
         </Border>

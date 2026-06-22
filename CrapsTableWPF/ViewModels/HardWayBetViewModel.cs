@@ -95,7 +95,6 @@ namespace CrapsTableWPF.ViewModels
             //if (CountOfUnitsToBet == null)
             //    return;
 
-            //uint commitment = (uint)CountOfUnitsToBet * UnitOfBet;
 
             if (betVO == null)
                 return;

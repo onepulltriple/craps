@@ -73,82 +73,76 @@ namespace CrapsLibrary.Bets
             if (existingBet != null)
                 return UpdateBet(crapsTable, player, existingBet, amountThrownAtBet);
 
+            // check if the bet is allowed (possibly redundant)
+            Result<bool> check = CheckIfCreateBetAllowed(crapsTable, player, betType);
+            if (!check.Success)
+                return Result<Bet>.Fail(check.Messages.ToArray());
+
             return CreateBet(crapsTable, player, betType, amountThrownAtBet);
         }
 
-        public static Result<bool> ValidatePlayerCanAffordUnitOfBet(Player player, uint unitOfBet)
+        public static Result<bool> ValidatePlayerCanAffordUnitOfBet(Player player, int amountToCommit)
         {
             // the player cannot bet more than they have
-            if (player.Purse < unitOfBet)
+            if (player.Purse < amountToCommit)
                 return Result<bool>.Fail(
-                    $"The minimum bet amount is {unitOfBet}. The bet amount may not exceed the player's purse amount.");
+                    $"The minimum bet amount is {amountToCommit}. The bet amount may not exceed the player's purse amount.");
             return Result<bool>.Pass(true);
         }
 
 
+        public static (int, int, int) CalculateBetUnitsAndChange(uint unitOfBet, int amountThrownAtBetAsInt)
+        {
+            int countOfUnitsToBet = (int)(amountThrownAtBetAsInt / unitOfBet); // the quotient
+
+            // remainder to return to player = amount thrown at bet minus the quantity quotient times units
+            int amountChangeToReturn = amountThrownAtBetAsInt - (countOfUnitsToBet * (int)unitOfBet);
+            int amountToCommitAsInt = amountThrownAtBetAsInt - amountChangeToReturn;
+
+            return (countOfUnitsToBet, amountToCommitAsInt, amountChangeToReturn); // TODO amountChangeToReturn might be used later
+        }
+
         public static Result<Bet> UpdateBet(CrapsTable crapsTable, Player player, Bet existingBet, uint amountThrownAtBet)
         {
-            uint unitOfBet = existingBet.UnitOfBet;
+            uint unitOfBet = existingBet.UnitOfBet; // deliberate to show similarities with CreateBet(...)
 
-            if(!ValidatePlayerCanAffordUnitOfBet(player, existingBet.UnitOfBet).Success)
-                return Result<Bet>.Fail(ValidatePlayerCanAffordUnitOfBet(player, existingBet.UnitOfBet).Messages[0]);
+            int amountThrownAtBetAsInt = (int)(amountThrownAtBet - existingBet.CountOfUnitsToBet * existingBet.UnitOfBet);
 
-            var (countOfUnitsToBet, amountToCommit, amountChangeToReturn) = CalculateBetUnitsAndChange(unitOfBet, amountThrownAtBet, existingBet);
+            var (countOfUnitsToBetAsInt, amountToCommitAsInt, amountChangeToReturnAsInt) = CalculateBetUnitsAndChange(unitOfBet, amountThrownAtBetAsInt);
 
-            // charge player for the bet
-            player.Purse -= amountToCommit;
-            player.Purse += amountChangeToReturn; // TODO this needs to happen on the BetDialog level
+            // check here if player can afford amount to commit, because it could be negative at this point
+            if(!ValidatePlayerCanAffordUnitOfBet(player, amountToCommitAsInt).Success)
+                return Result<Bet>.Fail(ValidatePlayerCanAffordUnitOfBet(player, amountToCommitAsInt).Messages[0]);
+            
+            // charge (or refund) player for the bet
+            player.Purse = (uint)(player.Purse - amountToCommitAsInt);
 
             // update counts of bet units
-            existingBet.CountOfUnitsToBet += countOfUnitsToBet;
-            existingBet.Commitment += amountToCommit;
+            existingBet.CountOfUnitsToBet = (uint)(existingBet.CountOfUnitsToBet + countOfUnitsToBetAsInt);
+            existingBet.Commitment = (uint)(existingBet.Commitment + amountToCommitAsInt);
             existingBet.Payout = CalculatePayout(existingBet.betType, existingBet.UnitOfBet, existingBet.CountOfUnitsToBet);
             // TODO allow negative numbers (elsewhere to be implemented)
 
-            return Result<Bet>.Pass(existingBet);
-                //$"{bet.betOwner.Name} " +
-                //$"has bet {tempBet.CountOfUnitsToBet * tempBet.UnitOfBet} " +
-                //$"on {tempBet.Name}.");
-        }
-
-        public static (uint, uint, uint) CalculateBetUnitsAndChange(uint unitOfBet, uint amountThrownAtBet, Bet? existingBet = null)
-        {
-            uint amountToCommit = 0;
-            
-            if (existingBet != null)
-            {
-                amountThrownAtBet = amountThrownAtBet - existingBet.CountOfUnitsToBet * existingBet.UnitOfBet;
-            }
-
-            uint countOfUnitsToBet = amountThrownAtBet / unitOfBet; // the quotient
-
-            // remainder to return to player = amount thrown at bet minus the quantity quotient times units
-            uint amountChangeToReturn = amountThrownAtBet - (countOfUnitsToBet * unitOfBet);
-            amountToCommit = amountThrownAtBet - amountChangeToReturn;
-
-            return (countOfUnitsToBet, amountToCommit, amountChangeToReturn);
+            return Result<Bet>.Pass(existingBet); // add message?
         }
 
         public static Result<Bet> CreateBet(CrapsTable crapsTable, Player player, betType betType, uint amountThrownAtBet)
         {
             uint unitOfBet = DetermineUnitOfBet(crapsTable, betType);
 
-            if (!ValidatePlayerCanAffordUnitOfBet(player, unitOfBet).Success)
-                return Result<Bet>.Fail(ValidatePlayerCanAffordUnitOfBet(player, unitOfBet).Messages[0]);
+            int amountThrownAtBetAsInt = (int)(amountThrownAtBet);
 
-            var (countOfUnitsToBet, amountToCommit, amountChangeToReturn) = CalculateBetUnitsAndChange(unitOfBet, amountThrownAtBet);
+            var (countOfUnitsToBetAsInt, amountToCommitAsInt, amountChangeToReturnAsInt) = CalculateBetUnitsAndChange(unitOfBet, amountThrownAtBetAsInt);
 
-            // check if the bet is allowed
-            Result<bool> check = CheckIfCreateBetAllowed(crapsTable, player, betType);
-            if (!check.Success)
-                return Result<Bet>.Fail(check.Messages.ToArray());
+            // check here if player can afford amount to commit
+            if (!ValidatePlayerCanAffordUnitOfBet(player, amountToCommitAsInt).Success)
+                return Result<Bet>.Fail(ValidatePlayerCanAffordUnitOfBet(player, amountToCommitAsInt).Messages[0]);
 
             // charge player for the bet
-            player.Purse -= amountToCommit;
-            player.Purse += amountChangeToReturn;
+            player.Purse = (uint)(player.Purse - amountToCommitAsInt);
 
             // calculate potential payout
-            uint payout = CalculatePayout(betType, unitOfBet, countOfUnitsToBet);
+            uint payout = CalculatePayout(betType, unitOfBet, (uint)countOfUnitsToBetAsInt);
 
             // create bet
             Bet? tempBet = null;
@@ -160,11 +154,11 @@ namespace CrapsLibrary.Bets
                 case betType.Hard_08:
                 case betType.Hard_10:
                 case betType.Hard_12:
-                    tempBet = new HardWayBet(crapsTable, player, betType, countOfUnitsToBet, unitOfBet, BetDefinitions[betType].winningTotals, payout);
+                    tempBet = new HardWayBet(crapsTable, player, betType, (uint)countOfUnitsToBetAsInt, unitOfBet, BetDefinitions[betType].winningTotals, payout);
                     break;
 
                 case betType.PassBet:
-                    tempBet = new PassBet(crapsTable, player, betType, countOfUnitsToBet, unitOfBet, BetDefinitions[betType].winningTotals, payout);
+                    tempBet = new PassBet(crapsTable, player, betType, (uint)countOfUnitsToBetAsInt, unitOfBet, BetDefinitions[betType].winningTotals, payout);
                     break;
 
                 case betType.PlaceBet_04:
@@ -173,7 +167,7 @@ namespace CrapsLibrary.Bets
                 case betType.PlaceBet_08:
                 case betType.PlaceBet_09:
                 case betType.PlaceBet_10:
-                    tempBet = new PlaceBet(crapsTable, player, betType, countOfUnitsToBet, unitOfBet, BetDefinitions[betType].winningTotals, payout);
+                    tempBet = new PlaceBet(crapsTable, player, betType, (uint)countOfUnitsToBetAsInt, unitOfBet, BetDefinitions[betType].winningTotals, payout);
                     break;
 
                 default:

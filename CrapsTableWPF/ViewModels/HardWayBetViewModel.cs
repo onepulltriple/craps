@@ -56,7 +56,7 @@ namespace CrapsTableWPF.ViewModels
             BetSlotViewModels[slotIndex] = new BetSlotViewModel(slotOwner, slotIndex, this.betType, bet);
         }
 
-        public void CreateOrUpdateBet() // TODO send to a base class and make CreateOrUpdate()
+        public void CreateOrUpdateBet() // TODO send to a base class
         {
             // determine which player is trying to bet
             Result<Player> currentPlayer = crapsTable.GetCurrentPlayer();

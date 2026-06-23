@@ -1,4 +1,4 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.Numerics;
 
 namespace CrapsLibrary.Bets
 {
@@ -65,41 +65,90 @@ namespace CrapsLibrary.Bets
                 { betType.PlaceBet_10,   new(  9, 5, "Place Bet 10"   , new List<int>{ 10 } ) }
             };
 
+        public static Result<Bet> CreateOrUpdateBet(CrapsTable crapsTable, Player player, betType betType, uint amountThrownAtBet)
+        {
+            // check if the player already has this bet in their list
+            Bet? existingBet = player.PlayerBetList.FirstOrDefault(bet => bet.betType == betType);
+
+            if (existingBet != null)
+                return UpdateBet(crapsTable, player, existingBet, amountThrownAtBet);
+
+            return CreateBet(crapsTable, player, betType, amountThrownAtBet);
+        }
+
+        public static Result<bool> ValidatePlayerCanAffordUnitOfBet(Player player, uint unitOfBet)
+        {
+            // the player cannot bet more than they have
+            if (player.Purse < unitOfBet)
+                return Result<bool>.Fail(
+                    $"The minimum bet amount is {unitOfBet}. The bet amount may not exceed the player's purse amount.");
+            return Result<bool>.Pass(true);
+        }
+
+
+        public static Result<Bet> UpdateBet(CrapsTable crapsTable, Player player, Bet existingBet, uint amountThrownAtBet)
+        {
+            uint unitOfBet = existingBet.UnitOfBet;
+
+            if(!ValidatePlayerCanAffordUnitOfBet(player, existingBet.UnitOfBet).Success)
+                return Result<Bet>.Fail(ValidatePlayerCanAffordUnitOfBet(player, existingBet.UnitOfBet).Messages[0]);
+
+            var (countOfUnitsToBet, amountToCommit, amountChangeToReturn) = CalculateBetUnitsAndChange(unitOfBet, amountThrownAtBet, existingBet);
+
+            // charge player for the bet
+            player.Purse -= amountToCommit;
+            player.Purse += amountChangeToReturn; // TODO this needs to happen on the BetDialog level
+
+            // update counts of bet units
+            existingBet.CountOfUnitsToBet += countOfUnitsToBet;
+            existingBet.Commitment += amountToCommit;
+            existingBet.Payout = CalculatePayout(existingBet.betType, existingBet.UnitOfBet, existingBet.CountOfUnitsToBet);
+            // TODO allow negative numbers (elsewhere to be implemented)
+
+            return Result<Bet>.Pass(existingBet);
+                //$"{bet.betOwner.Name} " +
+                //$"has bet {tempBet.CountOfUnitsToBet * tempBet.UnitOfBet} " +
+                //$"on {tempBet.Name}.");
+        }
+
+        public static (uint, uint, uint) CalculateBetUnitsAndChange(uint unitOfBet, uint amountThrownAtBet, Bet? existingBet = null)
+        {
+            uint amountToCommit = 0;
+            
+            if (existingBet != null)
+            {
+                amountThrownAtBet = amountThrownAtBet - existingBet.CountOfUnitsToBet * existingBet.UnitOfBet;
+            }
+
+            uint countOfUnitsToBet = amountThrownAtBet / unitOfBet; // the quotient
+
+            // remainder to return to player = amount thrown at bet minus the quantity quotient times units
+            uint amountChangeToReturn = amountThrownAtBet - (countOfUnitsToBet * unitOfBet);
+            amountToCommit = amountThrownAtBet - amountChangeToReturn;
+
+            return (countOfUnitsToBet, amountToCommit, amountChangeToReturn);
+        }
 
         public static Result<Bet> CreateBet(CrapsTable crapsTable, Player player, betType betType, uint amountThrownAtBet)
         {
-            if (player.Purse < amountThrownAtBet) // the player cannot bet more than they have
-                return Result<Bet>.Fail(
-                    "The bet amount may not exceed the player's purse amount.", "You can't bet money you don't have!"
-                    );
-
-            // determine betting units
             uint unitOfBet = DetermineUnitOfBet(crapsTable, betType);
 
-            // the player player cannot cover at least one bet of that type (e.g. throwing 5 credits at a Place_06)
-            if (amountThrownAtBet < unitOfBet)
-                return Result<Bet>.Fail(
-                    $"The minimum bet amount is {unitOfBet}."
-                    );
+            if (!ValidatePlayerCanAffordUnitOfBet(player, unitOfBet).Success)
+                return Result<Bet>.Fail(ValidatePlayerCanAffordUnitOfBet(player, unitOfBet).Messages[0]);
 
-            uint countOfUnitsToBet = amountThrownAtBet / unitOfBet; // the quotient
-            // remainder to return to player = amount thrown at bet minus the quantity quotient times units
-            uint amountChangeToReturn = amountThrownAtBet - (countOfUnitsToBet * unitOfBet);
-
-            // charge player for the bet
-            player.Purse -= amountThrownAtBet;
-            player.Purse += amountChangeToReturn;
-
-            // calculate potential payout
-            uint payout =
-                (countOfUnitsToBet * unitOfBet) *
-                BetDefinitions[betType].payoutNumerator /
-                BetDefinitions[betType].payoutDenominator;
+            var (countOfUnitsToBet, amountToCommit, amountChangeToReturn) = CalculateBetUnitsAndChange(unitOfBet, amountThrownAtBet);
 
             // check if the bet is allowed
             Result<bool> check = CheckIfCreateBetAllowed(crapsTable, player, betType);
             if (!check.Success)
                 return Result<Bet>.Fail(check.Messages.ToArray());
+
+            // charge player for the bet
+            player.Purse -= amountToCommit;
+            player.Purse += amountChangeToReturn;
+
+            // calculate potential payout
+            uint payout = CalculatePayout(betType, unitOfBet, countOfUnitsToBet);
 
             // create bet
             Bet? tempBet = null;
@@ -140,6 +189,13 @@ namespace CrapsLibrary.Bets
                 $"on {tempBet.Name}.");
         }
 
+        private static uint CalculatePayout(betType betType, uint unitOfBet, uint countOfUnitsToBet)
+        {
+            return (countOfUnitsToBet * unitOfBet) *
+                BetDefinitions[betType].payoutNumerator /
+                BetDefinitions[betType].payoutDenominator;
+        }
+
         public static uint DetermineUnitOfBet(CrapsTable crapsTable, betType betType)
         {
             return crapsTable.tableMinimum /
@@ -150,11 +206,6 @@ namespace CrapsLibrary.Bets
 
         public static Result<bool> CheckIfCreateBetAllowed(CrapsTable crapsTable, Player playerToCheck, betType playerBetType)
         {
-            // check that the player doesn't already have this bet in their list
-            if (playerToCheck.PlayerBetList.Any(bet => bet.betType == playerBetType))
-                return Result<bool>.Fail("Players can only possess one count of each bet type at a time.");
-            // TODO lost bets should be available to be placed again
-
             switch (playerBetType)
             {
                 case betType.PlaceBet_04:
@@ -224,6 +275,7 @@ namespace CrapsLibrary.Bets
         // TODO GetParlayableBets
         // TODO GetPressAndCollectableBets
         // TODO GetLostBets
-
+        // TODO lost bets should be available to be placed again
+        // TODO CheckIfUpdateBetAllowed
     }
 }

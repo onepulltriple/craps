@@ -60,6 +60,7 @@ namespace CrapsLibrary.Bets
             }
         }
 
+        // what is at risk
         private uint _commitment;
         public uint Commitment
         {
@@ -74,6 +75,7 @@ namespace CrapsLibrary.Bets
             }
         }
 
+        // what can be won
         private uint _payout;
         public uint Payout
         {

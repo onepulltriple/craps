@@ -18,12 +18,12 @@
         
         <TextBlock Grid.Row="0"
             Style="{StaticResource PlayerHeadingStyle}"
-            Text="{Binding Name}" 
+            Text="{Binding Model.Name, UpdateSourceTrigger=PropertyChanged}" 
             d:Text="player.Name"
             />
         <TextBlock Grid.Row="1"
             Style="{StaticResource PlayerBodyTextStyle}"
-            Text="{Binding Purse, TargetNullValue='NULL', FallbackValue='NO DATA'}"
+            Text="{Binding Model.Purse, UpdateSourceTrigger=PropertyChanged, TargetNullValue='NULL', FallbackValue='NO DATA'}"
             d:Text="player.Purse"
             />
     </Grid>

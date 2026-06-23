@@ -37,16 +37,9 @@ namespace CrapsTableWPF.Services
             };
         }
 
-        public BetVO? CreateOrUpdateBetDialog(CrapsTable crapsTable, Player currentPlayer, betType betType, Bet? bet)
+        public Bet? CreateOrUpdateBetDialog(CrapsTable crapsTable, Player currentPlayer, betType betType, Bet? bet)
         {
-            var betDialogViewModel = new CreateOrUpdateBetDialogViewModel(crapsTable, currentPlayer, betType);
-
-            if (bet != null)
-            {
-                //betDialogViewModel.Name = $"Edit {bet.betOwner.Name}'s {bet.Name}"; 
-                //betDialogViewModel.UnitOfBet = bet.UnitOfBet.ToString();
-                betDialogViewModel.Commitment = bet.Commitment.ToString();
-            }
+            var betDialogViewModel = new CreateOrUpdateBetDialogViewModel(crapsTable, currentPlayer, betType, bet);
 
             // set the data context for the dialog
             var editBetDialog = new CreateOrUpdateBetDialog
@@ -59,12 +52,8 @@ namespace CrapsTableWPF.Services
             if (result != true) 
                 return null;
 
-            return new BetVO
-            {
-                //Name = betDialogViewModel.Name!,
-                //UnitOfBet = betDialogViewModel.UnitOfBet!,
-                Commitment = uint.Parse(betDialogViewModel.Commitment!)
-            };
+            return betDialogViewModel.bet;
+
         }
     }
 }

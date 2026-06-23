@@ -5,7 +5,7 @@ namespace CrapsLibrary.TableState
     public class TableStateMachine // the engine
         // holds the current state, controls transitions, drives updates
     {
-        private TableState currentTableState; // no default starting state
+        private TableState? currentTableState; // no default starting state
 
         public void ChangeTableState(TableState newTableState)
         {

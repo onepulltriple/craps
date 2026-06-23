@@ -43,6 +43,7 @@ namespace CrapsTableWPF.ViewModels
         {
             this._model = player;
 
+            //this._model.PropertyChanged += 
         }
 
     }

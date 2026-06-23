@@ -100,7 +100,7 @@
                 Grid.Row="1" Grid.Column="5"
                 Style="{StaticResource PopUpWindowTextBoxTextStyle}"
                 d:Text="amountThrown"
-                Text="{Binding Commitment, UpdateSourceTrigger=PropertyChanged}"
+                Text="{Binding AmountThrownAtBet, UpdateSourceTrigger=PropertyChanged}"
                 />
         </Grid>
 

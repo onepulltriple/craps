@@ -77,7 +77,7 @@ namespace ConsoleAppForCraps.DealerCLIState
         {
             string enteredName = NamePlayerCLI();
 
-            Result<bool> outcome = dealerCLIStateMachine.crapsTable!.AddPlayerToNextFreeSlot(new Player(enteredName, 100));
+            Result<bool> outcome = dealerCLIStateMachine.crapsTable!.AddPlayerToNextFreeSlot(new Player(dealerCLIStateMachine.crapsTable!, enteredName, 100));
 
             foreach (string message in outcome.Messages)
                 Console.Write(message);

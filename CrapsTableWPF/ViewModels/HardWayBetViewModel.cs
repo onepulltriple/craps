@@ -42,7 +42,7 @@ namespace CrapsTableWPF.ViewModels
             this.UnitOfBet = BetFactory.DetermineUnitOfBet(crapsTable, betType);
             this.BetSlotViewModels = new(crapsTable.Slots.Select(x => (BetSlotViewModel?)null));
 
-            this.CreateBetCommand = new RelayCommand(_ => CreateBet());
+            this.CreateBetCommand = new RelayCommand(_ => CreateOrUpdateBet());
 
 
         }
@@ -56,7 +56,7 @@ namespace CrapsTableWPF.ViewModels
             BetSlotViewModels[slotIndex] = new BetSlotViewModel(slotOwner, slotIndex, this.betType, bet);
         }
 
-        public void CreateBet() // TODO send to a base class and make CreateOrUpdate()
+        public void CreateOrUpdateBet() // TODO send to a base class and make CreateOrUpdate()
         {
             // determine which player is trying to bet
             Result<Player> currentPlayer = crapsTable.GetCurrentPlayer();
@@ -73,7 +73,7 @@ namespace CrapsTableWPF.ViewModels
                 bet => bet.betType == this.betType
                 );
 
-            // check if the player is allowed to place a new bet of this type, should no existing bet be found
+            // should no existing bet be found, check if the player is allowed to place a new bet of this type
             if (existingBet == null)
             {
                 Result<bool> isBetAllowed = BetFactory.CheckIfCreateBetAllowed(this.crapsTable, currentPlayer.Value, this.betType);
@@ -87,36 +87,14 @@ namespace CrapsTableWPF.ViewModels
             }
 
             // call dialog service
-            var betVO = dialogService.CreateOrUpdateBetDialog(this.crapsTable, currentPlayer.Value, this.betType, existingBet);
+            var tempBet = dialogService.CreateOrUpdateBetDialog(this.crapsTable, currentPlayer.Value, this.betType, existingBet);
 
-
-
-            //// determine commitment
-            //if (CountOfUnitsToBet == null)
-            //    return;
-
-
-            if (betVO == null)
+            // null check
+            if (tempBet == null)
                 return;
-
-            // create a bet (with this player in mind) using the betVO data
-            // the best will not yet be added to the player bet list
-            Result<Bet> createBetResult = BetFactory.CreateBet(this.crapsTable, currentPlayer.Value, this.betType, betVO.Commitment);
-
-            // error message if the bet creation failed
-            crapsTable.gameEventFeed.AddMultiLine(createBetResult);
-
-            // abort if the bet creation failed
-            if (!createBetResult.Success)
-                return;
-
-            // add the bet to the player's bet list
-            currentPlayer.Value.AddOneBet(createBetResult.Value);
 
             // populate the view
-            this.PopulateBetSlot(currentPlayer.Value, createBetResult.Value);
-
-            // also fix the ugliness of the popup dialog
+            this.PopulateBetSlot(currentPlayer.Value, tempBet);
         }
     }
 }

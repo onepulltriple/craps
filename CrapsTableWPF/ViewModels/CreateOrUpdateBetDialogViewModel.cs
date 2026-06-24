@@ -1,9 +1,5 @@
 ﻿using CrapsLibrary;
 using CrapsLibrary.Bets;
-using CrapsTableWPF.Infrastructure;
-using CrapsTableWPF.ValueObjects;
-using System.Windows;
-using System.Windows.Input;
 
 namespace CrapsTableWPF.ViewModels
 {

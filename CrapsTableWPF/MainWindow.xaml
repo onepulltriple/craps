@@ -295,7 +295,7 @@
                       >
                     <Path.InputBindings>
                         <MouseBinding Gesture="LeftClick"
-                                      Command="{Binding CreateBetCommand}" />
+                                      Command="{Binding CreateOrUpdateBetCommand}" />
                     </Path.InputBindings>
                 </Path>
 

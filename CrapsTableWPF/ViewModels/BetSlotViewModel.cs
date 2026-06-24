@@ -42,23 +42,19 @@ namespace CrapsTableWPF.ViewModels
 
             this.BetViewModel = new BetViewModel(bet);
 
-            slotOwner.PlayerBetList.CollectionChanged += OnPlayerBetListChanged;
+            //slotOwner.PlayerBetList.CollectionChanged += OnPlayerBetListChanged;
         }
 
         private void OnPlayerBetListChanged(object? sender, NotifyCollectionChangedEventArgs e)
         {
             if (e.NewItems?.Count > 0)
             {
-                var bet = (Bet)e.NewItems.OfType<Bet>().Select(b => b.betType == this.betType);
 
-                this.BetViewModel = new BetViewModel(bet);
             }
 
             if (e.OldItems?.Count > 0)
             {
-                //var bet = (Bet)e.OldItems.OfType<Bet>().Select(b => b.betType == this.betType);
 
-                // do what?
             }
         }
     }

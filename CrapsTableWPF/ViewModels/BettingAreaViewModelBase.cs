@@ -24,7 +24,7 @@ namespace CrapsTableWPF.ViewModels
             this.crapsTable = crapsTable;
             this.dialogService = dialogService;
             this.betType = betType;
-            this.BetSlotViewModels = new(crapsTable.Slots.Select(x => (BetSlotViewModel?)null));
+            this.BetSlotViewModels = new(crapsTable.Slots.Select(_ => (BetSlotViewModel?)null));
 
             this.CreateOrUpdateBetCommand = new RelayCommand(_ => CreateOrUpdateBet());
             // TODO block button click if player cannot place bet of this type, then remove CheckIfCreateBetAllowed from CreateOrUpdateBet()
@@ -70,15 +70,19 @@ namespace CrapsTableWPF.ViewModels
 
         public void RefreshBetSlot(Player slotOwner, Bet? bet = null)
         {
-            if (bet == null)
-                bet = slotOwner.PlayerBetList.FirstOrDefault(b => b.betType == this.betType);
-
             // determine slot index of the betting player
             int slotIndex = Array.IndexOf(crapsTable.Slots, slotOwner);
+            
+            // find out if there is a bet to display
+            bet ??= slotOwner.PlayerBetList.FirstOrDefault(b => b.betType == this.betType);
 
-            // populate bet slot view
+            // if there is a bet to display, construct a BetSlotViewModel
             if (bet != null)
                 BetSlotViewModels[slotIndex] = new BetSlotViewModel(slotOwner, slotIndex, this.betType, bet);
+
+            // if there is still no bet to display, i.e. because an existing bet was removed, set the BetSlotViewModel to null
+            else
+                BetSlotViewModels[slotIndex] = null;
         }
     }
 }

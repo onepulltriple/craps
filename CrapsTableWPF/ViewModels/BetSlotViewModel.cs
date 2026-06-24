@@ -49,12 +49,12 @@ namespace CrapsTableWPF.ViewModels
         {
             if (e.NewItems?.Count > 0)
             {
-
+                //
             }
 
             if (e.OldItems?.Count > 0)
             {
-
+                //
             }
         }
     }

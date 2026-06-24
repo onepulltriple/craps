@@ -1,8 +1,6 @@
 ﻿using CrapsLibrary;
 using CrapsTableWPF.Infrastructure;
 using System.Windows;
-using System.Windows.Input;
-
 namespace CrapsTableWPF.ViewModels
 {
     public class CreateOrUpdatePlayerDialogViewModel : DialogViewModelBase

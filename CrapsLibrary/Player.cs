@@ -56,6 +56,11 @@ namespace CrapsLibrary
             //this.crapsTable.OnBetPlaced();
         }
 
+        public void RemoveOneBet(Bet bet)
+        {
+            this.PlayerBetList.Remove(bet);
+        }
+
 
 
         // become new roller

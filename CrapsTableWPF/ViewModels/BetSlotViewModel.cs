@@ -56,7 +56,7 @@ namespace CrapsTableWPF.ViewModels
 
             if (e.OldItems?.Count > 0)
             {
-                var bet = (Bet)e.OldItems.OfType<Bet>().Select(b => b.betType == this.betType);
+                //var bet = (Bet)e.OldItems.OfType<Bet>().Select(b => b.betType == this.betType);
 
                 // do what?
             }

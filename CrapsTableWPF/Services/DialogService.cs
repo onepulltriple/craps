@@ -37,7 +37,7 @@ namespace CrapsTableWPF.Services
             };
         }
 
-        public Bet? CreateOrUpdateBetDialog(CrapsTable crapsTable, Player currentPlayer, betType betType, Bet? bet)
+        public void CreateOrUpdateBetDialog(CrapsTable crapsTable, Player currentPlayer, betType betType, Bet? bet)
         {
             var betDialogViewModel = new CreateOrUpdateBetDialogViewModel(crapsTable, currentPlayer, betType, bet);
 
@@ -48,12 +48,6 @@ namespace CrapsTableWPF.Services
             };
 
             bool? result = editBetDialog.ShowDialog();
-
-            if (result != true) 
-                return null;
-
-            return betDialogViewModel.bet;
-
         }
     }
 }

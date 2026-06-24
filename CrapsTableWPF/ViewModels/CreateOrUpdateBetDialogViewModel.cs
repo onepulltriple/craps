@@ -11,7 +11,7 @@ namespace CrapsTableWPF.ViewModels
 
         private readonly betType betType;
 
-        public Bet? bet;
+        public Bet? betInQuestion;
 
         private string _playerName = "";
         public string PlayerName
@@ -99,7 +99,7 @@ namespace CrapsTableWPF.ViewModels
 
             if (bet != null)
             {
-                this.bet = bet;
+                this.betInQuestion = bet;
                 this.BetName = bet.Name;
                 this.UnitOfBet = bet.UnitOfBet.ToString();
                 this.CountOfUnitsToBet = bet.CountOfUnitsToBet.ToString();
@@ -127,7 +127,6 @@ namespace CrapsTableWPF.ViewModels
             }
 
             // create or update a bet (with the current player in mind) 
-            // the bet will not yet be added to the player bet list
             Result<Bet> createOrUpdateBetResult = BetFactory.CreateOrUpdateBet(this.crapsTable, this.currentPlayer, this.betType, resultOfCheckingUintInput.Value);
 
             // display error messages if bet management failed
@@ -139,11 +138,14 @@ namespace CrapsTableWPF.ViewModels
             }
 
             // if the bet was newly created, add it to the player's bet list
-            if (this.bet == null)
+            if (this.betInQuestion == null)
                 this.currentPlayer.AddOneBet(createOrUpdateBetResult.Value);
 
-            // make the bet available for UI display (BetViewModel needs this to populate UI)
-            this.bet = createOrUpdateBetResult.Value;
+            // if the bet has been zeroed out, remove it from the player's bet list
+            if (this.betInQuestion != null && this.betInQuestion.CountOfUnitsToBet == 0)
+                this.currentPlayer.RemoveOneBet(createOrUpdateBetResult.Value);
+
+            // if the bet was only updated, it remains in the player's bet list
 
             // ask dialog to close
             this.HasErrors = false;

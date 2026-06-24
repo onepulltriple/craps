@@ -27,6 +27,8 @@ namespace CrapsTableWPF.ViewModels
             this.BetSlotViewModels = new(crapsTable.Slots.Select(x => (BetSlotViewModel?)null));
 
             this.CreateOrUpdateBetCommand = new RelayCommand(_ => CreateOrUpdateBet());
+            // TODO block button click if player cannot place bet of this type, then remove CheckIfCreateBetAllowed from CreateOrUpdateBet()
+            // because the check is performed once again in BetFactory.CreateOrUpdateBet()
         }
 
         public void CreateOrUpdateBet() 
@@ -59,24 +61,24 @@ namespace CrapsTableWPF.ViewModels
                 }
             }
 
-            // call dialog service
-            var tempBet = dialogService.CreateOrUpdateBetDialog(this.crapsTable, currentPlayer.Value, this.betType, existingBet);
+            // dialog updates model
+            dialogService.CreateOrUpdateBetDialog(this.crapsTable, currentPlayer.Value, this.betType, existingBet);
 
-            // null check
-            if (tempBet == null)
-                return;
-
-            // populate the view
-            this.PopulateBetSlot(currentPlayer.Value, tempBet);
+            // caller refreshes from model
+            this.RefreshBetSlot(currentPlayer.Value);
         }
 
-        public void PopulateBetSlot(Player slotOwner, Bet bet)
+        public void RefreshBetSlot(Player slotOwner, Bet? bet = null)
         {
+            if (bet == null)
+                bet = slotOwner.PlayerBetList.FirstOrDefault(b => b.betType == this.betType);
+
             // determine slot index of the betting player
             int slotIndex = Array.IndexOf(crapsTable.Slots, slotOwner);
 
             // populate bet slot view
-            BetSlotViewModels[slotIndex] = new BetSlotViewModel(slotOwner, slotIndex, this.betType, bet);
+            if (bet != null)
+                BetSlotViewModels[slotIndex] = new BetSlotViewModel(slotOwner, slotIndex, this.betType, bet);
         }
     }
 }

@@ -32,8 +32,8 @@
             <Viewbox Stretch="Uniform">
                 <Canvas Width="3200" Height="2000">
 
-                    <Path Fill="Yellow" x:Name="Chase"
-                          Data="M648,921C648,1029.8 736.2,1118 845,1118L1776,1118L1776,1178L845,1178C703.063,1178 588,1062.94 588,921L588,544.243C588,532.748 592.945,521.808 601.575,514.214L648,473.36L648,921" />
+                    <!--<Path Fill="Yellow" x:Name="Chase"
+                          Data="M648,921C648,1029.8 736.2,1118 845,1118L1776,1118L1776,1178L845,1178C703.063,1178 588,1062.94 588,921L588,544.243C588,532.748 592.945,521.808 601.575,514.214L648,473.36L648,921" />-->
                     <Path Fill="Transparent" 
                           Data="M720,921L660,921L660,462.8L720,410L720,921" />
                     <Path Fill="Transparent" Data="M648,921L805,921C815.609,921 825.783,925.214 833.284,932.716C840.786,940.217 845,950.391 845,961L845,1118C736.2,1118 648,1029.8 648,921" />
@@ -73,10 +73,10 @@
                     <Path Fill="Blue" Data="M1598,470L1774,470L1774,685L1598,685L1598,470" />
                     <Path Fill="Blue" Data="M1774,470L1950,470L1950,685L1774,685L1774,470" />
 
-                    <!-- Pass and Don't Pass Bets -->
+                    <!-- Pass and Don't Pass Bets --><!--
                     <Path Fill="Yellow" Data="M648,921C648,1029.8 736.2,1118 845,1118L1776,1118L1776,1178L845,1178C703.063,1178 588,1062.94 588,921L588,544.243C588,532.748 592.945,521.808 601.575,514.214L648,473.36L648,921" />
                     <Path Fill="DarkBlue" Data="M720,921L660,921L660,462.8L720,410L720,921" />
-                    <Path Fill="DarkBlue" Data="M845,1046L1776,1046L1776,1106L845,1106L845,1046" />
+                    <Path Fill="DarkBlue" Data="M845,1046L1776,1046L1776,1106L845,1106L845,1046" />-->
 
                     <!-- Come and Don't Come Bets -->
                     <Path Fill="Orange" Data="M833.284,932.716C825.783,925.214 815.609,921 805,921L720,921L720,685L1776,685L1776,861L946.421,861C919.9,861 894.464,871.536 875.711,890.289L833.284,932.716Z" />
@@ -161,11 +161,7 @@
 
 
 
-                    <!--<Path Data="M720,921L660,921L660,462.8L720,410L720,921"
-                        Fill="Transparent" 
-                        Stroke="Black"
-                        StrokeThickness="0"/>-->
-                    <!-- later use Fill="Tran sparent" or click detection may not work -->
+
 
 
                     <!-- x is plotted from the left edge, y is plotted from the top edge -->
@@ -276,7 +272,39 @@
                 </Button>
 
 
+                <!--current player index-->
+                <Border Canvas.Left="2000" Canvas.Top="1500"
+                        Style="{StaticResource BetBorderStyle}"
+                        >
+                    <TextBlock Canvas.Left="2000" Canvas.Top="1500"
+                                   Text="{Binding CurrentPlayerIndex}"
+                                   Style="{StaticResource MainWindowButtonCloseTextBlockStyle}"
+                                   d:Text="-2"
+                                   />
+                </Border>
 
+
+
+
+                <!-- Pass and Don't Pass Bets -->
+                <Border Canvas.Left="588" Canvas.Top="473.36"
+                        Style="{StaticResource NoClippingBorderStyle}"
+                        >
+                    <views:PassBetView DataContext="{Binding PassBetViewModel}"/>
+                </Border>
+                <Path DataContext="{Binding PassBetViewModel}"
+                      Data="M648,921C648,1029.8 736.2,1118 845,1118L1776,1118L1776,1178L845,1178C703.063,1178 588,1062.94 588,921L588,544.243C588,532.748 592.945,521.808 601.575,514.214L648,473.36L648,921"
+                      Style="{StaticResource AllowedBetPathStyle}"
+                      >
+                    <Path.InputBindings>
+                        <MouseBinding Gesture="LeftClick"
+                                      Command="{Binding CreateOrUpdateBetCommand}" />
+                    </Path.InputBindings>
+                </Path>
+                
+                <!--<Path Fill="Yellow" Data="M648,921C648,1029.8 736.2,1118 845,1118L1776,1118L1776,1178L845,1178C703.063,1178 588,1062.94 588,921L588,544.243C588,532.748 592.945,521.808 601.575,514.214L648,473.36L648,921" />-->
+                <Path Fill="DarkBlue" Data="M720,921L660,921L660,462.8L720,410L720,921" />
+                <Path Fill="DarkBlue" Data="M845,1046L1776,1046L1776,1106L845,1106L845,1046" />
 
 
                 <!--Hard Way Bet ViewModels-->
@@ -336,22 +364,6 @@
                                       Command="{Binding CreateOrUpdateBetCommand}" />
                     </Path.InputBindings>
                 </Path>
-
-
-
-                <Border Canvas.Left="2000" Canvas.Top="1500"
-                        Style="{StaticResource BetBorderStyle}"
-                        >
-                        <TextBlock Canvas.Left="2000" Canvas.Top="1500"
-                                   Text="{Binding CurrentPlayerIndex}"
-                                   Style="{StaticResource MainWindowButtonCloseTextBlockStyle}"
-                                   d:Text="-2"
-                                   />
-                </Border>
-
-
-
-                
 
             </Canvas>
         </Viewbox>

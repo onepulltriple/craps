@@ -17,6 +17,7 @@ namespace CrapsTableWPF.ViewModels
 
         public GameEventFeedViewModel GameEventFeedViewModel { get; }
 
+        public BettingAreaViewModelBase PassBetViewModel { get; }
         public HardWayBetViewModel HardWayBetViewModel_Hard_04 { get; }
         public HardWayBetViewModel HardWayBetViewModel_Hard_06 { get; }
         public HardWayBetViewModel HardWayBetViewModel_Hard_08 { get; }
@@ -77,6 +78,8 @@ namespace CrapsTableWPF.ViewModels
                 );
 
             this.GameEventFeedViewModel = new GameEventFeedViewModel(crapsTable.gameEventFeed);
+
+            this.PassBetViewModel = new BettingAreaViewModelBase(crapsTable, dialogService, betType.PassBet);
 
             this.HardWayBetViewModel_Hard_04 = new HardWayBetViewModel(crapsTable, dialogService, betType.Hard_04);
             this.HardWayBetViewModel_Hard_06 = new HardWayBetViewModel(crapsTable, dialogService, betType.Hard_06);

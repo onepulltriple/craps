@@ -19,6 +19,9 @@
     <Compile Update="Views\HardWayBetView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\PassBetView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\PlayerSlotView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

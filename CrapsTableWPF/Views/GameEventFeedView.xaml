@@ -10,38 +10,51 @@
              d:DataContext="{d:DesignInstance Type=designtime:DesignGameEventFeedViewModel, IsDesignTimeCreatable=True}"
              d:DesignHeight="400" d:DesignWidth="800"
              >
-    <ItemsControl 
-        ItemsSource="{Binding DisplayedEvents}">
+    <ItemsControl ItemsSource="{Binding DisplayedChunks}">
         <ItemsControl.ItemTemplate>
             <DataTemplate>
-                <TextBlock Text="{Binding Text}">
-                    <TextBlock.Style>
-                        <Style 
-                            TargetType="TextBlock"
-                            BasedOn="{StaticResource GameEventFeedNormalTextBlockStyle}"
-                            >
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding Type}"
-                                             Value="DiceRoll">
-                                    <Setter Property="Foreground" Value="{StaticResource DiceRollTextBrush}"/>
-                                </DataTrigger>
-                                <DataTrigger Binding="{Binding Type}"
-                                             Value="Outcome">
-                                    <Setter Property="Margin" Value="20,0,0,0"/>
-                                </DataTrigger>
-                                <DataTrigger Binding="{Binding Type}"
-                                             Value="Message">
-                                </DataTrigger>
-                                <DataTrigger Binding="{Binding Type}"
-                                             Value="Warning">
-                                    <Setter Property="Foreground" Value="{StaticResource WarningTextBrush}"/>
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </TextBlock.Style>
-                </TextBlock>
+
+                <ItemsControl ItemsSource="{Binding Events}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+
+                            <TextBlock Text="{Binding Text}">
+                                <TextBlock.Style>
+                                    <Style
+                                        TargetType="TextBlock"
+                                        BasedOn="{StaticResource GameEventFeedNormalTextBlockStyle}">
+
+                                        <Style.Triggers>
+
+                                            <DataTrigger Binding="{Binding Type}"
+                                                         Value="DiceRoll">
+                                                <Setter Property="Foreground"
+                                                        Value="{StaticResource DiceRollTextBrush}" />
+                                            </DataTrigger>
+
+                                            <DataTrigger Binding="{Binding IsContinuation}"
+                                                         Value="True">
+                                                <Setter Property="Margin"
+                                                        Value="20,0,0,0" />
+                                            </DataTrigger>
+
+                                            <DataTrigger Binding="{Binding Type}"
+                                                         Value="Warning">
+                                                <Setter Property="Foreground"
+                                                        Value="{StaticResource WarningTextBrush}" />
+                                            </DataTrigger>
+
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
             </DataTemplate>
         </ItemsControl.ItemTemplate>
     </ItemsControl>
-    
+
 </UserControl>

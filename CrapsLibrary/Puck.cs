@@ -81,7 +81,8 @@
                 // Announce that the point has been set
                 crapsTable.gameEventFeed.Add(
                     $"The puck is ON! The point is {PassPoint}",
-                    GameEventType.Outcome
+                    GameEventType.Outcome,
+                    true
                     );
                 crapsTable.gameEventFeed.Add(
                     $"Place bets are now available!",
@@ -101,7 +102,8 @@
             {
                 crapsTable.gameEventFeed.Add(
                     $"The point {PassPoint} was MADE. The puck is OFF! Winner!",
-                    GameEventType.Outcome
+                    GameEventType.Outcome,
+                    true
                     );
                 crapsTable.gameEventFeed.Add(
                     $"Place bets are now paused/inaccessible!",
@@ -144,7 +146,8 @@
             {
                 crapsTable.gameEventFeed.Add(
                     "The puck is OFF! SEVEN OUT!",
-                    GameEventType.Outcome
+                    GameEventType.Outcome,
+                    true
                     );
             }
         }
@@ -156,8 +159,7 @@
             {
                 crapsTable.gameEventFeed.Add(
                     "New roller needed!",
-                    GameEventType.Outcome,
-                    true
+                    GameEventType.Outcome
                     );
             }
         }

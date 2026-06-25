@@ -1,45 +1,105 @@
 ﻿using CrapsLibrary;
+using CrapsTableWPF.ViewModels;
 using System.Collections.ObjectModel;
 
 namespace CrapsTableWPF.DesignTime_Classes
 {
     public class DesignGameEventFeedViewModel
     {
-        public ObservableCollection<GameEvent> DisplayedEvents { get; set; } = new()
+        public ObservableCollection<EventChunkViewModel> DisplayedChunks { get; }
+        public DesignGameEventFeedViewModel()
         {
-            // Message
-            new GameEvent("Welcome to the table.", GameEventType.Message),
+            DisplayedChunks = new ObservableCollection<EventChunkViewModel>();
 
-            // Warning
-            new GameEvent("Minimum bet is $10.", GameEventType.Warning),
+            // Newest: Invalid bet warning
+            var invalidBetChunk = new EventChunkViewModel();
+            invalidBetChunk.Events.Add(
+                new GameEvent(
+                    "Player attempted an invalid bet.",
+                    GameEventType.Warning));
 
-            // DiceRoll
-            new GameEvent("Roll: 3 + 4 = 7", GameEventType.DiceRoll),
+            DisplayedChunks.Add(invalidBetChunk);
 
-            // Outcome
-            new GameEvent("Pass Line wins.", GameEventType.Outcome, true),
-            new GameEvent("Don't Pass loses.", GameEventType.Outcome, true),
+            // Point made
+            var pointMadeChunk = new EventChunkViewModel();
+            pointMadeChunk.Events.Add(
+                new GameEvent(
+                    "Roll: 6 + 4 = 10",
+                    GameEventType.DiceRoll));
 
-            // Another roll
-            new GameEvent("Roll: 5 + 5 = 10", GameEventType.DiceRoll),
+            pointMadeChunk.Events.Add(
+                new GameEvent(
+                    "Point made!",
+                    GameEventType.Outcome,
+                    true));
 
-            // Outcome
-            new GameEvent("Point established: 10", GameEventType.Outcome, true),
+            pointMadeChunk.Events.Add(
+                new GameEvent(
+                    "Pass Line wins.",
+                    GameEventType.Outcome,
+                    true));
 
-            // Message
-            new GameEvent("Shooter continues.", GameEventType.Message),
+            DisplayedChunks.Add(pointMadeChunk);
 
-            // Another roll
-            new GameEvent("Roll: 6 + 4 = 10", GameEventType.DiceRoll),
+            // Point established
+            var point10Chunk = new EventChunkViewModel();
+            point10Chunk.Events.Add(
+                new GameEvent(
+                    "Roll: 5 + 5 = 10",
+                    GameEventType.DiceRoll));
 
-            // Outcome
-            new GameEvent("Point made!", GameEventType.Outcome, true),
-            new GameEvent("Pass Line wins.", GameEventType.Outcome, true),
+            point10Chunk.Events.Add(
+                new GameEvent(
+                    "Point established: 10",
+                    GameEventType.Outcome,
+                    true));
 
-            // Warning
-            new GameEvent("Player attempted an invalid bet.", GameEventType.Warning),
-        };
+            point10Chunk.Events.Add(
+                new GameEvent(
+                    "Shooter continues.",
+                    GameEventType.Message,
+                    true));
 
-        public DesignGameEventFeedViewModel() { }
+            DisplayedChunks.Add(point10Chunk);
+
+            // Come-out roll 7
+            var roll7Chunk = new EventChunkViewModel();
+            roll7Chunk.Events.Add(
+                new GameEvent(
+                    "Roll: 3 + 4 = 7",
+                    GameEventType.DiceRoll));
+
+            roll7Chunk.Events.Add(
+                new GameEvent(
+                    "Pass Line wins.",
+                    GameEventType.Outcome,
+                    true));
+
+            roll7Chunk.Events.Add(
+                new GameEvent(
+                    "Don't Pass loses.",
+                    GameEventType.Outcome,
+                    true));
+
+            DisplayedChunks.Add(roll7Chunk);
+
+            // Minimum bet warning
+            var warningChunk = new EventChunkViewModel();
+            warningChunk.Events.Add(
+                new GameEvent(
+                    "Minimum bet is $10.",
+                    GameEventType.Warning));
+
+            DisplayedChunks.Add(warningChunk);
+
+            // Oldest: Welcome message
+            var welcomeChunk = new EventChunkViewModel();
+            welcomeChunk.Events.Add(
+                new GameEvent(
+                    "Welcome to the table.",
+                    GameEventType.Message));
+
+            DisplayedChunks.Add(welcomeChunk);
+        }
     }
 }

@@ -18,6 +18,13 @@ namespace CrapsTableWPF.ViewModels
         public GameEventFeedViewModel GameEventFeedViewModel { get; }
 
         public BettingAreaViewModelBase PassBetViewModel { get; }
+        public BettingAreaViewModelBase PlaceBetViewModel_PlaceBet_04 { get; }
+        public BettingAreaViewModelBase PlaceBetViewModel_PlaceBet_05 { get; }
+        public BettingAreaViewModelBase PlaceBetViewModel_PlaceBet_06 { get; }
+        public BettingAreaViewModelBase PlaceBetViewModel_PlaceBet_08 { get; }
+        public BettingAreaViewModelBase PlaceBetViewModel_PlaceBet_09 { get; }
+        public BettingAreaViewModelBase PlaceBetViewModel_PlaceBet_10 { get; }
+
         public HardWayBetViewModel HardWayBetViewModel_Hard_04 { get; }
         public HardWayBetViewModel HardWayBetViewModel_Hard_06 { get; }
         public HardWayBetViewModel HardWayBetViewModel_Hard_08 { get; }
@@ -80,6 +87,13 @@ namespace CrapsTableWPF.ViewModels
             this.GameEventFeedViewModel = new GameEventFeedViewModel(crapsTable.gameEventFeed);
 
             this.PassBetViewModel = new BettingAreaViewModelBase(crapsTable, dialogService, betType.PassBet);
+
+            this.PlaceBetViewModel_PlaceBet_04 = new BettingAreaViewModelBase(crapsTable, dialogService, betType.PlaceBet_04);
+            this.PlaceBetViewModel_PlaceBet_05 = new BettingAreaViewModelBase(crapsTable, dialogService, betType.PlaceBet_05);
+            this.PlaceBetViewModel_PlaceBet_06 = new BettingAreaViewModelBase(crapsTable, dialogService, betType.PlaceBet_06);
+            this.PlaceBetViewModel_PlaceBet_08 = new BettingAreaViewModelBase(crapsTable, dialogService, betType.PlaceBet_08);
+            this.PlaceBetViewModel_PlaceBet_09 = new BettingAreaViewModelBase(crapsTable, dialogService, betType.PlaceBet_09);
+            this.PlaceBetViewModel_PlaceBet_10 = new BettingAreaViewModelBase(crapsTable, dialogService, betType.PlaceBet_10);
 
             this.HardWayBetViewModel_Hard_04 = new HardWayBetViewModel(crapsTable, dialogService, betType.Hard_04);
             this.HardWayBetViewModel_Hard_06 = new HardWayBetViewModel(crapsTable, dialogService, betType.Hard_06);

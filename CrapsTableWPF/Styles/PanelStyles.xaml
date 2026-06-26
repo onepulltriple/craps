@@ -31,6 +31,12 @@
         <Setter Property="ClipToBounds"         Value="False"/>
     </Style>
 
+    <Style x:Key="NoClippingNoBackgroundBorderStyle" 
+           TargetType="Border"
+           BasedOn="{StaticResource NoClippingBorderStyle}">
+        <Setter Property="Background"           Value="{x:Null}"/>
+    </Style>
+
     <Style x:Key="RoundedBorderStyle" 
            TargetType="Border"
            BasedOn="{StaticResource {x:Type Border}}">

@@ -32,23 +32,7 @@
             <Viewbox Stretch="Uniform">
                 <Canvas Width="3200" Height="2000">
 
-                    <!--<Path Fill="Yellow" x:Name="Chase"
-                          Data="M648,921C648,1029.8 736.2,1118 845,1118L1776,1118L1776,1178L845,1178C703.063,1178 588,1062.94 588,921L588,544.243C588,532.748 592.945,521.808 601.575,514.214L648,473.36L648,921" />-->
-                    <Path Fill="Transparent" 
-                          Data="M720,921L660,921L660,462.8L720,410L720,921" />
-                    <Path Fill="Transparent" Data="M648,921L805,921C815.609,921 825.783,925.214 833.284,932.716C840.786,940.217 845,950.391 845,961L845,1118C736.2,1118 648,1029.8 648,921" />
-                    <Path Fill="Transparent" Data="M833.284,932.716L875.711,890.289C894.464,871.536 919.9,861 946.421,861L1776,861L1776,1046L845,1046L845,961C845,950.391 840.786,940.217 833.284,932.716Z" />
-                    <Path Fill="Transparent" Data="M845,1046L1776,1046L1776,1106L845,1106L845,1046" />
-                    <Path Fill="Transparent" Data="M833.284,932.716C825.783,925.214 815.609,921 805,921L720,921L720,685L1776,685L1776,861L946.421,861C919.9,861 894.464,871.536 875.711,890.289L833.284,932.716Z" />
-                    <Path Fill="Transparent" Data="M720,410L896,410L896,685L720,685L720,410" />
-                    
-                    <!-- Place bets -->
-                    <Path x:Name="PlaceBet04Path" Fill="Transparent" Tag="PlaceBet_04" MouseLeftButtonDown="PlaceBetMouseLeftButtonDown" Data="M896,470L1072,470L1072,685L896,685L896,470" />
-                    <Path x:Name="PlaceBet05Path" Fill="Transparent" Tag="PlaceBet_05" MouseLeftButtonDown="PlaceBetMouseLeftButtonDown" Data="M1072,470L1248,470L1248,685L1072,685L1072,470" />
-                    <Path x:Name="PlaceBet06Path" Fill="Transparent" Tag="PlaceBet_06" MouseLeftButtonDown="PlaceBetMouseLeftButtonDown" Data="M1248,470L1424,470L1424,685L1248,685L1248,470" />
-                    <Path x:Name="PlaceBet08Path" Fill="Transparent" Tag="PlaceBet_08" MouseLeftButtonDown="PlaceBetMouseLeftButtonDown" Data="M1424,470L1600,470L1600,685L1424,685L1424,470" />
-                    <Path x:Name="PlaceBet09Path" Fill="Transparent" Tag="PlaceBet_09" MouseLeftButtonDown="PlaceBetMouseLeftButtonDown" Data="M1600,470L1776,470L1776,685L1600,685L1600,470" />
-                    <Path x:Name="PlaceBet10Path" Fill="Transparent" Tag="PlaceBet_10" MouseLeftButtonDown="PlaceBetMouseLeftButtonDown" Data="M1776,470L1952,470L1952,685L1776,685L1776,470" />
+                    <!-- Lay Bets ??-->
                     <Path Fill="Transparent" Data="M896,410L1072,410L1072,470L896,470L896,410" />
                     <Path Fill="Transparent" Data="M1072,410L1248,410L1248,470L1072,470L1072,410" />
                     <Path Fill="Transparent" Data="M1248,410L1424,410L1424,470L1248,470L1248,410" />
@@ -57,7 +41,7 @@
                     <Path Fill="Transparent" Data="M1776,410L1952,410L1952,470L1776,470L1776,410" />
 
 
-                    <!-- Lay Bets -->
+                    <!-- Lay Bets ??-->
                     <Path Fill="PaleVioletRed" Data="M894,410L1070,410L1070,470L894,470L894,410" />
                     <Path Fill="PaleVioletRed" Data="M1070,410L1246,410L1246,470L1070,470L1070,410" />
                     <Path Fill="PaleVioletRed" Data="M1246,410L1422,410L1422,470L1246,470L1246,410" />
@@ -66,12 +50,12 @@
                     <Path Fill="PaleVioletRed" Data="M1774,410L1950,410L1950,470L1774,470L1774,410" />
 
                     <!-- Place Bets -->
-                    <Path Fill="Blue" Data="M894,470L1070,470L1070,685L894,685L894,470" />
+                    <!--<Path Fill="Blue" Data="M894,470L1070,470L1070,685L894,685L894,470" />
                     <Path Fill="Blue" Data="M1070,470L1246,470L1246,685L1070,685L1070,470" />
                     <Path Fill="Blue" Data="M1246,470L1422,470L1422,685L1246,685L1246,470" />
                     <Path Fill="Blue" Data="M1422,470L1598,470L1598,685L1422,685L1422,470" />
                     <Path Fill="Blue" Data="M1598,470L1774,470L1774,685L1598,685L1598,470" />
-                    <Path Fill="Blue" Data="M1774,470L1950,470L1950,685L1774,685L1774,470" />
+                    <Path Fill="Blue" Data="M1774,470L1950,470L1950,685L1774,685L1774,470" />-->
 
                     <!-- Pass and Don't Pass Bets --><!--
                     <Path Fill="Yellow" Data="M648,921C648,1029.8 736.2,1118 845,1118L1776,1118L1776,1178L845,1178C703.063,1178 588,1062.94 588,921L588,544.243C588,532.748 592.945,521.808 601.575,514.214L648,473.36L648,921" />
@@ -90,6 +74,7 @@
                     <!-- Big 6 and Big 8 Bets -->
                     <Path Fill="DarkCyan" Data="M705.7,1060.3L833.284,932.716C840.786,940.217 845,950.392 845,961L845,1118C792.752,1118 742.645,1097.25 705.7,1060.3Z" />
                     <Path Fill="DarkCyan" Data="M705.7,1060.3L833.284,932.716C825.783,925.214 815.609,921 805,921L648,921C648,973.248 668.755,1023.36 705.7,1060.3" />
+                    
 
                     <!-- World Bet -->
                     <Path Fill="AntiqueWhite" Data="M1904.2,831.342C1876.61,831.342 1854.2,808.937 1854.2,781.34C1854.2,753.743 1876.61,731.338 1904.2,731.338C1931.8,731.338 1954.2,753.743 1954.2,781.34C1954.2,808.937 1931.8,831.342 1904.2,831.342Z" />
@@ -166,12 +151,6 @@
 
                     <!-- x is plotted from the left edge, y is plotted from the top edge -->
                     <!-- the points are drawn clockwise -->
-                    <!--<Polygon    Points="896,470 1072,470 1072,685 896,685"
-                                Fill="Blue"/>-->
-                    <!--<Polygon    Points="1072,470 1248,470 1248,685 1072,685"
-                                Fill="PaleVioletRed"/>-->
-
-
                 </Canvas>
             </Viewbox>
 
@@ -223,7 +202,6 @@
                 </Border>
 
                 
-                <!--OTHERS-->
                 <!--table minimum-->
                 <Border Canvas.Left="15" Canvas.Top="1910"
                     Style="{DynamicResource NoBorderStyle}">
@@ -284,18 +262,100 @@
                 </Border>
 
 
+                <!-- Place bets -->
+                <Border Canvas.Left="894.88" Canvas.Top="470"
+                        Style="{StaticResource NoClippingBorderStyle}">
+                    <views:PlaceBetView DataContext="{Binding PlaceBetViewModel_PlaceBet_04}"/>
+                </Border>
+                <Path DataContext="{Binding PlaceBetViewModel_PlaceBet_04}"
+                      Data="M894,470L1070,470L1070,685L894,685L894,470"
+                      Style="{StaticResource AllowedBetPathStyle}">
+                    <Path.InputBindings>
+                        <MouseBinding Gesture="LeftClick"
+                                      Command="{Binding CreateOrUpdateBetCommand}" />
+                    </Path.InputBindings>
+                </Path>
+                <Border Canvas.Left="1070.68" Canvas.Top="470"
+                        Style="{StaticResource NoClippingBorderStyle}">
+                    <views:PlaceBetView DataContext="{Binding PlaceBetViewModel_PlaceBet_05}"/>
+                </Border>
+                <Path DataContext="{Binding PlaceBetViewModel_PlaceBet_05}"
+                      Data="M1070,470L1246,470L1246,685L1070,685L1070,470"
+                      Style="{StaticResource AllowedBetPathStyle}">
+                    <Path.InputBindings>
+                        <MouseBinding Gesture="LeftClick"
+                                      Command="{Binding CreateOrUpdateBetCommand}" />
+                    </Path.InputBindings>
+                </Path>
+                <Border Canvas.Left="1246.48" Canvas.Top="470"
+                        Style="{StaticResource NoClippingBorderStyle}">
+                    <views:PlaceBetView DataContext="{Binding PlaceBetViewModel_PlaceBet_06}"/>
+                </Border>
+                <Path DataContext="{Binding PlaceBetViewModel_PlaceBet_06}"
+                      Data="M1246,470L1422,470L1422,685L1246,685L1246,470"
+                      Style="{StaticResource AllowedBetPathStyle}">
+                    <Path.InputBindings>
+                        <MouseBinding Gesture="LeftClick"
+                                      Command="{Binding CreateOrUpdateBetCommand}" />
+                    </Path.InputBindings>
+                </Path>
+                <Border Canvas.Left="1422.28" Canvas.Top="470"
+                        Style="{StaticResource NoClippingBorderStyle}">
+                    <views:PlaceBetView DataContext="{Binding PlaceBetViewModel_PlaceBet_08}"/>
+                </Border>
+                <Path DataContext="{Binding PlaceBetViewModel_PlaceBet_08}"
+                      Data="M1422,470L1598,470L1598,685L1422,685L1422,470"
+                      Style="{StaticResource AllowedBetPathStyle}">
+                    <Path.InputBindings>
+                        <MouseBinding Gesture="LeftClick"
+                                      Command="{Binding CreateOrUpdateBetCommand}" />
+                    </Path.InputBindings>
+                </Path>
+                <Border Canvas.Left="1598.08" Canvas.Top="470"
+                        Style="{StaticResource NoClippingBorderStyle}">
+                    <views:PlaceBetView DataContext="{Binding PlaceBetViewModel_PlaceBet_09}"/>
+                </Border>
+                <Path DataContext="{Binding PlaceBetViewModel_PlaceBet_09}"
+                      Data="M1598,470L1774,470L1774,685L1598,685L1598,470"
+                      Style="{StaticResource AllowedBetPathStyle}">
+                    <Path.InputBindings>
+                        <MouseBinding Gesture="LeftClick"
+                                      Command="{Binding CreateOrUpdateBetCommand}" />
+                    </Path.InputBindings>
+                </Path>
+                <Border Canvas.Left="1773.88" Canvas.Top="470"
+                        Style="{StaticResource NoClippingBorderStyle}">
+                    <views:PlaceBetView DataContext="{Binding PlaceBetViewModel_PlaceBet_10}"/>
+                </Border>
+                <Path DataContext="{Binding PlaceBetViewModel_PlaceBet_10}"
+                      Data="M1774,470L1950,470L1950,685L1774,685L1774,470"
+                      Style="{StaticResource AllowedBetPathStyle}">
+                    <Path.InputBindings>
+                        <MouseBinding Gesture="LeftClick"
+                                      Command="{Binding CreateOrUpdateBetCommand}" />
+                    </Path.InputBindings>
+                </Path>
+
+                <!--<Path Fill="Blue" Data="M894,470L1070,470L1070,685L894,685L894,470" />-->
+                <!--<Path Fill="Blue" Data="M1070,470L1246,470L1246,685L1070,685L1070,470" />-->
+                <!--<Path Fill="Blue" Data="M1246,470L1422,470L1422,685L1246,685L1246,470" />-->
+                <!--<Path Fill="Blue" Data="M1422,470L1598,470L1598,685L1422,685L1422,470" />-->
+                <!--<Path Fill="Blue" Data="M1598,470L1774,470L1774,685L1598,685L1598,470" />-->
+                <!--<Path Fill="Blue" Data="M1774,470L1950,470L1950,685L1774,685L1774,470" />-->
+                
+
+
+
 
 
                 <!-- Pass and Don't Pass Bets -->
                 <Border Canvas.Left="588" Canvas.Top="473.36"
-                        Style="{StaticResource NoClippingBorderStyle}"
-                        >
+                        Style="{StaticResource NoClippingNoBackgroundBorderStyle}">
                     <views:PassBetView DataContext="{Binding PassBetViewModel}"/>
                 </Border>
                 <Path DataContext="{Binding PassBetViewModel}"
                       Data="M648,921C648,1029.8 736.2,1118 845,1118L1776,1118L1776,1178L845,1178C703.063,1178 588,1062.94 588,921L588,544.243C588,532.748 592.945,521.808 601.575,514.214L648,473.36L648,921"
-                      Style="{StaticResource AllowedBetPathStyle}"
-                      >
+                      Style="{StaticResource AllowedBetPathStyle}">
                     <Path.InputBindings>
                         <MouseBinding Gesture="LeftClick"
                                       Command="{Binding CreateOrUpdateBetCommand}" />
@@ -309,56 +369,48 @@
 
                 <!--Hard Way Bet ViewModels-->
                 <Border Canvas.Left="2003.68" Canvas.Top="838.68"
-                        Style="{StaticResource NoClippingBorderStyle}"
-                        >
+                        Style="{StaticResource NoClippingBorderStyle}">
                     <views:HardWayBetView DataContext="{Binding HardWayBetViewModel_Hard_04}"/>
                 </Border>
                 <Path DataContext="{Binding HardWayBetViewModel_Hard_04}"
                       Data="M2003.64,838.677L2355.64,838.677L2355.64,938.677L2003.64,938.677Z"
-                      Style="{StaticResource AllowedBetPathStyle}"
-                      >
+                      Style="{StaticResource AllowedBetPathStyle}">
                     <Path.InputBindings>
                         <MouseBinding Gesture="LeftClick"
                                       Command="{Binding CreateOrUpdateBetCommand}" />
                     </Path.InputBindings>
                 </Path>
                 <Border Canvas.Left="2003.68" Canvas.Top="738.68"
-                        Style="{StaticResource NoClippingBorderStyle}"
-                        >
+                        Style="{StaticResource NoClippingBorderStyle}">
                     <views:HardWayBetView DataContext="{Binding HardWayBetViewModel_Hard_06}"/>
                 </Border>
                 <Path DataContext="{Binding HardWayBetViewModel_Hard_06}"
                       Data="M2003.64,758.677L2003.64,838.677L2355.64,838.677L2355.64,738.677L2023.64,738.677C2012.59,738.677 2003.64,747.631 2003.64,758.677Z"
-                      Style="{StaticResource AllowedBetPathStyle}"
-                      >
+                      Style="{StaticResource AllowedBetPathStyle}">
                     <Path.InputBindings>
                         <MouseBinding Gesture="LeftClick"
                                       Command="{Binding CreateOrUpdateBetCommand}" />
                     </Path.InputBindings>
                 </Path>
                 <Border Canvas.Left="2355.68" Canvas.Top="738.68"
-                        Style="{StaticResource NoClippingBorderStyle}"
-                        >
+                        Style="{StaticResource NoClippingBorderStyle}">
                     <views:HardWayBetView DataContext="{Binding HardWayBetViewModel_Hard_08}"/>
                 </Border>
                 <Path DataContext="{Binding HardWayBetViewModel_Hard_08}"
                       Data="M2707.64,758.677L2707.64,838.677L2355.64,838.677L2355.64,738.677L2687.64,738.677C2698.68,738.677 2707.64,747.631 2707.64,758.677Z"
-                      Style="{StaticResource AllowedBetPathStyle}"
-                      >
+                      Style="{StaticResource AllowedBetPathStyle}">
                     <Path.InputBindings>
                         <MouseBinding Gesture="LeftClick"
                                       Command="{Binding CreateOrUpdateBetCommand}" />
                     </Path.InputBindings>
                 </Path>
                 <Border Canvas.Left="2355.68" Canvas.Top="838.68"
-                        Style="{StaticResource NoClippingBorderStyle}"
-                        >
+                        Style="{StaticResource NoClippingBorderStyle}">
                     <views:HardWayBetView DataContext="{Binding HardWayBetViewModel_Hard_10}"/>
                 </Border>
                 <Path DataContext="{Binding HardWayBetViewModel_Hard_10}"
                       Data="M2355.64,838.677L2707.64,838.677L2707.64,938.677L2355.64,938.677Z"
-                      Style="{StaticResource AllowedBetPathStyle}"
-                      >
+                      Style="{StaticResource AllowedBetPathStyle}">
                     <Path.InputBindings>
                         <MouseBinding Gesture="LeftClick"
                                       Command="{Binding CreateOrUpdateBetCommand}" />

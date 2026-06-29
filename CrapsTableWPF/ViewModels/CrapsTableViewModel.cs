@@ -12,12 +12,14 @@ namespace CrapsTableWPF.ViewModels
     public class CrapsTableViewModel : ViewModelBase
     {
         private CrapsTable _model;
+        public readonly Puck puck;
 
         public ObservableCollection<PlayerSlotViewModel> PlayerSlotViewModels { get; }
 
         public GameEventFeedViewModel GameEventFeedViewModel { get; }
 
         public BettingAreaViewModelBase PassBetViewModel { get; }
+        public PuckViewModel PuckViewModel { get; }
         public BettingAreaViewModelBase PlaceBetViewModel_PlaceBet_04 { get; }
         public BettingAreaViewModelBase PlaceBetViewModel_PlaceBet_05 { get; }
         public BettingAreaViewModelBase PlaceBetViewModel_PlaceBet_06 { get; }
@@ -30,7 +32,7 @@ namespace CrapsTableWPF.ViewModels
         public HardWayBetViewModel HardWayBetViewModel_Hard_08 { get; }
         public HardWayBetViewModel HardWayBetViewModel_Hard_10 { get; }
 
-        // TODO decide how to implement puck
+        
 
 
         // Bindable Properties ///////////////////////////////////////////////
@@ -74,6 +76,7 @@ namespace CrapsTableWPF.ViewModels
         public CrapsTableViewModel(CrapsTable crapsTable)
         {
             this._model = crapsTable;
+            this.puck = crapsTable.puck;
 
             // start DialogService
             var dialogService = new DialogService();
@@ -87,6 +90,7 @@ namespace CrapsTableWPF.ViewModels
             this.GameEventFeedViewModel = new GameEventFeedViewModel(crapsTable.gameEventFeed);
 
             this.PassBetViewModel = new BettingAreaViewModelBase(crapsTable, dialogService, betType.PassBet);
+            this.PuckViewModel = new PuckViewModel(this.puck);
 
             this.PlaceBetViewModel_PlaceBet_04 = new BettingAreaViewModelBase(crapsTable, dialogService, betType.PlaceBet_04);
             this.PlaceBetViewModel_PlaceBet_05 = new BettingAreaViewModelBase(crapsTable, dialogService, betType.PlaceBet_05);

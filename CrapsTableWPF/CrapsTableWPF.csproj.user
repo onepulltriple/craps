@@ -31,6 +31,12 @@
     <Compile Update="Views\PlayerView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\PuckOffView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\PuckOnView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\SetCrapsTableView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -2,7 +2,6 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:svg="clr-namespace:SharpVectors.Converters;assembly=SharpVectors.Converters.Wpf"
-        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:views="clr-namespace:CrapsTableWPF.Views"
@@ -10,10 +9,10 @@
         xmlns:designtime="clr-namespace:CrapsTableWPF.DesignTime_Classes"
         mc:Ignorable="d"
         Title="Craps Table"  
-        d:DataContext="{d:DesignInstance Type=viewmodels:CrapsTableViewModel}"
         Style="{StaticResource MainWindowStyle}"
         Width="1600" Height="1000" MinWidth="1200" MinHeight="750"
         >
+        <!--d:DataContext="{d:DesignInstance Type=viewmodels:CrapsTableViewModel}"-->
 
     <Grid>
         <!-- SVG in background, scales to window -->
@@ -366,6 +365,11 @@
                 <Path Fill="DarkBlue" Data="M720,921L660,921L660,462.8L720,410L720,921" />
                 <Path Fill="DarkBlue" Data="M845,1046L1776,1046L1776,1106L845,1106L845,1046" />
 
+                <!--Puck OFF standby location-->
+                <Border Canvas.Left="758" Canvas.Top="527.5"
+                        Style="{StaticResource NoBorderStyle}">
+                    <views:PuckOffView DataContext="{Binding PuckViewModel}"/>
+                </Border>
 
                 <!--Hard Way Bet ViewModels-->
                 <Border Canvas.Left="2003.68" Canvas.Top="838.68"

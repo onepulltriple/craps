@@ -160,42 +160,42 @@
             <Canvas Width="3200" Height="2000">
                 
                 <!--Player slot views-->
-                <Border Canvas.Left="1400" Canvas.Top="1445"
+                <Border Canvas.Left="1431" Canvas.Top="1505"
                         Style="{DynamicResource MainWindowPlayerSlotBorderStyle}">
                     <views:PlayerSlotView DataContext="{Binding PlayerSlotViewModels[0]}"/>
                 </Border>
                 
-                <Border Canvas.Left="1031" Canvas.Top="1445"
+                <Border Canvas.Left="1061" Canvas.Top="1505"
                         Style="{DynamicResource MainWindowPlayerSlotBorderStyle}">
                     <views:PlayerSlotView DataContext="{Binding PlayerSlotViewModels[1]}"/>
                 </Border>
 
-                <Border Canvas.Left="661" Canvas.Top="1445"
+                <Border Canvas.Left="691" Canvas.Top="1505"
                         Style="{DynamicResource MainWindowPlayerSlotBorderStyle}">
                     <views:PlayerSlotView DataContext="{Binding PlayerSlotViewModels[2]}"/>
                 </Border>
                 
-                <Border Canvas.Left="309" Canvas.Top="1387"
+                <Border Canvas.Left="281.7" Canvas.Top="1505"
                         Style="{DynamicResource MainWindowPlayerSlotBorderStyle}">
                     <views:PlayerSlotView DataContext="{Binding PlayerSlotViewModels[3]}"/>
                 </Border>
 
-                <Border Canvas.Left="30" Canvas.Top="1039"
-                        Style="{DynamicResource MainWindowPlayerSlotBorderStyle}">
+                <Border Canvas.Left="-46.4" Canvas.Top="1108.7"
+                        Style="{DynamicResource MainWindowPlayerSlotVerticalBorderStyle}">
                     <views:PlayerSlotView DataContext="{Binding PlayerSlotViewModels[4]}"/>
                 </Border>
 
-                <Border Canvas.Left="30" Canvas.Top="649"
-                        Style="{DynamicResource MainWindowPlayerSlotBorderStyle}">
+                <Border Canvas.Left="-46.4" Canvas.Top="688.7"
+                        Style="{DynamicResource MainWindowPlayerSlotVerticalBorderStyle}">
                     <views:PlayerSlotView DataContext="{Binding PlayerSlotViewModels[5]}"/>
                 </Border>
 
-                <Border Canvas.Left="30" Canvas.Top="339"
-                        Style="{DynamicResource MainWindowPlayerSlotBorderStyle}">
+                <Border Canvas.Left="-46.4" Canvas.Top="268.7"
+                        Style="{DynamicResource MainWindowPlayerSlotVerticalBorderStyle}">
                     <views:PlayerSlotView DataContext="{Binding PlayerSlotViewModels[6]}"/>
                 </Border>
 
-                <Border Canvas.Left="345" Canvas.Top="15"
+                <Border Canvas.Left="281" Canvas.Top="-27.7"
                         Style="{DynamicResource MainWindowPlayerSlotBorderStyle}">
                     <views:PlayerSlotView DataContext="{Binding PlayerSlotViewModels[7]}"/>
                 </Border>
@@ -335,12 +335,6 @@
                     </Path.InputBindings>
                 </Path>
 
-                <!--<Path Fill="Blue" Data="M894,470L1070,470L1070,685L894,685L894,470" />-->
-                <!--<Path Fill="Blue" Data="M1070,470L1246,470L1246,685L1070,685L1070,470" />-->
-                <!--<Path Fill="Blue" Data="M1246,470L1422,470L1422,685L1246,685L1246,470" />-->
-                <!--<Path Fill="Blue" Data="M1422,470L1598,470L1598,685L1422,685L1422,470" />-->
-                <!--<Path Fill="Blue" Data="M1598,470L1774,470L1774,685L1598,685L1598,470" />-->
-                <!--<Path Fill="Blue" Data="M1774,470L1950,470L1950,685L1774,685L1774,470" />-->
                 
 
 

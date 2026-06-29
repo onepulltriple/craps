@@ -10,13 +10,13 @@
              d:DesignWidth="100" d:DesignHeight="100" 
              Width="100" Height="100"
              >
-    <Border>
+    <Border Style="{StaticResource NoBorderStyle}">
         <!-- SVG in background, scales to window -->
         <Viewbox 
                 Stretch="Uniform"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center">
-            <svg:SvgViewbox Source="puckOff.svg"
+            <svg:SvgViewbox Source="puckOn.svg"
                         IsHitTestVisible="False"
                         MaxWidth ="{Binding ActualWidth,  RelativeSource={RelativeSource AncestorType=Window}}"
                         MaxHeight="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Window}}"/>

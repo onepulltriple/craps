@@ -10,7 +10,11 @@
              d:DesignWidth="100" d:DesignHeight="100" 
              Width="100" Height="100"
              >
-    <Border Style="{StaticResource NoBorderStyle}">
+    <Border Style="{StaticResource NoBorderStyle}"
+            Visibility="{Binding Model.IsOn,
+                        Converter={StaticResource InverseBoolToVisibilityConverter},
+                        FallbackValue=Collapsed}"
+            >
         <!-- SVG in background, scales to window -->
         <Viewbox 
                 Stretch="Uniform"

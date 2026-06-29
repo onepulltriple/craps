@@ -8,11 +8,11 @@
         xmlns:viewmodels="clr-namespace:CrapsTableWPF.ViewModels"
         xmlns:designtime="clr-namespace:CrapsTableWPF.DesignTime_Classes"
         mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance Type=viewmodels:CrapsTableViewModel}"
         Title="Craps Table"  
         Style="{StaticResource MainWindowStyle}"
         Width="1600" Height="1000" MinWidth="1200" MinHeight="750"
         >
-        <!--d:DataContext="{d:DesignInstance Type=viewmodels:CrapsTableViewModel}"-->
 
     <Grid>
         <!-- SVG in background, scales to window -->
@@ -20,7 +20,7 @@
             Stretch="Uniform"
             HorizontalAlignment="Center"
             VerticalAlignment="Center">
-            <svg:SvgViewbox Source="background.svg"
+            <svg:SvgViewbox Source="background no puck.svg"
                     IsHitTestVisible="False"
                     MaxWidth ="{Binding ActualWidth,  RelativeSource={RelativeSource AncestorType=Window}}"
                     MaxHeight="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Window}}"/>

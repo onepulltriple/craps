@@ -61,12 +61,14 @@
             if (this.MeetsTurnOffCondition(firstOutcome, secondOutcome))
             {
                 this.IsOn = false;
+                this.PassPoint = null;
                 return;
             }
 
             if (IsOutcomeSevenOut(firstOutcome, secondOutcome))
             {
                 this.IsOn = false;
+                this.PassPoint = null;
             }
         }
 

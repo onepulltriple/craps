@@ -20,7 +20,7 @@
             Stretch="Uniform"
             HorizontalAlignment="Center"
             VerticalAlignment="Center">
-            <svg:SvgViewbox Source="background no puck.svg"
+            <svg:SvgViewbox Source="background.svg"
                     IsHitTestVisible="False"
                     MaxWidth ="{Binding ActualWidth,  RelativeSource={RelativeSource AncestorType=Window}}"
                     MaxHeight="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Window}}"/>

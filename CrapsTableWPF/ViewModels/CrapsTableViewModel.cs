@@ -92,12 +92,12 @@ namespace CrapsTableWPF.ViewModels
             this.PassBetViewModel = new BettingAreaViewModelBase(crapsTable, dialogService, betType.PassBet);
             this.PuckViewModel = new PuckViewModel(this.puck);
 
-            this.PlaceBetViewModel_PlaceBet_04 = new BettingAreaViewModelBase(crapsTable, dialogService, betType.PlaceBet_04);
-            this.PlaceBetViewModel_PlaceBet_05 = new BettingAreaViewModelBase(crapsTable, dialogService, betType.PlaceBet_05);
-            this.PlaceBetViewModel_PlaceBet_06 = new BettingAreaViewModelBase(crapsTable, dialogService, betType.PlaceBet_06);
-            this.PlaceBetViewModel_PlaceBet_08 = new BettingAreaViewModelBase(crapsTable, dialogService, betType.PlaceBet_08);
-            this.PlaceBetViewModel_PlaceBet_09 = new BettingAreaViewModelBase(crapsTable, dialogService, betType.PlaceBet_09);
-            this.PlaceBetViewModel_PlaceBet_10 = new BettingAreaViewModelBase(crapsTable, dialogService, betType.PlaceBet_10);
+            this.PlaceBetViewModel_PlaceBet_04 = new PlaceBetViewModel(crapsTable, dialogService, betType.PlaceBet_04);
+            this.PlaceBetViewModel_PlaceBet_05 = new PlaceBetViewModel(crapsTable, dialogService, betType.PlaceBet_05);
+            this.PlaceBetViewModel_PlaceBet_06 = new PlaceBetViewModel(crapsTable, dialogService, betType.PlaceBet_06);
+            this.PlaceBetViewModel_PlaceBet_08 = new PlaceBetViewModel(crapsTable, dialogService, betType.PlaceBet_08);
+            this.PlaceBetViewModel_PlaceBet_09 = new PlaceBetViewModel(crapsTable, dialogService, betType.PlaceBet_09);
+            this.PlaceBetViewModel_PlaceBet_10 = new PlaceBetViewModel(crapsTable, dialogService, betType.PlaceBet_10);
 
             this.HardWayBetViewModel_Hard_04 = new HardWayBetViewModel(crapsTable, dialogService, betType.Hard_04);
             this.HardWayBetViewModel_Hard_06 = new HardWayBetViewModel(crapsTable, dialogService, betType.Hard_06);

@@ -69,5 +69,15 @@
             <views:BetSlotView DataContext="{Binding BetSlotViewModels[7]}"/>
         </Border>
 
+        <Border Canvas.Left="38" Canvas.Top="57.5"
+                Style="{StaticResource NoBorderStyle}"
+                Visibility="{Binding ThisPointIsSet,
+                Converter={StaticResource BoolToVisibilityConverter},
+                FallbackValue=Collapsed}"
+                d:Visibility="Visible"
+                >
+            <views:PuckOnView DataContext="{Binding Puck}"/>
+        </Border>
+
     </Canvas>
 </UserControl>

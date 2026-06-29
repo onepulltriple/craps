@@ -14,6 +14,7 @@
             Visibility="{Binding Model.IsOn,
                         Converter={StaticResource InverseBoolToVisibilityConverter},
                         FallbackValue=Collapsed}"
+            d:Visibility="Visible"
             >
         <!-- SVG in background, scales to window -->
         <Viewbox 

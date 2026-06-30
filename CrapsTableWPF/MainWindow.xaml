@@ -417,7 +417,7 @@
 
 
                 <!-- Any Seven (Big Red) Bet -->
-                <Border Canvas.Left="2005.68" Canvas.Top="938.68"
+                <Border Canvas.Left="2003.68" Canvas.Top="938.68"
                         Style="{StaticResource NoClippingBorderStyle}">
                     <views:BigRed7View DataContext="{Binding BigRed7ViewModel}"/>
                 </Border>

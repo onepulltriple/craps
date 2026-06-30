@@ -137,16 +137,6 @@ namespace CrapsTableWPF.ViewModels
                 return;
             }
 
-            // if the bet was newly created, add it to the player's bet list
-            //if (this.betInQuestion == null)
-            //    this.currentPlayer.AddOneBet(createOrUpdateBetResult.Value);
-
-            // if the bet has been zeroed out, remove it from the player's bet list
-            //if (this.betInQuestion != null && this.betInQuestion.CountOfUnitsToBet == 0)
-            //    this.currentPlayer.RemoveOneBet(createOrUpdateBetResult.Value);
-
-            // if the bet was only updated, it remains in the player's bet list
-
             // ask dialog to close
             this.HasErrors = false;
             this.RaiseRequestClose();

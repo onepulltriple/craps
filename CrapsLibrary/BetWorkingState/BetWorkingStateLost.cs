@@ -17,6 +17,8 @@ namespace CrapsLibrary.BetWorkingState
         {
             AnnounceLost();
             betInQuestion.LoseCommitment();
+            //betInQuestion.betOwner.RemoveOneBet(betInQuestion);
+            // TODO handle listing of lost bets (later)
         }
 
         public override void EvaluateBet(byte firstOutcome, byte secondOutcome)

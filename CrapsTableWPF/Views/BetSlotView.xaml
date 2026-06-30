@@ -7,14 +7,9 @@
              xmlns:viewmodels="clr-namespace:CrapsTableWPF.ViewModels"
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance Type=viewmodels:BetSlotViewModel}"
-             d:DesignHeight="40" d:DesignWidth="40"
+             Height="40" Width="40"
              >
     <Grid>
-        <!--empty slot shows displayed slot index-->
-        <TextBlock Style="{StaticResource UnoccupiedBetTextBlockStyle}"
-                   Text="{Binding DisplayedSlotIndex}"
-                   d:Text="slot index"
-                   />
 
         <!--occupied slot-->
         <Border Style="{DynamicResource BetBorderStyle}"

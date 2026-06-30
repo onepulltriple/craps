@@ -163,6 +163,7 @@ namespace CrapsLibrary.Bets
             this.Commitment = 0;
             this.CountOfUnitsToBet = 0;
             this.Payout = 0;
+            betOwner.PlayerBetList.Remove(this);
         }
 
         internal abstract bool MeetsLosingCondition(byte firstOutcome, byte secondOutcome);

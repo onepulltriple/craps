@@ -104,7 +104,8 @@
             if (this.IsOn && this.PassPoint == (firstOutcome + secondOutcome))
             {
                 crapsTable.gameEventFeed.Add(
-                    $"The point {PassPoint} was MADE. The puck is OFF! Winner!",
+                    //$"The point {PassPoint} was MADE. The puck is OFF! Winner!",
+                    $"The point {PassPoint} was made. Winner!",
                     GameEventType.Outcome,
                     true
                     );
@@ -148,7 +149,8 @@
             if (this.IsOn && (firstOutcome + secondOutcome) == seven)
             {
                 crapsTable.gameEventFeed.Add(
-                    "The puck is OFF! SEVEN OUT!",
+                    //"The puck is OFF! SEVEN OUT!",
+                    "Seven out!",
                     GameEventType.Outcome,
                     true
                     );

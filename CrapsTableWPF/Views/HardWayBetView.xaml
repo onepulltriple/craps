@@ -6,7 +6,6 @@
              xmlns:views="clr-namespace:CrapsTableWPF.Views"
              xmlns:viewmodels="clr-namespace:CrapsTableWPF.ViewModels"
              mc:Ignorable="d" 
-             d:DesignHeight="100" d:DesignWidth="352"
              d:DataContext="{d:DesignInstance Type=viewmodels:HardWayBetViewModel}"
              Width="352" Height="100"
              >

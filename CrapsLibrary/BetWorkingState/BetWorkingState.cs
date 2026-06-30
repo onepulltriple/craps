@@ -33,8 +33,8 @@ namespace CrapsLibrary.BetWorkingState
                 $"Hooray! {betInQuestion.betOwner.Name} " +
                 $"won {betInQuestion.Name} " +
                 $"with {firstOutcome}, {secondOutcome}! " +
-                $"The payout was {betInQuestion.Payout} " +
-                $"credits and goes to {betInQuestion.betOwner.Name}.",
+                $"The payout of {betInQuestion.Payout} " +
+                $"credits goes to {betInQuestion.betOwner.Name}.",
                 GameEventType.Message
                 );
         }

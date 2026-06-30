@@ -160,7 +160,9 @@ namespace CrapsLibrary.Bets
         public void LoseCommitment()
         {
             // TODO pay commitment to house (whenever the house gets a purse)
-            Commitment = 0;
+            this.Commitment = 0;
+            this.CountOfUnitsToBet = 0;
+            this.Payout = 0;
         }
 
         internal abstract bool MeetsLosingCondition(byte firstOutcome, byte secondOutcome);

@@ -429,7 +429,6 @@
                                       Command="{Binding CreateOrUpdateBetCommand}" />
                     </Path.InputBindings>
                 </Path>
-                <!--<Path Fill="Red" Data="M2003.64,938.677L2707.64,938.677L2707.64,982.677L2003.64,982.677L2003.64,938.677" />-->
 
             </Canvas>
         </Viewbox>

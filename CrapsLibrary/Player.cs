@@ -58,6 +58,7 @@ namespace CrapsLibrary
 
         public void RemoveOneBet(Bet bet)
         {
+            // TODO is removal allowed --> in BetFactory
             this.PlayerBetList.Remove(bet);
         }
 

@@ -82,7 +82,8 @@
 
                 // Announce that the point has been set
                 crapsTable.gameEventFeed.Add(
-                    $"The puck is ON! The point is {PassPoint}",
+                    //$"The puck is ON! The point is {PassPoint}.",
+                    $"The point is now {PassPoint}.",
                     GameEventType.Outcome,
                     true
                     );

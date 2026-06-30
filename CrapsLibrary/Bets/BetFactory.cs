@@ -73,7 +73,7 @@ namespace CrapsLibrary.Bets
                 { betType.Big_Red_07,    new(  4, 1, "Big Red"        , new List<int>{ 7 } )  }
             };
 
-        public static Result<Bet> CreateOrUpdateBet(CrapsTable crapsTable, Player player, betType betType, uint amountThrownAtBet)
+        public static Result<Bet?> CreateOrUpdateBet(CrapsTable crapsTable, Player player, betType betType, uint amountThrownAtBet)
         {
             // check if the player already has this bet in their list
             Bet? existingBet = player.PlayerBetList.FirstOrDefault(bet => bet.betType == betType);
@@ -84,7 +84,7 @@ namespace CrapsLibrary.Bets
             // check if the bet is allowed (possibly redundant)
             Result<bool> check = CheckIfCreateBetAllowed(crapsTable, player, betType);
             if (!check.Success)
-                return Result<Bet>.Fail(check.Messages.ToArray());
+                return Result<Bet?>.Fail(check.Messages.ToArray());
 
             return CreateBet(crapsTable, player, betType, amountThrownAtBet);
         }
@@ -110,17 +110,18 @@ namespace CrapsLibrary.Bets
             return (countOfUnitsToBet, amountToCommitAsInt, amountChangeToReturn); // TODO amountChangeToReturn might be used later
         }
 
-        public static Result<Bet> UpdateBet(CrapsTable crapsTable, Player player, Bet existingBet, uint amountThrownAtBet)
+        public static Result<Bet?> UpdateBet(CrapsTable crapsTable, Player player, Bet existingBet, uint amountThrownAtBet)
         {
             uint unitOfBet = existingBet.UnitOfBet; // deliberate to show similarities with CreateBet(...)
 
             int amountThrownAtBetAsInt = (int)(amountThrownAtBet - existingBet.CountOfUnitsToBet * existingBet.UnitOfBet);
-
+            // TODO allow users to enter a negative number as the amount thrown at bet?
             var (countOfUnitsToBetAsInt, amountToCommitAsInt, amountChangeToReturnAsInt) = CalculateBetUnitsAndChange(unitOfBet, amountThrownAtBetAsInt);
 
             // check here if player can afford amount to commit, because it could be negative at this point
-            if(!ValidatePlayerCanAffordUnitOfBet(player, amountToCommitAsInt).Success)
-                return Result<Bet>.Fail(ValidatePlayerCanAffordUnitOfBet(player, amountToCommitAsInt).Messages[0]);
+            var playerCanAfford = ValidatePlayerCanAffordUnitOfBet( player, amountThrownAtBetAsInt );
+            if(!playerCanAfford.Success)
+                return Result<Bet?>.Fail(playerCanAfford.Messages[0]);
             
             // charge (or refund) player for the bet
             player.Purse = (uint)(player.Purse - amountToCommitAsInt);
@@ -129,12 +130,19 @@ namespace CrapsLibrary.Bets
             existingBet.CountOfUnitsToBet = (uint)(existingBet.CountOfUnitsToBet + countOfUnitsToBetAsInt);
             existingBet.Commitment = (uint)(existingBet.Commitment + amountToCommitAsInt);
             existingBet.Payout = CalculatePayout(existingBet.betType, existingBet.UnitOfBet, existingBet.CountOfUnitsToBet);
-            // TODO allow negative numbers (elsewhere to be implemented)
 
-            return Result<Bet>.Pass(existingBet); // add message?
+            // if the bet has been zeroed out, remove it from the player's bet list
+            if (existingBet.CountOfUnitsToBet == 0)
+            {
+                player.RemoveOneBet(existingBet);
+                // subscribers to player.PlayerBetList.CollectionChanged will also fire 
+                return Result<Bet?>.Pass(null);
+            }
+
+            return Result<Bet?>.Pass(existingBet); // add message?
         }
 
-        public static Result<Bet> CreateBet(CrapsTable crapsTable, Player player, betType betType, uint amountThrownAtBet)
+        public static Result<Bet?> CreateBet(CrapsTable crapsTable, Player player, betType betType, uint amountThrownAtBet)
         {
             uint unitOfBet = DetermineUnitOfBet(crapsTable, betType);
 
@@ -144,7 +152,7 @@ namespace CrapsLibrary.Bets
 
             // check here if player can afford amount to commit
             if (!ValidatePlayerCanAffordUnitOfBet(player, amountToCommitAsInt).Success)
-                return Result<Bet>.Fail(ValidatePlayerCanAffordUnitOfBet(player, amountToCommitAsInt).Messages[0]);
+                return Result<Bet?>.Fail(ValidatePlayerCanAffordUnitOfBet(player, amountToCommitAsInt).Messages[0]);
 
             // charge player for the bet
             player.Purse = (uint)(player.Purse - amountToCommitAsInt);
@@ -183,14 +191,17 @@ namespace CrapsLibrary.Bets
                     break;
 
                 default:
-                    Result<Bet>.Fail("Unspecified bet attempted.");
+                    Result<Bet?>.Fail("Unspecified bet attempted.");
                     break;
             }
 
             if (tempBet == null)
-                return Result<Bet>.Fail("Error: bet not listed in BetFactory.CreateBet()"); // TODO figure out if this can happen
+                return Result<Bet?>.Fail("Error: bet not listed in BetFactory.CreateBet()"); // TODO figure out if this can happen
 
-            return Result<Bet>.Pass(tempBet, $"{tempBet.betOwner.Name} " +
+            // add it to the player's bet list
+            player.AddOneBet(tempBet);
+
+            return Result<Bet?>.Pass(tempBet, $"{tempBet.betOwner.Name} " +
                 $"has bet {tempBet.CountOfUnitsToBet * tempBet.UnitOfBet} " +
                 $"on {tempBet.Name}.");
         }

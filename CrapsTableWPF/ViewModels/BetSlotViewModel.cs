@@ -10,6 +10,8 @@ namespace CrapsTableWPF.ViewModels
         public betType betType;
 
         private BetViewModel? _betViewModel;
+        
+        private readonly Bet? _bet;
 
         public BetViewModel? BetViewModel
         {
@@ -39,22 +41,26 @@ namespace CrapsTableWPF.ViewModels
             this.slotOwner = slotOwner;
             this.SlotIndex = slotIndex;
             this.betType = betType;
+            this._bet = bet;
 
             this.BetViewModel = new BetViewModel(bet);
 
-            //slotOwner.PlayerBetList.CollectionChanged += OnPlayerBetListChanged;
+            slotOwner.PlayerBetList.CollectionChanged += OnPlayerBetListChanged;
         }
 
         private void OnPlayerBetListChanged(object? sender, NotifyCollectionChangedEventArgs e)
         {
             if (e.NewItems?.Count > 0)
             {
-                //
+                // 
             }
 
-            if (e.OldItems?.Count > 0)
+            // if there are removed items
+            // and one of them is the bet which belonged in this slot
+            if (e.OldItems?.Count > 0 && e.OldItems.Contains(this._bet))
             {
-                //
+                // set IsEmpty to true by way of nullifying the BetViewModel
+                this.BetViewModel = null;
             }
         }
     }

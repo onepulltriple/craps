@@ -17,7 +17,7 @@ namespace CrapsLibrary.BetWorkingState
         {
             betWorkingStateMachine.crapsTable.scoreboard.NewSubscriber(this.EvaluateBet);
 
-            // prompt user to specify the press-to-collect ratio
+            // TODO prompt user to specify the press-to-collect ratio
 
         }
 

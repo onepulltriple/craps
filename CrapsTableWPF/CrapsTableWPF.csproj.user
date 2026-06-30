@@ -13,6 +13,9 @@
     <Compile Update="Views\BetView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\BigRed7View.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\GameEventFeedView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

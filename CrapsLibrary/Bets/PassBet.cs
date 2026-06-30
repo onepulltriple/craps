@@ -8,8 +8,7 @@
             : base(crapsTable, betOwner, betType, countOfUnitsToBet, unitOfBet, winningTotals, payout)
         {
             losingTotals = new List<int> {2, 3, 12}; // crap out/missout
-            //winningTotals = new List<int> {7, 11 };  // natural pass
-            // TODO find out why the winningTotals don't overwrite here (or are the winning totals really better off in the dictionary)
+            //winningTotals = new List<int> {7, 11 };  // natural pass --> moved to BetDefinitions dictionary
         }
 
         internal override bool MeetsFirstWinningCondition(byte firstOutcome, byte secondOutcome)
@@ -21,7 +20,8 @@
             {
                 crapsTable.gameEventFeed.Add(
                     $"Natural pass!",
-                    GameEventType.Message
+                    GameEventType.Message,
+                    true
                     );
                 return true;
             }
@@ -30,7 +30,8 @@
             {
                 crapsTable.gameEventFeed.Add(
                     $"Point made! Pass!",
-                    GameEventType.Message
+                    GameEventType.Message,
+                    true
                     );
                 return true;
             }
@@ -45,18 +46,20 @@
             if (crapsTable.puck.IsOn == false && losingTotals.Contains(firstOutcome + secondOutcome))
             {
                 crapsTable.gameEventFeed.Add(
-                    $"Craps!!",
-                    GameEventType.Message
+                    $"Craps! Pass line loses.",
+                    GameEventType.Message,
+                    true
                     );
                 return true;
             }
 
             if (crapsTable.puck.IsOutcomeSevenOut(firstOutcome, secondOutcome))
             {
-                crapsTable.gameEventFeed.Add(
-                    $"Point missed! Seven out!",
-                    GameEventType.Message
-                    );
+                //crapsTable.gameEventFeed.Add(
+                //    $"Point missed! Seven out!",
+                //    GameEventType.Message,
+                //    true
+                //    );
                 return true;
             }
             return false;

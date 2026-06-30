@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="CrapsTableWPF.Views.PlaceBetView"
+﻿<UserControl x:Class="CrapsTableWPF.Views.BigRed7View"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,34 +6,33 @@
              xmlns:views="clr-namespace:CrapsTableWPF.Views"
              xmlns:viewmodels="clr-namespace:CrapsTableWPF.ViewModels"
              mc:Ignorable="d" 
-             d:DesignWidth="176" d:DesignHeight="215" 
-             Width="176" Height="215"
+             Width="704" Height="44"
              >
-    <Canvas Width="176" Height="215"
+    <Canvas Width="704" Height="44"
             Background="{x:Null}">
 
-        <Border Canvas.Left="134" Canvas.Top="195"
+        <Border Canvas.Left="310" Canvas.Top="2"
             Style="{StaticResource BetBorderStyle}"
             Visibility="{Binding BetSlotViewModels[0], Converter={StaticResource NullToVisibilityConverter}}"
             >
             <views:BetSlotView DataContext="{Binding BetSlotViewModels[0]}"/>
         </Border>
 
-        <Border Canvas.Left="90" Canvas.Top="195"
+        <Border Canvas.Left="266" Canvas.Top="2"
             Style="{StaticResource BetBorderStyle}"
             Visibility="{Binding BetSlotViewModels[1], Converter={StaticResource NullToVisibilityConverter}}"
             >
             <views:BetSlotView DataContext="{Binding BetSlotViewModels[1]}"/>
         </Border>
 
-        <Border Canvas.Left="46" Canvas.Top="195"
+        <Border Canvas.Left="222" Canvas.Top="2"
             Style="{StaticResource BetBorderStyle}"
             Visibility="{Binding BetSlotViewModels[2], Converter={StaticResource NullToVisibilityConverter}}"
             >
             <views:BetSlotView DataContext="{Binding BetSlotViewModels[2]}"/>
         </Border>
 
-        <Border Canvas.Left="2" Canvas.Top="195"
+        <Border Canvas.Left="178" Canvas.Top="2"
             Style="{StaticResource BetBorderStyle}"
             Visibility="{Binding BetSlotViewModels[3], Converter={StaticResource NullToVisibilityConverter}}"
             >
@@ -41,43 +40,33 @@
         </Border>
 
 
-        <Border Canvas.Left="2" Canvas.Top="-20"
+        <Border Canvas.Left="134" Canvas.Top="2"
             Style="{StaticResource BetBorderStyle}"
             Visibility="{Binding BetSlotViewModels[4], Converter={StaticResource NullToVisibilityConverter}}"
             >
             <views:BetSlotView DataContext="{Binding BetSlotViewModels[4]}"/>
         </Border>
 
-        <Border Canvas.Left="46" Canvas.Top="-20"
+        <Border Canvas.Left="90" Canvas.Top="2"
             Style="{StaticResource BetBorderStyle}"
             Visibility="{Binding BetSlotViewModels[5], Converter={StaticResource NullToVisibilityConverter}}"
             >
             <views:BetSlotView DataContext="{Binding BetSlotViewModels[5]}"/>
         </Border>
 
-        <Border Canvas.Left="90" Canvas.Top="-20"
+        <Border Canvas.Left="46" Canvas.Top="2"
             Style="{StaticResource BetBorderStyle}"
             Visibility="{Binding BetSlotViewModels[6], Converter={StaticResource NullToVisibilityConverter}}"
             >
             <views:BetSlotView DataContext="{Binding BetSlotViewModels[6]}"/>
         </Border>
 
-        <Border Canvas.Left="134" Canvas.Top="-20"
+        <Border Canvas.Left="2" Canvas.Top="2"
             Style="{StaticResource BetBorderStyle}"
             Visibility="{Binding BetSlotViewModels[7], Converter={StaticResource NullToVisibilityConverter}}"
             >
             <views:BetSlotView DataContext="{Binding BetSlotViewModels[7]}"/>
         </Border>
-
-        <Border Canvas.Left="38" Canvas.Top="57.5"
-                Style="{StaticResource NoBorderStyle}"
-                Visibility="{Binding ThisPointIsSet,
-                Converter={StaticResource BoolToVisibilityConverter},
-                FallbackValue=Collapsed}"
-                d:Visibility="Collapsed"
-                >
-            <views:PuckOnView DataContext="{Binding Puck}"/>
-        </Border>
-
+        
     </Canvas>
 </UserControl>

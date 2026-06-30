@@ -10,13 +10,17 @@ namespace CrapsLibrary.Bets
         Hard_08,
         Hard_10,
         Hard_12,
+
         PassBet,
+
         PlaceBet_04,
         PlaceBet_05,
         PlaceBet_06,
         PlaceBet_08,
         PlaceBet_09,
-        PlaceBet_10
+        PlaceBet_10,
+
+        Big_Red_07
     }
 
     public static class BetFactory
@@ -47,8 +51,8 @@ namespace CrapsLibrary.Bets
         public static Dictionary<betType, BetInfoRecord> BetDefinitions =
             new()
             {
-                // for bets whose minimum commitment match the tables minimum, payoutDenominator must equal 5
-                // 0 means winningTotals handled internally
+                // for bets whose minimum commitment match the table's minimum, payoutDenominator must equal 5
+                // 0 means winningTotals are handled by the bet child class
 
                 { betType.Hard_02,       new( 30, 1, "Aces"           , new List<int>{ 2  } ) },
                 { betType.Hard_04,       new(  7, 1, "Hard 4"         , new List<int>{ 4  } ) },
@@ -56,13 +60,17 @@ namespace CrapsLibrary.Bets
                 { betType.Hard_08,       new(  9, 1, "Hard 8"         , new List<int>{ 8  } ) },
                 { betType.Hard_10,       new(  7, 1, "Hard 10"        , new List<int>{ 10 } ) },
                 { betType.Hard_12,       new( 30, 1, "Boxcars"        , new List<int>{ 12 } ) },
+
                 { betType.PassBet,       new(  5, 5, "Pass Line Bet"  , new List<int>{7,11} ) }, // pays 1:1
+
                 { betType.PlaceBet_04,   new(  9, 5, "Place Bet 4"    , new List<int>{ 4  } ) },
                 { betType.PlaceBet_05,   new(  7, 5, "Place Bet 5"    , new List<int>{ 5  } ) },
                 { betType.PlaceBet_06,   new(  7, 6, "Place Bet 6"    , new List<int>{ 6  } ) },
                 { betType.PlaceBet_08,   new(  7, 6, "Place Bet 8"    , new List<int>{ 8  } ) },
                 { betType.PlaceBet_09,   new(  7, 5, "Place Bet 9"    , new List<int>{ 9  } ) },
-                { betType.PlaceBet_10,   new(  9, 5, "Place Bet 10"   , new List<int>{ 10 } ) }
+                { betType.PlaceBet_10,   new(  9, 5, "Place Bet 10"   , new List<int>{ 10 } ) },
+
+                { betType.Big_Red_07,    new(  4, 1, "Big Red"        , new List<int>{ 7 } )  }
             };
 
         public static Result<Bet> CreateOrUpdateBet(CrapsTable crapsTable, Player player, betType betType, uint amountThrownAtBet)
@@ -148,19 +156,6 @@ namespace CrapsLibrary.Bets
             Bet? tempBet = null;
             switch (betType)
             {
-                case betType.Hard_02:
-                case betType.Hard_04:
-                case betType.Hard_06:
-                case betType.Hard_08:
-                case betType.Hard_10:
-                case betType.Hard_12:
-                    tempBet = new HardWayBet(crapsTable, player, betType, (uint)countOfUnitsToBetAsInt, unitOfBet, BetDefinitions[betType].winningTotals, payout);
-                    break;
-
-                case betType.PassBet:
-                    tempBet = new PassBet(crapsTable, player, betType, (uint)countOfUnitsToBetAsInt, unitOfBet, BetDefinitions[betType].winningTotals, payout);
-                    break;
-
                 case betType.PlaceBet_04:
                 case betType.PlaceBet_05:
                 case betType.PlaceBet_06:
@@ -170,13 +165,30 @@ namespace CrapsLibrary.Bets
                     tempBet = new PlaceBet(crapsTable, player, betType, (uint)countOfUnitsToBetAsInt, unitOfBet, BetDefinitions[betType].winningTotals, payout);
                     break;
 
+                case betType.PassBet:
+                    tempBet = new PassBet(crapsTable, player, betType, (uint)countOfUnitsToBetAsInt, unitOfBet, BetDefinitions[betType].winningTotals, payout);
+                    break;
+
+                case betType.Hard_02:
+                case betType.Hard_04:
+                case betType.Hard_06:
+                case betType.Hard_08:
+                case betType.Hard_10:
+                case betType.Hard_12:
+                    tempBet = new HardWayBet(crapsTable, player, betType, (uint)countOfUnitsToBetAsInt, unitOfBet, BetDefinitions[betType].winningTotals, payout);
+                    break;
+
+                case betType.Big_Red_07:
+                    tempBet = new SingleRollBet(crapsTable, player, betType, (uint)countOfUnitsToBetAsInt, unitOfBet, BetDefinitions[betType].winningTotals, payout);
+                    break;
+
                 default:
                     Result<Bet>.Fail("Unspecified bet attempted.");
                     break;
             }
 
             if (tempBet == null)
-                return Result<Bet>.Fail("but why??"); // TODO figure out if this can happen
+                return Result<Bet>.Fail("Error: bet not listed in BetFactory.CreateBet()"); // TODO figure out if this can happen
 
             return Result<Bet>.Pass(tempBet, $"{tempBet.betOwner.Name} " +
                 $"has bet {tempBet.CountOfUnitsToBet * tempBet.UnitOfBet} " +
@@ -212,7 +224,7 @@ namespace CrapsLibrary.Bets
 
                 case betType.PassBet:
                     if (crapsTable.puck.IsOn)
-                        return Result<bool>.Fail("Pass Line bets can only be made before a point is established.");
+                        return Result<bool>.Fail("Pass line bets can only be made before a point is established.");
                     return Result<bool>.Pass(true);
 
                 case betType.Hard_02:
@@ -221,6 +233,7 @@ namespace CrapsLibrary.Bets
                 case betType.Hard_08:
                 case betType.Hard_10:
                 case betType.Hard_12:
+                case betType.Big_Red_07:
                     return Result<bool>.Pass(true);
 
                 default:

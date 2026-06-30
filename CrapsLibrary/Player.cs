@@ -5,7 +5,7 @@ namespace CrapsLibrary
 {
     public class Player : ObservableObject
     {
-        CrapsTable crapsTable;
+        readonly CrapsTable crapsTable;
 
         // Observeable properties
         private string _name = string.Empty;

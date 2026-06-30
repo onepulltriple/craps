@@ -29,7 +29,7 @@ each player only has one bet of each type
 allow players to multi-select fromt a list of bets (when pausing)
 allow players to multi-select fromt a list of bets (when placing bets)
 
-player can't create a pass line bet after the point has been established.
+player can't create a pass line bet after the point has been established (expect by agreement).
 
 COL
 PAR
@@ -47,7 +47,7 @@ auto-pause place bets when the point is made
 
 determine if the "outer" grids in the main window are necessary
 
-
+This should be playable with only a mouse as well.
 
 
 

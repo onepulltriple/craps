@@ -19,7 +19,9 @@ namespace CrapsTableWPF.ViewModels
         public GameEventFeedViewModel GameEventFeedViewModel { get; }
 
         public BettingAreaViewModelBase PassBetViewModel { get; }
+
         public PuckViewModel PuckViewModel { get; }
+
         public BettingAreaViewModelBase PlaceBetViewModel_PlaceBet_04 { get; }
         public BettingAreaViewModelBase PlaceBetViewModel_PlaceBet_05 { get; }
         public BettingAreaViewModelBase PlaceBetViewModel_PlaceBet_06 { get; }
@@ -31,6 +33,9 @@ namespace CrapsTableWPF.ViewModels
         public HardWayBetViewModel HardWayBetViewModel_Hard_06 { get; }
         public HardWayBetViewModel HardWayBetViewModel_Hard_08 { get; }
         public HardWayBetViewModel HardWayBetViewModel_Hard_10 { get; }
+
+
+        public BettingAreaViewModelBase BigRed7ViewModel { get; }
 
         
 
@@ -103,6 +108,10 @@ namespace CrapsTableWPF.ViewModels
             this.HardWayBetViewModel_Hard_06 = new HardWayBetViewModel(crapsTable, dialogService, betType.Hard_06);
             this.HardWayBetViewModel_Hard_08 = new HardWayBetViewModel(crapsTable, dialogService, betType.Hard_08);
             this.HardWayBetViewModel_Hard_10 = new HardWayBetViewModel(crapsTable, dialogService, betType.Hard_10);
+
+            this.BigRed7ViewModel = new BettingAreaViewModelBase(crapsTable, dialogService, betType.Big_Red_07);
+
+
 
             // Bindable Properties
             this._model.PropertyChanged += (_, _) =>

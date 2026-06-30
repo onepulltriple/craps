@@ -124,8 +124,8 @@
                     <Path Fill="Chocolate" Data="M2003.64,838.677L2355.64,838.677L2355.64,938.677L2003.64,938.677Z" />
                     <Path Fill="Chocolate" Data="M2355.64,838.677L2707.64,838.677L2707.64,938.677L2355.64,938.677Z" />-->
 
-                    <!-- Any Seven (Big Red) Bet -->
-                    <Path Fill="Red" Data="M2003.64,938.677L2707.64,938.677L2707.64,982.677L2003.64,982.677L2003.64,938.677" />
+                    <!-- Any Seven (Big Red) Bet --><!--
+                    <Path Fill="Red" Data="M2003.64,938.677L2707.64,938.677L2707.64,982.677L2003.64,982.677L2003.64,938.677" />-->
 
                     <!-- Horn High Bets -->
                     <Path Fill="AliceBlue" Data="M2003.64,982.677L2179.64,982.677L2179.64,1066.68L2003.64,1066.68Z" />
@@ -414,6 +414,22 @@
                                       Command="{Binding CreateOrUpdateBetCommand}" />
                     </Path.InputBindings>
                 </Path>
+
+
+                <!-- Any Seven (Big Red) Bet -->
+                <Border Canvas.Left="2005.68" Canvas.Top="938.68"
+                        Style="{StaticResource NoClippingBorderStyle}">
+                    <views:BigRed7View DataContext="{Binding BigRed7ViewModel}"/>
+                </Border>
+                <Path DataContext="{Binding BigRed7ViewModel}"
+                      Data="M2003.64,938.677L2707.64,938.677L2707.64,982.677L2003.64,982.677L2003.64,938.677"
+                      Style="{StaticResource AllowedBetPathStyle}">
+                    <Path.InputBindings>
+                        <MouseBinding Gesture="LeftClick"
+                                      Command="{Binding CreateOrUpdateBetCommand}" />
+                    </Path.InputBindings>
+                </Path>
+                <!--<Path Fill="Red" Data="M2003.64,938.677L2707.64,938.677L2707.64,982.677L2003.64,982.677L2003.64,938.677" />-->
 
             </Canvas>
         </Viewbox>

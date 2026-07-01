@@ -8,12 +8,16 @@
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance Type=viewmodels:BetViewModel}"
              d:DesignHeight="40" d:DesignWidth="40"
-             Background="MediumPurple"
+             Background="{x:Null}"
              >
-    <Grid>
+    <Border
+        Background="MediumPurple"
+        CornerRadius="20"
+        ClipToBounds="True"
+        >
         <TextBlock
             Style="{StaticResource BetTextBlockStyle}"
             Text="{Binding Commitment}"
             d:Text="9999"/>
-    </Grid>
+    </Border>
 </UserControl>

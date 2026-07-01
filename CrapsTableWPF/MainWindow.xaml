@@ -11,10 +11,17 @@
         d:DataContext="{d:DesignInstance Type=viewmodels:CrapsTableViewModel}"
         Title="Craps Table"  
         Style="{StaticResource MainWindowStyle}"
-        Width="1600" Height="1000" MinWidth="1200" MinHeight="750"
+        Width="1600" Height="900" MinWidth="1280" MinHeight="720"
         >
 
-    <Grid>
+    <Grid
+        ClipToBounds="True"
+        Margin="-25,0,-120,-100"
+        >
+        <Grid.RenderTransform>
+            <TranslateTransform X="25" Y="0"/>
+        </Grid.RenderTransform>
+        
         <!-- SVG in background, scales to window -->
         <Viewbox Panel.ZIndex="0"
             Stretch="Uniform"
@@ -31,7 +38,7 @@
             <Viewbox Stretch="Uniform">
                 <Canvas Width="3200" Height="2000">
 
-                    <!-- Lay Bets ??-->
+                    <!-- Lay Bets ??--><!--
                     <Path Fill="Transparent" Data="M896,410L1072,410L1072,470L896,470L896,410" />
                     <Path Fill="Transparent" Data="M1072,410L1248,410L1248,470L1072,470L1072,410" />
                     <Path Fill="Transparent" Data="M1248,410L1424,410L1424,470L1248,470L1248,410" />
@@ -40,13 +47,13 @@
                     <Path Fill="Transparent" Data="M1776,410L1952,410L1952,470L1776,470L1776,410" />
 
 
-                    <!-- Lay Bets ??-->
+                    --><!-- Lay Bets ??--><!--
                     <Path Fill="PaleVioletRed" Data="M894,410L1070,410L1070,470L894,470L894,410" />
                     <Path Fill="PaleVioletRed" Data="M1070,410L1246,410L1246,470L1070,470L1070,410" />
                     <Path Fill="PaleVioletRed" Data="M1246,410L1422,410L1422,470L1246,470L1246,410" />
                     <Path Fill="PaleVioletRed" Data="M1422,410L1598,410L1598,470L1422,470L1422,410" />
                     <Path Fill="PaleVioletRed" Data="M1598,410L1774,410L1774,470L1598,470L1598,410" />
-                    <Path Fill="PaleVioletRed" Data="M1774,410L1950,410L1950,470L1774,470L1774,410" />
+                    <Path Fill="PaleVioletRed" Data="M1774,410L1950,410L1950,470L1774,470L1774,410" />-->
 
                     <!-- Place Bets -->
                     <!--<Path Fill="Blue" Data="M894,470L1070,470L1070,685L894,685L894,470" />
@@ -61,24 +68,24 @@
                     <Path Fill="DarkBlue" Data="M720,921L660,921L660,462.8L720,410L720,921" />
                     <Path Fill="DarkBlue" Data="M845,1046L1776,1046L1776,1106L845,1106L845,1046" />-->
 
-                    <!-- Come and Don't Come Bets -->
+                    <!-- Come and Don't Come Bets --><!--
                     <Path Fill="Orange" Data="M833.284,932.716C825.783,925.214 815.609,921 805,921L720,921L720,685L1776,685L1776,861L946.421,861C919.9,861 894.464,871.536 875.711,890.289L833.284,932.716Z" />
                     <Path Fill="DarkOrange" Data="M720,410L894,410L894,685L720,685L720,410" />
 
-                    <!-- Field Bets -->
+                    --><!-- Field Bets --><!--
                     <Path Fill="Green" Data="M833.284,932.716L875.711,890.289C894.464,871.536 919.9,861 946.421,861L1776,861L1776,1046L845,1046L845,961C845,950.391 840.786,940.217 833.284,932.716Z" />
                     <Path Fill="DarkGreen" Data="M1012.02,1003.51C984.41,1003.51 962,981.103 962,953.5C962,925.897 984.41,903.487 1012.02,903.487C1039.62,903.487 1062.03,925.897 1062.03,953.5C1062.03,981.103 1039.62,1003.51 1012.02,1003.51Z" />
                     <Path Fill="DarkGreen" Data="M1607.01,1003.51C1579.41,1003.51 1557,981.103 1557,953.5C1557,925.897 1579.41,903.487 1607.01,903.487C1634.61,903.487 1657.02,925.897 1657.02,953.5C1657.02,981.103 1634.61,1003.51 1607.01,1003.51Z" />
 
-                    <!-- Big 6 and Big 8 Bets -->
+                    --><!-- Big 6 and Big 8 Bets --><!--
                     <Path Fill="DarkCyan" Data="M705.7,1060.3L833.284,932.716C840.786,940.217 845,950.392 845,961L845,1118C792.752,1118 742.645,1097.25 705.7,1060.3Z" />
                     <Path Fill="DarkCyan" Data="M705.7,1060.3L833.284,932.716C825.783,925.214 815.609,921 805,921L648,921C648,973.248 668.755,1023.36 705.7,1060.3" />
                     
 
-                    <!-- World Bet -->
+                    --><!-- World Bet --><!--
                     <Path Fill="AntiqueWhite" Data="M1904.2,831.342C1876.61,831.342 1854.2,808.937 1854.2,781.34C1854.2,753.743 1876.61,731.338 1904.2,731.338C1931.8,731.338 1954.2,753.743 1954.2,781.34C1954.2,808.937 1931.8,831.342 1904.2,831.342Z" />
 
-                    <!-- Eleven Bets -->
+                    --><!-- Eleven Bets --><!--
                     <Path Fill="DarkOrange" Data="M1880.95,895.164C1869.08,895.164 1859.45,885.53 1859.45,873.664C1859.45,861.798 1869.08,852.164 1880.95,852.164C1892.81,852.164 1902.45,861.798 1902.45,873.664C1902.45,885.53 1892.81,895.164 1880.95,895.164Z" />
                     <Path Fill="DarkOrange" Data="M1880.95,947.981C1869.08,947.981 1859.45,938.347 1859.45,926.481C1859.45,914.615 1869.08,904.981 1880.95,904.981C1892.81,904.981 1902.45,914.615 1902.45,926.481C1902.45,938.347 1892.81,947.981 1880.95,947.981Z" />
                     <Path Fill="DarkOrange" Data="M1880.95,1000.8C1869.08,1000.8 1859.45,991.164 1859.45,979.297C1859.45,967.431 1869.08,957.797 1880.95,957.797C1892.81,957.797 1902.45,967.431 1902.45,979.297C1902.45,991.164 1892.81,1000.8 1880.95,1000.8Z" />
@@ -88,7 +95,7 @@
                     <Path Fill="DarkOrange" Data="M1880.95,1212.06C1869.08,1212.06 1859.45,1202.43 1859.45,1190.56C1859.45,1178.7 1869.08,1169.06 1880.95,1169.06C1892.81,1169.06 1902.45,1178.7 1902.45,1190.56C1902.45,1202.43 1892.81,1212.06 1880.95,1212.06Z" />
                     <Path Fill="DarkOrange" Data="M1880.95,1264.88C1869.08,1264.88 1859.45,1255.25 1859.45,1243.38C1859.45,1231.51 1869.08,1221.88 1880.95,1221.88C1892.81,1221.88 1902.45,1231.51 1902.45,1243.38C1902.45,1255.25 1892.81,1264.88 1880.95,1264.88Z" />
 
-                    <!-- Craps Bets -->
+                    --><!-- Craps Bets --><!--
                     <Path Fill="DarkOrchid" Data="M1927.46,903.729C1915.59,903.729 1905.96,894.096 1905.96,882.229C1905.96,870.363 1915.59,860.729 1927.46,860.729C1939.33,860.729 1948.96,870.363 1948.96,882.229C1948.96,894.096 1939.33,903.729 1927.46,903.729Z" />
                     <Path Fill="DarkOrchid" Data="M1927.46,954.358C1915.59,954.358 1905.96,944.724 1905.96,932.858C1905.96,920.992 1915.59,911.358 1927.46,911.358C1939.33,911.358 1948.96,920.992 1948.96,932.858C1948.96,944.724 1939.33,954.358 1927.46,954.358Z" />
                     <Path Fill="DarkOrchid" Data="M1927.46,1004.99C1915.59,1004.99 1905.96,995.352 1905.96,983.486C1905.96,971.62 1915.59,961.986 1927.46,961.986C1939.33,961.986 1948.96,971.62 1948.96,983.486C1948.96,995.352 1939.33,1004.99 1927.46,1004.99Z" />
@@ -98,7 +105,7 @@
                     <Path Fill="DarkOrchid" Data="M1927.46,1207.5C1915.59,1207.5 1905.96,1197.87 1905.96,1186C1905.96,1174.13 1915.59,1164.5 1927.46,1164.5C1939.33,1164.5 1948.96,1174.13 1948.96,1186C1948.96,1197.87 1939.33,1207.5 1927.46,1207.5Z" />
                     <Path Fill="DarkOrchid" Data="M1927.46,1258.13C1915.59,1258.13 1905.96,1248.49 1905.96,1236.63C1905.96,1224.76 1915.59,1215.13 1927.46,1215.13C1939.33,1215.13 1948.96,1224.76 1948.96,1236.63C1948.96,1248.49 1939.33,1258.13 1927.46,1258.13Z" />
 
-                    <!-- Odds Bets -->
+                    --><!-- Odds Bets --><!--
                     <Path Fill="Cyan" Data="M686.71,439.296L591.158,523.381L514.009,420.208L623.113,345.908L686.71,439.296" />
                     <Path Fill="Cyan" Data="M456,521.764L588,521.764L588,653.764L456,653.764L456,521.764" />
                     <Path Fill="Cyan" Data="M456,766.177L588,766.177L588,898.177L456,898.177L456,766.177" />
@@ -108,7 +115,7 @@
                     <Path Fill="Cyan" Data="M1144.99,1178L1276.99,1178L1276.99,1310L1144.99,1310L1144.99,1178" />
                     <Path Fill="Cyan" Data="M1506.09,1178L1638.09,1178L1638.09,1310L1506.09,1310L1506.09,1178" />
 
-                    <!-- Fire Bets -->
+                    --><!-- Fire Bets --><!--
                     <Path Fill="Purple" Data="M597.071,444.423C586.309,444.423 577.571,435.686 577.571,424.923C577.571,414.161 586.309,405.423 597.071,405.423C607.834,405.423 616.571,414.161 616.571,424.923C616.571,435.686 607.834,444.423 597.071,444.423Z" />
                     <Path Fill="Purple" Data="M506.885,613.764C496.122,613.764 487.385,605.026 487.385,594.264C487.385,583.502 496.122,574.764 506.885,574.764C517.647,574.764 526.385,583.502 526.385,594.264C526.385,605.026 517.647,613.764 506.885,613.764Z" />
                     <Path Fill="Purple" Data="M506.885,858.177C496.122,858.177 487.385,849.439 487.385,838.677C487.385,827.915 496.122,819.177 506.885,819.177C517.647,819.177 526.385,827.915 526.385,838.677C526.385,849.439 517.647,858.177 506.885,858.177Z" />
@@ -116,7 +123,7 @@
                     <Path Fill="Purple" Data="M647.249,1256.99C636.486,1256.99 627.749,1248.25 627.749,1237.49C627.749,1226.73 636.486,1217.99 647.249,1217.99C658.011,1217.99 666.749,1226.73 666.749,1237.49C666.749,1248.25 658.011,1256.99 647.249,1256.99Z" />
                     <Path Fill="Purple" Data="M840.986,1270C830.224,1270 821.486,1261.26 821.486,1250.5C821.486,1239.74 830.224,1231 840.986,1231C851.749,1231 860.486,1239.74 860.486,1250.5C860.486,1261.26 851.749,1270 840.986,1270Z" />
                     <Path Fill="Purple" Data="M1210.99,1270C1200.22,1270 1191.49,1261.26 1191.49,1250.5C1191.49,1239.74 1200.22,1231 1210.99,1231C1221.75,1231 1230.49,1239.74 1230.49,1250.5C1230.49,1261.26 1221.75,1270 1210.99,1270Z" />
-                    <Path Fill="Purple" Data="M1572.09,1270C1561.32,1270 1552.59,1261.26 1552.59,1250.5C1552.59,1239.74 1561.32,1231 1572.09,1231C1582.85,1231 1591.59,1239.74 1591.59,1250.5C1591.59,1261.26 1582.85,1270 1572.09,1270Z" />
+                    <Path Fill="Purple" Data="M1572.09,1270C1561.32,1270 1552.59,1261.26 1552.59,1250.5C1552.59,1239.74 1561.32,1231 1572.09,1231C1582.85,1231 1591.59,1239.74 1591.59,1250.5C1591.59,1261.26 1582.85,1270 1572.09,1270Z" />-->
                     
                     <!--Hard Way Bets-->
                     <!--<Path Fill="Chocolate" Data="M2003.64,758.677L2003.64,838.677L2355.64,838.677L2355.64,738.677L2023.64,738.677C2012.59,738.677 2003.64,747.631 2003.64,758.677Z" />
@@ -127,11 +134,11 @@
                     <!-- Any Seven (Big Red) Bet --><!--
                     <Path Fill="Red" Data="M2003.64,938.677L2707.64,938.677L2707.64,982.677L2003.64,982.677L2003.64,938.677" />-->
 
-                    <!-- Horn High Bets -->
+                    <!-- Horn High Bets --><!--
                     <Path Fill="AliceBlue" Data="M2003.64,982.677L2179.64,982.677L2179.64,1066.68L2003.64,1066.68Z" />
                     <Path Fill="AliceBlue" Data="M2179.64,982.677L2355.64,982.677L2355.64,1066.68L2179.64,1066.68Z" />
                     <Path Fill="AliceBlue" Data="M2355.64,982.677L2531.64,982.677L2531.64,1066.68L2355.64,1066.68Z" />
-                    <Path Fill="AliceBlue" Data="M2531.64,982.677L2707.64,982.677L2707.64,1066.68L2531.64,1066.68Z" />
+                    <Path Fill="AliceBlue" Data="M2531.64,982.677L2707.64,982.677L2707.64,1066.68L2531.64,1066.68Z" />-->
 
                     <!-- Single-Roll Bets --><!--
                     <Path Fill="PaleGreen" Data="M2003.64,1066.68L2235.64,1066.68L2235.64,1150.68L2003.64,1150.68Z" />
@@ -195,21 +202,22 @@
                     <views:PlayerSlotView DataContext="{Binding PlayerSlotViewModels[6]}"/>
                 </Border>
 
-                <Border Canvas.Left="281" Canvas.Top="-27.7"
+                <!--Canvas.Left="281" Canvas.Top="-27.7"-->
+                <Border Canvas.Left="281" Canvas.Top="22.3"
                         Style="{DynamicResource MainWindowPlayerSlotBorderStyle}">
                     <views:PlayerSlotView DataContext="{Binding PlayerSlotViewModels[7]}"/>
                 </Border>
 
                 
                 <!--table minimum-->
-                <Border Canvas.Left="15" Canvas.Top="1910"
+                <Border Canvas.Left="15" Canvas.Top="1610"
                     Style="{DynamicResource NoBorderStyle}">
                     <TextBlock Text="{Binding DisplayedTableMinimum}" 
                                Style="{StaticResource MainWindowNormal}"
                                d:Text="Table minimum: #"/>
                 </Border>
                 <!--table maximum-->
-                <Border Canvas.Left="15" Canvas.Top="1950"
+                <Border Canvas.Left="15" Canvas.Top="1650"
                     Style="{DynamicResource NoBorderStyle}">
                     <TextBlock Text="{Binding DisplayedTableMaximum}" 
                                Style="{StaticResource MainWindowNormal}"
@@ -217,10 +225,13 @@
                 </Border>
 
 
-                <!--game event feed-->
-                <Border Canvas.Left="2306" Canvas.Top="1590"
+                <!--Game Event Feed-->
+                <!--Canvas.Left="2306" Canvas.Top="1590"-->
+                <!--Height="404" Width="880"-->
+                <Border 
+                    Canvas.Left="2001.4" Canvas.Top="150"
                     Style="{DynamicResource GameEventFeedRoundedBorderStyle}"
-                    Height="404" Width="880"
+                    Height="404" Width="707"
                     >
                     <views:GameEventFeedView
                         DataContext="{Binding GameEventFeedViewModel}"
@@ -229,36 +240,40 @@
 
                 
                 <!--next turn button-->
-                <Button Canvas.Left="2006" Canvas.Top="1590"
+                <Button Canvas.Left="2001.4" Canvas.Top="1590"
                         Style="{StaticResource MainWindowRoundedButtonStyle}"
                         Command="{Binding NextTurnCommand}"
+                        Background="#3e4c7d"
                         >
                     <TextBlock Text="Next turn!" 
-                               Style="{StaticResource PlayerSlotIndexHeadingStyle}"
-                               d:Text="Next turn"/>
+                               Style="{StaticResource MainWindowButtonTextBlockStyle}"
+                               d:Text="Next turn!"
+                               Padding="10,10,10,10"
+                               />
                 </Button>
 
                 <!--roll dice button-->
-                <Button Canvas.Left="2006" Canvas.Top="1690"
+                <Button Canvas.Left="2001.4" Canvas.Top="1505"
                         Style="{StaticResource MainWindowRoundedButtonStyle}"
                         Command="{Binding RollDiceCommand}"
+                        Background="#a22920"
                         >
                     <TextBlock Text="Roll dice!" 
-                               Style="{StaticResource PlayerSlotIndexHeadingStyle}"
-                               d:Text="Roll dice!"/>
+                               Style="{StaticResource MainWindowButtonTextBlockStyle}"
+                               d:Text="Roll dice!"
+                               Padding="10,10,10,10"
+                               />
                 </Button>
 
 
                 <!--current player index-->
-                <Border Canvas.Left="2000" Canvas.Top="1500"
-                        Style="{StaticResource BetBorderStyle}"
-                        >
+                <!--<Border Canvas.Left="2001.4" Canvas.Top="1500"
+                        Style="{StaticResource BetBorderStyle}">
                     <TextBlock Canvas.Left="2000" Canvas.Top="1500"
                                    Text="{Binding CurrentPlayerIndex}"
                                    Style="{StaticResource MainWindowButtonCloseTextBlockStyle}"
-                                   d:Text="-2"
-                                   />
-                </Border>
+                                   d:Text="-2"/>
+                </Border>-->
 
 
                 <!-- Place bets -->

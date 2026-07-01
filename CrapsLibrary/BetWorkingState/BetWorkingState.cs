@@ -30,11 +30,11 @@ namespace CrapsLibrary.BetWorkingState
         protected void AnnounceReturnWinnings(byte firstOutcome, byte secondOutcome)
         {
             betWorkingStateMachine.crapsTable.gameEventFeed.Add(
-                $"Hooray! {betInQuestion.betOwner.Name} " +
+                $"{betInQuestion.betOwner.Name} " +
                 $"won {betInQuestion.Name} " +
-                $"with {firstOutcome}, {secondOutcome}! " +
-                $"The payout of {betInQuestion.Payout} " +
-                $"credits goes to {betInQuestion.betOwner.Name}.",
+                //$"with {firstOutcome}, {secondOutcome}! " +
+                $"which paid {betInQuestion.Payout} credits.",
+                //$"credits goes to {betInQuestion.betOwner.Name}.",
                 GameEventType.Message
                 );
         }
@@ -52,12 +52,12 @@ namespace CrapsLibrary.BetWorkingState
 
         protected void AnnounceLost()
         {
-            betWorkingStateMachine.crapsTable.gameEventFeed.Add(
-                $"Oh no! {betInQuestion.betOwner.Name} " +
-                $"lost {betInQuestion.Name}! " +
-                $"The commitment of {betInQuestion.Commitment} credits goes to the house.",
-                GameEventType.Message
-                );
+            //betWorkingStateMachine.crapsTable.gameEventFeed.Add(
+            //    $"Oh no! {betInQuestion.betOwner.Name} " +
+            //    $"lost {betInQuestion.Name}! " +
+            //    $"The commitment of {betInQuestion.Commitment} credits goes to the house.",
+            //    GameEventType.Message
+            //    );
         }
 
         protected void AnnouncePaused()

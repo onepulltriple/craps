@@ -107,12 +107,12 @@
                     //$"The point {PassPoint} was MADE. The puck is OFF! Winner!",
                     $"The point {PassPoint} was made. Winner!",
                     GameEventType.Outcome,
-                    true
+                    false
                     );
                 crapsTable.gameEventFeed.Add(
                     $"Place bets are now paused/inaccessible!",
                     GameEventType.Outcome,
-                    true
+                    false
                     );
 
                 return true;

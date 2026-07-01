@@ -20,7 +20,8 @@ namespace CrapsLibrary.Bets
         PlaceBet_09,
         PlaceBet_10,
 
-        Big_Red_07
+        Big_Red_07,
+        Any_Craps
     }
 
     public static class BetFactory
@@ -70,7 +71,8 @@ namespace CrapsLibrary.Bets
                 { betType.PlaceBet_09,   new(  7, 5, "Place Bet 9"    , new List<int>{ 9  } ) },
                 { betType.PlaceBet_10,   new(  9, 5, "Place Bet 10"   , new List<int>{ 10 } ) },
 
-                { betType.Big_Red_07,    new(  4, 1, "Big Red"        , new List<int>{ 7 } )  }
+                { betType.Big_Red_07,    new(  4, 1, "Big Red"        , new List<int>{ 7 } )  },
+                { betType.Any_Craps,     new(  7, 1, "Any Craps"      , new List<int>{2,3,12})}
             };
 
         public static Result<Bet?> CreateOrUpdateBet(CrapsTable crapsTable, Player player, betType betType, uint amountThrownAtBet)
@@ -187,6 +189,7 @@ namespace CrapsLibrary.Bets
                     break;
 
                 case betType.Big_Red_07:
+                case betType.Any_Craps:
                     tempBet = new SingleRollBet(crapsTable, player, betType, (uint)countOfUnitsToBetAsInt, unitOfBet, BetDefinitions[betType].winningTotals, payout);
                     break;
 
@@ -245,6 +248,7 @@ namespace CrapsLibrary.Bets
                 case betType.Hard_10:
                 case betType.Hard_12:
                 case betType.Big_Red_07:
+                case betType.Any_Craps:
                     return Result<bool>.Pass(true);
 
                 default:

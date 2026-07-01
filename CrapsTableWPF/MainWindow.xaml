@@ -133,14 +133,14 @@
                     <Path Fill="AliceBlue" Data="M2355.64,982.677L2531.64,982.677L2531.64,1066.68L2355.64,1066.68Z" />
                     <Path Fill="AliceBlue" Data="M2531.64,982.677L2707.64,982.677L2707.64,1066.68L2531.64,1066.68Z" />
 
-                    <!-- Single-Roll Bets -->
+                    <!-- Single-Roll Bets --><!--
                     <Path Fill="PaleGreen" Data="M2003.64,1066.68L2235.64,1066.68L2235.64,1150.68L2003.64,1150.68Z" />
                     <Path Fill="PaleGreen" Data="M2003.64,1150.68L2235.64,1150.68L2235.64,1234.68L2003.64,1234.68Z" />
                     <Path Fill="PaleGreen" Data="M2475.64,1066.68L2707.64,1066.68L2707.64,1150.68L2475.64,1150.68Z" />
-                    <Path Fill="PaleGreen" Data="M2475.64,1150.68L2707.64,1150.68L2707.64,1234.68L2475.64,1234.68Z" />
+                    <Path Fill="PaleGreen" Data="M2475.64,1150.68L2707.64,1150.68L2707.64,1234.68L2475.64,1234.68Z" />-->
 
-                    <!-- Any Craps Bets -->
-                    <Path Fill="DarkOrchid" Data="M2707.64,1258.68L2707.64,1234.68L2003.64,1234.68L2003.64,1258.68C2003.64,1269.72 2012.59,1278.68 2023.64,1278.68L2687.64,1278.68C2698.68,1278.68 2707.64,1269.72 2707.64,1258.68Z" />
+                    <!-- Any Craps Bets --><!--
+                    <Path Fill="DarkOrchid" Data="M2707.64,1258.68L2707.64,1234.68L2003.64,1234.68L2003.64,1258.68C2003.64,1269.72 2012.59,1278.68 2023.64,1278.68L2687.64,1278.68C2698.68,1278.68 2707.64,1269.72 2707.64,1258.68Z" />-->
 
 
 
@@ -355,9 +355,8 @@
                     </Path.InputBindings>
                 </Path>
                 
-                <!--<Path Fill="Yellow" Data="M648,921C648,1029.8 736.2,1118 845,1118L1776,1118L1776,1178L845,1178C703.063,1178 588,1062.94 588,921L588,544.243C588,532.748 592.945,521.808 601.575,514.214L648,473.36L648,921" />-->
-                <Path Fill="DarkBlue" Data="M720,921L660,921L660,462.8L720,410L720,921" />
-                <Path Fill="DarkBlue" Data="M845,1046L1776,1046L1776,1106L845,1106L845,1046" />
+                <!--<Path Fill="DarkBlue" Data="M720,921L660,921L660,462.8L720,410L720,921" />-->
+                <!--<Path Fill="DarkBlue" Data="M845,1046L1776,1046L1776,1106L845,1106L845,1046" />-->
 
                 <!--Puck OFF standby location-->
                 <Border Canvas.Left="758" Canvas.Top="527.5"
@@ -419,7 +418,7 @@
                 <!-- Any Seven (Big Red) Bet -->
                 <Border Canvas.Left="2003.68" Canvas.Top="938.68"
                         Style="{StaticResource NoClippingBorderStyle}">
-                    <views:BigRed7View DataContext="{Binding BigRed7ViewModel}"/>
+                    <views:Any7AnyCrapsView DataContext="{Binding BigRed7ViewModel}"/>
                 </Border>
                 <Path DataContext="{Binding BigRed7ViewModel}"
                       Data="M2003.64,938.677L2707.64,938.677L2707.64,982.677L2003.64,982.677L2003.64,938.677"
@@ -429,6 +428,28 @@
                                       Command="{Binding CreateOrUpdateBetCommand}" />
                     </Path.InputBindings>
                 </Path>
+
+
+                <!-- Single-Roll Bets -->
+                <Path Fill="PaleGreen" Data="M2003.64,1066.68L2235.64,1066.68L2235.64,1150.68L2003.64,1150.68Z" />
+                <Path Fill="PaleGreen" Data="M2003.64,1150.68L2235.64,1150.68L2235.64,1234.68L2003.64,1234.68Z" />
+                <Path Fill="PaleGreen" Data="M2475.64,1066.68L2707.64,1066.68L2707.64,1150.68L2475.64,1150.68Z" />
+                <Path Fill="PaleGreen" Data="M2475.64,1150.68L2707.64,1150.68L2707.64,1234.68L2475.64,1234.68Z" />
+
+                <!-- Any Craps Bets -->
+                <Border Canvas.Left="2003.68" Canvas.Top="1234.68"
+                        Style="{StaticResource NoClippingBorderStyle}">
+                    <views:Any7AnyCrapsView DataContext="{Binding AnyCrapsViewModel}"/>
+                </Border>
+                <Path DataContext="{Binding AnyCrapsViewModel}"
+                      Data="M2707.64,1258.68L2707.64,1234.68L2003.64,1234.68L2003.64,1258.68C2003.64,1269.72 2012.59,1278.68 2023.64,1278.68L2687.64,1278.68C2698.68,1278.68 2707.64,1269.72 2707.64,1258.68Z"
+                      Style="{StaticResource AllowedBetPathStyle}">
+                    <Path.InputBindings>
+                        <MouseBinding Gesture="LeftClick"
+                                      Command="{Binding CreateOrUpdateBetCommand}" />
+                    </Path.InputBindings>
+                </Path>
+
 
             </Canvas>
         </Viewbox>

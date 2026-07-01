@@ -140,7 +140,8 @@
     <Style x:Key="BetTextBlockStyle"
            TargetType="TextBlock"
            BasedOn="{StaticResource BodyTextStyle}">
-        <Setter Property="FontSize"                 Value="14"/>
+        <Setter Property="FontSize"                 Value="18"/>
+        <Setter Property="Foreground"               Value="{StaticResource BrightTextBrush}"/>
         <Setter Property="Margin"                   Value="0,0,0,2.1"/>
         <Setter Property="Padding"                  Value="0"/>
         <Setter Property="HorizontalAlignment"      Value="Center"/>

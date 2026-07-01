@@ -36,6 +36,7 @@ namespace CrapsTableWPF.ViewModels
 
 
         public BettingAreaViewModelBase BigRed7ViewModel { get; }
+        public BettingAreaViewModelBase AnyCrapsViewModel { get; }
 
         
 
@@ -110,6 +111,7 @@ namespace CrapsTableWPF.ViewModels
             this.HardWayBetViewModel_Hard_10 = new HardWayBetViewModel(crapsTable, dialogService, betType.Hard_10);
 
             this.BigRed7ViewModel = new BettingAreaViewModelBase(crapsTable, dialogService, betType.Big_Red_07);
+            this.AnyCrapsViewModel = new BettingAreaViewModelBase(crapsTable, dialogService, betType.Any_Craps);
 
 
 

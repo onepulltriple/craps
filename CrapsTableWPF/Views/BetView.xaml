@@ -14,6 +14,6 @@
         <TextBlock
             Style="{StaticResource BetTextBlockStyle}"
             Text="{Binding Commitment}"
-            d:Text="99999"/>
+            d:Text="9999"/>
     </Grid>
 </UserControl>

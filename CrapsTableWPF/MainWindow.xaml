@@ -429,12 +429,64 @@
                     </Path.InputBindings>
                 </Path>
 
+                <!--Horn Bets-->
+                
+                
 
                 <!-- Single-Roll Bets -->
-                <Path Fill="PaleGreen" Data="M2003.64,1066.68L2235.64,1066.68L2235.64,1150.68L2003.64,1150.68Z" />
-                <Path Fill="PaleGreen" Data="M2003.64,1150.68L2235.64,1150.68L2235.64,1234.68L2003.64,1234.68Z" />
-                <Path Fill="PaleGreen" Data="M2475.64,1066.68L2707.64,1066.68L2707.64,1150.68L2475.64,1150.68Z" />
-                <Path Fill="PaleGreen" Data="M2475.64,1150.68L2707.64,1150.68L2707.64,1234.68L2475.64,1234.68Z" />
+                <Border Canvas.Left="2003.68" Canvas.Top="1066.68"
+                        Style="{StaticResource NoClippingBorderStyle}">
+                    <views:PropositionBetView DataContext="{Binding AcesViewModel}"/>
+                </Border>
+                <Path DataContext="{Binding AcesViewModel}"
+                      Data="M2003.64,1066.68L2235.64,1066.68L2235.64,1150.68L2003.64,1150.68Z"
+                      Style="{StaticResource AllowedBetPathStyle}">
+                    <Path.InputBindings>
+                        <MouseBinding Gesture="LeftClick"
+                                      Command="{Binding CreateOrUpdateBetCommand}" />
+                    </Path.InputBindings>
+                </Path>
+                <Border Canvas.Left="2003.68" Canvas.Top="1150.68"
+                        Style="{StaticResource NoClippingBorderStyle}">
+                    <views:PropositionBetView DataContext="{Binding AceDeuceViewModel}"/>
+                </Border>
+                <Path DataContext="{Binding AceDeuceViewModel}"
+                      Data="M2003.64,1150.68L2235.64,1150.68L2235.64,1234.68L2003.64,1234.68Z"
+                      Style="{StaticResource AllowedBetPathStyle}">
+                    <Path.InputBindings>
+                        <MouseBinding Gesture="LeftClick"
+                                      Command="{Binding CreateOrUpdateBetCommand}" />
+                    </Path.InputBindings>
+                </Path>
+                <Border Canvas.Left="2475.68" Canvas.Top="1066.68"
+                        Style="{StaticResource NoClippingBorderStyle}">
+                    <views:PropositionBetView DataContext="{Binding BoxcarsViewModel}"/>
+                </Border>
+                <Path DataContext="{Binding BoxcarsViewModel}"
+                      Data="M2475.64,1066.68L2707.64,1066.68L2707.64,1150.68L2475.64,1150.68Z"
+                      Style="{StaticResource AllowedBetPathStyle}">
+                    <Path.InputBindings>
+                        <MouseBinding Gesture="LeftClick"
+                                      Command="{Binding CreateOrUpdateBetCommand}" />
+                    </Path.InputBindings>
+                </Path>
+                <Border Canvas.Left="2475.68" Canvas.Top="1150.68"
+                        Style="{StaticResource NoClippingBorderStyle}">
+                    <views:PropositionBetView DataContext="{Binding YoElevenViewModel}"/>
+                </Border>
+                <Path DataContext="{Binding YoElevenViewModel}"
+                      Data="M2475.64,1150.68L2707.64,1150.68L2707.64,1234.68L2475.64,1234.68Z"
+                      Style="{StaticResource AllowedBetPathStyle}">
+                    <Path.InputBindings>
+                        <MouseBinding Gesture="LeftClick"
+                                      Command="{Binding CreateOrUpdateBetCommand}" />
+                    </Path.InputBindings>
+                </Path>
+
+                <!--<Path Fill="PaleGreen" Data="M2003.64,1066.68L2235.64,1066.68L2235.64,1150.68L2003.64,1150.68Z" />-->
+                <!--<Path Fill="PaleGreen" Data="M2003.64,1150.68L2235.64,1150.68L2235.64,1234.68L2003.64,1234.68Z" />-->
+                <!--<Path Fill="PaleGreen" Data="M2475.64,1066.68L2707.64,1066.68L2707.64,1150.68L2475.64,1150.68Z" />-->
+                <!--<Path Fill="PaleGreen" Data="M2475.64,1150.68L2707.64,1150.68L2707.64,1234.68L2475.64,1234.68Z" />-->
 
                 <!-- Any Craps Bets -->
                 <Border Canvas.Left="2003.68" Canvas.Top="1234.68"

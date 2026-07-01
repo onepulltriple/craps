@@ -4,13 +4,6 @@ namespace CrapsLibrary.Bets
 {
     public enum betType // a container for constants with extra properties built in
     {
-        Hard_02,
-        Hard_04,
-        Hard_06,
-        Hard_08,
-        Hard_10,
-        Hard_12,
-
         PassBet,
 
         PlaceBet_04,
@@ -20,7 +13,16 @@ namespace CrapsLibrary.Bets
         PlaceBet_09,
         PlaceBet_10,
 
+        Hard_04,
+        Hard_06,
+        Hard_08,
+        Hard_10,
+
         Big_Red_07,
+        Aces,
+        Ace_Deuce,
+        Yo_Eleven,
+        Boxcars,
         Any_Craps
     }
 
@@ -55,13 +57,6 @@ namespace CrapsLibrary.Bets
                 // for bets whose minimum commitment match the table's minimum, payoutDenominator must equal 5
                 // 0 means winningTotals are handled by the bet child class
 
-                { betType.Hard_02,       new( 30, 1, "Aces"           , new List<int>{ 2  } ) },
-                { betType.Hard_04,       new(  7, 1, "Hard 4"         , new List<int>{ 4  } ) },
-                { betType.Hard_06,       new(  9, 1, "Hard 6"         , new List<int>{ 6  } ) },
-                { betType.Hard_08,       new(  9, 1, "Hard 8"         , new List<int>{ 8  } ) },
-                { betType.Hard_10,       new(  7, 1, "Hard 10"        , new List<int>{ 10 } ) },
-                { betType.Hard_12,       new( 30, 1, "Boxcars"        , new List<int>{ 12 } ) },
-
                 { betType.PassBet,       new(  5, 5, "Pass Line Bet"  , new List<int>{7,11} ) }, // pays 1:1
 
                 { betType.PlaceBet_04,   new(  9, 5, "Place Bet 4"    , new List<int>{ 4  } ) },
@@ -71,7 +66,16 @@ namespace CrapsLibrary.Bets
                 { betType.PlaceBet_09,   new(  7, 5, "Place Bet 9"    , new List<int>{ 9  } ) },
                 { betType.PlaceBet_10,   new(  9, 5, "Place Bet 10"   , new List<int>{ 10 } ) },
 
-                { betType.Big_Red_07,    new(  4, 1, "Big Red"        , new List<int>{ 7 } )  },
+                { betType.Hard_04,       new(  7, 1, "Hard 4"         , new List<int>{ 4  } ) },
+                { betType.Hard_06,       new(  9, 1, "Hard 6"         , new List<int>{ 6  } ) },
+                { betType.Hard_08,       new(  9, 1, "Hard 8"         , new List<int>{ 8  } ) },
+                { betType.Hard_10,       new(  7, 1, "Hard 10"        , new List<int>{ 10 } ) },
+
+                { betType.Big_Red_07,    new(  4, 1, "Big Red"        , new List<int>{ 7  } ) },
+                { betType.Aces,          new( 30, 1, "Aces"           , new List<int>{ 2  } ) },
+                { betType.Ace_Deuce,     new( 15, 1, "Ace-Deuce"      , new List<int>{ 3  } ) },
+                { betType.Yo_Eleven,     new( 15, 1, "Yo Eleven"      , new List<int>{ 11 } ) },
+                { betType.Boxcars,       new( 30, 1, "Boxcars"        , new List<int>{ 12 } ) },
                 { betType.Any_Craps,     new(  7, 1, "Any Craps"      , new List<int>{2,3,12})}
             };
 
@@ -179,16 +183,18 @@ namespace CrapsLibrary.Bets
                     tempBet = new PassBet(crapsTable, player, betType, (uint)countOfUnitsToBetAsInt, unitOfBet, BetDefinitions[betType].winningTotals, payout);
                     break;
 
-                case betType.Hard_02:
                 case betType.Hard_04:
                 case betType.Hard_06:
                 case betType.Hard_08:
                 case betType.Hard_10:
-                case betType.Hard_12:
                     tempBet = new HardWayBet(crapsTable, player, betType, (uint)countOfUnitsToBetAsInt, unitOfBet, BetDefinitions[betType].winningTotals, payout);
                     break;
 
                 case betType.Big_Red_07:
+                case betType.Aces:
+                case betType.Ace_Deuce:
+                case betType.Yo_Eleven:
+                case betType.Boxcars:
                 case betType.Any_Craps:
                     tempBet = new SingleRollBet(crapsTable, player, betType, (uint)countOfUnitsToBetAsInt, unitOfBet, BetDefinitions[betType].winningTotals, payout);
                     break;
@@ -241,13 +247,16 @@ namespace CrapsLibrary.Bets
                         return Result<bool>.Fail("Pass line bets can only be made before a point is established.");
                     return Result<bool>.Pass(true);
 
-                case betType.Hard_02:
                 case betType.Hard_04:
                 case betType.Hard_06:
                 case betType.Hard_08:
                 case betType.Hard_10:
-                case betType.Hard_12:
+
                 case betType.Big_Red_07:
+                case betType.Aces:
+                case betType.Ace_Deuce:
+                case betType.Yo_Eleven:
+                case betType.Boxcars:
                 case betType.Any_Craps:
                     return Result<bool>.Pass(true);
 

@@ -34,6 +34,9 @@
     <Compile Update="Views\PlayerView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\PropositionBetView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\PuckOffView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

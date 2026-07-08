@@ -15,13 +15,16 @@
     <Compile Update="Views\BetView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\Any7AnyCrapsView.xaml.cs">
+    <Compile Update="Views\Any7AnyCrapsBetView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\Big6BetView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\Big8BetView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\FieldBetView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\GameEventFeedView.xaml.cs">
@@ -40,6 +43,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\PlayerView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\WorldBetView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\PropositionBetView.xaml.cs">

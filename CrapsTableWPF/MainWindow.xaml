@@ -77,12 +77,12 @@
                     <Path Fill="DarkGreen" Data="M1012.02,1003.51C984.41,1003.51 962,981.103 962,953.5C962,925.897 984.41,903.487 1012.02,903.487C1039.62,903.487 1062.03,925.897 1062.03,953.5C1062.03,981.103 1039.62,1003.51 1012.02,1003.51Z" />
                     <Path Fill="DarkGreen" Data="M1607.01,1003.51C1579.41,1003.51 1557,981.103 1557,953.5C1557,925.897 1579.41,903.487 1607.01,903.487C1634.61,903.487 1657.02,925.897 1657.02,953.5C1657.02,981.103 1634.61,1003.51 1607.01,1003.51Z" />
 
-                    --><!-- Big 6 and Big 8 Bets --><!--
-                    <Path Fill="DarkCyan" Data="M705.7,1060.3L833.284,932.716C840.786,940.217 845,950.392 845,961L845,1118C792.752,1118 742.645,1097.25 705.7,1060.3Z" />
-                    <Path Fill="DarkCyan" Data="M705.7,1060.3L833.284,932.716C825.783,925.214 815.609,921 805,921L648,921C648,973.248 668.755,1023.36 705.7,1060.3" />
+                    --><!-- Big 6 and Big 8 Bets -->
+                    <!--<Path Fill="DarkCyan" Data="M705.7,1060.3L833.284,932.716C840.786,940.217 845,950.392 845,961L845,1118C792.752,1118 742.645,1097.25 705.7,1060.3Z" />-->
+                    <!--<Path Fill="DarkCyan" Data="M705.7,1060.3L833.284,932.716C825.783,925.214 815.609,921 805,921L648,921C648,973.248 668.755,1023.36 705.7,1060.3" />-->
                     
 
-                    --><!-- World Bet --><!--
+                    <!-- World Bet --><!--
                     <Path Fill="AntiqueWhite" Data="M1904.2,831.342C1876.61,831.342 1854.2,808.937 1854.2,781.34C1854.2,753.743 1876.61,731.338 1904.2,731.338C1931.8,731.338 1954.2,753.743 1954.2,781.34C1954.2,808.937 1931.8,831.342 1904.2,831.342Z" />
 
                     --><!-- Eleven Bets --><!--
@@ -354,7 +354,7 @@
 
 
                 <!-- Big 6 and Big 8 Bets -->
-                <Border Canvas.Left="648" Canvas.Top="921"
+                <Border Canvas.Left="646" Canvas.Top="921"
                         Style="{StaticResource NoClippingNoBackgroundBorderStyle}">
                     <views:Big6BetView DataContext="{Binding Big6BetViewModel}"/>
                 </Border>
@@ -366,7 +366,7 @@
                                       Command="{Binding CreateOrUpdateBetCommand}" />
                     </Path.InputBindings>
                 </Path>
-                <Border Canvas.Left="648" Canvas.Top="921"
+                <Border Canvas.Left="646" Canvas.Top="921"
                         Style="{StaticResource NoClippingNoBackgroundBorderStyle}">
                     <views:Big8BetView DataContext="{Binding Big8BetViewModel}"/>
                 </Border>
@@ -378,8 +378,20 @@
                                       Command="{Binding CreateOrUpdateBetCommand}" />
                     </Path.InputBindings>
                 </Path>
-                    
 
+                <!-- Field Bets -->
+                <Border Canvas.Left="843" Canvas.Top="861"
+                        Style="{StaticResource NoClippingNoBackgroundBorderStyle}">
+                    <views:FieldBetView DataContext="{Binding FieldBetViewModel}"/>
+                </Border>
+                <Path DataContext="{Binding FieldBetViewModel}"
+                      Data="M833.284,932.716L875.711,890.289C894.464,871.536 919.9,861 946.421,861L1776,861L1776,1046L845,1046L845,961C845,950.391 840.786,940.217 833.284,932.716Z"
+                      Style="{StaticResource AllowedBetPathStyle}">
+                    <Path.InputBindings>
+                        <MouseBinding Gesture="LeftClick"
+                                      Command="{Binding CreateOrUpdateBetCommand}" />
+                    </Path.InputBindings>
+                </Path>
 
                 <!-- Pass and Don't Pass Bets -->
                 <Border Canvas.Left="588" Canvas.Top="473.36"
@@ -458,7 +470,7 @@
                 <!-- Any Seven (Big Red) Bet -->
                 <Border Canvas.Left="2003.68" Canvas.Top="938.68"
                         Style="{StaticResource NoClippingBorderStyle}">
-                    <views:Any7AnyCrapsView DataContext="{Binding BigRed7ViewModel}"/>
+                    <views:Any7AnyCrapsBetView DataContext="{Binding BigRed7ViewModel}"/>
                 </Border>
                 <Path DataContext="{Binding BigRed7ViewModel}"
                       Data="M2003.64,938.677L2707.64,938.677L2707.64,982.677L2003.64,982.677L2003.64,938.677"
@@ -531,7 +543,7 @@
                 <!-- Any Craps Bets -->
                 <Border Canvas.Left="2003.68" Canvas.Top="1234.68"
                         Style="{StaticResource NoClippingBorderStyle}">
-                    <views:Any7AnyCrapsView DataContext="{Binding AnyCrapsViewModel}"/>
+                    <views:Any7AnyCrapsBetView DataContext="{Binding AnyCrapsViewModel}"/>
                 </Border>
                 <Path DataContext="{Binding AnyCrapsViewModel}"
                       Data="M2707.64,1258.68L2707.64,1234.68L2003.64,1234.68L2003.64,1258.68C2003.64,1269.72 2012.59,1278.68 2023.64,1278.68L2687.64,1278.68C2698.68,1278.68 2707.64,1269.72 2707.64,1258.68Z"

@@ -3,11 +3,11 @@
 namespace CrapsTableWPF.Views
 {
     /// <summary>
-    /// Interaction logic for Any7AnyCrapsView.xaml
+    /// Interaction logic for WorldBetView.xaml
     /// </summary>
-    public partial class Any7AnyCrapsView : UserControl
+    public partial class WorldBetView : UserControl
     {
-        public Any7AnyCrapsView()
+        public WorldBetView()
         {
             InitializeComponent();
         }

@@ -10,10 +10,20 @@
 
         internal override bool MeetsFirstWinningCondition(byte firstOutcome, byte secondOutcome)
         {
-            if (winningTotals.Contains(firstOutcome + secondOutcome))
-                return true;
+            if (!winningTotals.Contains(firstOutcome + secondOutcome))
+                return false;
 
-            return false;
+            if (this.betType == betType.Field &&
+                    (
+                        (firstOutcome + secondOutcome) == 2 || (firstOutcome + secondOutcome) == 12
+                    )
+               )
+            {
+                this.Payout *= 2; // TODO test parlaying of field bets when the 2 or 12 hits
+                return true;
+            } 
+
+            return true;
         }
 
         internal override bool MeetsLosingCondition(byte firstOutcome, byte secondOutcome)

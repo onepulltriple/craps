@@ -6,6 +6,7 @@ namespace CrapsLibrary.Bets
     {
         Big_06,
         Big_08,
+        Field,
         PassBet,
 
         PlaceBet_04,
@@ -61,6 +62,7 @@ namespace CrapsLibrary.Bets
 
                 { betType.Big_06,        new(  5, 5, "Big 6 Bet"      , new List<int>{ 6  } ) }, // pays 1:1
                 { betType.Big_08,        new(  5, 5, "Big 8 Bet"      , new List<int>{ 8  } ) }, // pays 1:1
+                { betType.Field,         new(  5, 5, "Field Bet"      , new List<int>{2,3,4,9,10,11,12})}, // pays 1:1, or 2:1 on 2,12
                 { betType.PassBet,       new(  5, 5, "Pass Line Bet"  , new List<int>{7,11} ) }, // pays 1:1
 
                 { betType.PlaceBet_04,   new(  9, 5, "Place Bet 4"    , new List<int>{ 4  } ) },
@@ -199,6 +201,7 @@ namespace CrapsLibrary.Bets
                     tempBet = new HardWayBet(crapsTable, player, betType, (uint)countOfUnitsToBetAsInt, unitOfBet, BetDefinitions[betType].winningTotals, payout);
                     break;
 
+                case betType.Field:
                 case betType.Big_Red_07:
                 case betType.Aces:
                 case betType.Ace_Deuce:
@@ -258,6 +261,7 @@ namespace CrapsLibrary.Bets
 
                 case betType.Big_06:
                 case betType.Big_08:
+                case betType.Field:
 
                 case betType.Hard_04:
                 case betType.Hard_06:

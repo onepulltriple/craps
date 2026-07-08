@@ -20,6 +20,7 @@ namespace CrapsTableWPF.ViewModels
 
         public BettingAreaViewModelBase Big6BetViewModel { get; }
         public BettingAreaViewModelBase Big8BetViewModel { get; }
+        public BettingAreaViewModelBase FieldBetViewModel { get; }
         public BettingAreaViewModelBase PassBetViewModel { get; }
 
         public PuckViewModel PuckViewModel { get; }
@@ -103,6 +104,7 @@ namespace CrapsTableWPF.ViewModels
 
             this.Big6BetViewModel = new BettingAreaViewModelBase(crapsTable, dialogService, betType.Big_06);
             this.Big8BetViewModel = new BettingAreaViewModelBase(crapsTable, dialogService, betType.Big_08);
+            this.FieldBetViewModel = new BettingAreaViewModelBase(crapsTable, dialogService, betType.Field);
             this.PassBetViewModel = new BettingAreaViewModelBase(crapsTable, dialogService, betType.PassBet);
             this.PuckViewModel = new PuckViewModel(this.puck);
 

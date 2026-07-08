@@ -4,6 +4,8 @@ namespace CrapsLibrary.Bets
 {
     public enum betType // a container for constants with extra properties built in
     {
+        Big_06,
+        Big_08,
         PassBet,
 
         PlaceBet_04,
@@ -57,6 +59,8 @@ namespace CrapsLibrary.Bets
                 // for bets whose minimum commitment match the table's minimum, payoutDenominator must equal 5
                 // 0 means winningTotals are handled by the bet child class
 
+                { betType.Big_06,        new(  5, 5, "Big 6 Bet"      , new List<int>{ 6  } ) }, // pays 1:1
+                { betType.Big_08,        new(  5, 5, "Big 8 Bet"      , new List<int>{ 8  } ) }, // pays 1:1
                 { betType.PassBet,       new(  5, 5, "Pass Line Bet"  , new List<int>{7,11} ) }, // pays 1:1
 
                 { betType.PlaceBet_04,   new(  9, 5, "Place Bet 4"    , new List<int>{ 4  } ) },
@@ -179,6 +183,11 @@ namespace CrapsLibrary.Bets
                     tempBet = new PlaceBet(crapsTable, player, betType, (uint)countOfUnitsToBetAsInt, unitOfBet, BetDefinitions[betType].winningTotals, payout);
                     break;
 
+                case betType.Big_06:
+                case betType.Big_08:
+                    tempBet = new MultiRollBet(crapsTable, player, betType, (uint)countOfUnitsToBetAsInt, unitOfBet, BetDefinitions[betType].winningTotals, payout);
+                    break;
+
                 case betType.PassBet:
                     tempBet = new PassBet(crapsTable, player, betType, (uint)countOfUnitsToBetAsInt, unitOfBet, BetDefinitions[betType].winningTotals, payout);
                     break;
@@ -246,6 +255,9 @@ namespace CrapsLibrary.Bets
                     if (crapsTable.puck.IsOn)
                         return Result<bool>.Fail("Pass line bets can only be made before a point is established.");
                     return Result<bool>.Pass(true);
+
+                case betType.Big_06:
+                case betType.Big_08:
 
                 case betType.Hard_04:
                 case betType.Hard_06:

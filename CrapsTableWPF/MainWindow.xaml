@@ -350,10 +350,35 @@
                     </Path.InputBindings>
                 </Path>
 
-                
 
 
 
+                <!-- Big 6 and Big 8 Bets -->
+                <Border Canvas.Left="648" Canvas.Top="921"
+                        Style="{StaticResource NoClippingNoBackgroundBorderStyle}">
+                    <views:Big6BetView DataContext="{Binding Big6BetViewModel}"/>
+                </Border>
+                <Path DataContext="{Binding Big6BetViewModel}"
+                      Data="M705.7,1060.3L833.284,932.716C825.783,925.214 815.609,921 805,921L648,921C648,973.248 668.755,1023.36 705.7,1060.3"
+                      Style="{StaticResource AllowedBetPathStyle}">
+                    <Path.InputBindings>
+                        <MouseBinding Gesture="LeftClick"
+                                      Command="{Binding CreateOrUpdateBetCommand}" />
+                    </Path.InputBindings>
+                </Path>
+                <Border Canvas.Left="648" Canvas.Top="921"
+                        Style="{StaticResource NoClippingNoBackgroundBorderStyle}">
+                    <views:Big8BetView DataContext="{Binding Big8BetViewModel}"/>
+                </Border>
+                <Path DataContext="{Binding Big8BetViewModel}"
+                      Data="M705.7,1060.3L833.284,932.716C840.786,940.217 845,950.392 845,961L845,1118C792.752,1118 742.645,1097.25 705.7,1060.3Z"
+                      Style="{StaticResource AllowedBetPathStyle}">
+                    <Path.InputBindings>
+                        <MouseBinding Gesture="LeftClick"
+                                      Command="{Binding CreateOrUpdateBetCommand}" />
+                    </Path.InputBindings>
+                </Path>
+                    
 
 
                 <!-- Pass and Don't Pass Bets -->

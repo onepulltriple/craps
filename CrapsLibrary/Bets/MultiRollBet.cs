@@ -1,28 +1,27 @@
 ﻿namespace CrapsLibrary.Bets
 {
-    public class PlaceBet : Bet
+    public class MultiRollBet : Bet
     {
-        public PlaceBet(CrapsTable crapsTable, Player betOwner, betType betType, uint countOfUnitsToBet, uint unitOfBet, List<int> winningTotals, uint payout) 
+        public MultiRollBet(CrapsTable crapsTable, Player betOwner, betType betType, uint countOfUnitsToBet, uint unitOfBet, List<int> winningTotals, uint payout)
             : base(crapsTable, betOwner, betType, countOfUnitsToBet, unitOfBet, winningTotals, payout)
         {
-
+            
         }
 
         internal override bool MeetsFirstWinningCondition(byte firstOutcome, byte secondOutcome)
         {
-            // the puck is ON and the roll results in a board number
-            // (betting directly on the point number is prohibited)
-            if (crapsTable.puck.IsOn == true && winningTotals.Contains(firstOutcome + secondOutcome))
+            if (winningTotals.Contains(firstOutcome + secondOutcome))
                 return true;
-            
+
             return false;
         }
 
         internal override bool MeetsLosingCondition(byte firstOutcome, byte secondOutcome)
         {
+            // loses on seven out, i.e. these are not single-roll bets!
             if (crapsTable.puck.IsOutcomeSevenOut(firstOutcome, secondOutcome))
                 return true;
-            
+
             return false;
         }
     }

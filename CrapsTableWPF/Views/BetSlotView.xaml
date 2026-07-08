@@ -9,6 +9,7 @@
              d:DataContext="{d:DesignInstance Type=viewmodels:BetSlotViewModel}"
              Height="40" Width="40"
              >
+             <!--Background="Red"-->
     <Grid>
 
         <!--occupied slot-->

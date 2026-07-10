@@ -7,6 +7,7 @@ namespace CrapsLibrary.Bets
         Big_06,
         Big_08,
         Field,
+        DontPassBet,
         PassBet,
 
         PlaceBet_04,
@@ -63,6 +64,7 @@ namespace CrapsLibrary.Bets
                 { betType.Big_06,        new(  5, 5, "Big 6 Bet"      , new List<int>{ 6  } ) }, // pays 1:1
                 { betType.Big_08,        new(  5, 5, "Big 8 Bet"      , new List<int>{ 8  } ) }, // pays 1:1
                 { betType.Field,         new(  5, 5, "Field Bet"      , new List<int>{2,3,4,9,10,11,12})}, // pays 1:1, or 2:1 on 2,12
+                { betType.DontPassBet,   new(  5, 5, "Dont Pass Bet"  , new List<int>{2,3 } ) }, // pays 1:1
                 { betType.PassBet,       new(  5, 5, "Pass Line Bet"  , new List<int>{7,11} ) }, // pays 1:1
 
                 { betType.PlaceBet_04,   new(  9, 5, "Place Bet 4"    , new List<int>{ 4  } ) },
@@ -190,6 +192,10 @@ namespace CrapsLibrary.Bets
                     tempBet = new MultiRollBet(crapsTable, player, betType, (uint)countOfUnitsToBetAsInt, unitOfBet, BetDefinitions[betType].winningTotals, payout);
                     break;
 
+                case betType.DontPassBet:
+                    tempBet = new DontPassBet(crapsTable, player, betType, (uint)countOfUnitsToBetAsInt, unitOfBet, BetDefinitions[betType].winningTotals, payout);
+                    break;
+
                 case betType.PassBet:
                     tempBet = new PassBet(crapsTable, player, betType, (uint)countOfUnitsToBetAsInt, unitOfBet, BetDefinitions[betType].winningTotals, payout);
                     break;
@@ -254,9 +260,10 @@ namespace CrapsLibrary.Bets
                 case betType.PlaceBet_10:
                     return IsPlaceBetAllowed(crapsTable, playerToCheck, playerBetType);
 
+                case betType.DontPassBet:
                 case betType.PassBet:
                     if (crapsTable.puck.IsOn)
-                        return Result<bool>.Fail("Pass line bets can only be made before a point is established.");
+                        return Result<bool>.Fail("Pass line and Don't Pass bets can only be made before a point is established.");
                     return Result<bool>.Pass(true);
 
                 case betType.Big_06:

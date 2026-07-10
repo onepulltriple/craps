@@ -406,9 +406,20 @@
                                       Command="{Binding CreateOrUpdateBetCommand}" />
                     </Path.InputBindings>
                 </Path>
-                
-                <!--<Path Fill="DarkBlue" Data="M720,921L660,921L660,462.8L720,410L720,921" />-->
-                <!--<Path Fill="DarkBlue" Data="M845,1046L1776,1046L1776,1106L845,1106L845,1046" />-->
+
+                <Border Canvas.Left="588" Canvas.Top="473.36"
+                        Style="{StaticResource NoClippingNoBackgroundBorderStyle}">
+                    <views:DontPassBetView DataContext="{Binding DontPassBetViewModel}"/>
+                </Border>
+                <Path DataContext="{Binding DontPassBetViewModel}"
+                      Data="M720,921L660,921L660,462.8L720,410L720,921
+                            M845,1046L1776,1046L1776,1106L845,1106L845,1046"
+                      Style="{StaticResource AllowedBetPathStyle}">
+                    <Path.InputBindings>
+                        <MouseBinding Gesture="LeftClick"
+                                      Command="{Binding CreateOrUpdateBetCommand}" />
+                    </Path.InputBindings>
+                </Path>
 
                 <!--Puck OFF standby location-->
                 <Border Canvas.Left="758" Canvas.Top="527.5"

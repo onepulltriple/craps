@@ -24,6 +24,9 @@
     <Compile Update="Views\Big8BetView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\DontPassBetView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\FieldBetView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

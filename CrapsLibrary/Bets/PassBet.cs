@@ -16,7 +16,7 @@
             // if puck is OFF, 7 and 11 win
             // if puck is ON, matching the point wins
 
-            if (crapsTable.puck.IsOn == false && winningTotals.Contains(firstOutcome + secondOutcome))
+            if (!crapsTable.puck.IsOn && winningTotals.Contains(firstOutcome + secondOutcome))
             {
                 crapsTable.gameEventFeed.Add(
                     $"Natural pass!",
@@ -26,7 +26,7 @@
                 return true;
             }
 
-            if (crapsTable.puck.IsOn == true && crapsTable.puck.PassPoint == firstOutcome + secondOutcome)
+            if (crapsTable.puck.IsOn && crapsTable.puck.PassPoint == (firstOutcome + secondOutcome))
             {
                 crapsTable.gameEventFeed.Add(
                     $"Point made! Pass!",
@@ -43,7 +43,7 @@
             // if puck is OFF, craps loses
             // if puck is ON, 7 loses
 
-            if (crapsTable.puck.IsOn == false && losingTotals.Contains(firstOutcome + secondOutcome))
+            if (!crapsTable.puck.IsOn && losingTotals.Contains(firstOutcome + secondOutcome))
             {
                 crapsTable.gameEventFeed.Add(
                     $"Craps! Pass line loses.",

@@ -8,6 +8,25 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+	<!-- design-time assets (workaround) -->
+	<ItemGroup>
+		<None Remove="Assets\Background - Copy.svg" />
+		<None Remove="Assets\PuckOff - Copy.svg" />
+		<None Remove="Assets\PuckOn - Copy.svg" />
+	</ItemGroup>
+	<ItemGroup>
+		<Content Include="Assets\Background - Copy.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Assets\PuckOff - Copy.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Assets\PuckOn - Copy.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+
+	<!-- runtime assets -->
 	<ItemGroup>
 		<Resource Include="Assets\Background.svg" />
 		<Resource Include="Assets\PuckOff.svg" />

@@ -28,6 +28,7 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Center">
             <svg:SvgViewbox Source="pack://application:,,,/Assets/Background.svg"
+                            d:Source="Assets/Background - Copy.svg"
                     IsHitTestVisible="False"
                     MaxWidth ="{Binding ActualWidth,  RelativeSource={RelativeSource AncestorType=Window}}"
                     MaxHeight="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Window}}"/>

@@ -21,7 +21,9 @@
                 Stretch="Uniform"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center">
+                            <!--d:Source="Assets/PuckOff.svg"-->
             <svg:SvgViewbox Source="pack://application:,,,/Assets/PuckOff.svg"
+                            d:Source="Assets/PuckOff - Copy.svg"
                         IsHitTestVisible="False"
                         MaxWidth ="{Binding ActualWidth,  RelativeSource={RelativeSource AncestorType=Window}}"
                         MaxHeight="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Window}}"/>

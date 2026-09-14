@@ -17,6 +17,7 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center">
             <svg:SvgViewbox Source="pack://application:,,,/Assets/PuckOn.svg"
+                            d:Source="Assets/PuckOn - Copy.svg"
                         IsHitTestVisible="False"
                         MaxWidth ="{Binding ActualWidth,  RelativeSource={RelativeSource AncestorType=Window}}"
                         MaxHeight="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Window}}"/>

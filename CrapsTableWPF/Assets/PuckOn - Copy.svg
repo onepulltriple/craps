@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g id="_puck">
+        <path id="ARC" d="M6.138,59.645C8.44,71.374 15.311,81.704 25.235,88.351C35.158,94.998 47.317,97.415 59.025,95.069C70.733,92.723 81.025,85.807 87.629,75.848C94.233,65.889 96.603,53.708 94.218,41.996" style="fill:white;stroke:rgb(51,51,51);stroke-width:2px;"/>
+        <path id="CIRCLE" d="M49.825,94.056C74.634,94.056 94.775,73.892 94.775,49.056C94.775,24.22 74.634,4.056 49.825,4.056C25.017,4.056 4.876,24.22 4.876,49.056C4.876,73.892 25.017,94.056 49.825,94.056Z" style="fill:white;stroke:rgb(51,51,51);stroke-width:2px;"/>
+        <path id="CIRCLE1" serif:id="CIRCLE" d="M49.825,91.056C72.98,91.056 91.778,72.237 91.778,49.056C91.778,25.876 72.98,7.056 49.825,7.056C26.671,7.056 7.873,25.876 7.873,49.056C7.873,72.237 26.671,91.056 49.825,91.056Z" style="fill:white;stroke:rgb(51,51,51);stroke-width:2px;"/>
+    </g>
+    <g id="__text25">
+        <path id="_2DPOLYLINE" serif:id="2DPOLYLINE" d="M35.228,36.574L32.874,37.752L30.475,40.154L29.298,42.511L28.121,46.091L28.121,52.029L29.298,55.609L30.475,58.011L32.874,60.368L35.228,61.592L39.982,61.592L42.381,60.368L44.735,58.011L45.912,55.609L47.135,52.029L47.135,46.091L45.912,42.511L44.735,40.154L42.381,37.752L39.982,36.574L35.228,36.574Z" style="fill:none;stroke:black;stroke-width:1.8px;"/>
+        <path id="_2DPOLYLINE1" serif:id="2DPOLYLINE" d="M36.405,37.752L32.874,38.976L30.475,42.511L29.298,46.091L29.298,52.029L30.475,55.609L32.874,59.189L36.405,60.368L38.805,60.368L42.381,59.189L44.735,55.609L45.912,52.029L45.912,46.091L44.735,42.511L42.381,38.976L38.805,37.752L36.405,37.752Z" style="fill:none;stroke:black;stroke-width:1.8px;"/>
+        <path id="_2DPOLYLINE2" serif:id="2DPOLYLINE" d="M55.419,36.574L55.419,61.592" style="fill:none;stroke:black;stroke-width:1.8px;"/>
+        <path id="_2DPOLYLINE3" serif:id="2DPOLYLINE" d="M56.642,40.154L56.642,61.592L55.419,61.592" style="fill:none;stroke:black;stroke-width:1.8px;"/>
+        <path id="_2DPOLYLINE4" serif:id="2DPOLYLINE" d="M56.642,40.154L72.079,61.592" style="fill:none;stroke:black;stroke-width:1.8px;"/>
+        <path id="_2DPOLYLINE5" serif:id="2DPOLYLINE" d="M55.419,36.574L70.902,58.011L70.902,36.574L72.079,36.574L72.079,61.592" style="fill:none;stroke:black;stroke-width:1.8px;"/>
+    </g>
+</svg>

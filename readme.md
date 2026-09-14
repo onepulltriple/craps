@@ -1,5 +1,7 @@
 # Craps
 
+![Screenshot](screenshots/screenshot_02.png)
+
 Craps is a desktop WPF application using MVVM architecture written in C# targeting .NET 8. It simulates the casino dice game of the same name in which players bet on outcomes of rolls of a pair of dice. 
 
 This craps simulator aims to faithfully recreate the full craps experience found in a Las Vegas casino. It does this by implementing:

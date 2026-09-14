@@ -105,8 +105,6 @@
         </Style.Triggers>
     </Style>
 
-
-
     <!--bet slot views-->
     <Style x:Key="BetBorderStyle" 
            TargetType="Border"

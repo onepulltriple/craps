@@ -21,7 +21,6 @@
                 Stretch="Uniform"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center">
-                            <!--d:Source="Assets/PuckOff.svg"-->
             <svg:SvgViewbox Source="pack://application:,,,/Assets/PuckOff.svg"
                             d:Source="Assets/PuckOff - Copy.svg"
                         IsHitTestVisible="False"

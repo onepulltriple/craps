@@ -7,7 +7,7 @@ using CrapsLibrary.Bets;
 using CrapsTableWPF.Services;
 using CrapsTableWPF.ViewModels;
 
-namespace CrapsTableWPF
+namespace CrapsTableWPF.Windows
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

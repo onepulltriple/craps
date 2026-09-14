@@ -8,11 +8,11 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="background no puck.svg" />
-    <None Remove="background.svg" />
-    <None Remove="puckOn.svg" />
-  </ItemGroup>
+	<ItemGroup>
+		<Resource Include="Assets\Background.svg" />
+		<Resource Include="Assets\PuckOff.svg" />
+		<Resource Include="Assets\PuckOn.svg" />
+	</ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Extended.Wpf.Toolkit" Version="5.1.2" />
@@ -21,18 +21,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CrapsLibrary\CrapsLibrary.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Assets\Background.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\PuckOff.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\PuckOn.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
 
 </Project>

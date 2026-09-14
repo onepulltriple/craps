@@ -1,53 +1,23 @@
-UI-related stuff:
-draft the ViewModels for the different entities
-
-
-
-
-turning any bet off at any time
-should winning totals be part of the class definition and not parameters? currently losing totals are not parameters
-table minimum behavior, e.g. pass bets must be multiples of the table minimum
-payout factors (numerator/denominator): should they be handed over upon bet creation? the compound denominator gets subtracted (i.e. the bet is paid for), then
-  if the bet wins the players gets that money back amplified by the factor.
-what to do with lost bets (if anything)
-House.cs to store the house's money, to which purchased bets are paid and from which won bets are substracted
-if the point becomes the same number as an existing place bet, offer to move that place bet to its "twin",  give it back to the player, or move to the odds bet
-
-partial parlay bet state (press X, collect Y) --> should this be two of the same bet? or one bet with two members (press, collect)?
-
-need to handle error messaging on the BL level, and these messages get pushed to the UI, no matter if the UI is CLI or WPF
-
-Alt + U : jump to a file
-Alt + G : jump to a member within a file
-
-Lost state for bets:
-"reup all my just-lost bets"
-"light up the board"
-"all the hard ways"
-each player only has one bet of each type
-
-allow players to multi-select fromt a list of bets (when pausing)
-allow players to multi-select fromt a list of bets (when placing bets)
-
-player can't create a pass line bet after the point has been established (expect by agreement).
-
-COL
-PAR
-PRS
-OFF
-WRK
-
-get Console.WriteLine() statements out of the Bets! e.g. pass line bet
-write unit tests for the pass line bet
-if a player has a lost pass line bet, they can access the place bets. fix: only an active passline bet (i.e. not paused or lost) should permit this
-
 payout ratio  should be reduced when presented to user, e.g. 5:5
-
 auto-pause place bets when the point is made
-
 determine if the "outer" grids in the main window are necessary
-
-This should be playable with only a mouse as well.
-
-
-
+this game should be playable with only a mouse as well
+if a player has a lost pass line bet, they can access the place bets. fix: only an active passline bet (i.e. not paused or lost) should permit this
+implement turning any bet off at any time (change states)
+should winning totals be part of the class definition and not parameters? currently losing totals are not parameters
+House.cs to store the house's money, to which purchased bets are paid and from which won bets are substracted
+if the point becomes the same number as an existing place bet, 
+  offer to move that place bet to its "twin", give money back to the player, or move bet to the odds bet
+partial parlay bet state (press X, collect Y) --> should this be two of the same bet? or one bet with two members (press, collect)?
+continue to handle error messaging on the BL level, and these messages get pushed to the UI, no matter if the UI is CLI or WPF
+what to do with lost bets (keep in player's bet history to enable quick bet resets, i.e. "reup all my just-lost bets")
+common ways to place several bets at once:
+  "light up the board"
+  "all the hard ways"
+  "C and E"
+allow players to multi-select from a list of bets (when pausing)
+allow players to multi-select from a list of bets (when placing bets)
+player can't create a pass line bet after the point has been established 
+ except by agreement
+three letter codes for bet states? COL PAR PRS OFF WRK
+get Console.WriteLine() statements out of the CrapsLibrary! e.g. pass line bet, table states

@@ -1,68 +1,43 @@
-# User-facing information
-- Result<T>:
-    - avoids expected data validation issues by providing error messages to the user when creating objects
-- GameEvent:
-    -   DiceRoll:   states the outcomes of the two die rolls (D6) and their sum
-    -   Outcome:    reports changes to the craps table's peripherals (puck, etc.) which were caused by the last DiceRoll
-    -   Message:    reports status information for bets and players
-    -   Warning:    notifies users of various issues
+# Craps
 
+Craps is a desktop WPF application using MVVM architecture written in C# targeting .NET 8. It simulates the casino dice game of the same name in which players bet on outcomes of rolls of a pair of dice. 
 
-# States of the Craps Table
+This craps simulator aims to faithfully recreate the full craps experience found in a Las Vegas casino. It does this by implementing:
+ - the correct game-specific slang and terminology used when placing bets
+ - multiple players per table (up to eight simultaneous players on one half of the table)
+ - state machines to handle the states of all bets placed, including "working", "press and collect", "full and partial parlay", "lost"
+ - rotation of the active dice roller ("shooter") as determined by the outcome of each roll
+ - a faithful recreation of a real-world craps table layout rather than a simplified representation
 
-|                                    | Puck OFF      | Puck ON       |
-|------------------------------------|:-------------:|:-------------:|
-| Accepting players                  |               |               |
-| Accepting bets                     |               |               |
-| Rolling dice, announcing outcomes  |               |               |
-| Cashing out / removing players     |               |               |
-| Removing bets                      |               |               |
-| Pausing bets                       |               |               |
+A video explaining how the UI was created can be found [here]().
 
-Asking for roller
+## Getting started
 
+### Option 1 - Download and run the executable
 
+The easiest way to try the simulator is to download the latest published version from the repository's **Releases** page.
 
-# States of the Player
+1. Go to the [latest release](https://github.com/onepulltriple/craps/releases/latest).
+2. Download the ZIP release containing the published application package.
+3. Extract the downloaded archive.
+4. Run the included executable.
 
-|                                    | Puck OFF      | Puck ON       |
-|------------------------------------|:-------------:|:-------------:|
-| CRUD BETS                          |               |               |
-|  - take down bets                  |               |               |
-|  - add bets                        |               |               |
-|  - parlay bets                     |               |               |
-| Removing bets                      |               |               |
-| Pausing bets                       |               |               |
+No installation is required.
 
+### Option 2 - Set up the project and run from Visual Studio
 
+1. Install Visual Studio. [Download 2026](https://visualstudio.microsoft.com/downloads/)
 
-What should the bets be able to do?
-States:
-Return winnings (the base state) (evaluate bets and payout "like normal")
-Be paused (not affected by play) (don't evaluate bets)
-Be parlayed (until acted upon otherwise) (evaluate bets and add winnings to committed amount)
-Be pressed (aka partial parlay, i.e. player collects some, parlays (presses) the rest)
-Lost (held by the player to aid with quick re-ups)
+   During installation, make sure the **.NET desktop development** workload is selected. This is required for the WPF application.
 
-Property
-IsEnabled (at the table level) (e.g. no place bets allowed when the point is off)
-(if the player must have anotehr bet active, then we check the player's bet list for that bet, e.g. standing pass line bet needed to bet on points)
+2. Clone the repository to your local machine using:
 
-Methods:
+   ```bash
+   git clone https://github.com/onepulltriple/craps
+   ```
 
-Return some amount (instigated by player)
-Be taken down (a method.i.e. I am done) / lose
+3. Open `Craps.sln` in Visual Studio.
 
+4. Ensure that `CrapsTableWPF` is the startup project by right-clicking on the project name and selecting "Set as Startup Project".
 
-Rather than each bet itself being a subscriber, the states of the bet will manage the bet's subscription.
-Thus, by virtue of being subscribed or unsubscribed, a bet will become active or paused, respectively.
-
-
-
-To do:
-main game loop (e.g. add two players)
-one is the roller 
-
-rolling/announcing results
-CRUD-ing bets (creating bets for now)
-(switching rollers can come later)
+5. Build and run the application in Visual Studio.

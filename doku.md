@@ -1,0 +1,56 @@
+# User-facing information
+- Result<T>:
+    - avoids expected data validation issues by providing error messages to the user when creating objects
+- GameEvent:
+    -   DiceRoll:   states the outcomes of the two die rolls (D6) and their sum
+    -   Outcome:    reports changes to the craps table's peripherals (puck, etc.) which were caused by the last DiceRoll
+    -   Message:    reports status information for bets and players
+    -   Warning:    notifies users of various issues
+
+
+# States of the Craps Table
+
+|                                    | Puck OFF      | Puck ON       |
+|------------------------------------|:-------------:|:-------------:|
+| Accepting players                  |               |               |
+| Accepting bets                     |               |               |
+| Rolling dice, announcing outcomes  |               |               |
+| Cashing out / removing players     |               |               |
+| Removing bets                      |               |               |
+| Pausing bets                       |               |               |
+
+Asking for roller
+
+
+
+# States of the Player
+
+|                                    | Puck OFF      | Puck ON       |
+|------------------------------------|:-------------:|:-------------:|
+| CRUD BETS                          |               |               |
+|  - take down bets                  |               |               |
+|  - add bets                        |               |               |
+|  - parlay bets                     |               |               |
+| Removing bets                      |               |               |
+| Pausing bets                       |               |               |
+
+
+What should the bets be able to do?
+States:
+Return winnings (the base state) (evaluate bets and payout "like normal")
+Be paused (not affected by play) (don't evaluate bets)
+Be parlayed (until acted upon otherwise) (evaluate bets and add winnings to committed amount)
+Be pressed (aka partial parlay, i.e. player collects some, parlays (presses) the rest)
+Lost (held by the player to aid with quick re-ups)
+
+Property
+IsEnabled (at the table level) (e.g. no place bets allowed when the point is off)
+(if the player must have anotehr bet active, then we check the player's bet list for that bet, e.g. standing pass line bet needed to bet on points)
+
+Methods:
+Return some amount (instigated by player)
+Be taken down (a method, i.e. player leaves table) / loses
+
+
+Rather than each bet itself being a subscriber, the states of the bet will manage the bet's subscription.
+Thus, by virtue of being subscribed or unsubscribed, a bet will become active or paused, respectively.

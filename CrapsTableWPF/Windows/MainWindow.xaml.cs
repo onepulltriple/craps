@@ -22,25 +22,6 @@ namespace CrapsTableWPF.Windows
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         private void Path_MouseDown(object sender, MouseButtonEventArgs e)
         {
 

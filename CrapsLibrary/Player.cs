@@ -37,6 +37,7 @@ namespace CrapsLibrary
         }
 
 
+        // each player only has one bet of each type
         public ObservableCollection<Bet> PlayerBetList { get; }
 
         public Player(CrapsTable crapsTable, string playerName, uint startingPurse = 0)

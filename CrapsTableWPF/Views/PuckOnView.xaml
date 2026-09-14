@@ -16,7 +16,7 @@
                 Stretch="Uniform"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center">
-            <svg:SvgViewbox Source="puckOn.svg"
+            <svg:SvgViewbox Source="Assets/PuckOn.svg"
                         IsHitTestVisible="False"
                         MaxWidth ="{Binding ActualWidth,  RelativeSource={RelativeSource AncestorType=Window}}"
                         MaxHeight="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Window}}"/>
